@@ -39,7 +39,7 @@ const BlogPostLayout = props => {
         <script defer src={`js/vendors.js`} type="text/javascript" />
         <script defer src={`js/custom.js`} type="text/javascript" />
       </Helmet> */}
-      {/* <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>{parse(post.title.rendered)}</title>
         <meta
@@ -49,7 +49,7 @@ const BlogPostLayout = props => {
             allowedAttributes: [],
           }).trim()}
         />
-      </Helmet> */}
+      </Helmet>
       <Header page={"blog"}></Header>
       <BlogContent post={post}></BlogContent>
       <Parallax

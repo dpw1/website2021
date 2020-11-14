@@ -25,6 +25,10 @@ export default () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>EZFY | Shopify Coding For Merchants</title>
+      </Helmet>
       <Suspense fallback="loading...">
         <ScrollToTop></ScrollToTop>
         <Header page={"home"}></Header>
