@@ -21,6 +21,7 @@ import PostsSidebar from "./PostsSidebar"
 
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
+  const [url, setUrl] = useState(null)
   const { post } = props
 
   // if (!post) {
@@ -31,15 +32,21 @@ const BlogContent = props => {
   const title = post.title.rendered
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     const data = await blogApi.getPosts(`per_page=5`)
-  //     console.log(data)
-  //     setPosts(data)
-  //   }
+  useEffect(() => {
+    // const getPosts = async () => {
+    //   const data = await blogApi.getPosts(`per_page=5`)
+    //   console.log(data)
+    //   setPosts(data)
+    // }
 
-  //   getPosts()
-  // }, [])
+    // getPosts()
+
+    if (window !== undefined) {
+      setUrl(window.location.href)
+    } else {
+      setUrl("https://ezfycode.com")
+    }
+  }, [])
 
   return (
     <React.Fragment>
@@ -89,7 +96,7 @@ const BlogContent = props => {
                     <div className="social-icons social-icons--blog d-flex ">
                       <a
                         className="bg-white facebook social-icon"
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -98,7 +105,7 @@ const BlogContent = props => {
                       </a>
                       <a
                         className="bg-white twitter  social-icon"
-                        href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${title}`}
+                        href={`https://twitter.com/intent/tweet?url=${url}&text=${title}`}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -107,7 +114,7 @@ const BlogContent = props => {
                       </a>
                       <a
                         className="bg-white pinterest social-icon"
-                        href={`http://pinterest.com/pin/create/button/?url=${window.location.href}&description=${title}`}
+                        href={`http://pinterest.com/pin/create/button/?url=${url}&description=${title}`}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -116,7 +123,7 @@ const BlogContent = props => {
                       </a>
                       <a
                         className="bg-white linkedin social-icon"
-                        href={`http://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${title}`}
+                        href={`http://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -124,7 +131,7 @@ const BlogContent = props => {
                         <i className="fab  fa-linkedin" aria-hidden="true"></i>
                       </a>
 
-                      <WhatsappShareButton url={window.location.href}>
+                      <WhatsappShareButton url={url}>
                         <span className="bg-white social-icon whatsapp social-icon">
                           <i className="fab fa-whatsapp" aria-hidden="true"></i>
                           <i className="fab fa-whatsapp" aria-hidden="true"></i>
@@ -133,7 +140,7 @@ const BlogContent = props => {
 
                       <FacebookMessengerShareButton
                         appId={"2995462243875033"}
-                        url={window.location.href}
+                        url={url}
                       >
                         <span className="bg-white social-icon facebook-messenger social-icon">
                           <i
