@@ -25,7 +25,6 @@
     "gatsby-plugin-load-script": "^1.1.0",
     "gatsby-plugin-routes": "^1.0.0",
     "gatsby-plugin-sass": "^2.5.0",
-    "gh-pages": "^3.1.0",
     "history": "^5.0.0",
     "html-react-parser": "^0.14.0",
     "javascript-time-ago": "^2.3.2",
@@ -52,6 +51,7 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "prettier": "2.1.2"
   },
   "repository": {
