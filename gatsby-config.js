@@ -22,4 +22,8 @@ module.exports = {
     //   },
     // },
   ],
+
+  module.exports ={
+    pathPrefix: "/website2021"
+  }
 }
