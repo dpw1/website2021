@@ -1,0 +1,18 @@
+.posts-sidebar {
+  &-date {
+    margin-top: 5px;
+    font-size: 11.5px !important;
+  }
+
+  [data-toggle="collapse"] {
+    &.collapsed {
+      right: 30px;
+    }
+
+    &:not(.collapsed) {
+      &:after {
+        transform-origin: 2px 7px;
+      }
+    }
+  }
+}

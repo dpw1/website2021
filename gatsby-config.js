@@ -6,5 +6,20 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [],
+  plugins: [
+    `gatsby-plugin-sass`,
+
+    // {
+    //   resolve: "gatsby-plugin-load-script",
+    //   options: {
+    //     src: "js/vendors.js",
+    //   },
+    // },
+    // {
+    //   resolve: "gatsby-plugin-load-script",
+    //   options: {
+    //     src: "js/custom.js",
+    //   },
+    // },
+  ],
 }

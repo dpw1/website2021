@@ -1,0 +1,33 @@
+#faq {
+  .card {
+    margin-bottom: 1px;
+  }
+  .accordion ul li {
+    list-style: inside;
+  }
+
+  .section-heading {
+    margin-bottom: 15px;
+  }
+
+  .card-header {
+    background-color: rgba(191, 191, 191, 0.03);
+  }
+
+  button {
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  #faq .accordion-group > .card:last-of-type {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #faq .card-header .btn::after,
+  #faq .card-header .btn.collapsed::after {
+    left: calc(100% - 2px);
+  }
+}

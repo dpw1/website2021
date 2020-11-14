@@ -1,0 +1,23 @@
+@import "../css/variables";
+@import "../css/animations";
+
+$read-more-height: 150px;
+
+.services-item {
+  &-list {
+    li {
+      &:not(:first-of-type):before {
+        content: "|";
+        position: relative;
+        margin-right: 10px;
+        color: $accent;
+      }
+    }
+  }
+
+  &-subtitle {
+    &--margin {
+      padding-bottom: 40px;
+    }
+  }
+}

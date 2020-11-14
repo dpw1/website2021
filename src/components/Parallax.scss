@@ -1,0 +1,103 @@
+@import "../css/variables";
+@import "../css/animations";
+
+$layers: 6; //number of images
+$duration: 70s;
+$degrade-color-start: #1d1d1d;
+$degrade-color-end: #3b5c89;
+
+$height: 550px;
+$text-container-width: 700px;
+
+.ezfy-parallax {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(
+    circle at top left,
+    $degrade-color-start,
+    $degrade-color-end
+  );
+
+  &-container {
+    position: relative;
+    width: 100vw;
+    height: $height;
+  }
+
+  &-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    padding: 0 30px;
+    padding-right: 50px;
+    margin: 0;
+    max-width: $text-container-width;
+
+    > * {
+      display: block;
+      width: 100%;
+      color: white;
+    }
+
+    .btn {
+      margin-top: 40px;
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  &-subtitle {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: normal;
+    font-weight: normal;
+  }
+
+  &-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+
+    svg {
+      max-width: 00px;
+      opacity: 1;
+      opacity: 0.04;
+    }
+    svg * {
+      fill: url(#header-shape-gradient) #fff;
+    }
+
+    svg,
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      height: auto;
+      transform: translateX(-50%) translateZ(0);
+      animation: confetti linear infinite;
+
+      @for $i from 1 through $layers {
+        &:nth-child(#{$i}) {
+          animation-delay: $duration * (($i - $layers) / ($layers / 0.7));
+          animation-duration: $duration * ($i / $layers);
+        }
+      }
+    }
+  }
+
+  #header-shape-gradient {
+    --color-stop: #a45ff2;
+    --color-bot: #8731e8;
+  }
+}

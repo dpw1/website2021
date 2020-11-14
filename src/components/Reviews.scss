@@ -1,0 +1,94 @@
+#reviews {
+  overflow-x: hidden;
+}
+
+#reviews .app-screenshots {
+  position: relative;
+}
+
+#reviews .heart-icon {
+  width: 15px;
+  fill: #7c4fe0;
+  position: relative;
+  top: -1.5px;
+  left: -2px;
+}
+
+#reviews .section-heading {
+  margin-bottom: 40px;
+}
+
+#reviews button.slick-next.slick-arrow,
+#reviews button.slick-prev.slick-arrow {
+  visibility: hidden;
+  pointer-events: none;
+  position: static;
+}
+
+#reviews button.slick-next.slick-arrow,
+#reviews button.slick-prev.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+#reviews button.slick-next.slick-arrow:after,
+#reviews button.slick-prev.slick-arrow:after {
+  content: "\f054";
+  visibility: visible;
+  pointer-events: all;
+  transition: all 0.32s ease;
+  font-size: 35px;
+  font-weight: 900;
+  color: #00000012;
+  font-family: "Font Awesome 5 Free";
+}
+
+#reviews button.slick-prev.slick-arrow {
+  transform: rotate(180deg) translateY(calc(-50% + 45px));
+  left: -30px;
+  transform-origin: center;
+}
+
+#reviews button.slick-next.slick-arrow {
+  position: absolute;
+  right: -30px;
+}
+
+@media (max-width: 575px) {
+  #reviews button.slick-prev.slick-arrow {
+    left: 0;
+  }
+
+  #reviews button.slick-next.slick-arrow {
+    right: 0;
+  }
+}
+
+#reviews button.slick-prev.slick-arrow:hover:after,
+#reviews button.slick-next.slick-arrow:hover:after {
+  color: #d2d2d2;
+}
+
+#reviews
+  button.slick-prev.slick-arrow:hover:after
+  #reviews
+  button.slick-next.slick-arrow:hover:after {
+  color: #000000;
+}
+
+#reviews .slick-track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 575px) {
+  #reviews .single-screenshot {
+    transform: scale(1);
+  }
+  #reviews .single-screenshot > img {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}

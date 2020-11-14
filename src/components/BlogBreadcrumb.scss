@@ -1,0 +1,39 @@
+@import "../css/variables";
+
+[id] .blog-breadcrumb {
+  height: 350px;
+
+  @media (max-width: $xs) {
+    height: 400px;
+  }
+  .breadcrumb {
+    color: white;
+  }
+
+  * {
+    color: white;
+
+    &:hover {
+      color: darken(white, 10%);
+    }
+  }
+
+  &-title {
+    max-width: 700px;
+    width: 100%;
+    @media (max-width: $xs) {
+      font-size: 34px;
+    }
+
+    @media (max-width: $xxs) {
+      font-size: 30px;
+    }
+  }
+
+  .breadcrumb-item {
+    &.active {
+      text-decoration: underline;
+      color: white !important;
+    }
+  }
+}

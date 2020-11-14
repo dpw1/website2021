@@ -1,0 +1,44 @@
+#workArea {
+  padding-bottom: 132px;
+
+  .work-icon svg {
+    width: 70px;
+    height: 70px;
+    fill: white;
+  }
+
+  .work-icons-wrapper {
+    margin-top: 40px;
+  }
+
+  .shape-bottom {
+    transform: rotate(177deg);
+    bottom: calc(-89vw / 33);
+    left: -1px;
+  }
+
+  .single-work {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+#workArea .single-work:after {
+  margin-right: -29px;
+}
+
+@media (min-width: 1200px) {
+  #workArea .shape-bottom {
+    bottom: calc(-89vw / 30);
+  }
+}
+
+@media (max-width: 767px) {
+  #workArea .shape-bottom {
+    bottom: calc(-102vw / 33);
+  }
+}

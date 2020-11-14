@@ -1,0 +1,28 @@
+@import "../css/variables";
+
+#footerSection {
+  .facebook-messenger {
+    background-color: #4c6ef5;
+  }
+
+  .footer-image {
+    max-width: 570px;
+    border-radius: $border-radius;
+    width: 100%;
+  }
+
+  @media (max-width: 575px) {
+    .footer-items {
+      text-align: center;
+    }
+
+    .social-icons {
+      justify-content: center;
+    }
+
+    .footer-image {
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

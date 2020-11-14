@@ -1,0 +1,7 @@
+.preloader-main {
+  &--loaded {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 2s;
+  }
+}

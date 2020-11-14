@@ -1,0 +1,26 @@
+@import "../css/variables";
+
+#about {
+  padding-bottom: 75px;
+  .about-image {
+    display: flex;
+    justify-content: center;
+    max-width: 250px;
+    margin: 0 auto;
+    border-radius: $border-radius;
+    overflow: hidden;
+  }
+
+  .about-text * {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .row:nth-child(2) {
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+  }
+}
