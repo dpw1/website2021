@@ -3,6 +3,7 @@ import React from "react"
 
 import * as timeago from "timeago.js"
 import TrustBadge from "../components/TrustBadge"
+import { siteRoutes } from "./siteRoutes"
 
 export function groupItems(items, n) {
   return items.reduce((acc, x, i) => {
@@ -62,13 +63,13 @@ export const homepageNavbarLinks = [
   },
   {
     name: "Blog",
-    url: "/blog",
+    url: siteRoutes.blog,
     offset: -40,
     scroll: false,
   },
   {
     name: "Portfolio",
-    url: "/portfolio",
+    url: siteRoutes.portfolio,
     offset: -40,
     scroll: false,
   },
@@ -128,13 +129,13 @@ export const blogNavbarLinks = [
   },
   {
     name: "Portfolio",
-    url: "/portfolio",
+    url: siteRoutes.portfolio,
     offset: 0,
     scroll: false,
   },
   {
     name: "Blog",
-    url: "/blog",
+    url: siteRoutes.blog,
     offset: 0,
     scroll: false,
   },

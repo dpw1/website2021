@@ -1,0 +1,11 @@
+1. Make sure you're on dev branch
+2. Commit to git
+
+git add .
+git commit -m "[ADD]"
+git push origin dev
+
+3. deploy to github pages
+
+npm run deploy
+
