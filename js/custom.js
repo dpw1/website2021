@@ -296,7 +296,7 @@ ezfy = (function () {
         .sort()
         .join("")
 
-      const tag = each.querySelector(".portfolio-tags")
+      const tag = each.querySelector("#portfolio .portfolio-tags")
 
       if (tag) {
         tag.insertAdjacentHTML("afterbegin", filteredTags)
@@ -318,7 +318,40 @@ ezfy = (function () {
       )
       .join("")
 
-    const widget = document.getElementById("tagsWidget")
+    const widget = document.querySelector("#portfolio #tagsWidget")
+
+    if (widget) {
+      widget.insertAdjacentHTML("beforeend", filteredTags)
+    }
+  }
+
+  function addTagsToServicesFilter() {
+    const $services = document.getElementById("services")
+
+    if (!$services) {
+      return
+    }
+
+    let $tags = $services.querySelectorAll(`[data-portfolio-item-tags]`)
+
+    if (!$tags) {
+      return
+    }
+
+    $tags = [...$tags].map(e => e.getAttribute(`data-portfolio-item-tags`))
+
+    const tags = [
+      ...new Set([...$tags].map(e => e.trim().replace(",", "")).sort()),
+    ]
+
+    const filteredTags = tags
+      .map(
+        tag =>
+          `<a href="#" data-tag-name="${tag}" class="tags-widget-item d-inline-block mt-2 mr-1 px-2 py-1">${tag}</a>`
+      )
+      .join("")
+
+    const widget = document.querySelector("#services #tagsWidget")
 
     if (widget) {
       widget.insertAdjacentHTML("beforeend", filteredTags)
@@ -327,12 +360,13 @@ ezfy = (function () {
 
   function portfolioTagHandleOnClick() {
     const tagsWidget = document.getElementById("tagsWidget")
+
     if (!tagsWidget) {
       return
     }
 
     const allTags = tagsWidget.querySelectorAll("[data-tag-name]")
-
+    console.log("allTags", allTags)
     const highlightChosenFilter = () => {
       const activeTag = tagsWidget.querySelector(".tags-widget-item--active")
       if (activeTag) {
@@ -577,6 +611,7 @@ ezfy = (function () {
       addTagsToPortfolioItems()
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
+      addTagsToServicesFilter()
       autoplayVideo()
       setTimeout(scrollToHash, 350)
       window.ezfy.initServices()
