@@ -18,15 +18,17 @@ import Preloader from "../components/Preloader"
 import { generateBlogUrl } from "../utils/utils"
 import Parallax from "../components/Parallax"
 import parse from "html-react-parser"
+import { SEO } from "./../components/SEO"
 
 const BlogPostLayout = props => {
-  console.log("blog layout props", props.pageContext)
+  const [url, setUrl] = useState("")
 
   const post = props.pageContext
 
   const slug = post.slug
 
   useEffect(() => {
+    setUrl(window.location.href)
     setTimeout(() => {
       window.scrollTo(0, 0)
       window.ezfy.start()
@@ -35,21 +37,13 @@ const BlogPostLayout = props => {
 
   return (
     <React.Fragment>
-      {/* <Helmet>
-        <script defer src={`js/vendors.js`} type="text/javascript" />
-        <script defer src={`js/custom.js`} type="text/javascript" />
-      </Helmet> */}
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{parse(post.title.rendered)}</title>
-        <meta
-          name="description"
-          content={sanitizeHtml(parse(post.excerpt.rendered), {
-            allowedTags: [],
-            allowedAttributes: [],
-          }).trim()}
-        />
-      </Helmet>
+      {console.log(post)}
+      <SEO
+        title={parse(post.title.rendered)}
+        description={parse(post.excerpt.rendered)}
+        image={post.featured_image_small_src}
+        url={url}
+      ></SEO>
       <Header page={"blog"}></Header>
       <BlogContent post={post}></BlogContent>
       <Parallax

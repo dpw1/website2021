@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
-import "./Services.scss";
-import TrustBadge from "./TrustBadge";
-import { servicesItems } from "./../utils/utils";
-import ServicesItem from "./ServicesItem";
+import React, { useState, useRef } from "react"
+import "./Services.scss"
+import TrustBadge from "./TrustBadge"
+import { servicesItems } from "./../utils/utils"
+import ServicesItem from "./ServicesItem"
 
 const defaultServiceItemsList = () => {
   return (
@@ -36,12 +36,12 @@ const defaultServiceItemsList = () => {
         </div>
       </li>
     </React.Fragment>
-  );
-};
+  )
+}
 
 const items = [
   {
-    tags: ["Custom Shopify Section"],
+    tags: [""],
     video: require("../copy/videos/section-countdown.mp4"),
     price: "19",
     image: require("../copy/img/thumbnail/section-countdown.gif"),
@@ -76,7 +76,7 @@ const items = [
     ),
   },
   {
-    tags: ["Custom Shopify Section"],
+    tags: [""],
     video: require("../copy/videos/section-freetobekids.mp4"),
     price: "29",
     image: require("../copy/img/thumbnail/section-freetobekids-gif.gif"),
@@ -99,7 +99,7 @@ const items = [
     ),
   },
   {
-    tags: ["Theme Customization"],
+    tags: [""],
     video: require("../copy/img/services/yousave.jpg"),
     price: "49",
     image: require("../copy/img/services/yousave.jpg"),
@@ -115,7 +115,7 @@ const items = [
     ),
   },
   {
-    tags: ["Custom Shopify Section"],
+    tags: [""],
     video: require("../copy/videos/section-banner.mp4"),
     price: "29",
     image: require("../copy/img/thumbnail/section-banner.gif"),
@@ -154,37 +154,37 @@ const items = [
       </React.Fragment>
     ),
   },
-];
+]
 
 function Services() {
-  const loadItemsAmount = 4;
-  const [itemsToShow, setItemsToShow] = useState(loadItemsAmount);
-  const [loadedItems, setLoadedItems] = useState(items);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const loadItemsAmount = 4
+  const [itemsToShow, setItemsToShow] = useState(loadItemsAmount)
+  const [loadedItems, setLoadedItems] = useState(items)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isButtonLoading, setIsButtonLoading] = useState(false)
 
   const loadMoreItems = () => {
     if (itemsToShow > loadedItems.length) {
-      return;
+      return
     }
 
     return Array(itemsToShow)
       .fill(null)
       .map((_, i) => i)
-      .map((e) => {
-        let item = items[e];
+      .map(e => {
+        let item = items[e]
 
-        item.loadImage = true;
-        item.isButtonLoading = isButtonLoading;
-        item.setIsButtonLoading = setIsButtonLoading;
+        item.loadImage = true
+        item.isButtonLoading = isButtonLoading
+        item.setIsButtonLoading = setIsButtonLoading
 
         if (itemsToShow <= loadItemsAmount) {
-          item.loadImage = false;
+          item.loadImage = false
         }
 
-        return ServicesItem(item);
-      });
-  };
+        return ServicesItem(item)
+      })
+  }
 
   return (
     <section id="services" className="section services blog-area ptb_50">
@@ -199,44 +199,47 @@ function Services() {
                 develop custom, premium quality{" "}
                 <span className="custom-emphasis">Shopify sections.</span>
                 <br />
-                Click on the image to watch a short video showcasing the
-                respective section.
+                Below are just a few samples of some of the services we provide.
               </p>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-lg-12">
+          {/* <div className="col-12 col-lg-12">
             <aside className="sidebar">
-              {/* Single Widget */}
+              
               <div className="single-widget">
-                {/* Tags Widget */}
+                
                 <div
                   className="accordions widget tags-widget"
-                  id="tags-accordion">
+                  id="tags-accordion"
+                >
                   <div className="single-accordion blog-accordion">
                     <h5>
                       <a
                         role="button"
                         className="collapse show text-uppercase d-block p-3"
                         data-toggle="collapse"
-                        href="#accordion3">
+                        href="#accordion3"
+                      >
                         Filter
                       </a>
                     </h5>
-                    {/* Tags Widget Content */}
+
                     <div
                       id="accordion3"
                       className="accordion-content widget-content collapse show"
-                      data-parent="#tags-accordion">
-                      {/* Tags Widget Items */}
+                      data-parent="#tags-accordion"
+                    >
                       <div
                         id="tagsWidget"
-                        className="widget-content tags-widget-items pt-2">
+                        className="widget-content tags-widget-items pt-2"
+                      >
                         <a
                           href="#"
                           data-tag-name="all"
-                          className="d-inline-block mt-2 mr-1 px-2 py-1 tags-widget-item tags-widget-item--active ">
+                          className="d-inline-block mt-2 mr-1 px-2 py-1 tags-widget-item tags-widget-item--active "
+                        >
                           All
                         </a>
                       </div>
@@ -245,14 +248,14 @@ function Services() {
                 </div>
               </div>
             </aside>
-          </div>
+          </div> */}
           <div className="col-12 col-lg-12">
             <div className="portfolio-row row">{loadMoreItems()}</div>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Services;
+export default Services

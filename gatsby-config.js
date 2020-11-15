@@ -4,9 +4,32 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const config = require("./data/config")
+
+config
+
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: config.siteTitle,
+    description: config.siteDescription,
+    siteUrl: `https://www.ezfycode.com`,
+  },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://www.ezfycode.com`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        createLinkInHead: true,
+      },
+    },
+
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-manifest`,

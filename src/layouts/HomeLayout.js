@@ -12,6 +12,7 @@ import Contact from "../components/Contact"
 import Footer from "../components/Footer"
 import { Helmet } from "react-helmet"
 import ReviewsText from "./../components/ReviewsText"
+import { SEO } from "../components/SEO.js"
 
 const HomeLayout = props => {
   useEffect(() => {
@@ -20,11 +21,7 @@ const HomeLayout = props => {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>EZFY | Shopify Coding Services</title>
-      </Helmet>
-
+      <SEO />
       <ScrollToTop></ScrollToTop>
       <Header page={"home"}></Header>
       <Hero scrollTo="#about"></Hero>
