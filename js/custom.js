@@ -570,7 +570,7 @@ ezfy = (function () {
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
       autoplayVideo()
-      reviewsTextSlider()
+      // reviewsTextSlider()
       setTimeout(scrollToHash, 350)
       window.ezfy.initServices()
       window.customCode()
