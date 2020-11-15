@@ -22,15 +22,16 @@ const HomeLayout = props => {
     <React.Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>EZFY | Shopify Coding For Merchants</title>
+        <title>EZFY | Shopify Coding Services</title>
       </Helmet>
 
       <ScrollToTop></ScrollToTop>
       <Header page={"home"}></Header>
       <Hero scrollTo="#about"></Hero>
       <About></About>
-      <ReviewsText></ReviewsText>
       <BlogShowcase totalPosts={3}></BlogShowcase>
+      <ReviewsText></ReviewsText>
+
       {/* <ReviewsText></ReviewsText> */}
       <Services></Services>
       <Parallax

@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import "./About.scss";
-import image from "../copy/img/avatar/diego.jpg";
+import React, { Component } from "react"
+import "./About.scss"
+import image from "../copy/img/avatar/diego.jpg"
 
 function About() {
   return (
     <section
       id="about"
-      className="section features-area overflow-hidden bg-gray ptb_25">
+      className="section features-area overflow-hidden bg-gray ptb_25"
+    >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-6">
@@ -24,7 +25,8 @@ function About() {
             <figure
               className="about-image wow fadeInLeft"
               data-aos-duration="2s"
-              data-wow-delay="0.2s">
+              data-wow-delay="0.2s"
+            >
               {/* Work Slider */}
               <img src={image} alt="Diego Fortes - EZFY's creator" />
             </figure>
@@ -36,7 +38,8 @@ function About() {
                 <div
                   className="image-box media icon-1 px-1 py-3 py-md-4 wow fadeInRight"
                   data-aos-duration="2s"
-                  data-wow-delay="0.2s">
+                  data-wow-delay="0.2s"
+                >
                   <div className="about-text icon-text media-body align-self-center align-self-md-start">
                     <p className="d-sm-block">
                       Greetings! My name is Diego Fortes. I am a Computer
@@ -70,7 +73,7 @@ function About() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default About;
+export default About
