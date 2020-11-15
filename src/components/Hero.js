@@ -48,7 +48,7 @@ function Hero(props) {
                   alt="Top 1 rated Shopify Expert in the official Shopify forums."
                 />
               </picture>
-              <h3 className="text-white">
+              <h3 className="hero-subtitle text-white">
                 <span
                   style={{
                     display: "block",

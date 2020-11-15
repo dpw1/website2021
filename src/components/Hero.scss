@@ -7,6 +7,11 @@
   z-index: 1;
   max-height: 690px;
 
+  .hero-subtitle,
+  .hero-subtitle * {
+    line-height: normal;
+  }
+
   @media (max-width: $xs) {
     max-height: unset;
     height: 113vh !important;
@@ -121,20 +126,6 @@
 
   &.bg-overlay:after {
     opacity: 0.95;
-  }
-
-  .hero-subtitle {
-    font-weight: 300;
-
-    span {
-      display: block;
-    }
-
-    @media (max-width: $xxs) {
-      & span:nth-child(2) {
-        padding-top: 1.5rem;
-      }
-    }
   }
 }
 
