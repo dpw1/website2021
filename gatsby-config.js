@@ -13,14 +13,14 @@ module.exports = {
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,
-    siteUrl: `https://www.ezfycode.com`,
+    siteUrl: `https://ezfycode.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
-        siteUrl: `https://www.ezfycode.com`,
+        siteUrl: `https://ezfycode.com`,
       },
     },
     {
