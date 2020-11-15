@@ -14,6 +14,7 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="icon" href={withPrefix("favicon.ico")} type="image/x-icon" />
 
         <div
           className="fb-customerchat"
