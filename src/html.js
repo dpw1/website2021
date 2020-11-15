@@ -19,8 +19,7 @@ export default function HTML(props) {
           className="fb-customerchat"
           attribution={"setup_tool"}
           page_id="2076491679249035"
-          greeting_dialog_delay="0"
-          greeting_dialog_display="show"
+          greeting_dialog_delay="20"
           logged_in_greeting="Hi, Diego here! How can I help you?"
           logged_out_greeting="Hi, Diego here! How can I help you?"
         ></div>
