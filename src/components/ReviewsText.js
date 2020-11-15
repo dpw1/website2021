@@ -6,10 +6,7 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
-import "swiper/swiper.scss"
-import "swiper/components/navigation/navigation.scss"
-import "swiper/components/pagination/pagination.scss"
-import "swiper/components/scrollbar/scrollbar.scss"
+import "../css/swiper.scss"
 
 // the slider for this section can be found at custom.js, at the bottom of the file.
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
