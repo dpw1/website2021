@@ -501,26 +501,6 @@ ezfy = (function () {
         dragSize: 30,
       },
     })
-
-    // window.$(reviews).slick({
-    //   slidesToShow: 2,
-    //   slidesToScroll: 1,
-    //   infinite: true,
-    //   rows: 1,
-    //   dots: true,
-    //   slidesPerRow: 0,
-    //   responsive: [
-    //     {
-    //       breakpoint: 767,
-    //       settings: {
-    //         rows: 2,
-    //         slidesToShow: 1,
-    //         infinite: false,
-    //         slidesPerRow: 1,
-    //       },
-    //     },
-    //   ],
-    // });
   }
 
   function scrollToHash() {
@@ -552,6 +532,34 @@ ezfy = (function () {
     menu.classList.remove(`canvas-open`)
   }
 
+  // in progress, not ready yet
+  function popupMessenger() {
+    const limit = 30 //show after x seconds
+    const storageKey = "ezfy-fb-popup"
+
+    window.fb_clock = 0
+
+    function countClock() {
+      window.fb_clock += 1
+      console.log(window.fb_clock)
+      if (window.fb_clock >= limit) {
+        localStorage.setItem(storageKey, "true")
+        return false
+      }
+
+      return true
+    }
+
+    let clock = window.setInterval(function () {
+      const isFirstTime = localStorage.getItem(storageKey)
+      let isCounting = countClock()
+
+      if (!isCounting || !isFirstTime) {
+        window.clearInterval(clock)
+      }
+    }, 1000)
+  }
+
   return {
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
@@ -570,7 +578,6 @@ ezfy = (function () {
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
       autoplayVideo()
-      // reviewsTextSlider()
       setTimeout(scrollToHash, 350)
       window.ezfy.initServices()
       window.customCode()
