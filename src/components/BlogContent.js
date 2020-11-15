@@ -33,19 +33,14 @@ const BlogContent = props => {
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
   useEffect(() => {
-    // const getPosts = async () => {
-    //   const data = await blogApi.getPosts(`per_page=5`)
-    //   console.log(data)
-    //   setPosts(data)
-    // }
-
-    // getPosts()
-
-    if (window !== undefined) {
-      setUrl(window.location.href)
-    } else {
-      setUrl("https://ezfycode.com")
+    const getPosts = async () => {
+      const data = await blogApi.getPosts(`per_page=5`)
+      setPosts(data)
     }
+
+    getPosts()
+
+    setUrl(window !== undefined ? window.location.href : "https://ezfycode.com")
   }, [])
 
   return (

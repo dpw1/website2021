@@ -19,8 +19,8 @@ export default function HTML(props) {
           className="fb-customerchat"
           attribution={"setup_tool"}
           page_id="2076491679249035"
-          greeting_dialog_delay="30"
-          greeting_dialog_display="greeting_dialog_delay"
+          greeting_dialog_delay="0"
+          greeting_dialog_display="show"
           logged_in_greeting="Hi, Diego here! How can I help you?"
           logged_out_greeting="Hi, Diego here! How can I help you?"
         ></div>
@@ -35,18 +35,6 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TR7HFTW"
-            height="0"
-            width="0"
-            style={{
-              display: "none",
-              visibility: "hidden",
-              pointerEvents: "none",
-            }}
-          ></iframe>
-        </noscript>
         <div id="fb-root"></div>
 
         <script
