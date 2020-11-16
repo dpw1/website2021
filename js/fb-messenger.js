@@ -14,4 +14,4 @@ setTimeout(() => {
     js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"
     fjs.parentNode.insertBefore(js, fjs)
   })(document, "script", "facebook-jssdk")
-}, 20000)
+}, 3000)
