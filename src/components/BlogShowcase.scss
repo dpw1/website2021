@@ -19,4 +19,10 @@
       color: inherit;
     }
   }
+
+  .blog-item {
+    @media (min-width: $md) {
+      margin-bottom: 40px;
+    }
+  }
 }

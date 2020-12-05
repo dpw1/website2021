@@ -1,11 +1,18 @@
-1. Make sure you're on dev branch
-2. Commit to git
+1. Make sure you're on the dev branch.
+
+2. build locally to auto generate blog pages & sitemap if you have new pages:
+
+gatsby build && gatsby serve
+
+
+3. Commit to git
 
 git add .
 git commit -m "[ADD]"
 git push origin dev
 
-3. deploy to github pages
+4. Push to Github Pages
 
 npm run deploy
+
 

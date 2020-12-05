@@ -35,9 +35,6 @@ const BlogItem = props => {
             <li>
               By <Link to={url}>Diego Fortes</Link>
             </li>
-            <li>
-              <span>{date}</span>
-            </li>
           </ul>
           {/* Blog Title */}
           <h3 className="blog-title my-3">
