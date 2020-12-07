@@ -35,12 +35,16 @@ const BlogPostLayout = props => {
     }, 100)
   }, [])
 
+  const description = parse(sanitizeHtml(post.excerpt.rendered))[0].props
+    .children
+
+  console.log("description", description)
   return (
     <React.Fragment>
       {console.log(post)}
       <SEO
         title={parse(post.title.rendered)}
-        description={parse(post.excerpt.rendered)}
+        description={description}
         image={post.featured_image_small_src}
         url={url}
       ></SEO>

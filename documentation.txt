@@ -15,4 +15,14 @@ git push origin dev
 
 npm run deploy
 
+////////////
+
+## Updating blog posts
+
+1. Update the blog post at ezfy.club/wp-admin
+2. Push to Github Pages
+
+npm run deploy
+
+
 
