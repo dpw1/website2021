@@ -31,6 +31,7 @@
     "gatsby-plugin-routes": "^1.0.0",
     "gatsby-plugin-sass": "^2.5.0",
     "gatsby-plugin-sitemap": "^2.6.0",
+    "gatsby-source-wordpress": "^3.7.0",
     "history": "^5.0.0",
     "html-react-parser": "^0.14.0",
     "javascript-time-ago": "^2.3.2",
