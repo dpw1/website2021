@@ -5,9 +5,10 @@ import Header from "./../components/Header"
 import Contact from "./../components/Contact"
 import Footer from "./../components/Footer"
 
-import BlogShowcase from "./../components/BlogShowcase"
 import BlogBreadcrumb from "./../components/BlogBreadcrumb"
 import { Helmet } from "react-helmet"
+import BlogShowcase from "../components/BlogShowcase"
+import { useStaticQuery, graphql } from "gatsby"
 
 const BlogLayout = props => {
   useEffect(() => {
@@ -31,4 +32,5 @@ const BlogLayout = props => {
     </React.Fragment>
   )
 }
+
 export default BlogLayout

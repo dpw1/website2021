@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import "./BlogShowcase.scss"
 import parse from "html-react-parser"
 import { blogApi } from "../api/api"
 
 import { generateBlogUrl, links, timeSince } from "./../utils/utils"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 const BlogItem = props => {
   let { date: _date, slug, featured_image_src: image } = props.data
@@ -51,10 +51,22 @@ const BlogItem = props => {
   )
 }
 
-function BlogShowcase(props) {
+const BlogShowcase = props => {
+  // const data = useStaticQuery(graphql`
+  //   query BlogsQuery {
+  //     allWordpressPost {
+  //       nodes {
+  //         slug
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
+
+  // console.log(data)
+
   const [posts, setPosts] = useState(null)
 
-  // console.log("ppoo", props);
   const { paginate, totalPosts } = props
 
   useEffect(() => {

@@ -13,12 +13,9 @@ import Footer from "../components/Footer"
 import { Helmet } from "react-helmet"
 import ReviewsText from "./../components/ReviewsText"
 import { SEO } from "../components/SEO.js"
+import { graphql } from "gatsby"
 
 const HomeLayout = props => {
-  useEffect(() => {
-    setTimeout(window.ezfy.start, 50)
-  }, [])
-
   return (
     <React.Fragment>
       <SEO />
@@ -26,10 +23,8 @@ const HomeLayout = props => {
       <Header page={"home"}></Header>
       <Hero scrollTo="#about"></Hero>
       <About></About>
-      <BlogShowcase totalPosts={3}></BlogShowcase>
+      <BlogShowcase totalPosts={3} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
-
-      {/* <ReviewsText></ReviewsText> */}
       <Services></Services>
       <Parallax
         title="Request immediate assistance"
@@ -43,4 +38,5 @@ const HomeLayout = props => {
     </React.Fragment>
   )
 }
+
 export default HomeLayout

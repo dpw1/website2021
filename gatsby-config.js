@@ -63,31 +63,11 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "ezfy.club/",
+        baseUrl: "ezfy.club",
         protocol: "https",
         restApiRoutePrefix: "json",
         hostingWPCOM: false,
         useACF: true,
-        // Set verboseOutput to true to display a verbose output on `npm run develop` or `npm run build`
-        // It can help you debug specific API Endpoints problems.
-        verboseOutput: true,
-        // Set how many pages are retrieved per API request.
-        perPage: 100,
-        // Search and Replace Urls across WordPress content.
-        searchAndReplaceContentUrls: {
-          sourceUrl: "https://source-url.com",
-          replacementUrl: "https://replacement-url.com",
-        },
-        concurrentRequests: 10,
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/users",
-        ],
       },
     },
   ],

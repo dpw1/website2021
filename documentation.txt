@@ -17,12 +17,19 @@ npm run deploy
 
 ////////////
 
-## Updating blog posts
+## New blog posts
 
-1. Update the blog post at ezfy.club/wp-admin
-2. Push to Github Pages
+1. Write the blog post at ezfy.club/wp-admin and publish it
+2. build locally to auto generate blog pages & sitemap if you have new pages:
+
+gatsby build && gatsby serve
+
+3. deploy
 
 npm run deploy
 
+## Updating content of already existing blog post
+1. Edit the blog post at ezfy.club/wp-admin
+2. Deploy
 
-
+npm run deploy
