@@ -1,17 +1,21 @@
 import React, { useEffect, useState, useContext } from "react"
 import "./BlogShowcase.scss"
 import parse from "html-react-parser"
-import { blogApi } from "../api/api"
 
 import { generateBlogUrl, links, timeSince } from "./../utils/utils"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 const BlogItem = props => {
-  let { date: _date, slug, featured_image_src: image } = props.data
+  let {
+    date: _date,
+    slug,
+    featured_image_src: image,
+    excerpt,
+    title,
+  } = props.data
 
-  // let description = props.data.excerpt.rendered.replace(/(<([^>]+)>)/gi, "");
-  let description = props.data.excerpt.rendered
-  let title = parse(props.data.title.rendered)
+  let description = excerpt
+  title = parse(title)
   let date = timeSince(_date)
   let url = `/blog/${slug}`
   const imagealt = props.data.image_alt
@@ -52,33 +56,30 @@ const BlogItem = props => {
 }
 
 const BlogShowcase = props => {
-  // const data = useStaticQuery(graphql`
-  //   query BlogsQuery {
-  //     allWordpressPost {
-  //       nodes {
-  //         slug
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
-
-  // console.log(data)
+  const { nodes: data } = useStaticQuery(graphql`
+    query BlogsQuery {
+      allWordpressPost {
+        nodes {
+          title
+          slug
+          date
+          featured_image_src
+          image_alt
+          excerpt
+        }
+      }
+    }
+  `).allWordpressPost
 
   const [posts, setPosts] = useState(null)
 
   const { paginate, totalPosts } = props
 
   useEffect(() => {
-    const getPosts = async () => {
-      const data = await blogApi.getPosts(
-        `${totalPosts ? `?per_page=${totalPosts}` : ""}`
-      )
-      setPosts(data)
-    }
+    const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date))
 
-    getPosts()
-  }, [totalPosts])
+    setPosts(totalPosts ? sorted.slice(0, totalPosts) : sorted)
+  }, [data])
 
   useEffect(() => {
     if (!posts) {
@@ -86,7 +87,9 @@ const BlogShowcase = props => {
     }
 
     setTimeout(() => {
-      window.ezfy && window.ezfy.lazyload()
+      if (window.ezfy) {
+        window.ezfy.init()
+      }
     }, 50)
   }, [posts])
 

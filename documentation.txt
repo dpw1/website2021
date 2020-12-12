@@ -33,3 +33,8 @@ npm run deploy
 2. Deploy
 
 npm run deploy
+
+## Getting data from Wordpress
+
+You can either get data from wordpress via REST API or Graphql. 
+Currently we're using Graphql, but if you prefer REST API you can use the function blogApi
