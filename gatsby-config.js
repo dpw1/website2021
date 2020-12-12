@@ -68,6 +68,8 @@ module.exports = {
         restApiRoutePrefix: "json",
         hostingWPCOM: false,
         useACF: true,
+        solve: "gatsby-source-wordpress",
+        minimizeDeprecationNotice: true,
       },
     },
   ],

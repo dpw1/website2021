@@ -245,5 +245,9 @@ section[id]:not(#footerSection) {
 //     right: 130px !important;
 //   }
 // }
+
+body {
+  overflow-y: unset !important;
+}
 /* ALL PAGES end
 =============================================== */
