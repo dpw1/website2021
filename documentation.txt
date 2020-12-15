@@ -33,3 +33,14 @@ npm run deploy
 2. Deploy
 
 npm run deploy
+
+## Updating API for Ejunkie products
+1. Go to the functions inside ezfy.club:
+
+https://www.ezfy.club/wp-admin/theme-editor.php?file=functions.php&theme=api
+
+2. Inside the function get_ejunkie_products change the 'wordpress_id' number to any number.
+
+It's just so you can have any changes to save the file, the number is not relevant.
+
+3. Save.
