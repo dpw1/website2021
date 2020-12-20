@@ -163,14 +163,6 @@ ezfy = (function () {
     document.querySelector(parent).appendChild(document.querySelector(child))
   }
 
-  function _isProductPage() {
-    return /product/.test(window.location.href)
-  }
-
-  function _isCartPage() {
-    return /cart/.test(window.location.href)
-  }
-
   function _waitUntilElementExists(selector, callback) {
     const el = document.querySelector(selector)
 
@@ -187,31 +179,28 @@ ezfy = (function () {
     document.head.append(style)
   }
 
-  function _observeDOM() {
-    var MutationObserver =
-        window.MutationObserver || window.WebKitMutationObserver,
-      eventListenerSupported = window.addEventListener
+  function _loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s
+      s = document.createElement("script")
+      s.src = src
+      s.onload = resolve
+      s.onerror = reject
+      document.head.appendChild(s)
+    })
+  }
 
-    return function (obj, callback) {
-      if (MutationObserver) {
-        // define a new observer
-        var obs = new MutationObserver(function (mutations, observer) {
-          if (
-            mutations[0].addedNodes.length ||
-            mutations[0].removedNodes.length
-          )
-            callback()
-        })
+  function _loadStyle(src) {
+    return new Promise(function (resolve, reject) {
+      let link = document.createElement("link")
+      link.href = src
+      link.rel = "stylesheet"
 
-        obs.observe(obj, {
-          childList: true,
-          subtree: true,
-        })
-      } else if (eventListenerSupported) {
-        obj.addEventListener("DOMNodeInserted", callback, false)
-        obj.addEventListener("DOMNodeRemoved", callback, false)
-      }
-    }
+      link.onload = () => resolve(link)
+      link.onerror = () => reject(new Error(`Style load error for ${src}`))
+
+      document.head.append(link)
+    })
   }
 
   function lazyLoadImages() {
@@ -620,23 +609,29 @@ var t=d.createElement('script');
     d.getElementsByTagName("head")[0].appendChild(t)
   }
 
-  function addModalToEJunkieCartLinks() {
+  async function addModalToEJunkieCartLinks() {
     if (!_isBlogPage()) {
       return
     }
 
-    const links = document.querySelectorAll(
-      `a[href*='fatfreecart'], a[href*='ezfy.e-junkie']`
+    await _loadScript(
+      `https://cdn.jsdelivr.net/gh/englishextra/iframe-lightbox@latest/iframe-lightbox.min.js`
     )
+
+    const links = document.querySelectorAll(`a[href*='ezfy.e-junkie']`)
 
     if (!links) {
       return
     }
 
     for (const each of links) {
-      each.setAttribute("rel", "noopener")
-      each.setAttribute("class", "ec_ejc_thkbx")
-      each.setAttribute("target", "ej_ejc")
+      each.setAttribute("rel", "lightbox")
+      each.setAttribute("class", "iframe-lightbox-link")
+      each.setAttribute("data-scrolling", "true")
+      each.setAttribute("data-padding-bottom", "100%")
+      each.setAttribute("aria-hidden", "true")
+
+      each.lightbox = new IframeLightbox(each)
     }
   }
 
