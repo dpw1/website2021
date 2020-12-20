@@ -537,6 +537,10 @@ ezfy = (function () {
     })
   }
 
+  function _isBlogPage() {
+    return /blog/gim.test(window.location.href)
+  }
+
   function scrollToHash() {
     const hash = window.location.hash.trim().replace("#", "")
 
@@ -616,10 +620,31 @@ var t=d.createElement('script');
     d.getElementsByTagName("head")[0].appendChild(t)
   }
 
+  function addModalToEJunkieCartLinks() {
+    if (!_isBlogPage()) {
+      return
+    }
+
+    const links = document.querySelectorAll(
+      `a[href*='fatfreecart'], a[href*='ezfy.e-junkie']`
+    )
+
+    if (!links) {
+      return
+    }
+
+    for (const each of links) {
+      each.setAttribute("rel", "noopener")
+      each.setAttribute("class", "ec_ejc_thkbx")
+      each.setAttribute("target", "ej_ejc")
+    }
+  }
+
   return {
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
+    addModalToEJunkieCartLinks: addModalToEJunkieCartLinks,
     initServices: () => {
       readMoreForServices()
       redirectToPaymentGateway()
@@ -641,6 +666,7 @@ var t=d.createElement('script');
       window.ezfy.initServices()
       window.customCode()
       window.ezfy.closeSidebarMenu()
+      window.ezfy.addModalToEJunkieCartLinks()
     },
     init: function () {
       window.ezfy.start()
