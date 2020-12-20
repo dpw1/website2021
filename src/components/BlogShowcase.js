@@ -4,6 +4,11 @@ import parse from "html-react-parser"
 
 import { generateBlogUrl, links, timeSince } from "./../utils/utils"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import { useQueryParam, NumberParam, StringParam } from "use-query-params"
+import { siteRoutes } from "./../utils/siteRoutes"
+
+const PAGINATION_BUTTONS = 3
+// posts per page is defined via props
 
 const BlogItem = props => {
   let {
@@ -56,7 +61,9 @@ const BlogItem = props => {
 }
 
 const BlogShowcase = props => {
-  const { nodes: data } = useStaticQuery(graphql`
+  let { postsPerPage, totalPosts } = props
+
+  let { nodes: data } = useStaticQuery(graphql`
     query BlogsQuery {
       allWordpressPost {
         nodes {
@@ -71,15 +78,43 @@ const BlogShowcase = props => {
     }
   `).allWordpressPost
 
+  const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  const [page, setPage] = useQueryParam("page", NumberParam)
   const [posts, setPosts] = useState(null)
 
-  const { paginate, totalPosts } = props
+  const totalPages = Math.ceil(sortedData.length / postsPerPage)
+
+  const handleUpdatePosts = () => {
+    return setPosts(
+      sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
+    )
+  }
 
   useEffect(() => {
-    const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date))
+    console.log("rrr sorted data", sortedData)
+    if (totalPosts) {
+      return setPosts(sortedData.slice(0, totalPosts))
+    }
 
-    setPosts(totalPosts ? sorted.slice(0, totalPosts) : sorted)
-  }, [data])
+    if (!page && /blog/.test(window.location.href)) {
+      setPage(1)
+    }
+
+    if (postsPerPage) {
+      return handleUpdatePosts()
+    }
+
+    return setPosts(sortedData)
+  }, [])
+
+  useEffect(() => {
+    if (totalPosts) {
+      return setPosts(sortedData.slice(0, totalPosts))
+    }
+
+    return handleUpdatePosts()
+  }, [page])
 
   useEffect(() => {
     if (!posts) {
@@ -92,6 +127,16 @@ const BlogShowcase = props => {
       }
     }, 50)
   }, [posts])
+
+  const generatePaginationButtons = () => {
+    return (
+      <li>
+        <p>
+          {page} / {totalPages}
+        </p>
+      </li>
+    )
+  }
 
   return (
     <section
@@ -111,7 +156,6 @@ const BlogShowcase = props => {
             </div>
           </div>
         </div>
-
         <div className="row">
           {posts
             ? [...posts].map((data, i) => (
@@ -121,13 +165,53 @@ const BlogShowcase = props => {
         </div>
         <div className="row">
           <div className="col-12">
-            {paginate ? (
-              <div> </div>
-            ) : (
-              <Link className="btn" to={links.blog}>
+            {totalPosts && (
+              <Link className="btn" to={siteRoutes.blog}>
                 See all blogs
               </Link>
             )}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            {/* Pagination */}
+            <ul className="pagination justify-content-center">
+              {page > 1 && (
+                <li className="pagination-arrow pagination-arrow-prev">
+                  <a
+                    href="#"
+                    onClick={() => {
+                      console.log("rrr page minus", page, totalPages)
+                      if (page > 1) {
+                        setPage(page - 1)
+                      }
+                    }}
+                    aria-label="Previous"
+                  >
+                    <i className="fas fa-arrow-left" />
+                    <span> Previous Page</span>
+                  </a>
+                </li>
+              )}
+              {!totalPosts && generatePaginationButtons()}
+              {page < totalPages && (
+                <li className="pagination-arrow pagination-arrow-next">
+                  <a
+                    href="#"
+                    onClick={() => {
+                      console.log("rrr page", page, totalPages)
+                      if (page < totalPages) {
+                        setPage(page + 1)
+                      }
+                    }}
+                    aria-label="Next"
+                  >
+                    <span>Next Page</span>
+                    <i className="fas fa-arrow-right" />
+                  </a>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
       </div>

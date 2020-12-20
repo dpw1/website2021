@@ -1,5 +1,5 @@
 export const siteRoutes = {
   home: "/",
-  blog: "/blog",
+  blog: "/blog?page=1",
   portfolio: "/portfolio",
 }

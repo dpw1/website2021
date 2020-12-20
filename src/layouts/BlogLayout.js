@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 const BlogLayout = props => {
   useEffect(() => {
+    console.log("rrr blog layout", props)
     setTimeout(window.ezfy.start, 50)
   }, [])
 
@@ -25,7 +26,7 @@ const BlogLayout = props => {
         <ScrollToTop></ScrollToTop>
         <Header page={"blog"}></Header>
         <BlogBreadcrumb></BlogBreadcrumb>
-        <BlogShowcase paginate={true}></BlogShowcase>
+        <BlogShowcase postsPerPage={9}></BlogShowcase>
         <Contact></Contact>
         <Footer page={"blog"}></Footer>
       </React.Fragment>

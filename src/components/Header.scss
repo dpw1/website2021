@@ -93,8 +93,12 @@
 
 @media (max-width: 338px) {
   .navbar .navbar-inner {
-    right: -107%;
+    right: -110%;
     -webkit-transition: right 0.3s 0.2s;
     transition: right 0.3s 0.2s;
+  }
+
+  .canvas-open .navbar-expand-lg .navbar-inner {
+    left: 0 !important;
   }
 }

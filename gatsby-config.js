@@ -17,6 +17,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-use-query-params",
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
@@ -70,6 +71,7 @@ module.exports = {
         useACF: true,
         solve: "gatsby-source-wordpress",
         minimizeDeprecationNotice: true,
+        // includedRoutes: ["**/posts"],
       },
     },
   ],

@@ -25,4 +25,22 @@
       margin-bottom: 40px;
     }
   }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pagination-arrow-prev {
+    margin-right: 15px;
+  }
+
+  .pagination-arrow-next {
+    margin-left: 15px;
+
+    i {
+      margin-left: 4px;
+    }
+  }
 }

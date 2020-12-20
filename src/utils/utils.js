@@ -102,7 +102,7 @@ export const portfolioNavbarLinks = [
   },
   {
     name: "Blog",
-    url: "/blog",
+    url: siteRoutes.blog,
     offset: 0,
     scroll: false,
   },
