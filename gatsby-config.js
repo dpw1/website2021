@@ -71,7 +71,7 @@ module.exports = {
         useACF: true,
         solve: "gatsby-source-wordpress",
         minimizeDeprecationNotice: true,
-        // includedRoutes: ["**/posts"],
+        includedRoutes: ["**/posts", "**/custom", "**/products"],
       },
     },
   ],

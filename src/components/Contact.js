@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
-import "./Contact.scss";
+import "./Contact.scss"
 
 function Contact() {
   return (
@@ -33,7 +33,8 @@ function Contact() {
                   <a
                     rel="noreferrer"
                     className="media"
-                    href="https://fb.com/ezfyforshopify">
+                    href="https://fb.com/ezfyforshopify"
+                  >
                     <div className="social-icon mr-3">
                       <i className="fab fa-facebook-f" />
                     </div>
@@ -46,7 +47,8 @@ function Contact() {
                   <a
                     className="media"
                     rel="noreferrer"
-                    href="https://m.me/ezfyforshopify">
+                    href="https://m.me/ezfyforshopify"
+                  >
                     <div className="social-icon mr-3">
                       <i className="fab fa-facebook-messenger" />
                     </div>
@@ -60,12 +62,13 @@ function Contact() {
                     rel="noreferrer"
                     className="media"
                     target="_blank"
-                    href="mailto:diego.boarutto.fortes@gmail.com">
+                    href="mailto:ezfycode@gmail.com"
+                  >
                     <div className="social-icon mr-3">
                       <i className="fas fa-envelope-square" />
                     </div>
                     <span className="media-body align-self-center">
-                      diego.boarutto.fortes@gmail.com
+                      ezfycode@gmail.com
                     </span>
                   </a>
                 </li>
@@ -79,7 +82,8 @@ function Contact() {
               <form
                 id="contact-form"
                 method="POST"
-                action="https://formspree.io/diego.boarutto.fortes@gmail.com">
+                action="https://formspree.io/diego.boarutto.fortes@gmail.com"
+              >
                 <div className="row">
                   <div className="col-12">
                     <div className="form-group">
@@ -119,7 +123,7 @@ function Contact() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Contact;
+export default Contact

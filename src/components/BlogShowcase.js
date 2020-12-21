@@ -92,7 +92,6 @@ const BlogShowcase = props => {
   }
 
   useEffect(() => {
-    console.log("rrr sorted data", sortedData)
     if (totalPosts) {
       return setPosts(sortedData.slice(0, totalPosts))
     }
@@ -181,7 +180,6 @@ const BlogShowcase = props => {
                   <a
                     href="#"
                     onClick={() => {
-                      console.log("rrr page minus", page, totalPages)
                       if (page > 1) {
                         setPage(page - 1)
                       }
@@ -199,7 +197,6 @@ const BlogShowcase = props => {
                   <a
                     href="#"
                     onClick={() => {
-                      console.log("rrr page", page, totalPages)
                       if (page < totalPages) {
                         setPage(page + 1)
                       }

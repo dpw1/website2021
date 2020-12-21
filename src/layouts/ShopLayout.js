@@ -10,27 +10,20 @@ import { Helmet } from "react-helmet"
 import BlogShowcase from "../components/BlogShowcase"
 import { useStaticQuery, graphql } from "gatsby"
 
-const BlogLayout = props => {
+const ShopLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
   }, [])
 
   return (
     <React.Fragment>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>EZFY Blogs</title>
-      </Helmet>
-      <React.Fragment>
-        <ScrollToTop></ScrollToTop>
-        <Header page={"blog"}></Header>
-        <BlogBreadcrumb></BlogBreadcrumb>
-        <BlogShowcase postsPerPage={9}></BlogShowcase>
-        <Contact></Contact>
-        <Footer page={"blog"}></Footer>
-      </React.Fragment>
+      <Header></Header>
+      <ScrollToTop></ScrollToTop>
+      <p>shop</p>
+      <Contact></Contact>
+      <Footer></Footer>
     </React.Fragment>
   )
 }
 
-export default BlogLayout
+export default ShopLayout

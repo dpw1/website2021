@@ -85,7 +85,7 @@ function Footer(props) {
                 <div className="footer-items">
                   {/* Footer Title */}
                   <h3 className="footer-title mb-2">Useful Links</h3>
-                  <ul>{renderNav(page, footerItem)}</ul>
+                  <ul>{renderNav("footer", footerItem)}</ul>
                 </div>
               </div>
               <div className="col-12 col-sm-6 col-lg-6">

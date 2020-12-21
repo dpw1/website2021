@@ -4,6 +4,7 @@ import React from "react"
 import * as timeago from "timeago.js"
 import TrustBadge from "../components/TrustBadge"
 import { siteRoutes } from "./siteRoutes"
+import { navigate, Link } from "gatsby"
 
 export function groupItems(items, n) {
   return items.reduce((acc, x, i) => {
@@ -44,40 +45,59 @@ export const getWordpressImageBiggestSize = imageSrc => {
 
 export const homepageNavbarLinks = [
   {
-    name: "About Us",
-    url: "#about",
-    offset: -60,
-    scroll: true,
+    name: "Our work",
+    url: [
+      {
+        name: "Who we are",
+        url: "/#about",
+        offset: -60,
+        scroll: true,
+      },
+      {
+        name: "Reviews",
+        url: "/#reviews",
+        offset: -40,
+        scroll: true,
+      },
+
+      {
+        name: "Portfolio",
+        url: siteRoutes.portfolio,
+        offset: -40,
+        scroll: false,
+      },
+
+      {
+        name: "FAQ",
+        url: "#faq",
+        offset: -60,
+        scroll: true,
+      },
+    ],
   },
-  {
-    name: "Reviews",
-    url: "#reviews",
-    offset: -40,
-    scroll: true,
-  },
+
   {
     name: "Services",
-    url: "#services",
-    offset: -40,
-    scroll: true,
+    url: [
+      {
+        name: "Services",
+        url: "#services",
+        offset: -40,
+        scroll: true,
+      },
+      {
+        name: "Shop",
+        url: "/shop",
+        scroll: false,
+        badge: "New",
+      },
+    ],
   },
   {
     name: "Blog",
     url: siteRoutes.blog,
     offset: -40,
     scroll: false,
-  },
-  {
-    name: "Portfolio",
-    url: siteRoutes.portfolio,
-    offset: -40,
-    scroll: false,
-  },
-  {
-    name: "FAQ",
-    url: "#faq",
-    offset: -60,
-    scroll: true,
   },
   {
     name: "Contact",
@@ -89,10 +109,79 @@ export const homepageNavbarLinks = [
 
 export const portfolioNavbarLinks = [
   {
+    name: "Our work",
+    url: [
+      {
+        name: "Who we are",
+        url: "/#about",
+        offset: -60,
+        scroll: false,
+      },
+      {
+        name: "Reviews",
+        url: "/#reviews",
+        offset: -40,
+        scroll: false,
+      },
+
+      {
+        name: "Portfolio",
+        url: siteRoutes.portfolio,
+        offset: -40,
+        scroll: false,
+      },
+
+      {
+        name: "FAQ",
+        url: "#faq",
+        offset: -60,
+        scroll: true,
+      },
+    ],
+  },
+  {
+    name: "Services",
+    url: [
+      {
+        name: "Services",
+        url: "/#services",
+        offset: -40,
+        scroll: true,
+      },
+      {
+        name: "Shop",
+        url: "/shop",
+        scroll: false,
+        badge: "New",
+      },
+    ],
+  },
+  {
+    name: "Blog",
+    url: siteRoutes.blog,
+    offset: -40,
+    scroll: false,
+  },
+  {
+    name: "Contact",
+    url: "#contact",
+    offset: -60,
+    scroll: true,
+  },
+]
+
+export const footerNavbarLinks = [
+  {
     name: "Home",
     url: "/",
     offset: 0,
     scroll: false,
+  },
+  {
+    name: "About Us",
+    url: "#about",
+    offset: -60,
+    scroll: true,
   },
   {
     name: "Services",
@@ -147,18 +236,83 @@ export const blogNavbarLinks = [
   },
 ]
 
-export function renderNav(page, navItem) {
+/**
+ *
+ * @param {array} items - Array of all navbar items.
+ * @param {function} createNavItem - Creates a single navbar item, returns JSX.
+ * @param {function} createDropdownItem - Creates a group of navbar items within an <ul>. Returns JSX.
+ */
+
+function createNavbarDropdownItem(items) {
+  return (
+    <li key={items.name} className="nav-item dropdown">
+      <a
+        className="nav-link dropdown-toggle"
+        id="navbarDropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        {items.name}
+      </a>
+      <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        {[...items.url].map(e => {
+          return (
+            <li key={JSON.stringify(e)} className="nav-item">
+              {e.scroll ? (
+                <a
+                  className={
+                    e.scroll
+                      ? "dropdown-item nav-link scroll"
+                      : "dropdown-item nav-link"
+                  }
+                  href={e.url}
+                  data-scroll-offset={e.offset}
+                >
+                  {e.name}
+                </a>
+              ) : (
+                <Link className="nav-link dropdown-item" to={e.url}>
+                  {e.name}
+
+                  {e.hasOwnProperty("badge") && (
+                    <span className="badge badge-pill badge-warning ml-2">
+                      {e.badge}
+                    </span>
+                  )}
+                </Link>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+    </li>
+  )
+}
+
+function createNavItems(items, createNavItem) {
+  return items.map(e => {
+    if (Array.isArray(e.url)) {
+      return createNavbarDropdownItem(e)
+    }
+    return createNavItem(e)
+  })
+}
+
+export function renderNav(page, createNavItem) {
   switch (page) {
     case "home":
-      return [...homepageNavbarLinks].map(e => navItem(e))
+      return createNavItems(homepageNavbarLinks, createNavItem)
     case "portfolio":
-      return [...portfolioNavbarLinks].map(e => navItem(e))
+      return createNavItems(portfolioNavbarLinks, createNavItem)
     case "privacy":
-      return [...portfolioNavbarLinks].map(e => navItem(e))
+      return [...portfolioNavbarLinks].map(e => createNavItem(e))
     case "blog":
-      return [...blogNavbarLinks].map(e => navItem(e))
+      return [...blogNavbarLinks].map(e => createNavItem(e))
+    case "footer":
+      return [...footerNavbarLinks].map(e => createNavItem(e))
     default:
-      return [...homepageNavbarLinks].map(e => navItem(e))
+      return [...footerNavbarLinks].map(e => createNavItem(e))
   }
 }
 

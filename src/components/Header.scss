@@ -83,6 +83,15 @@
       fill: white;
     }
   }
+
+  .dropdown-menu {
+    .nav-link {
+      color: $text-color !important;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 13px;
+    }
+  }
 }
 
 @media (min-width: 991px) {

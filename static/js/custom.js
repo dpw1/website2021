@@ -635,11 +635,32 @@ var t=d.createElement('script');
     }
   }
 
+  async function addModalToFatFreeCartProLinks() {
+    if (!_isBlogPage()) {
+      return
+    }
+
+    const links = document.querySelectorAll(
+      `.blog-details a[href*='fatfreecartpro.com']`
+    )
+
+    if (!links) {
+      return
+    }
+
+    for (const each of links) {
+      each.setAttribute("class", "ec_ejc_thkbx")
+      each.setAttribute("rel", "noopener")
+      each.setAttribute("target", "ej_ejc")
+    }
+  }
+
   return {
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
     addModalToEJunkieCartLinks: addModalToEJunkieCartLinks,
+    addModalToFatFreeCartProLinks: addModalToFatFreeCartProLinks,
     initServices: () => {
       readMoreForServices()
       redirectToPaymentGateway()
@@ -661,7 +682,7 @@ var t=d.createElement('script');
       window.ezfy.initServices()
       window.customCode()
       window.ezfy.closeSidebarMenu()
-      window.ezfy.addModalToEJunkieCartLinks()
+      window.ezfy.addModalToFatFreeCartProLinks()
     },
     init: function () {
       window.ezfy.start()
