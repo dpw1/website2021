@@ -33,7 +33,7 @@ const createNavbarSingleItem = props => {
 function Header(props) {
   const isDesktop = useMediaQuery("only screen and (min-width: 991px)")
 
-  const { page } = props
+  const { page, darkMode } = props
 
   useEffect(() => {
     $(document).ready(function () {
@@ -92,7 +92,10 @@ function Header(props) {
     <React.Fragment>
       <header
         id="navbarSection"
-        className="navbar navbar-sticky navbar-expand-lg navbar-dark"
+        className={`navbar navbar-sticky navbar-expand-lg navbar-dark ${
+          darkMode && "navbar--dark-mode"
+        }
+          `}
       >
         <div className="container position-relative">
           <Link className="navbar-brand fade-in" to="/">

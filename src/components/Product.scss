@@ -1,0 +1,38 @@
+.product {
+  &-image {
+    .custom-overlay {
+      &:after {
+        display: none;
+        content: unset;
+      }
+    }
+  }
+
+  &-price-small {
+    font-size: 1.2rem;
+  }
+
+  &-description {
+    margin-top: 20px;
+    display: -webkit-box;
+    height: 93px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-action {
+    max-width: 95%;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+
+    &-button {
+      width: 100%;
+      max-width: 95%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

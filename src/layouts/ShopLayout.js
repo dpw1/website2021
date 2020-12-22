@@ -9,6 +9,9 @@ import BlogBreadcrumb from "./../components/BlogBreadcrumb"
 import { Helmet } from "react-helmet"
 import BlogShowcase from "../components/BlogShowcase"
 import { useStaticQuery, graphql } from "gatsby"
+import Shop from "./../components/Shop"
+import Hero from "./../components/Hero"
+import { SEO } from "./../components/SEO"
 
 const ShopLayout = props => {
   useEffect(() => {
@@ -17,9 +20,14 @@ const ShopLayout = props => {
 
   return (
     <React.Fragment>
-      <Header></Header>
+      <SEO
+        title="EZFY | Shop"
+        description="Custom, easy to install Shopify code snippets coded by a certified Shopify partner."
+      ></SEO>
+
+      <Header page="shop" darkMode={true}></Header>
       <ScrollToTop></ScrollToTop>
-      <p>shop</p>
+      <Shop paddingTop={100}></Shop>
       <Contact></Contact>
       <Footer></Footer>
     </React.Fragment>

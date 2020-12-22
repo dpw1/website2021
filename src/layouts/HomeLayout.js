@@ -25,7 +25,7 @@ const HomeLayout = props => {
       <About></About>
       <BlogShowcase totalPosts={3} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
-      <Services></Services>
+      {/* <Services></Services> */}
       <Parallax
         title="Request immediate assistance"
         subtitle={`In need of technical support? Please send us a message or an email, we'll get back to you within 24 hours.`}

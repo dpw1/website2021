@@ -7,13 +7,13 @@ import { siteRoutes } from "./../utils/siteRoutes"
 import { Link } from "gatsby"
 
 const BlogBreadcrumb = props => {
-  const { post } = props
+  const { post, title } = props
 
   const image = post
     ? getWordpressImageBiggestSize(post.featured_image_src)
     : officeImage
 
-  const title = post ? parse(post.title.rendered) : "Ezfy Blog"
+  const name = post ? parse(post.title.rendered) : "Ezfy Blog"
 
   const background = `url(${image}) no-repeat scroll center center / ${
     post ? "contain" : "cover"
@@ -30,7 +30,9 @@ const BlogBreadcrumb = props => {
           <div className="col-12">
             {/* Breamcrumb Content */}
             <div className="breadcrumb-content d-flex flex-column align-items-center text-center">
-              <h3 className="text-white blog-breadcrumb-title">{title}</h3>
+              <h3 className="text-white blog-breadcrumb-title">
+                {title ? title : name}
+              </h3>
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
                   <Link to={siteRoutes.home}>Home</Link>

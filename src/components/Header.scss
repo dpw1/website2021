@@ -24,6 +24,20 @@
     }
   }
 
+  .navbar-toggler {
+    height: 30px;
+  }
+
+  &.navbar--dark-mode:not(.navbar-sticky-on) {
+    background: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+
+    .container {
+      padding: 0;
+    }
+  }
+
   &:not(.navbar-sticky-on) .container {
     padding-top: 5px;
   }

@@ -45,7 +45,7 @@ export const getWordpressImageBiggestSize = imageSrc => {
 
 export const homepageNavbarLinks = [
   {
-    name: "Our work",
+    name: "About",
     url: [
       {
         name: "Who we are",
@@ -79,12 +79,6 @@ export const homepageNavbarLinks = [
   {
     name: "Services",
     url: [
-      {
-        name: "Services",
-        url: "#services",
-        offset: -40,
-        scroll: true,
-      },
       {
         name: "Shop",
         url: "/shop",
@@ -107,9 +101,9 @@ export const homepageNavbarLinks = [
   },
 ]
 
-export const portfolioNavbarLinks = [
+export const defaultNavbarLinks = [
   {
-    name: "Our work",
+    name: "About",
     url: [
       {
         name: "Who we are",
@@ -142,12 +136,6 @@ export const portfolioNavbarLinks = [
   {
     name: "Services",
     url: [
-      {
-        name: "Services",
-        url: "/#services",
-        offset: -40,
-        scroll: true,
-      },
       {
         name: "Shop",
         url: "/shop",
@@ -302,11 +290,13 @@ function createNavItems(items, createNavItem) {
 export function renderNav(page, createNavItem) {
   switch (page) {
     case "home":
-      return createNavItems(homepageNavbarLinks, createNavItem)
+      return createNavItems(defaultNavbarLinks, createNavItem)
     case "portfolio":
-      return createNavItems(portfolioNavbarLinks, createNavItem)
+      return createNavItems(defaultNavbarLinks, createNavItem)
+    case "shop":
+      return createNavItems(defaultNavbarLinks, createNavItem)
     case "privacy":
-      return [...portfolioNavbarLinks].map(e => createNavItem(e))
+      return createNavItems(defaultNavbarLinks, createNavItem)
     case "blog":
       return [...blogNavbarLinks].map(e => createNavItem(e))
     case "footer":
