@@ -298,11 +298,11 @@ export function renderNav(page, createNavItem) {
     case "privacy":
       return createNavItems(defaultNavbarLinks, createNavItem)
     case "blog":
-      return [...blogNavbarLinks].map(e => createNavItem(e))
+      return createNavItems(defaultNavbarLinks, createNavItem)
     case "footer":
       return [...footerNavbarLinks].map(e => createNavItem(e))
     default:
-      return [...footerNavbarLinks].map(e => createNavItem(e))
+      return createNavItems(defaultNavbarLinks, createNavItem)
   }
 }
 
