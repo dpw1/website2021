@@ -74,5 +74,14 @@ module.exports = {
         includedRoutes: ["**/posts", "**/custom", "**/products"],
       },
     },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true, // Print removed selectors and processed file names,
+        whitelistPatterns: [/^fancybox/, /^wp-block-table/],
+        whitelist: ["wp-block-table"],
+        ignore: ["custom.scss"],
+      },
+    },
   ],
 }

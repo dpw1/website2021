@@ -15,15 +15,6 @@ export default function HTML(props) {
         />
         <link rel="icon" href={withPrefix("favicon.ico")} type="image/x-icon" />
 
-        <div
-          className="fb-customerchat"
-          attribution={"setup_tool"}
-          page_id="2076491679249035"
-          greeting_dialog_delay="20"
-          logged_in_greeting="Hi, Diego here! How can I help you?"
-          logged_out_greeting="Hi, Diego here! How can I help you?"
-        ></div>
-
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

@@ -172,15 +172,14 @@ function Header(props) {
             </nav>
           </div>
         </div>
+
         <div
           className="fb-customerchat"
-          attribution="setup_tool"
-          page_id={2076491679249035}
-          theme_color="#0084ff"
-          greeting_dialog_display="fade"
-          greeting_dialog_delay={15}
-          logged_in_greeting="Hi! How can we help you?"
-          logged_out_greeting="Hi! How can we help you?"
+          attribution={"setup_tool"}
+          page_id="2076491679249035"
+          greeting_dialog_delay="20"
+          logged_in_greeting="Hi, Diego here! How can I help you?"
+          logged_out_greeting="Hi, Diego here! How can I help you?"
         ></div>
       </header>
     </React.Fragment>

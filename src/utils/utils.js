@@ -236,14 +236,17 @@ function createNavbarDropdownItem(items) {
     <li key={items.name} className="nav-item dropdown">
       <a
         className="nav-link dropdown-toggle"
-        id="navbarDropdownMenuLink"
+        id={`navbarDropdownMenuLink-${items.name}`}
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
       >
         {items.name}
       </a>
-      <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <ul
+        className="dropdown-menu"
+        aria-labelledby={`navbarDropdownMenuLink-${items.name}`}
+      >
         {[...items.url].map(e => {
           return (
             <li key={JSON.stringify(e)} className="nav-item">
