@@ -178,8 +178,8 @@ function Header(props) {
           attribution={"setup_tool"}
           page_id="2076491679249035"
           greeting_dialog_delay="20"
-          logged_in_greeting="Hi, Diego here! How can I help you?"
-          logged_out_greeting="Hi, Diego here! How can I help you?"
+          logged_in_greeting="Hi there, Diego here! How may I help you? 🙂"
+          logged_out_greeting="Hi there, Diego here! How may I help you? 🙂"
         ></div>
       </header>
     </React.Fragment>
