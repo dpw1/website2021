@@ -677,7 +677,7 @@ var t=d.createElement('script');
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
       addTagsToServicesFilter()
-      autoplayVideo()
+      // autoplayVideo()
       setTimeout(scrollToHash, 350)
       window.ezfy.initServices()
       window.customCode()
