@@ -40,18 +40,6 @@ module.exports = {
         icon: `src/copy/img/favicon.png`, // This path is relative to the root of the site.
       },
     },
-
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "GTM-TR7HFTW",
-
-        // Include GTM in development.
-        //
-        // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: true,
-      },
-    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

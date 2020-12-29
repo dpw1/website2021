@@ -10,7 +10,7 @@ function Product(item) {
   return (
     <article
       key={JSON.stringify(item)}
-      className="product col-12 col-md-6 col-lg-6  portfolio-item services-item"
+      className="product col-12 col-md-6 col-lg-4  portfolio-item services-item"
     >
       <div className="single-portfolio service-single res-margin">
         {/* Portfolio Thumb */}

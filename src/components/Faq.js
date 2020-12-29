@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "./Faq.scss";
-import { groupItems } from "../utils/utils";
+import React from "react"
+import "./Faq.scss"
+import { groupItems } from "../utils/utils"
 
-const faqId = `apolo-accordion`;
+const faqId = `apolo-accordion`
 
 const questions = [
   {
@@ -29,7 +29,8 @@ const questions = [
           rel="noreferrer"
           className="custom-link"
           target="_blank"
-          href="https://outofthesandbox.com/blogs/shopify-theme-blog/apps-speed?rfsn=4557612.d5a506">
+          href="https://outofthesandbox.com/blogs/shopify-theme-blog/apps-speed?rfsn=4557612.d5a506"
+        >
           clicking here
         </a>
         .
@@ -91,7 +92,8 @@ const questions = [
           rel="noreferrer"
           className="custom-link"
           href="https://outofthesandbox.com/?rfsn=4557612.d5a506"
-          target="_blank">
+          target="_blank"
+        >
           Turbo theme from our partner Out of The Sandbox
         </a>{" "}
         and work toogether to optimize your store both for conversion rate and
@@ -134,13 +136,13 @@ const questions = [
       </p>
     ),
   },
-];
+]
 
-const FaqItem = (props) => {
-  const { question, answer, isOpen } = props;
-  const newLine = false;
+const FaqItem = props => {
+  const { question, answer, isOpen } = props
+  // const newLine = false
 
-  const id = question.replace(/[^a-zA-Z]/g, "").toLowerCase();
+  const id = question.replace(/[^a-zA-Z]/g, "").toLowerCase()
   return (
     <div className="card my-2">
       {/* Card Header */}
@@ -150,7 +152,8 @@ const FaqItem = (props) => {
             className={`btn p-2 ${isOpen || "collapsed"}`}
             type="button"
             data-toggle="collapse"
-            data-target={`#${id}`}>
+            data-target={`#${id}`}
+          >
             {question}
           </button>
         </h2>
@@ -158,13 +161,14 @@ const FaqItem = (props) => {
       <div
         id={id}
         className={isOpen ? "collapse show" : "collapse"}
-        data-parent={`#${faqId}`}>
+        data-parent={`#${faqId}`}
+      >
         {/* Card Body */}
         <div className="card-body">{answer()}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 function Faq() {
   return (
@@ -196,10 +200,11 @@ function Faq() {
                             key={i}
                             question={e.question}
                             answer={e.answer}
-                            isOpen={index === 0 && i === 0 && true}></FaqItem>
+                            isOpen={index === 0 && i === 0 && true}
+                          ></FaqItem>
                         ))}
                       </div>
-                    ),
+                    )
                   )}
                 </div>
               </div>
@@ -209,7 +214,8 @@ function Faq() {
                 <a
                   className="custom-link scroll"
                   href="#contact"
-                  data-scroll-offset={-60}>
+                  data-scroll-offset={-60}
+                >
                   {" "}
                   Click here to contact us
                 </a>
@@ -220,7 +226,7 @@ function Faq() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Faq;
+export default Faq

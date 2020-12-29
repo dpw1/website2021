@@ -1,19 +1,18 @@
-import React, { Component, useState, useEffect } from "react"
+import React from "react"
 import ScrollToTop from "../components/ScrollToTop"
 import Header from "../components/Header"
 import Hero from "../components/Hero"
 import About from "../components/About"
-import Services from "../components/Services"
+
 import BlogShowcase from "../components/BlogShowcase"
 import Parallax from "../components/Parallax"
 import Faq from "../components/Faq"
 import Steps from "../components/Steps"
 import Contact from "../components/Contact"
 import Footer from "../components/Footer"
-import { Helmet } from "react-helmet"
+
 import ReviewsText from "./../components/ReviewsText"
 import { SEO } from "../components/SEO.js"
-import { graphql } from "gatsby"
 
 const HomeLayout = props => {
   return (

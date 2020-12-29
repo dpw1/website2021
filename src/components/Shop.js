@@ -83,7 +83,7 @@ function Shop(props) {
   return (
     <section
       id="shop"
-      className="section blog-area ptb_50"
+      className="section blog-area ptb_50 shop"
       style={{ paddingTop }}
     >
       <div className="container">
@@ -106,7 +106,7 @@ function Shop(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-lg-3">
+          <div className="col-12 col-lg-12 shop-filter">
             <aside className="sidebar">
               {/* Single Widget */}
               <div className="single-widget">
@@ -119,7 +119,7 @@ function Shop(props) {
                     <h5>
                       <a
                         role="button"
-                        className="collapse show text-uppercase d-block p-3"
+                        className="collapse show text-uppercase d-block p-3 "
                         data-toggle="collapse"
                         href="#accordion3"
                       >
@@ -151,7 +151,7 @@ function Shop(props) {
               </div>
             </aside>
           </div>
-          <div className="col-12 col-lg-9">
+          <div className="col-12 col-lg-12">
             <div className="portfolio-row row">
               {products && products.map(e => Product(e))}
             </div>

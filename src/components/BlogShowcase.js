@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState } from "react"
 import "./BlogShowcase.scss"
 import parse from "html-react-parser"
 
-import { generateBlogUrl, links, timeSince } from "./../utils/utils"
+import { timeSince } from "./../utils/utils"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { useQueryParam, NumberParam, StringParam } from "use-query-params"
+import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 
 const PAGINATION_BUTTONS = 3
@@ -12,7 +12,7 @@ const PAGINATION_BUTTONS = 3
 
 const BlogItem = props => {
   let {
-    date: _date,
+    // date: _date,
     slug,
     featured_image_src: image,
     excerpt,
@@ -21,7 +21,7 @@ const BlogItem = props => {
 
   let description = excerpt
   title = parse(title)
-  let date = timeSince(_date)
+  // let date = timeSince(_date)
   let url = `/blog/${slug}`
   const imagealt = props.data.image_alt
 

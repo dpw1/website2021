@@ -1,4 +1,3 @@
-import { graphql } from "gatsby"
 import React, { useState } from "react"
 
 export const Store = React.createContext()

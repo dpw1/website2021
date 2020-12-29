@@ -5,12 +5,7 @@ import Header from "./../components/Header"
 import Contact from "./../components/Contact"
 import Footer from "./../components/Footer"
 
-import BlogBreadcrumb from "./../components/BlogBreadcrumb"
-import { Helmet } from "react-helmet"
-import BlogShowcase from "../components/BlogShowcase"
-import { useStaticQuery, graphql } from "gatsby"
 import Shop from "./../components/Shop"
-import Hero from "./../components/Hero"
 import { SEO } from "./../components/SEO"
 
 const ShopLayout = props => {

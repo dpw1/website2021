@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import "./BlogBreadcrumb.scss"
 import officeImage from "../copy/img/bg/ezfy-office.jpg"
 import { getWordpressImageBiggestSize } from "./../utils/utils"

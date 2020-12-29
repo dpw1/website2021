@@ -35,4 +35,16 @@
       display: block;
     }
   }
+
+  .services-price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .services-price-title {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    line-height: 140%;
+  }
 }

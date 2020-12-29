@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import "./About.scss"
 import image from "../copy/img/avatar/diego.jpg"
 

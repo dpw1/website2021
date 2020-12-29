@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import "./Header.scss"
 import logo from "../copy/img/logo/ezfy-logo-transparent-small.png"
 import stickyLogo from "../copy/img/logo/ezfy-logo-small.png"
 
 import { renderNav } from "../utils/utils"
 
-import { useMediaQuery, useMediaQueries } from "@react-hook/media-query"
-
 import $ from "jquery"
-import { navigate, Link } from "gatsby"
+import { Link } from "gatsby"
 
 const createNavbarSingleItem = props => {
   return (
@@ -31,7 +29,7 @@ const createNavbarSingleItem = props => {
 }
 
 function Header(props) {
-  const isDesktop = useMediaQuery("only screen and (min-width: 991px)")
+  // const isDesktop = useMediaQuery("only screen and (min-width: 991px)")
 
   const { page, darkMode } = props
 

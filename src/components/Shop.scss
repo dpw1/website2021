@@ -1,7 +1,7 @@
 @import "../css/variables";
 @import "../css/animations";
 
-#shop {
+.shop {
   padding-bottom: 40px;
   .custom-overlay {
     &:after {
@@ -126,6 +126,12 @@
     }
     &:active {
       color: #7c4fe0 !important;
+    }
+  }
+
+  @media (min-width: $md) {
+    &-filter {
+      margin-bottom: 40px;
     }
   }
 }

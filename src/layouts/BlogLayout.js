@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import ScrollToTop from "./../components/ScrollToTop"
 import Header from "./../components/Header"
 
@@ -8,7 +8,6 @@ import Footer from "./../components/Footer"
 import BlogBreadcrumb from "./../components/BlogBreadcrumb"
 import { Helmet } from "react-helmet"
 import BlogShowcase from "../components/BlogShowcase"
-import { useStaticQuery, graphql } from "gatsby"
 
 const BlogLayout = props => {
   useEffect(() => {

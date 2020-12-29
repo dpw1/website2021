@@ -2,9 +2,8 @@ import { createBrowserHistory } from "history"
 import React from "react"
 
 import * as timeago from "timeago.js"
-import TrustBadge from "../components/TrustBadge"
 import { siteRoutes } from "./siteRoutes"
-import { navigate, Link } from "gatsby"
+import { Link } from "gatsby"
 
 export function groupItems(items, n) {
   return items.reduce((acc, x, i) => {

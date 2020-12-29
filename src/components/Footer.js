@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 
 import "./Footer.scss"
 
@@ -23,7 +23,7 @@ const footerItem = props => (
   </li>
 )
 function Footer(props) {
-  const { page } = props
+  // const { page } = props
 
   return (
     <React.Fragment>

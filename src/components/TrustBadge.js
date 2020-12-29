@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import image from "../copy/img/trust-badge.jpg";
-import "./TrustBadge.scss";
+import React from "react"
+import image from "../copy/img/trust-badge.jpg"
+import "./TrustBadge.scss"
 
 function TrustBadge(props) {
   return (
@@ -77,7 +77,7 @@ function TrustBadge(props) {
         />
       </svg>{" "} */}
     </figure>
-  );
+  )
 }
 
-export default TrustBadge;
+export default TrustBadge

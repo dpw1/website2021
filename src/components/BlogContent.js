@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from "react"
 import "./BlogContent.scss"
 import parse from "html-react-parser"
-import {
-  formatDate,
-  generateBlogUrl,
-  getWordpressImageBiggestSize,
-  timeSince,
-} from "../utils/utils"
+import { formatDate, getWordpressImageBiggestSize } from "../utils/utils"
 import BlogBreadcrumb from "./BlogBreadcrumb"
-import {
-  FacebookShareButton,
-  PinterestShareButton,
-  RedditShareButton,
-  FacebookMessengerShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-} from "react-share"
+import { FacebookMessengerShareButton, WhatsappShareButton } from "react-share"
 import { blogApi } from "../api/api"
 import PostsSidebar from "./PostsSidebar"
 
