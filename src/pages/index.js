@@ -7,7 +7,12 @@ import "../css/custom.scss"
 import HomeLayout from "./../layouts/HomeLayout"
 
 const Index = props => {
-  return <HomeLayout posts={props.data.allWordpressPost.nodes}></HomeLayout>
+  return (
+    <HomeLayout
+      className="o k     "
+      posts={props.data.allWordpressPost.nodes}
+    ></HomeLayout>
+  )
 }
 
 export const query = graphql`

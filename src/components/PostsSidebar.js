@@ -1,11 +1,11 @@
-import "./PostsSidebar.scss";
-import React, { useState, useEffect } from "react";
+import "./PostsSidebar.scss"
+import React from "react"
 
-import { formatDate, generateBlogUrl, timeSince } from "../utils/utils";
-import parse from "html-react-parser";
+import { formatDate, generateBlogUrl } from "../utils/utils"
+import parse from "html-react-parser"
 
-const PostsSidebar = (props) => {
-  const { posts } = props;
+const PostsSidebar = props => {
+  const { posts } = props
 
   return (
     <div className="single-widget posts-sidebar">
@@ -17,7 +17,8 @@ const PostsSidebar = (props) => {
               role="button"
               className="collapse show text-uppercase d-block p-3"
               data-toggle="collapse"
-              href="#accordion2">
+              href="#accordion2"
+            >
               Popular Posts
             </a>
           </h5>
@@ -25,7 +26,8 @@ const PostsSidebar = (props) => {
           <div
             id="accordion2"
             className="accordion-content widget-content collapse show"
-            data-parent="#post-accordion">
+            data-parent="#post-accordion"
+          >
             {/* Post Widget Items */}
             <ul className="widget-items">
               {posts &&
@@ -36,7 +38,8 @@ const PostsSidebar = (props) => {
                       <li key={i}>
                         <a
                           href={generateBlogUrl(e.slug)}
-                          className="single-post align-items-center align-items-lg-start media p-3">
+                          className="single-post align-items-center align-items-lg-start media p-3"
+                        >
                           {/* Post Thumb */}
                           <div className="post-thumb avatar-md">
                             <img
@@ -53,14 +56,14 @@ const PostsSidebar = (props) => {
                           </div>
                         </a>
                       </li>
-                    );
+                    )
                   })}
             </ul>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostsSidebar;
+export default PostsSidebar

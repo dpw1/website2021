@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react"
 import "./BlogShowcase.scss"
 import parse from "html-react-parser"
 
-import { timeSince } from "./../utils/utils"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 
-const PAGINATION_BUTTONS = 3
+// const PAGINATION_BUTTONS = 3
 // posts per page is defined via props
 
 const BlogItem = props => {

@@ -1,0 +1,22 @@
+@import "../css/variables";
+
+.what-we-do {
+  padding-top: 25px;
+  .section-heading {
+    margin-bottom: 40px;
+  }
+  &-image-container {
+    @media (min-width: $md) {
+      padding-right: 20px;
+    }
+  }
+
+  .about-image {
+    max-width: 100%;
+    svg {
+      max-width: 100%;
+      width: 100%;
+      overflow: unset;
+    }
+  }
+}

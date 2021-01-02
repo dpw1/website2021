@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import mobileImage from "../copy/img/ezfy-proof-mobile-up.jpg"
 import desktopImage from "../copy/img/pixel_quite_black_portrait_trim_up.png"
 import "./Hero.scss"
@@ -69,12 +69,12 @@ function Hero(props) {
                   >
                     certified Shopify Partner
                   </a>{" "}
-                  to quickly take care of your store's technical needs.
+                  to quickly take care of your themes' technical needs.
                 </span>
               </h3>
               <p className="text-white mt-3 mb-4">
                 <span>
-                  More than 25 public recommendations, 200+ Shopify merchants
+                  More than 25 public recommendations, 250+ Shopify merchants
                   helped.
                 </span>
               </p>

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "./Parallax.scss";
+import React from "react"
+import "./Parallax.scss"
 
 function Parallax(props) {
-  const { title, subtitle, buttonText } = props;
+  const { title, subtitle, buttonText } = props
 
   return (
     <div className="ezfy-parallax">
@@ -52,13 +52,14 @@ function Parallax(props) {
           <a
             className="btn custom-btn scroll"
             href={"#contact"}
-            data-scroll-offset={-60}>
+            data-scroll-offset={-60}
+          >
             {buttonText}
           </a>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Parallax;
+export default Parallax

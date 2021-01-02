@@ -1,6 +1,7 @@
 import React from "react"
 import "./Faq.scss"
 import { groupItems } from "../utils/utils"
+import { Link } from "gatsby"
 
 const faqId = `apolo-accordion`
 
@@ -38,67 +39,12 @@ const questions = [
     ),
   },
   {
-    question: `What exactly happens after I purchase a section?`,
-    answer: () => (
-      <p>
-        Immediately after your purchase you'll receive the files and
-        instructions to install the section onto your store. You can also
-        request a free installation from us. Feel free to{" "}
-        <a className="custom-link scroll" href="#contact">
-          contact us
-        </a>{" "}
-        before purchasing if you have any questions or concerns!
-      </p>
-    ),
-  },
-
-  {
-    question: `What payment methods are available?`,
-    answer: () => (
-      <p>
-        For custom services we currently accept{" "}
-        <span className="custom-emphasis">PayPal</span> and
-        <span className="custom-emphasis"> Bank Transfer</span>. We have bank
-        accounts in Australia, the United States &amp; Europe, so you don't have
-        to worry about overseas fees if you reside in any of those places.
-      </p>
-    ),
-  },
-  {
-    question: `What other type of services do you offer?`,
-    answer: () => (
-      <span>
-        <p>We can help you with:</p>
-        <ul>
-          <li>Speed optimization;</li>
-          <li>Customize any part of your website;</li>
-          <li>bug fixes.</li>
-        </ul>
-        Please{" "}
-        <a className="custom-link scroll" href="#contact">
-          send us an email
-        </a>{" "}
-        for any questions or requests you may have, we'll return within 24
-        hours.
-      </span>
-    ),
-  },
-  {
     question: `I want a custom theme for my business. Can you build one?`,
     answer: () => (
       <p>
-        Yes! In such scenarios we'll recommend you a good{" "}
-        <a
-          rel="noreferrer"
-          className="custom-link"
-          href="https://outofthesandbox.com/?rfsn=4557612.d5a506"
-          target="_blank"
-        >
-          Turbo theme from our partner Out of The Sandbox
-        </a>{" "}
-        and work toogether to optimize your store both for conversion rate and
-        speed. If you are on a tighter budget we can also work on top of a free
-        Shopify theme if you prefer.
+        We do not code themes from scratch, however we already do have some
+        themes with premium quality built by us at a pretty accessible price.
+        Just send us an email so we can send you a preivew of them.
       </p>
     ),
   },
@@ -118,23 +64,31 @@ const questions = [
     question: `How safe is purchasing from this website?`,
     answer: () => (
       <p>
-        100% safe. We take privacy and security seriously, therefore after
-        clicking on "Buy Now" you'll be redirected to a safe checkout payment
-        platform where you can pay with PayPal or Credit Card.
+        100% safe. We take privacy and security seriously, when making a
+        purchase in our{" "}
+        <Link to="/shop" className="custom-link">
+          shop
+        </Link>{" "}
+        you'll be redirected to a safe checkout payment platform where you can
+        pay with PayPal or Credit Card.
       </p>
     ),
   },
   {
-    question: `I have an idea for a section. Can you create it?`,
+    question: `I need some custom code done. Can you do it?`,
     answer: () => (
       <p>
-        Yes! Please{" "}
+        Sure! Please{" "}
         <a className="custom-link scroll" href="#contact">
           send us an email
         </a>{" "}
         with further information, we'll reply within 24 hours.
       </p>
     ),
+  },
+  {
+    question: `How much do you charge?`,
+    answer: () => <p>Our starting price is $40 USD/hour.</p>,
   },
 ]
 

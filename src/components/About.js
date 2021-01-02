@@ -2,11 +2,13 @@ import React from "react"
 import "./About.scss"
 import image from "../copy/img/avatar/diego.jpg"
 
-function About() {
+function About(props) {
   return (
     <section
       id="about"
-      className="section features-area overflow-hidden bg-gray ptb_25"
+      className={`section features-area overflow-hidden bg-gray ptb_25 ${
+        props.page === "about" && "about-page"
+      }`}
     >
       <div className="container">
         <div className="row justify-content-center">

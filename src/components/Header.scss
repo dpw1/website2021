@@ -25,9 +25,10 @@
   }
 
   .navbar-toggler {
-    height: 30px;
+    height: 52px;
   }
 
+  //dark mode is used when you don't want the main navbar to be transparent, so it will be full color.
   &.navbar--dark-mode:not(.navbar-sticky-on) {
     background: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
     height: 60px;
@@ -35,6 +36,12 @@
 
     .container {
       padding: 0;
+    }
+
+    .navbar-brand-regular {
+      filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
+      position: relative;
+      top: 8px;
     }
   }
 

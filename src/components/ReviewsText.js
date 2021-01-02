@@ -211,11 +211,10 @@ function ReviewsText() {
                 <span className="text-primary"> Customers'</span>{" "}
                 Recommendations
               </span>
-              <h2 className="text-capitalize">Reviews</h2>
+              <h2 className="text-capitalize">Testimonials</h2>
               <p className="d-sm-block mt-4">
-                For your convenience here's a compilation of a few of our
-                customers testimonials. <br />
-                Yet you can find much more in our{" "}
+                Our clients' satisfaction is our main priority. <br />
+                Here are some reviews, yet you can find much more in our{" "}
                 <a
                   rel="noreferrer"
                   className="custom-link"
@@ -246,8 +245,8 @@ function ReviewsText() {
             grabCursor={true}
             centeredSlides={true}
             navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
+              nextEl: ".reviews-text-container .swiper-button-next",
+              prevEl: ".reviews-text-container .swiper-button-prev",
             }}
             scrollbar={{
               el: ".swiper-scrollbar",

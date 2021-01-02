@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import mobileImage from "../copy/img/ezfy-proof-mobile-up.jpg";
-import desktopImage from "../copy/img/pixel_quite_black_portrait_trim_up.png";
-import "./Portfolio.scss";
+import React from "react"
+
+import "./Portfolio.scss"
 
 const items = [
   {
@@ -175,9 +174,9 @@ const items = [
     subtitle: `Australian e-commerce based on Shopify selling furnitures.`,
     alt: "Portfolio - Cosy Cribs' Website",
   },
-];
+]
 
-const PortfolioItem = (item) => {
+const PortfolioItem = item => {
   const {
     tags,
     video,
@@ -187,17 +186,19 @@ const PortfolioItem = (item) => {
     title,
     subtitle,
     alt,
-  } = item;
+  } = item
   return (
     <div
       className="col-12 col-md-6 portfolio-item"
-      data-portfolio-item-tags={tags.join(", ")}>
+      data-portfolio-item-tags={tags.join(", ")}
+    >
       <div className="single-portfolio res-margin">
         {/* Portfolio Thumb */}
         <div
           className="portfolio-thumb blog-thumb"
           data-fancybox="gallery"
-          href={video}>
+          href={video}
+        >
           <a className="play-btn">
             <div className="btn-circle play-animation" />
             <div className="btn-circle play-animation animation-short" />
@@ -212,10 +213,12 @@ const PortfolioItem = (item) => {
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
-                data-fa-i2svg>
+                data-fa-i2svg
+              >
                 <path
                   fill="currentColor"
-                  d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                  d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
+                ></path>
               </svg>
               {/* <i class="fas fa-play"></i> */}
             </div>
@@ -236,7 +239,8 @@ const PortfolioItem = (item) => {
               <a
                 className={sourceCode.length <= 0 && "portfolio-blocked"}
                 href={sourceCode}
-                target="_blank">
+                target="_blank"
+              >
                 Source Code
               </a>
             </li>
@@ -248,7 +252,8 @@ const PortfolioItem = (item) => {
                     : "custom-emphasis"
                 }
                 href={liveWebsite}
-                target="_blank">
+                target="_blank"
+              >
                 Live Website
               </a>
             </li>
@@ -262,8 +267,8 @@ const PortfolioItem = (item) => {
         <ul className="portfolio-tags blog-content p-4"></ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
 function Portfolio() {
   return (
@@ -294,14 +299,16 @@ function Portfolio() {
                 {/* Tags Widget */}
                 <div
                   className="accordions widget tags-widget"
-                  id="tags-accordion">
+                  id="tags-accordion"
+                >
                   <div className="single-accordion blog-accordion">
                     <h5>
                       <a
                         role="button"
                         className="collapse show text-uppercase d-block p-3"
                         data-toggle="collapse"
-                        href="#accordion3">
+                        href="#accordion3"
+                      >
                         Filter
                       </a>
                     </h5>
@@ -309,15 +316,18 @@ function Portfolio() {
                     <div
                       id="accordion3"
                       className="accordion-content widget-content collapse show"
-                      data-parent="#tags-accordion">
+                      data-parent="#tags-accordion"
+                    >
                       {/* Tags Widget Items */}
                       <div
                         id="tagsWidget"
-                        className="widget-content tags-widget-items pt-2">
+                        className="widget-content tags-widget-items pt-2"
+                      >
                         <a
                           href="#"
                           data-tag-name="all"
-                          className="d-inline-block mt-2 mr-1 px-2 py-1 tags-widget-item tags-widget-item--active ">
+                          className="d-inline-block mt-2 mr-1 px-2 py-1 tags-widget-item tags-widget-item--active "
+                        >
                           All
                         </a>
                       </div>
@@ -329,13 +339,13 @@ function Portfolio() {
           </div>
           <div className="col-12 col-lg-9">
             <div className="portfolio-row row">
-              {items.map((e) => PortfolioItem(e))}
+              {items.map(e => PortfolioItem(e))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Portfolio;
+export default Portfolio

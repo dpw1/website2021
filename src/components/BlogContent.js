@@ -41,7 +41,7 @@ const BlogContent = props => {
         <div className="container">
           <div className="row blog-content-wrapper">
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
-              <aside className="sidebar">
+              <aside className="sidebar ">
                 {/* Single Widget */}
                 {posts && <PostsSidebar posts={posts}></PostsSidebar>}
               </aside>
@@ -50,7 +50,7 @@ const BlogContent = props => {
               {/* Single Blog Details */}
               <article className="single-blog-details">
                 {/* Blog Content */}
-                <div className="blog-content sApp-blog">
+                <div className="sApp-blog blog-content-text">
                   {/* Meta Info */}
                   <div className="meta-info d-flex flex-wrap align-items-center py-2">
                     <ul className="blog-content-info">
@@ -68,7 +68,7 @@ const BlogContent = props => {
                     <h3 className="blog-title py-2 py-sm-3">
                       <span>{parse(title)}</span>
                     </h3>
-                    <figure>
+                    <figure className="blog-featured-image">
                       <img src={image} alt="" />
                     </figure>
                     <div>{parse(post.content.rendered)}</div>

@@ -3,6 +3,19 @@
 
 .shop {
   padding-bottom: 40px;
+
+  &-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 20px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .services-price-small {
+    padding-left: 5px;
+    padding-top: 4px;
+  }
   .custom-overlay {
     &:after {
       content: "";
@@ -112,6 +125,8 @@
     transition-delay: 0;
     display: block;
     height: auto;
+    // max-width: 100%;
+    width: 100%;
   }
   .portfolio-item--hide {
     display: none;

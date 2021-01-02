@@ -42,3 +42,8 @@ Every time you add or update data within e-junkie or gumroad you must update the
 https://www.ezfy.club/wp-admin/theme-editor.php?file=functions.php&theme=api
 
 2. Click on the "update file" button.
+
+## Developing
+1. Run this:
+
+gatsby develop --host localhost --port 8000

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./Product.scss"
 import parse from "html-react-parser"
+import { replaceAll } from "./../utils/utils"
+import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 
 function Product(item) {
   const { title, price, description, thumbnail, url } = item
@@ -58,38 +60,11 @@ function Product(item) {
               {price}
             </h3>
           </div>
-          {/*
-          <ul className="meta-info d-flex services-item-list">
-       <li>
-              <a
-                className="custom-link"
-                rel="noopener noreferrer"
-                href="#"
-                target="_blank"
-              >
-                Live demo
-              </a>
-            </li> 
-            <li>
-              <a
-                className="custom-link"
-                rel="noreferrer"
-                href="#"
-                data-type="iframe"
-                data-src={url}
-                href="javascript:;"
-                data-options={JSON.stringify(fancyboxOptions)}
-                data-fancybox="fancybox-products-link"
-              >
-                More information
-              </a>
-            </li>
-         
-          </ul>
-             */}
 
           <div className="product-description ">
-            <React.Fragment>{parse(description)}</React.Fragment>
+            <React.Fragment>
+              {parse(replaceAll(description, { "\n": " ", "<br>": "" }))}
+            </React.Fragment>
           </div>
         </div>
         <div className="product-action">

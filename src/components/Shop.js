@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import "./Shop.scss"
 import { graphql, useStaticQuery } from "gatsby"
-import parse from "html-react-parser"
+
 import Product from "./Product"
 
 function Shop(props) {
@@ -46,7 +46,7 @@ function Shop(props) {
     ejunkie.map(e => {
       return products.push({
         title: e.name,
-        price: e.price.replace("$", ""),
+        price: e.price.replace("$", "").replace(".00", ""),
         description: e.details,
         thumbnail: e.images[0],
         url: `https://ezfy.e-junkie.com/product/${e.number}`,
@@ -75,7 +75,6 @@ function Shop(props) {
 
   useEffect(() => {
     setProducts(getProducts())
-    console.log("rrr shop data", products)
   }, [])
 
   const { paddingTop } = props

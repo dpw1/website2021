@@ -5,7 +5,6 @@ exports.createPages = async ({ actions }) => {
   const { createPage } = actions
 
   const { data } = await axios.get("https://ezfy.club/json/wp/v2/posts")
-  const slugs = data.map(e => e.slug)
 
   return data.map(async e => {
     return createPage({
@@ -14,4 +13,14 @@ exports.createPages = async ({ actions }) => {
       context: e,
     })
   })
+}
+
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+  const config = getConfig()
+  if (stage.startsWith("develop") && config.resolve) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "react-dom": "@hot-loader/react-dom",
+    }
+  }
 }

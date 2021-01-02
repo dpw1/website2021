@@ -16,7 +16,7 @@ const ShopLayout = props => {
   return (
     <React.Fragment>
       <SEO
-        title="EZFY | Shop"
+        title="EZFY Shop: code snippets and sections for Shopify"
         description="Custom, easy to install Shopify code snippets coded by a certified Shopify partner."
       ></SEO>
 

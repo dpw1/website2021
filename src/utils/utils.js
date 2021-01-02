@@ -332,3 +332,18 @@ export const links = {
   homepage: "/",
   blog: "/blog",
 }
+
+export function replaceAll(word, obj) {
+  let finalString = ""
+  for (let each of word) {
+    for (const o in obj) {
+      const value = obj[o]
+      if (each == o) {
+        each = value
+      }
+    }
+    finalString += each
+  }
+
+  return finalString
+}

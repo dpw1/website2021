@@ -18,6 +18,8 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-use-query-params",
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-modal-routing`,
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
@@ -30,8 +32,6 @@ module.exports = {
         createLinkInHead: true,
       },
     },
-
-    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
