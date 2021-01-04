@@ -683,6 +683,7 @@ var t=d.createElement('script');
       window.customCode()
       window.ezfy.closeSidebarMenu()
       window.ezfy.addModalToFatFreeCartProLinks()
+      window.ezfy.addModalToEJunkieCartLinks()
     },
     init: function () {
       window.ezfy.start()
