@@ -20,6 +20,7 @@ function Shop(props) {
                 name
                 details
                 number
+                tags
               }
             }
             gumroad {
@@ -92,8 +93,8 @@ function Shop(props) {
             <div className="section-heading text-center">
               <h2 className="text-capitalize">Shop</h2>
               <p className="d-sm-block mt-4">
-                Easy to install, custom sections & code snippets for your
-                Shopify store.
+                Easy to install custom sections & code snippets for your Shopify
+                store.
                 <br />
                 In need of something unique?{" "}
                 <a className="scroll custom-link" href="#contact">

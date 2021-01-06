@@ -3,10 +3,6 @@
 .about {
   padding-bottom: 75px;
 
-  &.about-page {
-    padding-top: 120px;
-    background: white;
-  }
   .about-image {
     display: flex;
     justify-content: center;
@@ -28,4 +24,7 @@
     margin: 0 auto;
     align-items: center;
   }
+}
+.about-page {
+  padding-top: 120px !important;
 }

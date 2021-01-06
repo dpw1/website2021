@@ -1,12 +1,14 @@
 import React from "react"
 import "./About.scss"
 import image from "../copy/img/avatar/diego.jpg"
+import { Link } from "gatsby"
+import { siteRoutes } from "./../utils/siteRoutes"
 
 function About(props) {
   return (
     <section
       id="about"
-      className={`section features-area overflow-hidden bg-gray ptb_25 ${
+      className={`about section features-area overflow-hidden ptb_25 ${
         props.page === "about" && "about-page"
       }`}
     >
@@ -17,7 +19,7 @@ function About(props) {
             <div className="section-heading text-center">
               <h2>About EZFY</h2>
               <p className=" d-sm-block mt-4">
-                A little bit of the story behind EZFY.
+                A little bit about the story behind EZFY.
               </p>
             </div>
           </div>
@@ -45,8 +47,8 @@ function About(props) {
                   <div className="about-text icon-text media-body align-self-center align-self-md-start">
                     <p className="d-sm-block">
                       Greetings! My name is Diego Fortes. I am a Computer
-                      Science graduate software engineer with 9 years of coding
-                      experience and 6 years of professional experience in
+                      Science graduate software engineer with 10 years of coding
+                      experience and 7 years of professional experience in
                       Shopify development.
                     </p>
                     <p className="d-block mt-4">
@@ -57,15 +59,22 @@ function About(props) {
                     <p className="d-block mt-4">
                       We'll help you with small customizations, bug fixes,
                       adding extra options to your theme, creating custom
-                      sections and so on and so forth.
+                      sections and so on and so forth. Feel free to check our{" "}
+                      <Link to={siteRoutes.shop} className="custom-link">
+                        shop
+                      </Link>{" "}
+                      out for some ideas.
                     </p>
                     <p className="d-block mt-4">
                       We help dozens of Shopify merchants everyday. Feel free to
-                      read about their experience with our work by{" "}
-                      <a href="#reviews" className="scroll custom-link">
+                      read their testimonials about our work by{" "}
+                      <Link to="/#reviews" className=" custom-link">
                         clicking here
-                      </a>
+                      </Link>
                       .
+                    </p>
+                    <p className="d-block mt-4">
+                      Thank you for your time and for your visit!
                     </p>
                   </div>
                 </div>

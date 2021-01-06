@@ -166,13 +166,13 @@ export const footerNavbarLinks = [
   },
   {
     name: "About Us",
-    url: "#about",
+    url: siteRoutes.about,
     offset: -60,
-    scroll: true,
+    scroll: false,
   },
   {
     name: "Services",
-    url: "/#services",
+    url: siteRoutes.services,
     offset: 0,
     scroll: false,
   },

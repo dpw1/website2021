@@ -3,6 +3,8 @@ import React from "react"
 import "./About.scss"
 import "./WhatDoWeDo.scss"
 import { Swiper } from "swiper/react"
+import { siteRoutes } from "./../utils/siteRoutes"
+import { Link } from "gatsby"
 
 function WhatDoWeDo(props) {
   return (
@@ -227,6 +229,13 @@ function WhatDoWeDo(props) {
                       </a>
                       .
                     </p>
+
+                    <Link
+                      to={siteRoutes.shop}
+                      className="what-we-do-btn custom-link"
+                    >
+                      Browse our services
+                    </Link>
                   </div>
                 </div>
               </li>

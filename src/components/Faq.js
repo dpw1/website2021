@@ -2,6 +2,7 @@ import React from "react"
 import "./Faq.scss"
 import { groupItems } from "../utils/utils"
 import { Link } from "gatsby"
+import { siteRoutes } from "./../utils/siteRoutes"
 
 const faqId = `apolo-accordion`
 
@@ -17,34 +18,12 @@ const questions = [
     ),
   },
   {
-    question: `What is the difference between an app and a section?`,
-    answer: () => (
-      <p>
-        Sections are coded directly into your theme which helps to optimize the
-        wensite speed since there are no external libraries being loaded.
-        Although most apps are undoubtedly helpful, they inevitably end up
-        slowing down your website. It's best to avoid them whenever possible if
-        you aim for an optimized store. You can read in details how the
-        excessive usage of apps can negatively affect your store{" "}
-        <a
-          rel="noreferrer"
-          className="custom-link"
-          target="_blank"
-          href="https://outofthesandbox.com/blogs/shopify-theme-blog/apps-speed?rfsn=4557612.d5a506"
-        >
-          clicking here
-        </a>
-        .
-      </p>
-    ),
-  },
-  {
     question: `I want a custom theme for my business. Can you build one?`,
     answer: () => (
       <p>
         We do not code themes from scratch, however we already do have some
-        themes with premium quality built by us at a pretty accessible price.
-        Just send us an email so we can send you a preivew of them.
+        premium quality themes built by us at a pretty accessible price. Just
+        send us an email so we can send you a live preivew of them!
       </p>
     ),
   },
@@ -66,7 +45,7 @@ const questions = [
       <p>
         100% safe. We take privacy and security seriously, when making a
         purchase in our{" "}
-        <Link to="/shop" className="custom-link">
+        <Link to={siteRoutes.shop} className="custom-link">
           shop
         </Link>{" "}
         you'll be redirected to a safe checkout payment platform where you can

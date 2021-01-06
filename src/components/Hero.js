@@ -2,6 +2,7 @@ import React from "react"
 import mobileImage from "../copy/img/ezfy-proof-mobile-up.jpg"
 import desktopImage from "../copy/img/pixel_quite_black_portrait_trim_up.png"
 import "./Hero.scss"
+import Stars from "./atom/Stars"
 
 function Hero(props) {
   const { scrollTo, buttonText } = props

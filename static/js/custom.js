@@ -597,6 +597,14 @@ var t=d.createElement('script');
     t.setAttribute('src', url);
     d.getElementsByTagName('head')[0].appendChild(t);*/
 
+    if (
+      document.querySelector(
+        `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
+      )
+    ) {
+      return
+    }
+
     var d = document
     var EJV1_cart_version = 1
     var EJV1_loadFlag = false // this defines whether or not box.js should search for ?cl
@@ -655,6 +663,16 @@ var t=d.createElement('script');
     }
   }
 
+  function emailSuccess() {
+    const isSuccess = /contact_form=success/.test(window.location.href)
+
+    if (!isSuccess) {
+      return
+    }
+
+    alert("Your email was successfully sent. Thank you!")
+  }
+
   return {
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
@@ -693,7 +711,9 @@ var t=d.createElement('script');
         window.ezfy.activateEJunkieCart()
       }
 
-      window.onload = function () {}
+      window.onload = function () {
+        emailSuccess()
+      }
     },
   }
 })()
