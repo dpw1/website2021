@@ -68,7 +68,7 @@ export const homepageNavbarLinks = [
 
       {
         name: "FAQ",
-        url: "#faq",
+        url: "/#faq",
         offset: -60,
         scroll: true,
       },
@@ -126,9 +126,9 @@ export const defaultNavbarLinks = [
 
       {
         name: "FAQ",
-        url: "#faq",
+        url: "/#faq",
         offset: -60,
-        scroll: true,
+        scroll: false,
       },
     ],
   },
@@ -137,7 +137,7 @@ export const defaultNavbarLinks = [
     url: [
       {
         name: "Shop",
-        url: "/shop",
+        url: siteRoutes.shop,
         scroll: false,
         badge: "New",
       },

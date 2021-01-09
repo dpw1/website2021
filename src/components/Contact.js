@@ -23,10 +23,10 @@ function Contact() {
             {/* Contact Us */}
             <div className="contact-us">
               <p className="mb-3">
-                Send us an e-mail and we'll get back to you within 24 hours! If
-                you have a request for services, assistance or a quote please
-                make sure to include your website's URL so we can assist you
-                even faster. Thank you! 🙂
+                Send us an e-mail and we'll get back to you within 24 hours!
+                After you hit "send message"{" "}
+                <b>you'll be redirected to FormSpree page</b> so your e-mail can
+                be sent. 🙂
               </p>
               <ul className="contact-social-icons">
                 <li className="py-2">
@@ -82,7 +82,7 @@ function Contact() {
               <form
                 id="contact-form"
                 method="POST"
-                action="https://api.formcake.com/api/form/e60cc492-18b4-4e39-8f4f-09a2ef75ae3a/submission"
+                action="https://formspree.io/diego.boarutto.fortes@gmail.com"
               >
                 <div className="row">
                   <div className="col-12">
@@ -93,16 +93,6 @@ function Contact() {
                         name="_replyto"
                         placeholder="Your email *"
                         required="required"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="_store"
-                        placeholder="Your Shopify store URL (optional)"
                       />
                     </div>
                   </div>

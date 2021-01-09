@@ -26,5 +26,7 @@
   &-btn {
     margin-top: 20px;
     display: inline-table;
+    max-width: $button-width;
+    width: 100%;
   }
 }

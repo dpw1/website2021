@@ -16,11 +16,13 @@ function Shop(props) {
             ejunkie {
               products {
                 images
-                price
                 name
                 details
                 number
                 tags
+                sub_items {
+                  price
+                }
               }
             }
             gumroad {
@@ -45,9 +47,14 @@ function Shop(props) {
     let products = []
 
     ejunkie.map(e => {
+      const price = e.sub_items
+        .map(el => el.price)[0]
+        .replace("$", "")
+        .replace(".00", "")
+
       return products.push({
         title: e.name,
-        price: e.price.replace("$", "").replace(".00", ""),
+        price: price,
         description: e.details,
         thumbnail: e.images[0],
         url: `https://ezfy.e-junkie.com/product/${e.number}`,

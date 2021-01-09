@@ -588,15 +588,6 @@ ezfy = (function () {
   }
 
   function activateEJunkieCart() {
-    /*var d = document;
-var EJV1_cart_version = 1;
-var EJV1_loadFlag = false;	// this defines whether or not box.js should search for ?cl
-
-var url = "https://www.e-junkie.com/ecom/box.js";
-var t=d.createElement('script');
-    t.setAttribute('src', url);
-    d.getElementsByTagName('head')[0].appendChild(t);*/
-
     if (
       document.querySelector(
         `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
@@ -617,29 +608,33 @@ var t=d.createElement('script');
     d.getElementsByTagName("head")[0].appendChild(t)
   }
 
-  async function addModalToEJunkieCartLinks() {
+  /**
+   * Adds an ejunkie lightbox to every ejunkie cart link.
+   */
+  async function addModalToGumRoadAndEjunkieLinks() {
     if (!_isBlogPage()) {
       return
     }
 
-    await _loadScript(
-      `https://cdn.jsdelivr.net/gh/englishextra/iframe-lightbox@latest/iframe-lightbox.min.js`
+    const links = document.querySelectorAll(
+      `a[href*='ezfy.e-junkie'], 
+      .blog-details a[href*='fatfreecartpro.com'], 
+      .blog-details a[href*='gumroad.com'], 
+      .blog-details a[href*='gum.co']`
     )
-
-    const links = document.querySelectorAll(`a[href*='ezfy.e-junkie']`)
 
     if (!links) {
       return
     }
 
     for (const each of links) {
-      each.setAttribute("rel", "lightbox")
-      each.setAttribute("class", "iframe-lightbox-link")
-      each.setAttribute("data-scrolling", "true")
-      each.setAttribute("data-padding-bottom", "100%")
-      each.setAttribute("aria-hidden", "true")
-
-      each.lightbox = new IframeLightbox(each)
+      each.setAttribute("data-src", each.href)
+      each.setAttribute("data-type", "iframe")
+      each.setAttribute("data-options", `{buttons: ["close"]}`)
+      each.setAttribute(
+        "data-fancybox",
+        window.location.pathname.replace("/blog/", "")
+      )
     }
   }
 
@@ -657,9 +652,15 @@ var t=d.createElement('script');
     }
 
     for (const each of links) {
-      each.setAttribute("class", "ec_ejc_thkbx")
-      each.setAttribute("rel", "noopener")
-      each.setAttribute("target", "ej_ejc")
+      each.setAttribute("data-src", each.href)
+      each.setAttribute("data-type", "iframe")
+      each.setAttribute(
+        "data-fancybox",
+        window.location.pathname.replace("/blog/", "")
+      )
+      // each.setAttribute("class", "ec_ejc_thkbx")
+      // each.setAttribute("rel", "noopener")
+      // each.setAttribute("target", "ej_ejc")
     }
   }
 
@@ -673,12 +674,18 @@ var t=d.createElement('script');
     alert("Your email was successfully sent. Thank you!")
   }
 
+  function testBackbutton() {
+    window.addEventListener("popstate", e => {
+      // alert("back button pressed")
+    })
+  }
+
   return {
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
-    addModalToEJunkieCartLinks: addModalToEJunkieCartLinks,
-    addModalToFatFreeCartProLinks: addModalToFatFreeCartProLinks,
+    addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
+
     initServices: () => {
       readMoreForServices()
       redirectToPaymentGateway()
@@ -700,8 +707,8 @@ var t=d.createElement('script');
       window.ezfy.initServices()
       window.customCode()
       window.ezfy.closeSidebarMenu()
-      window.ezfy.addModalToFatFreeCartProLinks()
-      window.ezfy.addModalToEJunkieCartLinks()
+      window.ezfy.addModalToGumRoadAndEjunkieLinks()
+      testBackbutton()
     },
     init: function () {
       window.ezfy.start()

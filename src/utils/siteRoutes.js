@@ -5,4 +5,5 @@ export const siteRoutes = {
   shop: "/shop",
   about: "/about",
   services: "/shop",
+  faq: "/#faq",
 }

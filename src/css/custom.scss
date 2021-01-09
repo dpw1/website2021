@@ -274,6 +274,17 @@ body {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
+  .fancybox-navigation .fancybox-button.fancybox-button {
+    transform: scale(0.7);
+  }
+
+  .fancybox-navigation .fancybox-button.fancybox-button--arrow_left {
+    left: -15px;
+  }
+  .fancybox-navigation .fancybox-button.fancybox-button--arrow_right {
+    right: -15px;
+  }
 }
 
 section[id]:not(#footerSection) {
@@ -555,4 +566,12 @@ body.iframe-lightbox--open {
   /* change div to reference your elements you put in <Masonry> */
   background: grey;
   margin-bottom: 30px;
+}
+
+.fancybox-active .EJOverlayV3 {
+  z-index: 99;
+}
+
+.EJOverlayV3 {
+  z-index: 0 !important;
 }

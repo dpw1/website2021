@@ -230,11 +230,8 @@ function WhatDoWeDo(props) {
                       .
                     </p>
 
-                    <Link
-                      to={siteRoutes.shop}
-                      className="what-we-do-btn custom-link"
-                    >
-                      Browse our services
+                    <Link to={siteRoutes.shop} className="btn what-we-do-btn">
+                      All services
                     </Link>
                   </div>
                 </div>
