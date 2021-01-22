@@ -1,0 +1,160 @@
+.StarRating {
+  font-family: -apple-system, \.SFNSDisplay-Regular, Helvetica Neue, Helvetica,
+    Arial, sans-serif;
+  background: #efefe9;
+  color: #797874;
+  font-size: 13px;
+  line-height: 21px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  height: auto;
+  .soft-hidden {
+    display: none;
+  }
+  .input:autofill,
+  .StripeElement:autofill,
+  .textarea:autofill,
+  input[type="email"]:autofill,
+  input[type="number"]:autofill,
+  input[type="password"]:autofill,
+  input[type="tel"]:autofill,
+  input[type="text"]:autofill,
+  input[type="url"]:autofill,
+  textarea:autofill {
+    background: #fff;
+    color: #252a2e;
+  }
+  ::-moz-placeholder {
+    color: #999 !important;
+  }
+  :-ms-input-placeholder {
+    color: #999 !important;
+  }
+  .input-wrapper:focused {
+    border-color: #aaa;
+  }
+  * {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    *,
+    :after,
+    :before {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .ratings-box {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: content-box !important;
+    box-sizing: initial !important;
+  }
+  .ratings-box--is-small {
+    height: 17px;
+  }
+  .ratings-box--is-small.showing-histogram {
+    height: 195px;
+  }
+  .ratings-box--is-small.showing-histogram .ratings-box__count i {
+    transform: rotate(270deg);
+  }
+  .ratings-box__star {
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateY(0);
+    transition: transform 0.35s cubic-bezier(0.23, 1.5, 0.32, 1);
+  }
+  .ratings-box__star--is-small {
+    width: 17px;
+    height: 17px;
+    padding-right: 5px;
+  }
+  .ratings-box__star.full-star {
+    background-image: url(https://assets.gumroad.com/packs/media/ratings/star-100-default-5fe92e7d.svg);
+  }
+  .ratings-box__count {
+    display: inline-block;
+    height: 17px;
+    margin-left: 10px;
+    top: -1px;
+    position: relative;
+    font-weight: 500;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  .ratings-box__count.show-histogram {
+    color: #36a9ae;
+  }
+  .ratings-box__count.show-histogram:hover {
+    cursor: pointer;
+  }
+  .ratings-box__count i {
+    margin-left: 3px;
+  }
+  .ratings-box__histogram {
+    margin-top: 3px;
+  }
+  .ratings-box__histogram li {
+    display: block;
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+  }
+  .ratings-box__histogram li label {
+    float: left;
+    margin-top: 3px;
+    width: 80px;
+  }
+  .ratings-box__histogram li label span {
+    color: #ccc;
+  }
+  .ratings-box__histogram li .bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 80px;
+    overflow: hidden;
+    background: #eee;
+  }
+  .ratings-box__histogram li .bar,
+  .ratings-box__histogram li .bar .filled {
+    height: 20px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  }
+  .ratings-box__histogram li .bar .filled {
+    background: #fdce71;
+  }
+  .product-ratings-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    padding: 16px 15px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  @media screen and (max-width: 480px) {
+    .product-ratings-container {
+      margin-top: 10px;
+    }
+  }
+  .download-page .download-help a:activer {
+    transform: translateY(0);
+  }
+}

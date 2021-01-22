@@ -1,8 +1,12 @@
+$light-purple: #7c4fe0;
+
 $purple: #6610f2;
 $accent: $purple;
 $extra: $purple;
 $color-black: #2c2e30;
+
 $text-color: $color-black;
+$link-color: $light-purple;
 
 $border-radius: 3px;
 
@@ -14,3 +18,28 @@ $xxxs: 500px;
 $button-width: 158px;
 
 $transition-basic: all 0.3s ease 0s;
+
+@mixin gradientAnimation($start, $end, $transTime) {
+  background-size: 100%;
+  background-image: linear-gradient($start, $end);
+  position: relative;
+  z-index: 100;
+  &:before {
+    background-image: linear-gradient($end, $start);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}

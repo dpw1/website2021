@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react"
 import "./Shop.scss"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Product from "./Product"
+import Product from "./ProductItem"
+// import { sanitizeProducts } from "../utils/utils"
+
+import globalUtils from "../../global-utils"
 
 function Shop(props) {
   const [products, setProducts] = useState(null)
@@ -39,50 +42,10 @@ function Shop(props) {
         }
       }
     }
-  `).allWordpressProducts.edges[0].node
-
-  const getProducts = () => {
-    const ejunkie = data.ejunkie.products
-    const gumroad = data.gumroad.products
-    let products = []
-
-    ejunkie.map(e => {
-      const price = e.sub_items
-        .map(el => el.price)[0]
-        .replace("$", "")
-        .replace(".00", "")
-
-      return products.push({
-        title: e.name,
-        price: price,
-        description: e.details,
-        thumbnail: e.images[0],
-        url: `https://ezfy.e-junkie.com/product/${e.number}`,
-        addToCart: `https://www.fatfreecartpro.com/ecom/gb.php?&c=cart&ejc=2&cl=374804&i=${e.number}`,
-      })
-    })
-
-    gumroad.map(e => {
-      if (!e.published) {
-        return
-      }
-
-      return products.push({
-        title: e.name,
-        price: /0\+/.test(e.formatted_price)
-          ? "Free"
-          : e.formatted_price.replace("$", ""),
-        description: e.description,
-        thumbnail: e.preview_url,
-        url: e.short_url,
-      })
-    })
-
-    return products
-  }
+  `)
 
   useEffect(() => {
-    setProducts(getProducts())
+    setProducts(globalUtils.sanitizeProducts(data))
   }, [])
 
   const { paddingTop } = props
@@ -100,14 +63,7 @@ function Shop(props) {
             <div className="section-heading text-center">
               <h2 className="text-capitalize">Shop</h2>
               <p className="d-sm-block mt-4">
-                Easy to install custom sections & code snippets for your Shopify
-                store.
-                <br />
-                In need of something unique?{" "}
-                <a className="scroll custom-link" href="#contact">
-                  Contact us
-                </a>{" "}
-                for a free quote, same day response guaranteed.
+                Easy-to-install plugins & code snippets for your Shopify store.
               </p>
             </div>
           </div>

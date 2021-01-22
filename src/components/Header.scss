@@ -1,6 +1,9 @@
 @import "../css/variables";
 @import "../css/animations";
 
+$color-dark-mode: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
+$color-sticky: white;
+
 #navbarSection {
   &.navbar-sticky-on {
     padding: 0;
@@ -30,7 +33,7 @@
 
   //dark mode is used when you don't want the main navbar to be transparent, so it will be full color.
   &.navbar--dark-mode:not(.navbar-sticky-on) {
-    background: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
+    background: $color-dark-mode;
     height: 60px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
 
@@ -43,6 +46,10 @@
       position: relative;
       top: 8px;
     }
+  }
+
+  &.navbar-sticky-transitioned {
+    background: $color-sticky !important;
   }
 
   &:not(.navbar-sticky-on) .container {

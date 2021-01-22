@@ -1,0 +1,52 @@
+.product {
+  &-image {
+    .custom-overlay {
+      &:after {
+        display: none;
+        content: unset;
+      }
+    }
+  }
+
+  &-price-small {
+    font-size: 1.2rem;
+  }
+
+  &-description {
+    margin-top: 20px;
+    display: -webkit-box;
+    height: 76px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-action {
+    max-width: 95%;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+
+    &-button {
+      width: 100%;
+      max-width: 95%;
+      margin: 0 auto;
+      display: block;
+      padding-top: 9px;
+      padding-bottom: 9px;
+    }
+  }
+
+  .services-price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .services-price-title {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    line-height: 140%;
+  }
+}

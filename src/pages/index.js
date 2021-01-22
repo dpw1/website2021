@@ -9,7 +9,7 @@ import HomeLayout from "./../layouts/HomeLayout"
 const Index = props => {
   return (
     <HomeLayout
-      className="o k        "
+      className="o k      "
       posts={props.data.allWordpressPost.nodes}
     ></HomeLayout>
   )

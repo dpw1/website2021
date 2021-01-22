@@ -64,7 +64,7 @@ const BlogShowcase = props => {
 
   let { nodes: data } = useStaticQuery(graphql`
     query BlogsQuery {
-      allWordpressPost {
+      allWordpressPost(filter: { categories_names: { eq: "Blog" } }) {
         nodes {
           title
           slug

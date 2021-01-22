@@ -370,6 +370,35 @@ video {
 [id] .swiper-button-prev {
   color: #9b9b9b80;
 }
+
+$btn-custom-bg: linear-gradient(to bottom, #00baba, #00aaaa);
+
+.btn--custom {
+  font-weight: 500;
+  display: inline-block;
+  height: 40px;
+  line-height: 41px;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  color: white;
+
+  box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.1), inset 1px 2px 0 0 #ffffff;
+  background: linear-gradient(#00baba, #00aaaa);
+  background-size: 1px 250px;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background-position: 100px;
+    // background-image: $btn-custom-bg-hover !important;
+    color: white;
+    box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.1), inset 1px 2px 0 0 #ffffff;
+  }
+}
+
 /* ALL PAGES end
 =============================================== */
 

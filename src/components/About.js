@@ -8,7 +8,7 @@ function About(props) {
   return (
     <section
       id="about"
-      className={`about section features-area overflow-hidden ptb_25 ${
+      className={`about section features-area overflow-hidden bg-gray ptb_25 ${
         props.page === "about" && "about-page"
       }`}
     >
@@ -47,10 +47,10 @@ function About(props) {
                   <div className="about-text icon-text media-body align-self-center align-self-md-start">
                     <p className="d-sm-block">
                       Greetings! My name is Diego Fortes. I am a Computer
-                      Science graduate software engineer with 10 years of coding
-                      experience and 7 years of professional experience in
-                      Shopify development.
+                      Science graduate software engineer who has been working as
+                      a Shopify developer since 2012.
                     </p>
+
                     <p className="d-block mt-4">
                       The main intent of <b className="custom-emphasis">EZFY</b>{" "}
                       is to cater all of your technical Shopify needs so you can
@@ -66,10 +66,10 @@ function About(props) {
                       out for some ideas.
                     </p>
                     <p className="d-block mt-4">
-                      We help dozens of Shopify merchants everyday. Feel free to
-                      read their testimonials about our work by{" "}
+                      We also invite you to take a look at what our previous
+                      customers testimonials, just{" "}
                       <Link to="/#reviews" className=" custom-link">
-                        clicking here
+                        click here
                       </Link>
                       .
                     </p>
