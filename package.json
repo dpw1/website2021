@@ -23,6 +23,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.1",
+    "element-in-view": "^0.1.0",
     "faker": "^5.1.0",
     "gatsby": "^2.31.0",
     "gatsby-plugin-dynamic-routes": "^1.0.0",

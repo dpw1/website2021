@@ -3,9 +3,17 @@ import parse from "html-react-parser"
 
 import "./Product.scss"
 import StarRating from "./StarRating"
+import FloatingButton from "./FloatingButton"
 
 export default function Product(props) {
   const { product: productData } = props
+
+  const price =
+    productData.price.toLowerCase() === "free"
+      ? productData.price
+      : `$${productData.price}`
+
+  const url = productData.addToCart ? productData.addToCart : productData.url
 
   useEffect(() => {
     window.productPage = (function () {
@@ -33,7 +41,6 @@ export default function Product(props) {
     window.productPage.init()
   }, [])
 
-  console.log(productData)
   return (
     <section className="Product">
       <div className="Product-container container">
@@ -45,22 +52,12 @@ export default function Product(props) {
 
         <div className="Product-description">
           <h1 className="Product-title">{productData.title}</h1>
-          <h2 className="Product-price">
-            {productData.price.toLowerCase() === "free"
-              ? productData.price
-              : `$${productData.price}`}
-          </h2>
+          <h2 className="Product-price">{price}</h2>
           {/* <div className="Product-stars">
             <StarRating></StarRating>
           </div> */}
 
-          <a
-            href={
-              productData.addToCart ? productData.addToCart : productData.url
-            }
-            target="_blank"
-            className="Product-atc btn--custom"
-          >
+          <a href={url} target="_blank" className="Product-atc btn--custom">
             Download now
           </a>
 
@@ -69,6 +66,7 @@ export default function Product(props) {
           </div>
         </div>
       </div>
+      <FloatingButton url={url} price={price} />
     </section>
   )
 }

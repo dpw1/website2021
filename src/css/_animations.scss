@@ -88,5 +88,17 @@
   }
 }
 
+@keyframes floating {
+  from {
+    bottom: -50px;
+  }
+}
+
+@keyframes unfloating {
+  to {
+    bottom: -75px;
+  }
+}
+
 /* ANIMATIONS end
 =============================================== */

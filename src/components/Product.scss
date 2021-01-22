@@ -1,7 +1,7 @@
 @import "../css/variables";
 @import "../css/animations";
 
-$image-width: 60%;
+$image-width: 50%;
 $border-padding: 30px;
 
 .Product {
@@ -36,6 +36,8 @@ $border-padding: 30px;
       color: $link-color !important;
     }
 
+    //subtitles within description
+    p > strong > u,
     > p > u > b,
     > p > b > u {
       font-size: 18px;
@@ -53,7 +55,7 @@ $border-padding: 30px;
   }
 
   &-atc {
-    display: block;
+    display: inline-table;
     margin-bottom: $border-padding;
   }
 
