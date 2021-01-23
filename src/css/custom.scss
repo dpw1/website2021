@@ -400,10 +400,13 @@ $btn-custom-bg: linear-gradient(to bottom, #00baba, #00aaaa);
 }
 
 /* Facebook chat bubble */
-.fb_dialog iframe {
-  position: relative;
-  transform: scale(0.75);
-  right: 0px !important;
+
+@media (max-width: $xxxs) {
+  .fb_dialog iframe {
+    position: relative;
+    transform: scale(0.75);
+    right: 0px !important;
+  }
 }
 
 /* ALL PAGES end

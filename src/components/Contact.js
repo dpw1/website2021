@@ -1,8 +1,39 @@
-import React from "react"
+import React, { useState } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
+import { useForm } from "react-hook-form"
+import { useStatePersist as useStickyState } from "use-state-persist"
 
 import "./Contact.scss"
 
 function Contact() {
+  const [isSendingMessage, setIsSendingMessage] = useState(false)
+  const [error, setError] = useState("")
+  const [isFormValid, setIsFormValid] = useState(false)
+  const { register, handleSubmit, watch, errors } = useForm()
+
+  function onCaptchaValidated(value) {
+    console.log("Captcha value:", value)
+    setIsFormValid(true)
+  }
+
+  const onSubmit = data => {
+    console.log(data)
+
+    if (!isFormValid) {
+      console.log("RECAPTCHA IS NOT VALID")
+
+      setError(
+        "Please do the ReCaptcha above before sending your email. Thank you!"
+      )
+      return
+    }
+
+    setError("")
+    setIsSendingMessage(true)
+
+    window.document.querySelector(`#contact-form`).submit()
+  }
+
   return (
     <section id="contact" className="contact-area bg-gray ptb_50">
       <div className="container">
@@ -82,7 +113,8 @@ function Contact() {
               <form
                 id="contact-form"
                 method="POST"
-                action="https://formspree.io/diego.boarutto.fortes@gmail.com"
+                onSubmit={handleSubmit(onSubmit)}
+                action="https://api.formcake.com/api/form/e60cc492-18b4-4e39-8f4f-09a2ef75ae3a/submission"
               >
                 <div className="row">
                   <div className="col-12">
@@ -93,6 +125,18 @@ function Contact() {
                         name="_replyto"
                         placeholder="Your email *"
                         required="required"
+                        ref={register}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="_store"
+                        ref={register}
+                        placeholder="Your Shopify store URL (optional)"
                       />
                     </div>
                   </div>
@@ -103,16 +147,29 @@ function Contact() {
                         name="message"
                         placeholder="Message *"
                         required="required"
+                        ref={register}
                         defaultValue={""}
                       />
                     </div>
                   </div>
+
+                  <div className="col-12">
+                    <div className="form-group form-group--recaptcha">
+                      <ReCAPTCHA
+                        sitekey={"6LfJbTgaAAAAAP0Q7ppx4JbrIIICEo0Z2YyFCAbK"}
+                        onChange={onCaptchaValidated}
+                      ></ReCAPTCHA>
+                    </div>
+
+                    <p className="form-error">{error ? error : ""}</p>
+                  </div>
+
                   <div className="col-12">
                     <button type="submit" className="btn btn-lg btn-block mt-3">
                       <span className="text-white pr-3">
                         <i className="fas fa-paper-plane" />
                       </span>
-                      Send Message
+                      {isSendingMessage ? "Loading..." : "Send Message"}
                     </button>
                   </div>
                 </div>

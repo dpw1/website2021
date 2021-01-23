@@ -1,0 +1,11 @@
+.ProductBreadcrumb {
+  display: flex;
+  color: black;
+  padding-top: 120px;
+  padding-bottom: 40px;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

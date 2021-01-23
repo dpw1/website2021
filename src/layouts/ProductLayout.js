@@ -12,6 +12,8 @@ import parse from "html-react-parser"
 import { SEO } from "./../components/SEO"
 import Product from "./../components/Product"
 import striptags from "striptags"
+import BlogBreadcrumb from "../components/BlogBreadcrumb"
+import ProductBreadcrumb from "./../components/ProductBreadcrumb"
 
 const ProductLayout = props => {
   const [url, setUrl] = useState("")
@@ -45,6 +47,7 @@ const ProductLayout = props => {
       <Header page={"shop"} darkMode={true}>
         {" "}
       </Header>
+      {/* <ProductBreadcrumb></ProductBreadcrumb> */}
 
       <Product product={productData}></Product>
       <Contact></Contact>

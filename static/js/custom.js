@@ -40,7 +40,6 @@
       if ($(this).scrollTop() > offset) {
         $("#scrollUp").fadeIn(duration)
       } else {
-        // alert("fix this plz");
         $("#scrollUp").fadeOut(duration)
       }
     })
@@ -686,7 +685,7 @@ ezfy = (function () {
       }
 
       window.onload = function () {
-        emailSuccess()
+        setTimeout(emailSuccess, 100)
       }
     },
   }

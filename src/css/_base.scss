@@ -2251,6 +2251,10 @@ textarea.form-control.is-invalid {
     transition: none;
   }
 }
+
+.btn:disabled{
+  cursor: not-allowed;
+}
 .btn:hover {
   color: #212529;
   text-decoration: none;
