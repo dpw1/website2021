@@ -2,47 +2,16 @@ import React, { useEffect, useState } from "react"
 import "./Shop.scss"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Product from "./ProductItem"
+import ProductItem from "./ProductItem"
 // import { sanitizeProducts } from "../utils/utils"
 
 import globalUtils from "../../global-utils"
+import { productsQuery } from "../utils/utils"
 
 function Shop(props) {
   const [products, setProducts] = useState(null)
 
-  let data = useStaticQuery(graphql`
-    query ProductsQuery {
-      allWordpressProducts {
-        edges {
-          node {
-            wordpress_id
-            ejunkie {
-              products {
-                images
-                name
-                details
-                number
-                tags
-                sub_items {
-                  price
-                }
-              }
-            }
-            gumroad {
-              products {
-                name
-                formatted_price
-                preview_url
-                short_url
-                description
-                published
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  let data = productsQuery()
 
   useEffect(() => {
     setProducts(globalUtils.sanitizeProducts(data))
@@ -116,7 +85,7 @@ function Shop(props) {
           </div>
           <div className="col-12 col-lg-12">
             <div className="portfolio-row row">
-              {products && products.map(e => Product(e))}
+              {products && products.map(e => ProductItem(e))}
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ import ReviewsText from "./../components/ReviewsText"
 import { SEO } from "../components/SEO.js"
 import WhatDoWeDo from "./../components/WhatDoWeDo"
 import Features from "./../components/Features"
+import ProductShowcase from "./../components/ProductShowcase"
 
 const HomeLayout = props => {
   return (
@@ -25,6 +26,14 @@ const HomeLayout = props => {
       <Hero scrollTo="#about"></Hero>
       <About></About>
       {/* <Features> </Features> */}
+      <ProductShowcase
+        chosenProducts={[
+          "Debut Theme Slider (PRO)",
+          "Debut Theme Sticky Navbar (PRO)",
+          `Debut Slider & Sticky Nav (Ultimate Bundle)`,
+        ]}
+        page="home"
+      ></ProductShowcase>
       <BlogShowcase totalPosts={3} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
       <Parallax

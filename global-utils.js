@@ -3,6 +3,9 @@ const parse = require("html-react-parser")
 /**/ ;(function (exports) {
   /**
    * Sanitizes all the e-junkie and gumroad products coming from Graphql Wordpress' API.
+   *
+   * This data is coming from the function productsQuery() in utils.js
+   *
    * Parameters:
    *
    * @param {object} data = All the ejunkie and gumroad products.
@@ -27,9 +30,11 @@ const parse = require("html-react-parser")
         .join("-")
 
       return products.push({
+        id: e.number,
         title: e.name,
         price,
-        SEODescription: "",
+        tags: e.tags,
+        SEODescription: e.description,
         description: e.details,
         thumbnail: e.images[0],
         slug,
@@ -48,11 +53,13 @@ const parse = require("html-react-parser")
       const SEOdescription = parse(e.description)
 
       return products.push({
+        id: e.wordpress_id,
         title: e.name,
         price: /0\+/.test(e.formatted_price)
           ? "Free"
           : e.formatted_price.replace("$", ""),
         slug,
+        tags: [],
         SEOdescription,
         description: e.description,
         thumbnail: e.preview_url,

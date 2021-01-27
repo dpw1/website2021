@@ -12,6 +12,7 @@ exports.createPages = async ({ actions }) => {
   const { data: _products } = await axios.get(
     `https://ezfy.club/json/custom/products`
   )
+
   const products = globalUtils.sanitizeProducts(_products, (graphql = false))
 
   blogPosts.map(async e => {
@@ -22,11 +23,11 @@ exports.createPages = async ({ actions }) => {
     })
   })
 
-  products.map(e => {
+  products.map(async product => {
     return createPage({
-      path: `shop/${e.slug}`,
+      path: `shop/${product.slug}`,
       component: path.resolve("./src/layouts/ProductLayout.js"),
-      context: e,
+      context: product,
     })
   })
 }

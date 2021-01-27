@@ -5,6 +5,14 @@ import "./Product.scss"
 import StarRating from "./StarRating"
 import FloatingButton from "./FloatingButton"
 
+/**
+ *
+ * Item for product page.
+ *
+ * @param {*} props
+ *
+ */
+
 export default function Product(props) {
   const { product: productData } = props
 
@@ -44,9 +52,9 @@ export default function Product(props) {
   return (
     <section className="Product">
       <div className="Product-container container">
-        <div className="Product-image">
+        <div className="Product-picture">
           <figure className="Product-figure">
-            <img src={productData.thumbnail} alt="" />
+            <img className="Product-img" src={productData.thumbnail} alt="" />
           </figure>
         </div>
 

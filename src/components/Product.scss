@@ -8,6 +8,9 @@ $border-padding: 30px;
   padding-bottom: 40px;
   padding-top: 120px;
 
+  &-img {
+    border-radius: $border-radius;
+  }
   &-container {
     display: flex;
     @media (max-width: $xs) {
@@ -37,10 +40,12 @@ $border-padding: 30px;
     }
 
     //subtitles within description
-    p > strong > u,
+
+    > p > u > strong,
+    > p > strong > u,
     > p > u > b,
     > p > b > u {
-      font-size: 18px;
+      font-size: 18px !important;
     }
   }
   &-title {
@@ -61,13 +66,14 @@ $border-padding: 30px;
     margin-bottom: $border-padding;
   }
 
-  &-image {
+  &-picture {
     max-width: calc(#{$image-width});
     width: 100%;
     padding-right: 40px;
 
     @media (max-width: $xs) {
       max-width: 100%;
+      padding: 0;
     }
   }
 
@@ -85,7 +91,7 @@ $border-padding: 30px;
       min-height: 21vw;
 
       @media (max-width: $xs) {
-        min-height: 37vw;
+        min-height: 47vw;
       }
     }
   }

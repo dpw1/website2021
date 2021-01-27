@@ -64,7 +64,9 @@ const BlogShowcase = props => {
 
   let { nodes: data } = useStaticQuery(graphql`
     query BlogsQuery {
-      allWordpressPost(filter: { categories_names: { eq: "Blog" } }) {
+      allWordpressPost(
+        filter: { categories: {}, categories_names: { eq: "Blog" } }
+      ) {
         nodes {
           title
           slug
@@ -139,7 +141,7 @@ const BlogShowcase = props => {
   return (
     <section
       id="blogShowcase"
-      className="section blog-area blog-showcase ptb_50"
+      className="section blog-area blog-showcase ptb_50 bg-gray"
     >
       <div className="container">
         <div className="row justify-content-center">

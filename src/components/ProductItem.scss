@@ -1,4 +1,7 @@
-.product {
+@import "../css/variables";
+@import "../css/animations";
+
+.ProductItem {
   &-image {
     .custom-overlay {
       &:after {
@@ -48,5 +51,26 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
     line-height: 140%;
+  }
+}
+
+.ProductItem--homepage {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin-bottom: 40px;
+
+  @media (max-width: $xs) {
+    margin-bottom: 30px;
+  }
+
+  .single-portfolio {
+    @media (min-width: $xs) {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  .portfolio-content {
+    padding-bottom: 0 !important;
   }
 }

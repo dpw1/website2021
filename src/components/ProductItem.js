@@ -5,19 +5,26 @@ import { replaceAll } from "../utils/utils"
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import { Link } from "gatsby"
 
-function Product(item) {
-  const { title, price, description, thumbnail, url, slug } = item
+function ProductItem(props) {
+  const { title, price, description, thumbnail, url, slug: _slug } =
+    "item" in props ? props.item : props
 
+  const slug = props.page === "home" ? `/shop/${_slug}` : _slug
   const fancyboxOptions = { buttons: ["close"], gutter: 15, loop: true }
 
   return (
     <article
-      key={JSON.stringify(item)}
-      className="product col-12 col-md-6 col-lg-4  portfolio-item services-item"
+      key={JSON.stringify(props)}
+      className={`product ProductItem col-12 col-md-6 col-lg-4   portfolio-item services-item ${
+        props.page === "home" ? "ProductItem--homepage" : ""
+      }`}
     >
       <div className="single-portfolio service-single res-margin">
-        {/* Portfolio Thumb */}
-        <Link className="product-image   portfolio-thumb blog-thumb" to={slug}>
+        {/* Portfolio Thumb  */}
+        <Link
+          className="ProductItem-image   portfolio-thumb blog-thumb"
+          to={slug}
+        >
           {/\.mp4/gim.test(thumbnail) ? (
             <video controls>
               <source src={thumbnail} />
@@ -36,30 +43,30 @@ function Product(item) {
         {/* Portfolio Content */}
         <div className="portfolio-content services-content blog-content p-4">
           {/* Portfolio Title */}
-          <div className="services-price product-price">
+          <div className="services-price ProductItem-price">
             <h3 className="blog-title services-price-title my-3">
               <Link to={slug} data-options={JSON.stringify(fancyboxOptions)}>
                 <span>{parse(title)}</span>
               </Link>
             </h3>
-            <h3 className="services-price-small product-price-small color-primary">
+            <h3 className="services-price-small ProductItem-price-small color-primary">
               {/free/gim.test(price) || <small className="fw-7">$</small>}
               {price}
             </h3>
           </div>
 
-          <div className="product-description ">
+          <div className="ProductItem-description ">
             <React.Fragment>
               {parse(replaceAll(description, { "\n": " ", "<br>": "" }))}
             </React.Fragment>
           </div>
         </div>
-        <div className="product-action">
+        <div className="ProductItem-action">
           {/* <p>Slug: {slug}</p> */}
 
           <Link
             to={slug}
-            className="product-action-button btn mt-4 buy-now-button"
+            className="ProductItem-action-button btn mt-4 buy-now-button"
           >
             View Details
           </Link>
@@ -79,4 +86,4 @@ function Product(item) {
   )
 }
 
-export default Product
+export default ProductItem

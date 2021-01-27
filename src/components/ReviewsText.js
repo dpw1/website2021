@@ -193,7 +193,7 @@ const Review = props => {
 
 function ReviewsText() {
   return (
-    <div id="reviews" className="reviews-text ptb_50 bg-gray">
+    <div id="reviews" className="reviews-text ptb_50">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-7">
