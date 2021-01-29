@@ -2,6 +2,19 @@ const parse = require("html-react-parser")
 
 /**/ ;(function (exports) {
   /**
+   *
+   * Limits a phrase to a certain number of characters without cutting off words.
+   *
+   * @param {*} str = string to shorten
+   * @param {*} maxLen = how many characters you want it to have
+   * @param {*} separator = separator between words
+   */
+  exports.shortenString = function (str, maxLen = 100, separator = " ") {
+    if (str.length <= maxLen) return str
+    return str.substr(0, str.lastIndexOf(separator, maxLen))
+  }
+
+  /**
    * Sanitizes all the e-junkie and gumroad products coming from Graphql Wordpress' API.
    *
    * This data is coming from the function productsQuery() in utils.js
@@ -34,7 +47,7 @@ const parse = require("html-react-parser")
         title: e.name,
         price,
         tags: e.tags,
-        SEODescription: e.description,
+        miniDescription: e.description,
         description: e.details,
         thumbnail: e.images[0],
         slug,
@@ -50,8 +63,7 @@ const parse = require("html-react-parser")
 
       var _word = e.short_url.split("/")
       var slug = _word[_word.length - 1]
-      const SEOdescription = parse(e.description)
-
+      const miniDescription = `${exports.shortenString(e.description)} (...)`
       return products.push({
         id: e.wordpress_id,
         title: e.name,
@@ -60,7 +72,7 @@ const parse = require("html-react-parser")
           : e.formatted_price.replace("$", ""),
         slug,
         tags: [],
-        SEOdescription,
+        miniDescription,
         description: e.description,
         thumbnail: e.preview_url,
         url: e.short_url,

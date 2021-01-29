@@ -21,8 +21,8 @@ const ProductLayout = props => {
   console.log(props)
   const productData = props.pageContext
 
-  const description = productData.SEODescription
-    ? productData.SEODescription
+  const description = productData.miniDescription
+    ? productData.miniDescription
     : `${striptags(productData.description)
         .split(" ")
         .splice(0, 15)

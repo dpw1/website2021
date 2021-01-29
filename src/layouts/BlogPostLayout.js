@@ -12,6 +12,7 @@ import BlogContent from "../components/BlogContent"
 import Parallax from "../components/Parallax"
 import parse from "html-react-parser"
 import { SEO } from "./../components/SEO"
+import ProductShowcase from "./../components/ProductShowcase"
 
 const BlogPostLayout = props => {
   const [url, setUrl] = useState("")
@@ -41,6 +42,15 @@ const BlogPostLayout = props => {
       ></SEO>
       <Header page={"blog"}></Header>
       <BlogContent post={post}></BlogContent>
+      <ProductShowcase
+        backgroundColor="gray"
+        chosenProducts={[
+          `Debut Slider & Sticky Nav (Ultimate Bundle)`,
+          "Debut Theme Slider (PRO)",
+          "Debut Theme Sticky Navbar (PRO)",
+        ]}
+        page="home"
+      />
       <Parallax
         title="In need of a Shopify developer?"
         subtitle={`Get in touch with us, we'll work together to find

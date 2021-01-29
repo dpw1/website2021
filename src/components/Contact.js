@@ -5,7 +5,7 @@ import { useStatePersist as useStickyState } from "use-state-persist"
 
 import "./Contact.scss"
 
-function Contact() {
+function Contact(props) {
   const [isSendingMessage, setIsSendingMessage] = useState(false)
   const [error, setError] = useState("")
   const [isFormValid, setIsFormValid] = useState(false)
@@ -35,7 +35,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="contact-area bg-gray ptb_50">
+    <section id="contact" className={`contact-area bg-gray ptb_50`}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-6">

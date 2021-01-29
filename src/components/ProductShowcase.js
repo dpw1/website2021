@@ -49,7 +49,9 @@ export default function ProductShowcase(props) {
     <section
       className={`ptb_50 section ProductShowcase ${
         props.page === "home" ? "ProductShowcase--homepage" : ""
-      }`}
+      }
+      ${props.backgroundColor === "gray" ? "bg-gray" : ""}
+      `}
     >
       <div className="container">
         <div className="row justify-content-center">

@@ -6,8 +6,15 @@ import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import { Link } from "gatsby"
 
 function ProductItem(props) {
-  const { title, price, description, thumbnail, url, slug: _slug } =
-    "item" in props ? props.item : props
+  const {
+    title,
+    price,
+    description,
+    miniDescription,
+    thumbnail,
+    url,
+    slug: _slug,
+  } = "item" in props ? props.item : props
 
   const slug = props.page === "home" ? `/shop/${_slug}` : _slug
   const fancyboxOptions = { buttons: ["close"], gutter: 15, loop: true }
@@ -15,14 +22,14 @@ function ProductItem(props) {
   return (
     <article
       key={JSON.stringify(props)}
-      className={`product ProductItem col-12 col-md-6 col-lg-4   portfolio-item services-item ${
+      className={`product ProductItem col-12 col-md-6 col-lg-4     portfolio-item services-item ${
         props.page === "home" ? "ProductItem--homepage" : ""
       }`}
     >
       <div className="single-portfolio service-single res-margin">
         {/* Portfolio Thumb  */}
         <Link
-          className="ProductItem-image   portfolio-thumb blog-thumb"
+          className="ProductItem-image portfolio-thumb blog-thumb"
           to={slug}
         >
           {/\.mp4/gim.test(thumbnail) ? (
@@ -41,7 +48,7 @@ function ProductItem(props) {
           )}
         </Link>
         {/* Portfolio Content */}
-        <div className="portfolio-content services-content blog-content p-4">
+        <div className="ProductItem-content   portfolio-content services-content blog-content p-4">
           {/* Portfolio Title */}
           <div className="services-price ProductItem-price">
             <h3 className="blog-title services-price-title my-3">
@@ -57,7 +64,7 @@ function ProductItem(props) {
 
           <div className="ProductItem-description ">
             <React.Fragment>
-              {parse(replaceAll(description, { "\n": " ", "<br>": "" }))}
+              {parse(replaceAll(miniDescription, { "\n": " ", "<br>": "" }))}
             </React.Fragment>
           </div>
         </div>
