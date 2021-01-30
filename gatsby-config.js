@@ -74,7 +74,7 @@ module.exports = {
           /^Product-/,
         ],
         whitelist: ["wp-block-table", "Product-text"],
-        ignore: ["custom.scss", "Product.scss"],
+        ignore: ["custom.scss", "Product.scss", "ProductItem.scss"],
       },
     },
   ],

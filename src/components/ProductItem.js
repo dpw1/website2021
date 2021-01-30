@@ -22,7 +22,7 @@ function ProductItem(props) {
   return (
     <article
       key={JSON.stringify(props)}
-      className={`product ProductItem col-12 col-md-6 col-lg-4     portfolio-item services-item ${
+      className={`product ProductItem col-12 col-md-6 col-lg-4      portfolio-item services-item ${
         props.page === "home" ? "ProductItem--homepage" : ""
       }`}
     >

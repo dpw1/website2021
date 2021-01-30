@@ -1,6 +1,8 @@
 @import "../css/variables";
 @import "../css/animations";
 
+$self: ".ProductItem";
+
 .ProductItem {
   &-image {
     .custom-overlay {
@@ -45,15 +47,31 @@
     text-align: center;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+
+    @media (min-width: $xs) {
+      height: 80px;
+      position: relative;
+    }
   }
 
   &-action-button {
     width: 100%;
-    max-width: 100%;
     margin: 0 auto !important;
     display: block !important;
     padding-top: 9px !important;
     padding-bottom: 9px !important;
+
+    @media (min-width: $xs) {
+      position: absolute !important;
+      bottom: 10px !important;
+      max-width: calc(100% - 48px) !important;
+      left: 0 !important;
+      right: 0 !important;
+    }
+
+    @media (max-width: $xs) {
+      margin-top: 1.5rem !important;
+    }
   }
 
   .services-price {
@@ -83,6 +101,12 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   padding: 0 !important;
   margin-bottom: 40px;
+
+  #{ $self }-action {
+    @media (min-width: $xs) {
+      position: static !important;
+    }
+  }
 
   @media (max-width: $xs) {
     margin-bottom: 30px;
