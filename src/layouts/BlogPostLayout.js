@@ -47,13 +47,13 @@ const BlogPostLayout = props => {
         chosenProducts={[
           `Debut Slider & Sticky Nav (Ultimate Bundle)`,
           "Debut Theme Slider (PRO)",
-          "Debut Theme Sticky Navbar (PRO)",
+          "Debut Theme - Second Image on Hover",
         ]}
         page="home"
       />
       <Parallax
         title="In need of a Shopify developer?"
-        subtitle={`Get in touch with us, we'll work together to find
+        subtitle={`Feel free to reach out, we'll work together to find
             a custom solution that attend your needs.`}
         buttonText="Request a free quote"
       ></Parallax>

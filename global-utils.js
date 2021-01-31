@@ -1,5 +1,5 @@
 const parse = require("html-react-parser")
-
+const replaceAll = require("string.prototype.replaceall")
 /**/ ;(function (exports) {
   /**
    *
@@ -28,6 +28,7 @@ const parse = require("html-react-parser")
     const _data = graphql ? data.allWordpressProducts.edges[0].node : data
     const ejunkie = _data.ejunkie.products
     const gumroad = _data.gumroad.products
+
     let products = []
 
     ejunkie.map(e => {
@@ -36,11 +37,13 @@ const parse = require("html-react-parser")
         .replace("$", "")
         .replace(".00", "")
 
-      const slug = e.name
+      const _slug = e.name
         .replace(/[^\w\s]/gi, "")
         .toLowerCase()
         .split(" ")
         .join("-")
+
+      const slug = replaceAll(_slug, "--", "-")
 
       return products.push({
         id: e.number,
@@ -62,8 +65,12 @@ const parse = require("html-react-parser")
       }
 
       var _word = e.short_url.split("/")
-      var slug = _word[_word.length - 1]
+      const _slug = _word[_word.length - 1]
+
+      const slug = replaceAll(_slug, "--", "-")
+
       const miniDescription = `${exports.shortenString(e.description)} (...)`
+
       return products.push({
         id: e.wordpress_id,
         title: e.name,

@@ -29,7 +29,7 @@ const HomeLayout = props => {
       <ProductShowcase
         chosenProducts={[
           "Debut Theme Slider (PRO)",
-          "Debut Theme Sticky Navbar (PRO)",
+          "Debut Theme - Second Image on Hover",
           `Debut Slider & Sticky Nav (Ultimate Bundle)`,
         ]}
         page="home"
