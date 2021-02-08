@@ -44,64 +44,6 @@ export const getWordpressImageBiggestSize = imageSrc => {
   return img.replace(/(-\d{3,4}x\d{3,4})(\.\w{3,4})/gim, "$2")
 }
 
-export const homepageNavbarLinks = [
-  {
-    name: "About",
-    url: [
-      {
-        name: "Who we are",
-        url: "/#about",
-        offset: -60,
-        scroll: true,
-      },
-      {
-        name: "Reviews",
-        url: "/#reviews",
-        offset: -40,
-        scroll: true,
-      },
-
-      {
-        name: "Portfolio",
-        url: siteRoutes.portfolio,
-        offset: -40,
-        scroll: false,
-      },
-
-      {
-        name: "FAQ",
-        url: "/#faq",
-        offset: -60,
-        scroll: true,
-      },
-    ],
-  },
-
-  {
-    name: "Services",
-    url: [
-      {
-        name: "Shop",
-        url: "/shop",
-        scroll: false,
-        badge: "New",
-      },
-    ],
-  },
-  {
-    name: "Blog",
-    url: siteRoutes.blog,
-    offset: -40,
-    scroll: false,
-  },
-  {
-    name: "Contact",
-    url: "#contact",
-    offset: -60,
-    scroll: true,
-  },
-]
-
 export const defaultNavbarLinks = [
   {
     name: "About",
@@ -158,9 +100,9 @@ export const defaultNavbarLinks = [
   },
   {
     name: "Contact",
-    url: "#contact",
+    url: siteRoutes.contactSection,
     offset: -60,
-    scroll: true,
+    scroll: false,
   },
 ]
 
@@ -191,42 +133,9 @@ export const footerNavbarLinks = [
   },
   {
     name: "Contact",
-    url: "#contact",
+    url: siteRoutes.contactSection,
     offset: -60,
-    scroll: true,
-  },
-]
-
-export const blogNavbarLinks = [
-  {
-    name: "Home",
-    url: "/",
-    offset: 0,
     scroll: false,
-  },
-  {
-    name: "Services",
-    url: "/#services",
-    offset: 0,
-    scroll: false,
-  },
-  {
-    name: "Portfolio",
-    url: siteRoutes.portfolio,
-    offset: 0,
-    scroll: false,
-  },
-  {
-    name: "Blog",
-    url: siteRoutes.blog,
-    offset: 0,
-    scroll: false,
-  },
-  {
-    name: "Contact",
-    url: "#contact",
-    offset: -60,
-    scroll: true,
   },
 ]
 

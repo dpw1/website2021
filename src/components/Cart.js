@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import { useStatePersist as useStickyState } from "use-state-persist"
 import parse from "html-react-parser"
 import { useMediaQuery } from "react-responsive"
+import validator from "validator"
 
 import "./Cart.scss"
 import TrashIcon from "./icons/TrashIcon"
@@ -123,6 +124,11 @@ function Cart(props) {
 
   const onSubmit = data => {
     console.log(data)
+
+    if (!validator.isURL(data._store)) {
+      setError(`Please make sure your store's URL is valid.`)
+      return
+    }
 
     if (!isFormValid) {
       setError(

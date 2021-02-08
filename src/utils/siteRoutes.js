@@ -8,4 +8,5 @@ export const siteRoutes = {
   faq: "/#faq",
   products: "/shop",
   cart: "/cart",
+  contactSection: "/#contact",
 }

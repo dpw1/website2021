@@ -81,7 +81,8 @@
     "timeago.js": "^4.0.2",
     "truncate": "^2.1.0",
     "use-query-params": "^1.1.9",
-    "use-state-persist": "^0.2.3"
+    "use-state-persist": "^0.2.3",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
