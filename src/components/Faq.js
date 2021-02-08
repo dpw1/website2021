@@ -67,7 +67,7 @@ const questions = [
   },
   {
     question: `How much do you charge?`,
-    answer: () => <p>Our starting price is $40 USD/hour.</p>,
+    answer: () => <p>Our starting price is $35 USD/hour.</p>,
   },
 ]
 

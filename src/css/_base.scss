@@ -4012,6 +4012,7 @@ input[type="submit"].btn-block {
   .navbar-expand-lg .navbar-nav {
     -ms-flex-direction: row;
     flex-direction: row;
+    align-items: center;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
@@ -20415,6 +20416,13 @@ $navbar-speed: 0.1s;
     right: -100%;
     -webkit-transition: right 0.2s 0.1s;
     transition: right 0.2s 0.1s;
+  }
+
+  @media (max-width: 330px){
+    .navbar .navbar-inner {
+      right: -107%;
+    }
+
   }
 
   .navbar .nav-link {

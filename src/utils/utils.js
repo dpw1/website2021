@@ -138,10 +138,15 @@ export const defaultNavbarLinks = [
     name: "Services",
     url: [
       {
+        name: "Services",
+        url: siteRoutes.services,
+        scroll: false,
+      },
+      {
         name: "Shop",
         url: siteRoutes.shop,
         scroll: false,
-        badge: "New",
+        badge: "Popular",
       },
     ],
   },
@@ -389,4 +394,34 @@ export const productsQuery = () => {
   `)
 
   return data
+}
+
+export function shuffle(array) {
+  var i = array.length,
+    temp,
+    random
+
+  while (0 !== i) {
+    random = Math.floor(Math.random() * i)
+    i -= 1
+
+    temp = array[i]
+    array[i] = array[random]
+    array[random] = temp
+  }
+
+  return array
+}
+
+export function formatCurrency(amount) {
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+  })
+
+  return formatter.format(amount)
 }

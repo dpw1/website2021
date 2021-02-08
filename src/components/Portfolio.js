@@ -223,7 +223,7 @@ const PortfolioItem = item => {
               {/* <i class="fas fa-play"></i> */}
             </div>
           </a>
-          <figure className="custom-overlay">
+          <figure className="aspect-ratio custom-overlay">
             <img
               className="lazyload"
               data-src={image}

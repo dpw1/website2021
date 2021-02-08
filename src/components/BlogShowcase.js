@@ -27,16 +27,16 @@ const BlogItem = props => {
   return (
     <div className="col-12 col-md-6 col-lg-4 blog-item">
       <article className="single-blog res-margin">
-        <figure className="blog-thumb">
-          <Link className="linked" to={url}>
+        <Link className="linked" to={url}>
+          <figure className="aspect-ratio blog-thumb">
             <img
               className="lazyload"
               loading="lazy"
               data-src={image}
               alt={imagealt && imagealt.length >= 1 ? imagealt : title}
             />
-          </Link>
-        </figure>
+          </figure>
+        </Link>
 
         <div className="blog-content p-4">
           <ul className="meta-info d-flex justify-content-between">

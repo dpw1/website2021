@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useForm } from "react-hook-form"
-import { useStatePersist as useStickyState } from "use-state-persist"
 
 import "./Contact.scss"
 
@@ -55,7 +54,7 @@ function Contact(props) {
             <div className="contact-us">
               <p className="mb-3">
                 Send us an e-mail and we'll get back to you within 24 hours!
-                After you hit "send message" please make sure to do the{" "}
+                Before you click on "send message" please make sure to do the{" "}
                 <b>ReCaptcha</b> so your e-mail can be sent safely. 🙂
               </p>
               <ul className="contact-social-icons">

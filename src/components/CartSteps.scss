@@ -1,0 +1,96 @@
+@import "../css/variables";
+
+$row-width: 60%;
+
+.CartSteps {
+  background: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
+  margin-bottom: 40px;
+
+  * {
+    color: white;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: $xs) {
+      flex-direction: column;
+    }
+  }
+
+  &-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  &-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    padding-right: 20px;
+
+    @media (max-width: $xs) {
+      padding-right: 0;
+    }
+  }
+
+  &-row {
+    width: 100%;
+    &:nth-child(1) {
+      max-width: calc(100% - #{$row-width});
+
+      @media (max-width: $xs) {
+        margin-bottom: 40px;
+        text-align: center;
+      }
+    }
+
+    &:nth-child(2) {
+      max-width: $row-width;
+    }
+
+    @media (max-width: $xs) {
+      max-width: 100% !important;
+    }
+  }
+  &-items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+    margin-left: 0;
+    margin-right: 0;
+
+    @media (max-width: $xxxs) {
+      gap: 10px;
+      // display: flex;
+      // flex-direction: column;
+      // gap: unset;
+    }
+  }
+
+  &-item {
+    max-width: 100%;
+    width: 100%;
+
+    @media (max-width: $xxxs) {
+      max-width: 80%;
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-text {
+    text-align: center;
+    // font-weight: 400;
+    font-size: 14px;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+  }
+}

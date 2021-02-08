@@ -1,144 +1,187 @@
-import React, { useState, useRef } from "react";
-import "./ServicesItem.scss";
-import TrustBadge from "./TrustBadge";
-import { servicesItems } from "./../utils/utils";
-// import ReactGA from "react-ga";
-import parse from "html-react-parser";
-// ReactGA.initialize("UA-112401482-2", { testMode: true });
-// ReactGA.pageview(window.location.pathname + window.location.search);
-// import PaypalCheckout from "./PaypalCheckout";
+import React, { useEffect, useState } from "react"
+import "./ServicesItem.scss"
+import parse from "html-react-parser"
+import { replaceAll } from "../utils/utils"
+import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
+import { Link } from "gatsby"
+import { useStatePersist as useStickyState } from "use-state-persist"
+import SuccessIcon from "./atom/SuccessIcon"
 
-/* 
- *
-INFO:
+import { ToastProvider, useToasts } from "react-toast-notifications"
+import { siteRoutes } from "./../utils/siteRoutes"
 
-You can find all items' JSON at servicesItems in utils/utils
- *
- */
+const addToCartText = "Add task to cart"
+const addedToCartText = "Added! Go to cart"
 
 function ServicesItem(props) {
+  const [loading, setLoading] = useState(false)
+
+  const [isInCart, setIsInCart] = useState(false)
+  const [cartServices, setCartServices] = useStickyState("@services", [])
+
+  const { addToast } = useToasts()
+
   const {
-    tags,
-    video,
-    price,
-    image,
-    preview,
+    id,
     title,
-    loadImage,
-    paymentLink,
-    descriptionList,
-    subtitle,
-    readmore,
-  } = props;
+    excerpt: description,
+    tag_names: tags,
+    slug,
+    acf,
+    featured_image_src: thumbnail,
+  } = "item" in props ? props.item : props
 
-  const text = descriptionList ? descriptionList() : subtitle();
+  //replace this later
 
-  //   const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const { price, live_demo } = acf
+
+  console.log(acf, price)
+  const fancyboxOptions = { buttons: ["close"], gutter: 15, loop: true }
+
+  const checkIfItemIsInCart = () => {
+    const res =
+      cartServices.filter(e => {
+        console.log(e)
+        if (e.id === id) {
+          return true
+        }
+        return false
+      }).length >= 1
+
+    return res
+  }
+
+  const handleAddToCart = async () => {
+    setLoading(true)
+
+    const inCart = checkIfItemIsInCart()
+
+    if (inCart) {
+      return
+    }
+
+    try {
+      const service = {
+        id,
+        title,
+        price,
+      }
+
+      let obj = []
+
+      if (cartServices.length >= 1) {
+        obj.push(...cartServices)
+      }
+
+      obj.push(service)
+
+      setCartServices(obj)
+
+      setIsInCart(true)
+      addToast(
+        <Link className="ServicesItem-toast" to={siteRoutes.cart}>
+          New task added. <br />
+          Click here to view your cart.
+        </Link>,
+        {
+          appearance: "success",
+        }
+      )
+    } catch (error) {
+      alert("Error adding to cart. Please contact us: ezfycode@gmail.com")
+      console.log("error adding to cart: ", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    const inCart = checkIfItemIsInCart()
+    if (inCart) {
+      setIsInCart(true)
+    }
+  }, [])
 
   return (
-    <div
+    <article
       key={JSON.stringify(props)}
-      className="col-12 col-md-6 col-lg-4  portfolio-item services-item"
-      data-portfolio-item-tags={tags.join(", ")}>
+      className={`product ServicesItem col-12 col-md-6 col-lg-4      portfolio-item services-item ${
+        props.page === "home" ? "ServicesItem--homepage" : ""
+      }`}
+    >
       <div className="single-portfolio service-single res-margin">
-        {/* Portfolio Thumb */}
-        <div
-          href={video}
-          className="portfolio-thumb blog-thumb"
-          data-fancybox="/lightbox-service">
-          <figure className="custom-overlay">
-            <img
-              className="lazyload"
-              src={loadImage ? image : undefined}
-              data-src={loadImage || image}
-              alt={title}
-            />
-          </figure>
-        </div>
+        {/* Portfolio Thumb  */}
+        <Link
+          className="ServicesItem-image portfolio-thumb blog-thumb"
+          to={"/"}
+        >
+          {/\.mp4/gim.test(thumbnail) ? (
+            <video controls>
+              <source src={thumbnail} />
+            </video>
+          ) : (
+            <figure className="aspect-ratio custom-overlay ">
+              <img
+                className="lazyload"
+                src={""}
+                data-src={thumbnail}
+                alt={title}
+              />
+            </figure>
+          )}
+        </Link>
         {/* Portfolio Content */}
-        <div className="portfolio-content services-content blog-content p-4">
+        <div className="ServicesItem-content   portfolio-content services-content blog-content p-4">
           {/* Portfolio Title */}
-          <div className="services-price">
+          <div className="services-price ServicesItem-price">
             <h3 className="blog-title services-price-title my-3">
-              <a href={video} data-fancybox="/lightbox-service-1">
+              <Link to={slug} data-options={JSON.stringify(fancyboxOptions)}>
                 <span>{parse(title)}</span>
-              </a>
+              </Link>
             </h3>
-            <h3 className="services-price-small color-primary">
-              <small className="fw-7">$</small>
+            <h3 className="services-price-small ServicesItem-price-small color-primary">
+              {/free/gim.test(price) || <small className="fw-7">$</small>}
               {price}
             </h3>
           </div>
-          <ul className="meta-info d-flex services-item-list">
-            <li>
-              <a
-                rel="noopener noreferrer"
-                className={
-                  preview.length > 0
-                    ? "custom-link"
-                    : " custom-link portfolio-blocked"
-                }
-                href={preview.length <= 0 ? "#" : preview}
-                target="_blank">
-                Live demo
-              </a>
-            </li>
-            <li>
-              <a
-                rel="noreferrer"
-                className={
-                  preview.length > 0
-                    ? "custom-link"
-                    : " custom-link portfolio-blocked"
-                }
-                href={video}
-                data-fancybox="/lightbox-service-2">
-                More information
-              </a>
-            </li>
+
+          <ul className="ServicesItem-tags">
+            {tags && tags.map(e => <li className="ServicesItem-tag">{e}</li>)}
           </ul>
-
-          <div
-            className={`services-subtitle services-item-subtitle ${
-              !readmore ? "services-item-subtitle--margin" : ""
-            }`}>
-            {/* <div className="services-description">{subtitle && subtitle()}</div> */}
-            <React.Fragment>{text}</React.Fragment>
-
-            {console.log(text)}
-
-            {readmore && (
-              <a href="#" className="services-read-more custom-link">
-                Read more
-              </a>
-            )}
+          <div className="ServicesItem-description ">
+            <React.Fragment>{parse(description)}</React.Fragment>
           </div>
         </div>
-        <div
-          className={`services-button ${
-            paymentLink === "contact" ? "services-button--contact" : undefined
-          }`}>
-          {paymentLink && (
-            <a
-              onClick={() => {
-                console.log("bought");
-              }}
-              href={
-                paymentLink === "contact"
-                  ? "#contact"
-                  : `${paymentLink}?wanted=true`
-              }
-              data-gumroad-single-product="true"
-              className={`btn mt-4 buy-now-button ${
-                paymentLink === "contact" ? "scroll" : undefined
-              }`}>
-              Buy Now
-            </a>
+
+        <div className="ServicesItem-action">
+          {isInCart ? (
+            <Link
+              to={siteRoutes.cart}
+              className=" ServicesItem-action-button btn mt-4 buy-now-button ServicesItem-atc"
+            >
+              {" "}
+              <span>Added! Go to cart</span>
+            </Link>
+          ) : (
+            <button
+              onClick={() => handleAddToCart()}
+              className=" ServicesItem-action-button btn mt-4 buy-now-button ServicesItem-atc"
+            >
+              <span>Add task</span>
+            </button>
           )}
+
+          <a
+            target="_blank"
+            href={live_demo}
+            className="ServicesItem-action-button ServicesItem-details mt-4"
+          >
+            Live demo
+          </a>
         </div>
       </div>
-    </div>
-  );
+    </article>
+  )
 }
 
-export default ServicesItem;
+export default ServicesItem

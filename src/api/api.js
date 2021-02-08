@@ -29,24 +29,27 @@ export const blogApi = {
       }
     })
   },
-  getPostsGraphql: async query => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const data = useStaticQuery(graphql`
-          query GetPostsQuery {
-            allWordpressPost {
-              nodes {
-                slug
-                title
-              }
+
+  getSidebarPostsGraphql: () => {
+    try {
+      const data = useStaticQuery(graphql`
+        query GetSidebarPostsQuery {
+          allWordpressPost(filter: { categories_names: { eq: "Blog" } }) {
+            nodes {
+              slug
+              title
+              featured_image_small_src
+              date
+              excerpt
+              tag_names
             }
           }
-        `)
+        }
+      `)
 
-        resolve(data)
-      } catch (err) {
-        reject(err)
-      }
-    })
+      return data.allWordpressPost.nodes
+    } catch (err) {
+      console.log("error", err)
+    }
   },
 }

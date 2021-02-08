@@ -21,13 +21,6 @@ const BlogContent = props => {
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
   useEffect(() => {
-    const getPosts = async () => {
-      const data = await blogApi.getPosts(`per_page=5`)
-      setPosts(data)
-    }
-
-    getPosts()
-
     setUrl(window !== undefined ? window.location.href : "https://ezfycode.com")
   }, [])
 
@@ -43,7 +36,7 @@ const BlogContent = props => {
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
               <aside className="sidebar ">
                 {/* Single Widget */}
-                {posts && <PostsSidebar posts={posts}></PostsSidebar>}
+                <PostsSidebar></PostsSidebar>
               </aside>
             </div>
             <div className="blog-content-block col-12 col-lg-9">

@@ -4,7 +4,8 @@ export const siteRoutes = {
   portfolio: "/portfolio",
   shop: "/shop",
   about: "/about",
-  services: "/shop",
+  services: "/services",
   faq: "/#faq",
   products: "/shop",
+  cart: "/cart",
 }

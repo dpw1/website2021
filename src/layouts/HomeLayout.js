@@ -42,7 +42,6 @@ const HomeLayout = props => {
         buttonText={"Request a free quote"}
       ></Parallax>
       <Faq></Faq>
-      <Steps></Steps>
       <Contact></Contact>
       <Footer page={"home"}></Footer>
     </React.Fragment>

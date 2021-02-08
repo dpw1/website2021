@@ -39,7 +39,7 @@ function ProductItem(props) {
               <source src={thumbnail} />
             </video>
           ) : (
-            <figure className="custom-overlay ">
+            <figure className="aspect-ratio custom-overlay ">
               <img
                 className="lazyload"
                 src={""}

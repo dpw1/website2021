@@ -4,6 +4,7 @@
 $self: ".ProductItem";
 
 .ProductItem {
+  background-color: white;
   &-image {
     .custom-overlay {
       &:after {

@@ -1,0 +1,107 @@
+@import "../../css/variables";
+@import "../../css/animations";
+
+$cart-bubble-width: 35px;
+$cart-bubble-height: 15px;
+
+.CartButton {
+  position: relative;
+  background: unset;
+  border: unset;
+  display: flex;
+
+  svg {
+    width: 25px;
+    height: auto;
+    fill: white;
+  }
+  &:active,
+  &:focus,
+  &:visited {
+    outline: unset;
+    border: unset;
+  }
+
+  span {
+    position: relative;
+
+    width: auto;
+    height: $cart-bubble-height;
+    font-size: 10px;
+    top: 1px;
+    left: 7px;
+    z-index: 2;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background: white;
+      width: 100%;
+      height: $cart-bubble-height;
+      border-radius: 10px;
+      left: 0px;
+      top: 4px;
+      z-index: -1;
+    }
+  }
+
+  &-amount {
+    &--filled {
+      color: $black !important;
+      &:after {
+        background: $light-yellow !important;
+      }
+    }
+  }
+
+  @at-root {
+    .navbar-sticky-transitioned .CartButton {
+      padding: 0;
+      padding-top: 3px;
+      margin-left: 20px;
+
+      svg {
+        width: 20px;
+        fill: $light-gray;
+      }
+      span {
+        color: white;
+        &:after {
+          background: #5e5e5e;
+        }
+      }
+    }
+  }
+}
+
+.CartButton--desktop {
+  padding: 1.875rem 1.25rem;
+
+  @at-root {
+    .navbar-sticky-transitioned .CartButton--desktop {
+      span {
+        top: -2px;
+      }
+    }
+  }
+}
+
+.CartButton--mobile {
+  padding: 0;
+
+  position: relative;
+  left: -30px;
+
+  span {
+    top: -1px;
+  }
+
+  @at-root {
+    .navbar-sticky-transitioned .CartButton--mobile {
+      left: -35px;
+      top: -2px;
+    }
+  }
+}
