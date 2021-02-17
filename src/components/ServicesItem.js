@@ -111,9 +111,10 @@ function ServicesItem(props) {
     >
       <div className="single-portfolio service-single res-margin">
         {/* Portfolio Thumb  */}
-        <Link
+        <a
+          target="_blank"
+          href={live_demo}
           className="ServicesItem-image portfolio-thumb blog-thumb"
-          to={"/"}
         >
           {/\.mp4/gim.test(thumbnail) ? (
             <video controls>
@@ -129,15 +130,19 @@ function ServicesItem(props) {
               />
             </figure>
           )}
-        </Link>
+        </a>
         {/* Portfolio Content */}
         <div className="ServicesItem-content   portfolio-content services-content blog-content p-4">
           {/* Portfolio Title */}
           <div className="services-price ServicesItem-price">
             <h3 className="blog-title services-price-title my-3">
-              <Link to={slug} data-options={JSON.stringify(fancyboxOptions)}>
+              <a
+                target="_blank"
+                href={live_demo}
+                data-options={JSON.stringify(fancyboxOptions)}
+              >
                 <span>{parse(title)}</span>
-              </Link>
+              </a>
             </h3>
             <h3 className="services-price-small ServicesItem-price-small color-primary">
               {/free/gim.test(price) || <small className="fw-7">$</small>}

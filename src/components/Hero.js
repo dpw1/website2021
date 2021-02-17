@@ -3,6 +3,8 @@ import mobileImage from "../copy/img/ezfy-proof-mobile-up.jpg"
 import desktopImage from "../copy/img/pixel_quite_black_portrait_trim_up.png"
 import "./Hero.scss"
 import Stars from "./atom/Stars"
+import { Link } from "gatsby"
+import { siteRoutes } from "./../utils/siteRoutes"
 
 function Hero(props) {
   const { scrollTo, buttonText } = props
@@ -81,13 +83,22 @@ function Hero(props) {
               </p>
               {/* Store Buttons */}
               <div className="button-group store-buttons d-flex">
-                <a
-                  className="btn custom-btn text-uppercase scroll"
-                  href={scrollTo}
-                  data-scroll-offset={-60}
-                >
-                  {buttonText ? buttonText : "Get started"}
-                </a>
+                {!scrollTo ? (
+                  <Link
+                    className="btn custom-btn text-uppercase "
+                    to={siteRoutes.shop}
+                  >
+                    {buttonText ? buttonText : "View Services"}
+                  </Link>
+                ) : (
+                  <a
+                    className="btn custom-btn text-uppercase scroll"
+                    href={scrollTo}
+                    data-scroll-offset={-60}
+                  >
+                    {buttonText ? buttonText : "Get started"}
+                  </a>
+                )}
               </div>
             </div>
           </div>

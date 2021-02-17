@@ -16,11 +16,9 @@ function Contact(props) {
   }
 
   const onSubmit = data => {
-    console.log(data)
+    // console.log(data)
 
     if (!isFormValid) {
-      console.log("RECAPTCHA IS NOT VALID")
-
       setError(
         "Please do the ReCaptcha above before sending your email. Thank you!"
       )
@@ -112,9 +110,13 @@ function Contact(props) {
                 id="contact-form"
                 method="POST"
                 onSubmit={handleSubmit(onSubmit)}
-                action="https://api.formcake.com/api/form/e60cc492-18b4-4e39-8f4f-09a2ef75ae3a/submission"
+                action={
+                  isFormValid
+                    ? "https://api.formcake.com/api/form/e60cc492-18b4-4e39-8f4f-09a2ef75ae3a/submission"
+                    : ""
+                }
               >
-                <div className="row">
+                <div className="row ">
                   <div className="col-12">
                     <div className="form-group">
                       <input

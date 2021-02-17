@@ -23,7 +23,7 @@ const HomeLayout = props => {
       <SEO />
       <ScrollToTop></ScrollToTop>
       <Header page={"home"}></Header>
-      <Hero scrollTo="#about"></Hero>
+      <Hero></Hero>
       <About></About>
       {/* <Features> </Features> */}
       <ProductShowcase
