@@ -101,7 +101,9 @@ function Header(props) {
     }
 
     function handleLinkClick() {
-      const $link = document.querySelectorAll(`.nav-link`)
+      const $link = document.querySelectorAll(
+        `a.nav-link:not(.dropdown-toggle)`
+      )
 
       if (!$link) {
         return
