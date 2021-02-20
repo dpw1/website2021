@@ -27,7 +27,7 @@ function Hero(props) {
                 <img
                   className="desktop-only animation--float proof-image"
                   src={desktopImage}
-                  alt="Top 1 rated Shopify Expert in the official Shopify forums."
+                  alt="Top 1 rated Shopify Partner in the official Shopify forums."
                 />
               </picture>
             </div>
@@ -37,7 +37,7 @@ function Hero(props) {
             <div className="welcome-intro px-0 px-lg-4">
               <h1 className="text-white font-italic mb-2 mb-md-3">
                 <span className="animation--gradient-text">Top #1</span> Rated
-                Shopify Expert
+                Shopify Partner
               </h1>
               <picture>
                 <source
@@ -48,7 +48,7 @@ function Hero(props) {
                 <img
                   className="mobile-only animation--float proof-image"
                   src={mobileImage}
-                  alt="Top 1 rated Shopify Expert in the official Shopify forums."
+                  alt="Top 1 rated Shopify Partner in the official Shopify forums."
                 />
               </picture>
               <h3 className="hero-subtitle text-white">

@@ -7,7 +7,7 @@ exports.createPages = async ({ actions }) => {
   const { createPage } = actions
 
   const { data: blogPosts } = await axios.get(
-    "https://ezfy.club/json/wp/v2/posts"
+    "https://ezfy.club/json/wp/v2/posts?per_page=100"
   )
   const { data: _products } = await axios.get(
     `https://ezfy.club/json/custom/products`
@@ -16,6 +16,7 @@ exports.createPages = async ({ actions }) => {
   const products = globalUtils.sanitizeProducts(_products, (graphql = false))
 
   blogPosts.map(async e => {
+    console.log(`Blog page: blog/${e.slug}\n`)
     return createPage({
       path: `blog/${e.slug}`,
       component: path.resolve("./src/layouts/BlogPostLayout.js"),

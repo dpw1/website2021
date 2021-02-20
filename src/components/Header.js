@@ -89,6 +89,32 @@ function Header(props) {
         }
       })
     }
+
+    function _closeSidebarMenu() {
+      const $button = document.querySelector(`.canvas-open .navbar-toggler`)
+
+      if (!$button) {
+        return
+      }
+
+      $button.click()
+    }
+
+    function handleLinkClick() {
+      const $link = document.querySelectorAll(`.nav-link`)
+
+      if (!$link) {
+        return
+      }
+
+      for (const each of $link) {
+        each.addEventListener("click", function (e) {
+          _closeSidebarMenu()
+        })
+      }
+    }
+
+    setTimeout(handleLinkClick, 10)
     setTimeout(navMenu, 10)
   }, [])
 

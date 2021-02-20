@@ -118,4 +118,16 @@
   .blog-featured-image {
     margin-bottom: 25px;
   }
+
+  video,
+  iframe {
+    max-width: 100%;
+    width: 100%;
+    min-height: 26.4vw;
+
+    @media (max-width: $xxs) {
+      min-height: unset;
+      max-height: 50vw;
+    }
+  }
 }

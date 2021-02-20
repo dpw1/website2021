@@ -13,7 +13,7 @@ const PostsSidebar = props => {
   useEffect(() => {
     const getPosts = async () => {
       console.log("side bar posts: ", _posts)
-      const filteredPosts = shuffle(_posts.slice(0, 5))
+      const filteredPosts = shuffle(_posts).slice(0, 5)
 
       setPosts(filteredPosts)
     }

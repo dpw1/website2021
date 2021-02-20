@@ -66,6 +66,23 @@ const questions = [
     ),
   },
   {
+    question: `Can you prove that you are a certified Shopify Partner?`,
+    answer: () => (
+      <p>
+        Yes! Please access{" "}
+        <a
+          href="https://community.shopify.com/c/user/viewprofilepage/user-id/577094"
+          target="_blank"
+        >
+          my profile
+        </a>{" "}
+        in the Shopify Forum and you'll see "Shopify Partner" written below my
+        username, "diego_ezfy". Only developers who had undergone Shopify's
+        certification process receive that title.
+      </p>
+    ),
+  },
+  {
     question: `How much do you charge?`,
     answer: () => (
       <p>

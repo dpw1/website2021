@@ -28,7 +28,7 @@ const BlogContent = props => {
     <React.Fragment>
       <BlogBreadcrumb post={post}></BlogBreadcrumb>
       <section
-        id="blogContent"
+        id="blogContent "
         className="section blog-content blog-area ptb_100"
       >
         <div className="container">
