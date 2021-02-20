@@ -77,7 +77,7 @@ function Hero(props) {
               </h3>
               <p className="text-white mt-3 mb-4">
                 <span>
-                  More than 25 public recommendations, 850+ Shopify merchants
+                  More than 30 public recommendations, 850+ Shopify merchants
                   helped.
                 </span>
               </p>
