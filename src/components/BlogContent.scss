@@ -65,6 +65,7 @@
       font-size: 15px !important;
     }
 
+    ul,
     ol {
       padding: 10px 0;
       padding-left: 15px;
@@ -117,6 +118,10 @@
 
   .blog-featured-image {
     margin-bottom: 25px;
+  }
+
+  pre[class] {
+    margin: 20px 0;
   }
 
   video,
