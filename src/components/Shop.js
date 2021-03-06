@@ -32,7 +32,8 @@ function Shop(props) {
             <div className="section-heading text-center">
               <h2 className="text-capitalize">Shop</h2>
               <p className="d-sm-block mt-4">
-                Easy-to-install plugins & code snippets for your Shopify store.
+                Simple, affordable and high quality copy-paste code snippets for
+                your Shopify theme. <br /> No coding knowledge required.
               </p>
             </div>
           </div>

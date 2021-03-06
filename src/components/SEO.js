@@ -2,11 +2,11 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import config from "../../data/config"
 
-export const SEO = ({ title, description, url, article }) => {
+export const SEO = ({ title, image, description, url, article }) => {
   const seo = {
     title: title ? title : config.siteTitle,
     description: description || config.siteDescription,
-    image: config.siteImage,
+    image: image ? image : config.siteImage,
     url: url ? url : "",
   }
 

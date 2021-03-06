@@ -73,6 +73,7 @@ const questions = [
         <a
           href="https://community.shopify.com/c/user/viewprofilepage/user-id/577094"
           target="_blank"
+          className="custom-link"
         >
           my profile
         </a>{" "}

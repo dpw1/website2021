@@ -5,6 +5,7 @@ import parse from "html-react-parser"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
+import Search from "./Search"
 
 // const PAGINATION_BUTTONS = 3
 // posts per page is defined via props
@@ -74,12 +75,20 @@ const BlogShowcase = props => {
           featured_image_src
           image_alt
           excerpt
+          tag_names
         }
       }
     }
   `).allWordpressPost
 
   const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  const _isBlogPage = () => {
+    if (/blog/.test(window.location.href)) {
+      return true
+    }
+    return false
+  }
 
   const [page, setPage] = useQueryParam("page", NumberParam)
   const [posts, setPosts] = useState(null)
@@ -97,7 +106,7 @@ const BlogShowcase = props => {
       return setPosts(sortedData.slice(0, totalPosts))
     }
 
-    if (!page && /blog/.test(window.location.href)) {
+    if (!page && _isBlogPage()) {
       setPage(1)
     }
 
@@ -156,6 +165,7 @@ const BlogShowcase = props => {
             </div>
           </div>
         </div>
+        {/* {_isBlogPage() && <Search></Search>} */}
         <div className="row">
           {posts
             ? [...posts].map((data, i) => (

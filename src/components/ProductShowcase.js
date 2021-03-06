@@ -61,7 +61,7 @@ export default function ProductShowcase(props) {
               <h2 className="text-capitalize">Shop</h2>
               <p className="d-sm-block mt-4">
                 Simple, affordable and high quality copy-paste code snippets for
-                your Shopify theme.
+                your Shopify theme. <br /> No coding knowledge required.
               </p>
             </div>
           </div>

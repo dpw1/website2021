@@ -19,6 +19,7 @@ const BlogPostLayout = props => {
 
   const post = props.pageContext
 
+  console.log("look at me", post)
   // const slug = post.slug
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const BlogPostLayout = props => {
       <SEO
         title={parse(post.title.rendered)}
         description={description}
-        image={post.featured_image_small_src}
+        image={post.featured_image_src}
         url={url}
       ></SEO>
       <Header page={"blog"}></Header>
