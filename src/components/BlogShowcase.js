@@ -95,12 +95,6 @@ const BlogShowcase = props => {
 
   const totalPages = Math.ceil(sortedData.length / postsPerPage)
 
-  const handleUpdatePosts = () => {
-    return setPosts(
-      sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
-    )
-  }
-
   useEffect(() => {
     if (totalPosts) {
       return setPosts(sortedData.slice(0, totalPosts))
@@ -111,7 +105,9 @@ const BlogShowcase = props => {
     }
 
     if (postsPerPage) {
-      return handleUpdatePosts()
+      return setPosts(
+        sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
+      )
     }
 
     return setPosts(sortedData)
@@ -122,7 +118,9 @@ const BlogShowcase = props => {
       return setPosts(sortedData.slice(0, totalPosts))
     }
 
-    return handleUpdatePosts()
+    return setPosts(
+      sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
+    )
   }, [page])
 
   useEffect(() => {
@@ -165,7 +163,13 @@ const BlogShowcase = props => {
             </div>
           </div>
         </div>
-        {/* {_isBlogPage() && <Search></Search>} */}
+        {/* {_isBlogPage() && (
+          <Search
+            data={sortedData}
+            dataKey="title"
+            updateData={setPosts}
+          ></Search>
+        )} */}
         <div className="row">
           {posts
             ? [...posts].map((data, i) => (

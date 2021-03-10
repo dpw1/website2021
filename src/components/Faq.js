@@ -87,8 +87,8 @@ const questions = [
     question: `How much do you charge?`,
     answer: () => (
       <p>
-        We charge $35 USD/hour. If anything we coded breaks we fix it free of
-        charge within the next 7 days.
+        We charge $40 USD/hour. If anything we coded breaks we fix it free of
+        charge within the next 10 days.
       </p>
     ),
   },

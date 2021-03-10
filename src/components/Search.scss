@@ -1,30 +1,29 @@
 @import "../css/variables";
 
-.about {
-  padding-bottom: 75px;
-
-  .about-image {
+.SearchBox {
+  margin-bottom: 20px;
+  &-filter {
     display: flex;
-    justify-content: center;
-    max-width: 250px;
-    margin: 0 auto;
+    align-items: baseline;
+    justify-content: space-between;
+
+    @media (max-width: $xs) {
+      flex-direction: column;
+    }
+  }
+
+  &-total {
+    font-weight: 500;
+  }
+
+  input {
+    max-width: 200px;
+    height: 40px;
     border-radius: $border-radius;
-    overflow: hidden;
-  }
 
-  .about-text * {
-    // font-size: 16px;
-    // font-weight: 400;
-    // line-height: 150%;
+    @media (max-width: $xs) {
+      max-width: 100%;
+      margin-top: 20px;
+    }
   }
-
-  .row:nth-child(2) {
-    max-width: 950px;
-    width: 100%;
-    margin: 0 auto;
-    align-items: center;
-  }
-}
-.about-page {
-  padding-top: 120px !important;
 }

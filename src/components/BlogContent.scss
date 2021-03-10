@@ -1,6 +1,17 @@
 @import "../css/variables";
 
 [id] .blog-content {
+  pre,
+  pre[class] {
+    max-width: 100%;
+    width: 100%;
+    margin: 20px 0;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    max-height: 500px;
+    font-size: 14px !important;
+  }
+
   blockquote {
     background-color: #f7f7f7;
     position: relative;
@@ -122,14 +133,6 @@
 
   .blog-featured-image {
     margin-bottom: 25px;
-  }
-
-  pre[class] {
-    max-width: 100%;
-    width: 100%;
-    margin: 20px 0;
-    overflow: scroll;
-    max-height: 500px;
   }
 
   video,

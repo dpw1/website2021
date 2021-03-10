@@ -44,6 +44,7 @@
     "gatsby-source-wordpress": "^3.7.0",
     "gatsby-source-wordpress-experimental": "^6.0.0",
     "history": "^5.0.0",
+    "html-entities": "^2.1.0",
     "html-react-parser": "^0.14.0",
     "javascript-time-ago": "^2.3.2",
     "jquery": "^3.5.1",
