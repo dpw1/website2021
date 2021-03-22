@@ -554,13 +554,17 @@ ezfy = (function () {
   }
 
   function activateEJunkieCart() {
-    if (
-      document.querySelector(
-        `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
-      )
-    ) {
-      return
+    console.log("CART: ejunkie cart")
+
+    const ejunkieScript = document.querySelector(
+      `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
+    )
+
+    if (ejunkieScript) {
+      ejunkieScript.remove()
     }
+
+    console.log("CART: re-injecting code!")
 
     var d = document
     var EJV1_cart_version = 1
