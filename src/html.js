@@ -41,6 +41,11 @@ export default function HTML(props) {
           src={withPrefix("js/custom.js")}
         ></script>
 
+        <script
+          type="text/javascript"
+          src={withPrefix("js/ejunkie.js")}
+        ></script>
+
         {/* <script
           type="text/javascript"
           src={withPrefix("js/gumroad.js")}

@@ -28,6 +28,25 @@ function ProductItem(props) {
         props.page === "home" ? "ProductItem--homepage" : ""
       }`}
     >
+      {/* <a
+        href="https://www.fatfreecartpro.com/ecom/gb.php?&c=cart&ejc=2&cl=374804&i=1695842"
+        onclick="return EJEJC_lc(this);"
+        style={{
+          display: "inline-block",
+          background:
+            "#3da5d9 url(https://www.e-junkie.com/ej/images/newaddtocart.png) center/100px no-repeat",
+          border: "none",
+          padding: "7px 55px",
+          borderRadius: 3,
+          boxShadow: "1px 2px 2px rgba(0,0,0,0.2)",
+          textDecoration: "none",
+        }}
+        target="ej_ejc"
+        className="ec_ejc_thkbx"
+      >
+        add item
+      </a> */}
+
       <div className="single-portfolio service-single res-margin">
         {/* Portfolio Thumb  */}
         <Link

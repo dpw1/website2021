@@ -59,7 +59,7 @@ function Hero(props) {
                     marginTop: 9,
                   }}
                 >
-                  at the official Shopify forums.
+                  at the official Shopify forums during 2020's summer.
                 </span>
                 <br />
                 <span>

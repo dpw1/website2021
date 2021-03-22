@@ -6,6 +6,18 @@
 
 /* ALL PAGES start
 =============================================== */
+
+.EJOverlayV3,
+.EJLoaderV3,
+.EJIframeV3 {
+  z-index: 999 !important;
+}
+
+.EJOverlayV3,
+.EJLoaderV3 {
+  pointer-events: none;
+}
+
 .desktop-only {
   @media (max-width: $xs) {
     display: none;
@@ -609,10 +621,6 @@ body.iframe-lightbox--open {
 
 .fancybox-active .EJOverlayV3 {
   z-index: 99;
-}
-
-.EJOverlayV3 {
-  z-index: 0 !important;
 }
 
 /* React Toast
