@@ -4,6 +4,8 @@ import parse from "html-react-parser"
 import "./Product.scss"
 import StarRating from "./StarRating"
 import FloatingButton from "./FloatingButton"
+import { Link } from "gatsby"
+import { siteRoutes } from "./../utils/siteRoutes"
 
 /**
  *
@@ -68,6 +70,11 @@ export default function Product(props) {
           <a href={url} target="_blank" className="Product-atc btn--custom">
             Download now
           </a>
+
+          <small className="Product-license">
+            By downloading this product you confirm you have read the product's
+            description.
+          </small>
 
           <div className="Product-text">
             {parse(productData.description || " ")}

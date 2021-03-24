@@ -1,0 +1,23 @@
+@import "../css/variables";
+
+.License {
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 120px;
+  margin-bottom: 69px;
+
+  &-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  &-text {
+  }
+
+  P,
+  ol {
+    margin: 15px 0;
+  }
+}

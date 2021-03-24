@@ -8,6 +8,14 @@ $border-padding: 30px;
   padding-bottom: 40px;
   padding-top: 120px;
 
+  &-license {
+    display: block;
+    margin-bottom: 20px;
+    max-width: 350px;
+    width: 100%;
+    line-height: 19px;
+  }
+
   &-img {
     border-radius: $border-radius;
   }
@@ -63,7 +71,7 @@ $border-padding: 30px;
 
   &-atc {
     display: inline-table;
-    margin-bottom: $border-padding;
+    margin-bottom: 10px;
   }
 
   &-picture {

@@ -9,4 +9,5 @@ export const siteRoutes = {
   products: "/shop",
   cart: "/cart",
   contactSection: "/#contact",
+  license: "/license",
 }
