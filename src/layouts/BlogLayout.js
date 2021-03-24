@@ -24,7 +24,7 @@ const BlogLayout = props => {
         <ScrollToTop></ScrollToTop>
         <Header page={"blog"}></Header>
         <BlogBreadcrumb></BlogBreadcrumb>
-        <BlogShowcase postsPerPage={9}></BlogShowcase>
+        <BlogShowcase page="blog" postsPerPage={9}></BlogShowcase>
         <Contact></Contact>
         <Footer page={"blog"}></Footer>
       </React.Fragment>

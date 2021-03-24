@@ -19,6 +19,7 @@ $border-padding: 30px;
   &-img {
     border-radius: $border-radius;
   }
+
   &-container {
     display: flex;
     @media (max-width: $xs) {

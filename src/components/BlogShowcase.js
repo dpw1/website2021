@@ -61,7 +61,7 @@ const BlogItem = props => {
 }
 
 const BlogShowcase = props => {
-  let { postsPerPage, totalPosts } = props
+  let { postsPerPage, totalPosts, page: currentPage } = props
 
   let { nodes: data } = useStaticQuery(graphql`
     query BlogsQuery {
@@ -84,10 +84,7 @@ const BlogShowcase = props => {
   const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const _isBlogPage = () => {
-    if (/blog/.test(window.location.href)) {
-      return true
-    }
-    return false
+    return currentPage === "blog" ? true : false
   }
 
   const [isSearching, setIsSearching] = useState(false)

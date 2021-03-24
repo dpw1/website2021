@@ -71,10 +71,10 @@ export default function Product(props) {
             Download now
           </a>
 
-          <small className="Product-license">
+          {/* <small className="Product-license">
             By downloading this product you confirm you have read the product's
             description.
-          </small>
+          </small> */}
 
           <div className="Product-text">
             {parse(productData.description || " ")}
