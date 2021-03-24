@@ -90,12 +90,17 @@ const BlogShowcase = props => {
     return false
   }
 
+  const [isSearching, setIsSearching] = useState(false)
   const [page, setPage] = useQueryParam("page", NumberParam)
   const [posts, setPosts] = useState(null)
 
   const totalPages = Math.ceil(sortedData.length / postsPerPage)
 
-  useEffect(() => {
+  const scrollToBlogStart = () => {
+    window.document.querySelector(".row--first").scrollIntoView()
+  }
+
+  const organizePosts = () => {
     if (totalPosts) {
       return setPosts(sortedData.slice(0, totalPosts))
     }
@@ -111,9 +116,9 @@ const BlogShowcase = props => {
     }
 
     return setPosts(sortedData)
-  }, [])
+  }
 
-  useEffect(() => {
+  const populateWithPostsForThisPage = () => {
     if (totalPosts) {
       return setPosts(sortedData.slice(0, totalPosts))
     }
@@ -121,12 +126,23 @@ const BlogShowcase = props => {
     return setPosts(
       sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
     )
+  }
+
+  useEffect(() => {
+    organizePosts()
+  }, [])
+
+  useEffect(() => {
+    populateWithPostsForThisPage()
   }, [page])
 
   useEffect(() => {
     if (!posts) {
       return
     }
+
+    console.log("we are searching", isSearching)
+    console.log("we have x posts  ", posts.length)
 
     setTimeout(() => {
       if (window.ezfy) {
@@ -135,13 +151,68 @@ const BlogShowcase = props => {
     }, 50)
   }, [posts])
 
-  const generatePaginationButtons = () => {
+  useEffect(() => {
+    console.log("searching? ", isSearching)
+
+    if (isSearching) {
+      console.log("inside is searching")
+      setTimeout(() => {
+        if (window.ezfy) {
+          window.ezfy.init()
+        }
+      }, 50)
+
+      return
+    }
+
+    return populateWithPostsForThisPage()
+  }, [isSearching])
+
+  const PaginationButton = () => {
     return (
-      <li>
-        <p>
-          {page} / {totalPages}
-        </p>
-      </li>
+      <ul className="pagination justify-content-center">
+        {page > 1 && (
+          <li className="pagination-arrow pagination-arrow-prev">
+            <a
+              href="#"
+              onClick={() => {
+                if (page > 1) {
+                  setPage(page - 1)
+                }
+                scrollToBlogStart()
+              }}
+              aria-label="Previous"
+            >
+              <i className="fas fa-arrow-left " />
+              <span> Previous Page</span>
+            </a>
+          </li>
+        )}
+        {!totalPosts && (
+          <li>
+            <p>
+              {page} / {totalPages}
+            </p>
+          </li>
+        )}
+        {page < totalPages && (
+          <li className="pagination-arrow pagination-arrow-next">
+            <a
+              href="#"
+              onClick={() => {
+                if (page < totalPages) {
+                  setPage(page + 1)
+                }
+                scrollToBlogStart()
+              }}
+              aria-label="Next"
+            >
+              <span>Next Page</span>
+              <i className="fas fa-arrow-right" />
+            </a>
+          </li>
+        )}
+      </ul>
     )
   }
 
@@ -163,14 +234,16 @@ const BlogShowcase = props => {
             </div>
           </div>
         </div>
-        {/* {_isBlogPage() && (
+        {_isBlogPage() && (
           <Search
             data={sortedData}
             dataKey="title"
             updateData={setPosts}
+            isSearching={isSearching}
+            setIsSearching={setIsSearching}
           ></Search>
-        )} */}
-        <div className="row">
+        )}
+        <div className="row row--first">
           {posts
             ? [...posts].map((data, i) => (
                 <BlogItem key={i} data={data}></BlogItem>
@@ -189,41 +262,7 @@ const BlogShowcase = props => {
         <div className="row">
           <div className="col-12">
             {/* Pagination */}
-            <ul className="pagination justify-content-center">
-              {page > 1 && (
-                <li className="pagination-arrow pagination-arrow-prev">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      if (page > 1) {
-                        setPage(page - 1)
-                      }
-                    }}
-                    aria-label="Previous"
-                  >
-                    <i className="fas fa-arrow-left" />
-                    <span> Previous Page</span>
-                  </a>
-                </li>
-              )}
-              {!totalPosts && generatePaginationButtons()}
-              {page < totalPages && (
-                <li className="pagination-arrow pagination-arrow-next">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      if (page < totalPages) {
-                        setPage(page + 1)
-                      }
-                    }}
-                    aria-label="Next"
-                  >
-                    <span>Next Page</span>
-                    <i className="fas fa-arrow-right" />
-                  </a>
-                </li>
-              )}
-            </ul>
+            {!isSearching && <PaginationButton></PaginationButton>}
           </div>
         </div>
       </div>
