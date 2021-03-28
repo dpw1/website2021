@@ -16,7 +16,7 @@ exports.createPages = async ({ actions }) => {
   const products = globalUtils.sanitizeProducts(_products, (graphql = false))
 
   blogPosts.map(async e => {
-    console.log(`Blog page: blog/${e.slug}\n`)
+    console.log(`################### Blog page: blog/${e.slug}\n`)
     return createPage({
       path: `blog/${e.slug}`,
       component: path.resolve("./src/layouts/BlogPostLayout.js"),

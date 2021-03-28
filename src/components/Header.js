@@ -198,9 +198,8 @@ function Header(props) {
           className="fb-customerchat"
           attribution={"setup_tool"}
           page_id="2076491679249035"
-          greeting_dialog_delay="40"
-          logged_in_greeting="Hey there, Diego here! Anything I may help you with? 🙂"
-          logged_out_greeting="Hey there, Diego here! Anything I may help you with? 🙂"
+          logged_in_greeting="Hey there, Diego here! Anything I may help you with?"
+          logged_out_greeting="Hey there, Diego here! Anything I may help you with?"
         ></div>
       </header>
     </React.Fragment>
