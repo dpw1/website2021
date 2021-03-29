@@ -15,7 +15,7 @@ const replaceAll = require("string.prototype.replaceall")
   }
 
   /**
-   * Sanitizes all the e-junkie and gumroad products coming from Graphql Wordpress' API.
+   * Sanitizes all the e-junkie and gumroad products coming from Graphql Wordpress' API: https://www.ezfy.club/json/custom/products
    *
    * This data is coming from the function productsQuery() in utils.js
    *
@@ -44,6 +44,10 @@ const replaceAll = require("string.prototype.replaceall")
         .join("-")
 
       const slug = replaceAll(_slug, "--", "-")
+
+      if (slug === "ezfy-service") {
+        return null
+      }
 
       return products.push({
         id: e.number,
@@ -86,6 +90,6 @@ const replaceAll = require("string.prototype.replaceall")
       })
     })
 
-    return products
+    return products.filter(e => e !== null).sort((a, b) => b.id - a.id)
   }
 })(typeof exports === "undefined" ? (this.globalUtils = {}) : exports)

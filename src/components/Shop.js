@@ -17,6 +17,10 @@ function Shop(props) {
     setProducts(globalUtils.sanitizeProducts(data))
   }, [])
 
+  useEffect(() => {
+    console.log("fuck", products)
+  }, [products])
+
   const { paddingTop } = props
 
   return (
