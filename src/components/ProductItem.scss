@@ -24,13 +24,15 @@ $self: ".ProductItem";
   }
 
   &-description {
-    margin-top: 10px;
-    display: -webkit-box;
-    height: 76px;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @media (min-width: $xs) {
+      margin-top: 10px;
+      display: -webkit-box;
+      height: 76px;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   @at-root {
@@ -88,12 +90,13 @@ $self: ".ProductItem";
     padding-right: 5px;
 
     > a {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      // height: 60px;
+      @media (min-width: $xs) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
     }
   }
 }
@@ -122,5 +125,49 @@ $self: ".ProductItem";
 
   .portfolio-content {
     padding-bottom: 0 !important;
+  }
+}
+
+/* Shows two per row on mobile. Make sure you add this class to the div encapsulating <ProductItem> */
+@media (max-width: $xs) {
+  .two-per-row-mobile {
+    .portfolio-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      /*     gap: 0px; */
+    }
+
+    .ProductItem {
+      padding: unset;
+      max-width: 90%;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .ProductItem-content {
+      padding: 5px 20px !important;
+    }
+
+    .services-price-title {
+      font-size: 14px !important;
+    }
+
+    .ProductItem-price-small {
+      font-size: 14px;
+    }
+
+    .ProductItem-description {
+      height: unset;
+      overflow: unset;
+      font-size: 12px;
+      line-height: 150%;
+    }
+
+    .ProductItem-action * {
+      font-size: 12px;
+      display: block;
+      padding: 5px 10px;
+    }
   }
 }

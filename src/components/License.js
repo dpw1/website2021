@@ -41,6 +41,21 @@ function License(props) {
               wish to re-utilize.
             </li>
           </ol>
+          <p>In addition to the above:</p>
+          <ol>
+            <li>
+              1. Additional customizations to any EZFY plugin have a minimum fee
+              of $35 USD. This amount is subjective to the quantity and
+              complexity of the customizations requested.
+              <br />
+              <br />
+              Upon an update, if the customizations have to be redone, the same
+              fee ought to be charged.
+            </li>
+            <li>
+              2. All of our plugins ship with the Javascript code obfuscated.
+            </li>
+          </ol>
           <p>
             <b>Copyright disclaimer:</b> EZFY plugins are developed exclusively
             by and the copyright work of ezfycode.com. You must follow this

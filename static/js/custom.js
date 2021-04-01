@@ -44,13 +44,13 @@
       }
     })
 
-    $("#scrollUp").on("click", function () {
-      $("html, body").animate(
-        {
-          scrollTop: 0,
-        },
-        duration
-      )
+    $("#scrollUp").on("click", function (e) {
+      e.preventDefault()
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      })
     })
 
     // :: 4.0 SCROLL LINK ACTIVE CODE
@@ -534,7 +534,6 @@ ezfy = (function () {
 
     function countClock() {
       window.fb_clock += 1
-      console.log(window.fb_clock)
       if (window.fb_clock >= limit) {
         localStorage.setItem(storageKey, "true")
         return false

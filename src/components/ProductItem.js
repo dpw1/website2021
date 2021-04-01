@@ -72,7 +72,7 @@ function ProductItem(props) {
         <div className="ProductItem-content   portfolio-content services-content blog-content p-4">
           {/* Portfolio Title */}
           <div className="services-price ProductItem-price">
-            <h3 className="blog-title services-price-title my-3">
+            <h3 className="ProductItem-title blog-title services-price-title my-3">
               <Link to={slug} data-options={JSON.stringify(fancyboxOptions)}>
                 <span>{parse(title)}</span>
               </Link>

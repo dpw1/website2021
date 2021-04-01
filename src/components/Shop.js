@@ -7,19 +7,56 @@ import ProductItem from "./ProductItem"
 
 import globalUtils from "../../global-utils"
 import { productsQuery } from "../utils/utils"
+import Search from "./Search"
 
 function Shop(props) {
+  const [rawProducts, setRawProducts] = useState(null)
   const [products, setProducts] = useState(null)
+  const [isSearching, setIsSearching] = useState(false)
 
   let data = productsQuery()
 
+  const populateWithProducts = () => {
+    setProducts(rawProducts)
+  }
   useEffect(() => {
-    setProducts(globalUtils.sanitizeProducts(data))
+    const _products = globalUtils.sanitizeProducts(data)
+    setRawProducts(_products)
+    setProducts(_products)
   }, [])
 
   useEffect(() => {
-    console.log("fuck", products)
+    console.log("my products", products)
+
+    if (!products) {
+      return
+    }
+
+    console.log("we are searching", products)
+
+    setTimeout(() => {
+      if (window.ezfy) {
+        window.ezfy.init()
+      }
+    }, 50)
   }, [products])
+
+  useEffect(() => {
+    console.log("searching? ", isSearching)
+
+    if (isSearching) {
+      console.log("inside is searching")
+      setTimeout(() => {
+        if (window.ezfy) {
+          window.ezfy.init()
+        }
+      }, 50)
+
+      return
+    }
+
+    return populateWithProducts()
+  }, [isSearching])
 
   const { paddingTop } = props
 
@@ -42,12 +79,12 @@ function Shop(props) {
             </div>
           </div>
         </div>
+
         <div className="row">
           <div className="col-12 col-lg-12 shop-filter">
-            <aside className="sidebar">
-              {/* Single Widget */}
-              <div className="single-widget">
-                {/* Tags Widget */}
+            <div className="sidebar">
+              {/* <div className="single-widget">
+
                 <div
                   className="accordions widget tags-widget"
                   id="tags-accordion"
@@ -63,13 +100,13 @@ function Shop(props) {
                         Filter
                       </a>
                     </h5>
-                    {/* Tags Widget Content */}
+
                     <div
                       id="accordion3"
                       className="accordion-content widget-content collapse show"
                       data-parent="#tags-accordion"
                     >
-                      {/* Tags Widget Items */}
+
                       <div
                         id="tagsWidget"
                         className="widget-content tags-widget-items pt-2"
@@ -85,8 +122,18 @@ function Shop(props) {
                     </div>
                   </div>
                 </div>
-              </div>
-            </aside>
+              </div> */}
+
+              {rawProducts && (
+                <Search
+                  data={rawProducts}
+                  dataKey="title"
+                  updateData={setProducts}
+                  isSearching={isSearching}
+                  setIsSearching={setIsSearching}
+                ></Search>
+              )}
+            </div>
           </div>
           <div className="col-12 col-lg-12">
             <div className="portfolio-row row">

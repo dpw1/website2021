@@ -137,6 +137,12 @@ export const footerNavbarLinks = [
     offset: -60,
     scroll: false,
   },
+  {
+    name: "Terms of Service",
+    url: siteRoutes.license,
+    offset: -60,
+    scroll: false,
+  },
 ]
 
 /**

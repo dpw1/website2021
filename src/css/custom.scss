@@ -7,6 +7,10 @@
 /* ALL PAGES start
 =============================================== */
 
+html {
+  scroll-behavior: smooth;
+}
+
 .EJOverlayV3,
 .EJLoaderV3,
 .EJIframeV3 {

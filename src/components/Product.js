@@ -79,6 +79,11 @@ export default function Product(props) {
           <div className="Product-text">
             {parse(productData.description || " ")}
           </div>
+
+          <small>
+            By purchasing this product you agree to our{" "}
+            <Link to="/license">terms of service</Link>.
+          </small>
         </div>
       </div>
       <FloatingButton url={url} price={price} />

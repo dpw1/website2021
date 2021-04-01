@@ -22,7 +22,7 @@ const ShopLayout = props => {
 
       <Header page="shop" darkMode={true}></Header>
       <ScrollToTop></ScrollToTop>
-      <Shop paddingTop={100}></Shop>
+      <Shop page="shop" paddingTop={100}></Shop>
       <Contact></Contact>
       <Footer></Footer>
     </React.Fragment>
