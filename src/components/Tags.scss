@@ -55,6 +55,11 @@
       background-color: darkgrey;
       outline: 1px solid slategrey;
     }
+
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
   }
 
   &-wrapper {

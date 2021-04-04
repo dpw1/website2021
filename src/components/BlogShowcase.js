@@ -6,6 +6,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 import Search from "./Search"
+import Tags from "./Tags"
 
 // const PAGINATION_BUTTONS = 3
 // posts per page is defined via props
@@ -17,6 +18,7 @@ const BlogItem = props => {
     featured_image_src: image,
     excerpt,
     title,
+    tag_names,
   } = props.data
 
   let description = excerpt
@@ -24,9 +26,10 @@ const BlogItem = props => {
   // let date = timeSince(_date)
   let url = `/blog/${slug}`
   const imagealt = props.data.image_alt
+  const tags = tag_names.map(e => e.toLowerCase()).join(";")
 
   return (
-    <div className="col-12 col-md-6 col-lg-4 blog-item">
+    <div data-blog-tags={tags} className="col-12 col-md-6 col-lg-4 blog-item">
       <article className="single-blog res-margin">
         <Link className="linked" to={url}>
           <figure className="aspect-ratio blog-thumb">
@@ -138,7 +141,8 @@ const BlogShowcase = props => {
       return
     }
 
-    console.log("we are searching", isSearching)
+    console.log("we are searching  ", isSearching)
+    console.log("all blog posts: ", posts)
     console.log("we have x posts  ", posts.length)
 
     setTimeout(() => {
@@ -232,13 +236,20 @@ const BlogShowcase = props => {
           </div>
         </div>
         {_isBlogPage() && (
-          <Search
-            data={sortedData}
-            dataKey="title"
-            updateData={setPosts}
-            isSearching={isSearching}
-            setIsSearching={setIsSearching}
-          ></Search>
+          <React.Fragment>
+            <Tags
+              data={sortedData}
+              updateData={setPosts}
+              tagKeyName="tag_names"
+            ></Tags>
+            <Search
+              data={sortedData}
+              dataKey="title"
+              updateData={setPosts}
+              isSearching={isSearching}
+              setIsSearching={setIsSearching}
+            ></Search>
+          </React.Fragment>
         )}
         <div className="row row--first">
           {posts
@@ -259,7 +270,9 @@ const BlogShowcase = props => {
         <div className="row">
           <div className="col-12">
             {/* Pagination */}
-            {!isSearching && <PaginationButton></PaginationButton>}
+            {!isSearching && posts.length >= 9 && (
+              <PaginationButton></PaginationButton>
+            )}
           </div>
         </div>
       </div>

@@ -10,7 +10,9 @@ import { sleep } from "../../global-utils"
 const UPDATE_DELAY = 150
 
 function Tags(props) {
-  const { data, updateData } = props
+  const { data, updateData, tagKeyName } = props
+
+  const keyName = tagKeyName ? tagKeyName : "tags"
 
   const [tags, setTags] = useState([])
   const [isActive, setIsActive] = useState("")
@@ -27,7 +29,8 @@ function Tags(props) {
     if (!_data) {
       return
     }
-    const _tags = _data.map(e => e.tags)
+
+    const _tags = _data.map(e => e[keyName])
 
     const _filtered = [...new Set([].concat(..._tags))].map(e =>
       e.trim().toLowerCase()
@@ -40,7 +43,7 @@ function Tags(props) {
   useEffect(() => {
     const filtered = filterTags(data)
     setTags(filtered)
-    console.log(`my filtered        `, filtered)
+    console.log(`my filtered       `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
 
@@ -81,7 +84,7 @@ function Tags(props) {
     const products =
       data &&
       data.filter(e => {
-        const search = e.tags.filter(_e => _e.trim().toLowerCase() === tag)
+        const search = e[keyName].filter(_e => _e.trim().toLowerCase() === tag)
 
         if (search.length >= 1) {
           return e

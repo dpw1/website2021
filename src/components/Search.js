@@ -87,9 +87,10 @@ function Search(props) {
     <section id="Search" className="SearchBox">
       <div className="SearchBox-filter">
         <div className="SearchBox-total  ">
-          {`Showing ${results} ${results === 1 ? "result" : "results"} out of ${
+          {`Total of ${data.length} results.`}
+          {/* {`Showing ${results} ${results === 1 ? "result" : "results"} out of ${
             data.length
-          }.`}
+          }.`} */}
         </div>
         {searchInput}
       </div>

@@ -215,13 +215,13 @@ ezfy = (function () {
               }
             }
 
-            console.log("me")
+            // console.log("me")
             // video.target.load();
             video.target.play()
             video.target.classList.remove("lazy")
             lazyVideoObserver.unobserve(video.target)
 
-            console.log(video.target)
+            // console.log(video.target)
           }
         })
       })
@@ -321,7 +321,7 @@ ezfy = (function () {
     }
 
     const allTags = tagsWidget.querySelectorAll("[data-tag-name]")
-    console.log("allTags", allTags)
+    // console.log("allTags", allTags)
     const highlightChosenFilter = () => {
       const activeTag = tagsWidget.querySelector(".tags-widget-item--active")
       if (activeTag) {
@@ -553,17 +553,17 @@ ezfy = (function () {
   }
 
   function activateEJunkieCart() {
-    console.log("CART: ejunkie cart")
+    // console.log("CART: ejunkie cart")
 
-    const ejunkieScript = document.querySelector(
+    const $ejunkieScript = document.querySelector(
       `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
     )
 
-    if (ejunkieScript) {
-      ejunkieScript.remove()
+    if ($ejunkieScript) {
+      $ejunkieScript.remove()
     }
 
-    console.log("CART: re-injecting code!")
+    // console.log("CART: re-injecting code!")
 
     var d = document
     var EJV1_cart_version = 1
