@@ -78,6 +78,7 @@
     "react-use-cart": "^1.9.0",
     "react-video-scroll": "^1.0.1",
     "sanitize-html": "^2.1.1",
+    "string-strip-html": "^8.2.10",
     "string.prototype.replaceall": "^1.0.4",
     "striptags": "^3.1.1",
     "swiper": "^6.4.5",

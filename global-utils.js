@@ -1,5 +1,7 @@
 const parse = require("html-react-parser")
 const replaceAll = require("string.prototype.replaceall")
+const striptags = require("striptags")
+
 /**/ ;(function (exports) {
   exports.sleep = function (ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -108,12 +110,9 @@ const replaceAll = require("string.prototype.replaceall")
         const _tags = e.description.toLowerCase()
 
         if (_tags.includes(query)) {
-          return _tags
-            .split(query)[1]
-            .replace("</p>", "")
-            .replace("<br>", "")
-            .split(";")
-            .filter(e => e !== `` && e !== `"`)
+          const _temp = striptags(_tags.split(query)[1])
+
+          return _temp.split(";").filter(e => e !== `` && e !== `"`)
         }
 
         return []

@@ -3,11 +3,11 @@ import { useState, useEffect } from "react"
 import { useQueryParam, StringParam, QueryParams } from "use-query-params"
 import { getSearchParams } from "gatsby-query-params"
 import { useStatePersist as useStickyState } from "use-state-persist"
-import Swiper from "react-id-swiper"
+
 import "./Tags.scss"
 import { sleep } from "../../global-utils"
 
-const UPDATE_DELAY = 30
+const UPDATE_DELAY = 150
 
 function Tags(props) {
   const { data, updateData } = props
@@ -20,6 +20,7 @@ function Tags(props) {
     slidesPerView: "auto",
     freeMode: true,
     grabCursor: true,
+    slidesOffsetAfter: 100,
   }
 
   const filterTags = _data => {
@@ -39,16 +40,24 @@ function Tags(props) {
   useEffect(() => {
     const filtered = filterTags(data)
     setTags(filtered)
-    console.log(`my filtered tags:   `, filtered)
+    console.log(`my filtered        `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
 
-  const handleClick = (e, tag) => {
+  const handleClickOnTag = (e, tag) => {
     setActiveClass(e.target)
     updateItemsWithNewTag(tag)
+    removeQueryParameters()
     // setTagChosen(tag)
   }
 
+  const removeQueryParameters = () => {
+    return window.history.pushState(
+      {},
+      document.title,
+      window.location.pathname
+    )
+  }
   const setActiveClass = el => {
     const _class = `Tags-tag--active`
 
@@ -69,21 +78,21 @@ function Tags(props) {
       return
     }
 
-    const products = data.filter(e => {
-      const search = e.tags.filter(_e => _e.trim().toLowerCase() === tag)
+    const products =
+      data &&
+      data.filter(e => {
+        const search = e.tags.filter(_e => _e.trim().toLowerCase() === tag)
 
-      if (search.length >= 1) {
-        return e
-      }
-    })
+        if (search.length >= 1) {
+          return e
+        }
+      })
 
     if (products) {
+      console.log("my length", products.length)
+      setResults(products.length.toString())
       updateData(products)
     }
-
-    await sleep(UPDATE_DELAY)
-    const $products = window.document.querySelectorAll(`.ProductItem`)
-    return setResults($products.length.toString())
   }
 
   const updateItemsOnLoad = () => {
@@ -101,13 +110,13 @@ function Tags(props) {
 
   return (
     <div className="Tags">
-      Tags!
+      <h3 className="Tags-title">Browse by tags:</h3>
       <div className="Tags-list">
         {tags && (
-          <Swiper {...swiperConfig}>
+          <div className="Tags-wrapper">
             <a
               href="#"
-              onClick={e => handleClick(e, "all")}
+              onClick={e => handleClickOnTag(e, "all")}
               className="Tags-tag Tags-tag--active"
               key={"all"}
             >
@@ -117,7 +126,7 @@ function Tags(props) {
             {tags.map(currentTag => (
               <a
                 href="#"
-                onClick={e => handleClick(e, currentTag)}
+                onClick={e => handleClickOnTag(e, currentTag)}
                 className="Tags-tag"
                 data-tag={currentTag}
                 key={currentTag}
@@ -125,7 +134,7 @@ function Tags(props) {
                 {currentTag}
               </a>
             ))}
-          </Swiper>
+          </div>
         )}
       </div>
     </div>
