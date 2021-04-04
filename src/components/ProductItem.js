@@ -16,8 +16,6 @@ function ProductItem(props) {
     slug: _slug,
   } = "item" in props ? props.item : props
 
-  console.log("slug: ", _slug)
-
   const slug = props.page === "home" ? `/shop/${_slug}` : _slug
   const fancyboxOptions = { buttons: ["close"], gutter: 15, loop: true }
 

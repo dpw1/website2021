@@ -5,7 +5,32 @@ import { Link } from "gatsby"
 import { siteRoutes } from "../utils/siteRoutes"
 import { useEffect } from "react"
 import useInput from "./../hooks/useInput"
+import { useStatePersist as useStickyState } from "use-state-persist"
 import { decode } from "html-entities"
+
+/**
+ *
+ * @param {array} data
+ *
+ * An array of objects containing all the elements. It can not be changeable (like in a state.)
+ *
+ * @param {string} dataKey
+ *
+ * Which key of the parameter "data" to search for.
+ * For example, if you have [{name:"a", age: 123}] and you want to search for "name", your dataKey should be "name"
+ *
+ *
+ *
+ * @param {state} updateData
+ * state that returns the updated object with all found elements. It's usually the "set" of a state.
+ *
+ * @param {state, bool} isSearching
+ * state that returns whether searching or not.
+ *
+ *
+ * @param {state, bool} setIsSearching
+ * set state when is searching or not.
+ */
 
 function Search(props) {
   const { data, dataKey, updateData, isSearching, setIsSearching } = props
@@ -16,7 +41,7 @@ function Search(props) {
     className: "form-control",
   })
 
-  const [results, setResults] = useState(null)
+  const [results, setResults] = useStickyState("@totalProducts", null)
 
   /**
    * performs search based on a query.

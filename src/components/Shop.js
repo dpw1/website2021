@@ -8,6 +8,7 @@ import ProductItem from "./ProductItem"
 import globalUtils from "../../global-utils"
 import { productsQuery } from "../utils/utils"
 import Search from "./Search"
+import Tags from "./Tags"
 
 function Shop(props) {
   const [rawProducts, setRawProducts] = useState(null)
@@ -23,6 +24,8 @@ function Shop(props) {
     const _products = globalUtils.sanitizeProducts(data)
     setRawProducts(_products)
     setProducts(_products)
+
+    console.log("all shop     props", props)
   }, [])
 
   useEffect(() => {
@@ -124,6 +127,9 @@ function Shop(props) {
                 </div>
               </div> */}
 
+              <div>
+                <Tags data={rawProducts} updateData={setProducts}></Tags>
+              </div>
               {rawProducts && (
                 <Search
                   data={rawProducts}

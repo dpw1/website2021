@@ -1,6 +1,10 @@
 const parse = require("html-react-parser")
 const replaceAll = require("string.prototype.replaceall")
 /**/ ;(function (exports) {
+  exports.sleep = function (ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
+
   /**
    *
    * Limits a phrase to a certain number of characters without cutting off words.
@@ -13,6 +17,13 @@ const replaceAll = require("string.prototype.replaceall")
     if (str.length <= maxLen) return str
     return str.substr(0, str.lastIndexOf(separator, maxLen))
   }
+
+  /**
+   * Extracts everything after "Tags: " that is found in a gumroad description
+   *
+   * @param {*} description = gumroad description
+   */
+  exports.extractTagsFromGumroad = function (description) {}
 
   /**
    * Sanitizes all the e-junkie and gumroad products coming from Graphql Wordpress' API: https://www.ezfy.club/json/custom/products
@@ -49,11 +60,28 @@ const replaceAll = require("string.prototype.replaceall")
         return null
       }
 
+      const tags = e.tags
+        .map(e => {
+          if (!e) {
+            return
+          }
+
+          if (e.includes(";")) {
+            return e
+          }
+
+          return `${e.trim()};`
+        })
+        .join("")
+        .split(";")
+        .filter(e => e !== "")
+        .map(e => e.trim())
+
       return products.push({
         id: e.number,
         title: e.name,
         price,
-        tags: e.tags,
+        tags,
         miniDescription: e.description,
         description: e.details,
         thumbnail: e.images[0],
@@ -75,6 +103,22 @@ const replaceAll = require("string.prototype.replaceall")
 
       const miniDescription = `${exports.shortenString(e.description)} (...)`
 
+      const getTags = () => {
+        const query = `tags: `
+        const _tags = e.description.toLowerCase()
+
+        if (_tags.includes(query)) {
+          return _tags
+            .split(query)[1]
+            .replace("</p>", "")
+            .replace("<br>", "")
+            .split(";")
+            .filter(e => e !== `` && e !== `"`)
+        }
+
+        return []
+      }
+
       return products.push({
         id: e.wordpress_id,
         title: e.name,
@@ -82,7 +126,7 @@ const replaceAll = require("string.prototype.replaceall")
           ? "Free"
           : e.formatted_price.replace("$", ""),
         slug,
-        tags: [],
+        tags: getTags(),
         miniDescription,
         description: e.description,
         thumbnail: e.preview_url,
