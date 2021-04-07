@@ -43,7 +43,7 @@ function Tags(props) {
   useEffect(() => {
     const filtered = filterTags(data)
     setTags(filtered)
-    console.log(`my filtered       `, filtered)
+    console.log(`my filtered   `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
 

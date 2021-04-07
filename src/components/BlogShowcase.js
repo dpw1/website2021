@@ -270,7 +270,7 @@ const BlogShowcase = props => {
         <div className="row">
           <div className="col-12">
             {/* Pagination */}
-            {!isSearching && posts.length >= 9 && (
+            {!isSearching && posts && posts.length >= 9 && (
               <PaginationButton></PaginationButton>
             )}
           </div>

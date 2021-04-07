@@ -49,7 +49,14 @@ module.exports = {
         head: false,
       },
     },
-
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        includeInDevelopment: true, // optional parameter to include script in development
+        id: 1956203,
+        sv: 6,
+      },
+    },
     {
       resolve: "gatsby-source-wordpress",
       options: {
