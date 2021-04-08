@@ -340,3 +340,61 @@ export function formatCurrency(amount) {
 
   return formatter.format(amount)
 }
+
+export const countries = [
+  "Argentina",
+  "Australia",
+  "Austria",
+  "Belgium",
+  "Brazil",
+  "China",
+  "Croatia",
+  "Denmark",
+  "Finland",
+  "France",
+  "Germany",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Ireland",
+  "Israel",
+  "Lithuania",
+  "Morocco",
+  "Netherlands",
+  "New Zealand",
+  "Norway",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Russian",
+  "Singapore",
+  "Slovakia",
+  "South Africa",
+  "Spain",
+  "Sweden",
+  "Switzerland",
+  "Taiwan",
+  "Thailand",
+  "Tunisia",
+  "Turkey",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Vietnam",
+]
+
+export function randomNoRepeats(array) {
+  var copy = array.slice(0)
+  return function () {
+    if (copy.length < 1) {
+      copy = array.slice(0)
+    }
+    var index = Math.floor(Math.random() * copy.length)
+    var item = copy[index]
+    copy.splice(index, 1)
+    return item
+  }
+}

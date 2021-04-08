@@ -4,6 +4,7 @@ import "./Footer.scss"
 
 import { renderNav } from "../utils/utils"
 import { Link } from "gatsby"
+import SalesPop from "./SalesPop"
 
 const footerItem = props => (
   <li className="py-2">
@@ -116,6 +117,8 @@ function Footer(props) {
           </div>
         </div>
       </footer>
+
+      <SalesPop></SalesPop>
     </React.Fragment>
   )
 }

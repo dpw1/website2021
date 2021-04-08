@@ -198,9 +198,7 @@ function Header(props) {
           className="fb-customerchat"
           attribution={"setup_tool"}
           page_id="2076491679249035"
-          greeting_dialog_display="icon"
-          logged_in_greeting="Hey there, Diego here! Anything I may help you with?"
-          logged_out_greeting="Hey there, Diego here! Anything I may help you with?"
+          greeting_dialog_display="hide"
         ></div>
       </header>
     </React.Fragment>

@@ -20,6 +20,7 @@ module.exports = {
     "gatsby-plugin-use-query-params",
     `gatsby-plugin-sass`,
     `gatsby-plugin-modal-routing`,
+    `gatsby-plugin-remove-console`,
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
@@ -86,6 +87,7 @@ module.exports = {
           "Product.scss",
           "ProductItem.scss",
           "BlogContent.scss",
+          "SalesPop.scss",
         ],
       },
     },
