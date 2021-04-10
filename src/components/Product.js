@@ -81,7 +81,7 @@ export default function Product(props) {
           </div>
 
           <small>
-            By purchasing this product you agree to our{" "}
+            Important note: by purchasing this product you agree to our{" "}
             <Link to="/license">terms of service</Link>.
           </small>
         </div>

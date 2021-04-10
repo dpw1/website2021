@@ -1,6 +1,7 @@
 @import "../css/variables";
 @import "../css/animations";
 
+$text-color: $default-gray;
 $image-width: 50%;
 $border-padding: 30px;
 
@@ -43,6 +44,11 @@ $border-padding: 30px;
     border-top: 1px solid #e8e8e1;
     padding-top: $border-padding;
 
+    &,
+    *:not(a)[style*="color"] {
+      color: $text-color !important;
+    }
+
     a {
       border-bottom: 1px solid $link-color !important;
       color: $link-color !important;
@@ -54,7 +60,15 @@ $border-padding: 30px;
     > p > strong > u,
     > p > u > b,
     > p > b > u {
-      font-size: 18px !important;
+      font-size: 23px !important;
+      border-bottom: 1px solid #e3e3e3;
+      text-decoration: unset;
+      display: block;
+      padding-bottom: 10px;
+      font-weight: 600;
+      font-style: italic;
+      margin-top: 15px;
+      color: #222 !important;
     }
   }
   &-title {

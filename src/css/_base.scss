@@ -2252,7 +2252,7 @@ textarea.form-control.is-invalid {
   }
 }
 
-.btn:disabled{
+.btn:disabled {
   cursor: not-allowed;
 }
 .btn:hover {
@@ -17995,7 +17995,7 @@ body.compensate-for-scrollbar {
 /* ******************************
  :: 1.0 WEB FONTS
  ****************************** */
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap");
+// @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap");
 
 /* ******************************
  :: 3.0 GLOBAL CSS
@@ -20391,11 +20391,10 @@ $navbar-speed: 0.1s;
     transition: right 0.2s 0.1s;
   }
 
-  @media (max-width: 330px){
+  @media (max-width: 330px) {
     .navbar .navbar-inner {
       right: -107%;
     }
-
   }
 
   .navbar .nav-link {
@@ -20789,7 +20788,6 @@ $navbar-speed: 0.1s;
   }
 }
 
-
 [data-toggle="collapse"]:after {
   transition: all 0.23s ease;
 }
@@ -20834,8 +20832,6 @@ $navbar-speed: 0.1s;
 .ptb_25 {
   padding: 25px 0;
 }
-
-
 
 /* ALL P  AGES end
 =============================================== */

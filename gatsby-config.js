@@ -22,6 +22,13 @@ module.exports = {
     `gatsby-plugin-modal-routing`,
     `gatsby-plugin-remove-console`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`poppins\:300,400,500,600,600i,700`],
+        display: "swap",
+      },
+    },
+    {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
         siteUrl: `https://ezfycode.com`,
