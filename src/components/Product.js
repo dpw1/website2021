@@ -54,7 +54,7 @@ export default function Product(props) {
   }, [])
 
   return (
-    <section className="Product">
+    <section className="Product" data-product-slug={productData.slug}>
       <div className="Product-container container">
         <div className="Product-picture">
           <figure className="Product-figure">

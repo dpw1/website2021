@@ -44,8 +44,7 @@ $border-padding: 30px;
     border-top: 1px solid #e8e8e1;
     padding-top: $border-padding;
 
-
-    iframe[src*='giphy']{
+    iframe[src*="giphy"] {
       pointer-events: none;
     }
 
@@ -120,6 +119,19 @@ $border-padding: 30px;
 
       @media (max-width: $xs) {
         min-height: 47vw;
+      }
+    }
+  }
+
+  /* Custom options for specific products
+  ============================================= */
+
+  &[data-product-slug="debut-theme-slider-pro"] {
+    iframe[src*="giphy"] {
+      min-height: 560px;
+
+      @media (max-width: $xs) {
+        min-height: 400px;
       }
     }
   }
