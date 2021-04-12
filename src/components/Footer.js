@@ -118,7 +118,7 @@ function Footer(props) {
         </div>
       </footer>
 
-      <SalesPop></SalesPop>
+      {/* <SalesPop></SalesPop> */}
     </React.Fragment>
   )
 }

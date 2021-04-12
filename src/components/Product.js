@@ -58,9 +58,7 @@ export default function Product(props) {
       <div className="Product-container container">
         <div className="Product-picture">
           <figure className="Product-figure">
-            <a href={productData.url} target="_blank">
-              <img className="Product-img" src={productData.thumbnail} alt="" />
-            </a>
+            <img className="Product-img" src={productData.thumbnail} alt="" />
           </figure>
         </div>
 
