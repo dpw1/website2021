@@ -32,7 +32,7 @@ $text-color: $black;
   color: #3c4049;
   line-height: 1.6;
   position: fixed;
-  z-index: 2;
+  z-index: 4;
   left: 20px;
   bottom: 10px;
   -webkit-transition: all $animation-delay ease;
@@ -94,14 +94,14 @@ $text-color: $black;
     max-width: 97%;
     * {
       padding-right: 0 !important;
-      display: inline !important;
+      display: inline !important; 
       font-size: 12px !important;
     }
   }
   &-close {
     position: absolute;
     cursor: pointer;
-    z-index: 2;
+    z-index: 4;
     padding: 1px;
     width: 30px;
     height: 30px;

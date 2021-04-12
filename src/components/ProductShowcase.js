@@ -19,7 +19,10 @@ import emitter from "./../../.cache/emitter"
  */
 
 export default function ProductShowcase(props) {
-  const { chosenProducts } = props
+  const { title: _title, subtitle: _subtitle, chosenProducts } = props
+
+  const title = _title ? _title : `Shop`
+  const subtitle = _subtitle ? parse(_subtitle) : ""
 
   const [products, setProducts] = useState([])
 
@@ -58,11 +61,8 @@ export default function ProductShowcase(props) {
           <div className="col-12 col-md-10 col-lg-7">
             {/* Section Heading */}
             <div className="section-heading text-center">
-              <h2 className="text-capitalize">Shop</h2>
-              <p className="d-sm-block mt-4">
-                Simple, affordable and high quality copy-paste code snippets for
-                your Shopify theme. <br /> No coding knowledge required.
-              </p>
+              <h2 className="text-capitalize">{title}</h2>
+              <p className="d-sm-block mt-4">{subtitle}</p>
             </div>
           </div>
         </div>

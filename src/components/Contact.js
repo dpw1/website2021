@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"
 import "./Contact.scss"
 
 function Contact(props) {
+  const { backgroundColor } = props
+
   const [isSendingMessage, setIsSendingMessage] = useState(false)
   const [error, setError] = useState("")
   const [isFormValid, setIsFormValid] = useState(false)
@@ -32,7 +34,11 @@ function Contact(props) {
   }
 
   return (
-    <section id="contact" className={`contact-area bg-gray ptb_50`}>
+    <section
+      id="contact"
+      style={backgroundColor ? { backgroundColor } : {}}
+      className={`contact-area bg-gray ptb_50`}
+    >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-6">

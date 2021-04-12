@@ -49,6 +49,8 @@ export default function Product(props) {
     })()
 
     window.productPage.init()
+
+    console.log(productData)
   }, [])
 
   return (
@@ -56,7 +58,9 @@ export default function Product(props) {
       <div className="Product-container container">
         <div className="Product-picture">
           <figure className="Product-figure">
-            <img className="Product-img" src={productData.thumbnail} alt="" />
+            <a href={productData.url} target="_blank">
+              <img className="Product-img" src={productData.thumbnail} alt="" />
+            </a>
           </figure>
         </div>
 

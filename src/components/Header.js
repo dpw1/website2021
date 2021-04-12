@@ -140,7 +140,7 @@ function Header(props) {
           </Link>
 
           <div className="navbar-mobile-actions">
-            {isDesktop || <CartButton type="mobile"></CartButton>}
+            {/* {isDesktop || <CartButton type="mobile"></CartButton>} */}
             <button
               className="navbar-toggler d-lg-none"
               type="button"
@@ -165,11 +165,11 @@ function Header(props) {
               <ul className="navbar-nav" id="navbar-nav">
                 {renderNav(page, createNavbarSingleItem)}
 
-                {isDesktop && (
+                {/* {isDesktop && (
                   <li className="nav-item">
                     <CartButton type="desktop"></CartButton>
                   </li>
-                )}
+                )} */}
               </ul>
               {/* <a
                 href="https://www.fatfreecartpro.com/ecom/gb.php?c=cart&ejc=2&cl=374804"

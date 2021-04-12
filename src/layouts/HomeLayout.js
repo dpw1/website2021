@@ -27,6 +27,8 @@ const HomeLayout = props => {
       <About></About>
       {/* <Features> </Features> */}
       <ProductShowcase
+        subtitle={`Simple, affordable and high quality copy-paste code snippets for
+        your Shopify theme. <br /> No coding knowledge required.`}
         chosenProducts={[
           "Debut Theme Slider (PRO)",
           "Debut Theme - Second Image on Hover",

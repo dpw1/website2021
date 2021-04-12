@@ -14,6 +14,7 @@ import Product from "./../components/Product"
 import striptags from "striptags"
 import BlogBreadcrumb from "../components/BlogBreadcrumb"
 import ProductBreadcrumb from "./../components/ProductBreadcrumb"
+import ProductShowcase from "../components/ProductShowcase"
 
 const ProductLayout = props => {
   const [url, setUrl] = useState("")
@@ -50,6 +51,22 @@ const ProductLayout = props => {
       {/* <ProductBreadcrumb></ProductBreadcrumb> */}
 
       <Product product={productData}></Product>
+      <ProductShowcase
+        title="You may also like"
+        backgroundColor={"gray"}
+        chosenProducts={[
+          "Debut Theme Slider (PRO)",
+          "Debut Theme - Second Image on Hover",
+          `Debut Slider & Sticky Nav (Ultimate Bundle)`,
+        ]}
+        page="home"
+      ></ProductShowcase>
+      <Parallax
+        title="Looking for something different?"
+        subtitle={`Feel free to reach out, we'll work together to find
+            a custom solution that attend your needs.`}
+        buttonText="Send us an email"
+      ></Parallax>
       <Contact></Contact>
       <Footer page={"blog"}></Footer>
     </React.Fragment>
