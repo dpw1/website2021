@@ -69,7 +69,15 @@ export default function Product(props) {
             <StarRating></StarRating>
           </div> */}
 
-          <a href={url} target="_blank" className="Product-atc btn--custom">
+          <a
+            href={url}
+            onClick={e => {
+              e.preventDefault()
+              window.open(url, "_blank", "noopener,noreferrer")
+            }}
+            target="_blank"
+            className="Product-atc btn--custom"
+          >
             Download now
           </a>
 

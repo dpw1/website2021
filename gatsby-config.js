@@ -19,7 +19,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-use-query-params",
     `gatsby-plugin-sass`,
-    `gatsby-plugin-modal-routing`,
     `gatsby-plugin-remove-console`,
     {
       resolve: `gatsby-plugin-google-fonts`,
@@ -49,22 +48,28 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "UA-112401482-2",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
+        id: "GTM-TR7HFTW",
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
       },
     },
-    {
-      resolve: `gatsby-plugin-hotjar`,
-      options: {
-        includeInDevelopment: true, // optional parameter to include script in development
-        id: 1956203,
-        sv: 6,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-gtag`,
+    //   options: {
+    //     // your google analytics tracking id
+    //     trackingId: `UA-112401482-2`,
+    //     // Puts tracking script in the head instead of the body
+    //     head: false,
+    //     // enable ip anonymization
+    //     anonymize: true,
+    //   },
+    // },
+
     {
       resolve: "gatsby-source-wordpress",
       options: {
