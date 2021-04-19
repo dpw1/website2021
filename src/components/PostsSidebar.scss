@@ -1,7 +1,30 @@
-.posts-sidebar {
+@import "../css/variables";
+
+.sidebar {
+  @media (min-width: $xs) {
+    position: sticky;
+    top: 70px;
+  }
+}
+
+[id] .posts-sidebar {
   &-date {
     margin-top: 5px;
     font-size: 11.5px !important;
+  }
+
+  &-button {
+    &--desktop {
+      @media (max-width: $xs) {
+        display: none !important;
+      }
+    }
+
+    &--mobile {
+      @media (min-width: $xs) {
+        display: none !important;
+      }
+    }
   }
 
   [data-toggle="collapse"] {

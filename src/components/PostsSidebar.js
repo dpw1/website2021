@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react"
 import { formatDate, generateBlogUrl, shuffle } from "../utils/utils"
 import parse from "html-react-parser"
 import { blogApi } from "../api/api"
+import { Link } from "gatsby"
+import { siteRoutes } from "../utils/siteRoutes"
 
 const PostsSidebar = props => {
   const [posts, setPosts] = useState([])
@@ -12,7 +14,7 @@ const PostsSidebar = props => {
 
   useEffect(() => {
     const getPosts = async () => {
-      console.log("side bar posts: ", _posts)
+      console.log("side bar posts:           ", _posts)
       const filteredPosts = shuffle(_posts).slice(0, 5)
 
       setPosts(filteredPosts)
@@ -26,9 +28,15 @@ const PostsSidebar = props => {
       <div className="accordions widget post-widget" id="post-accordion">
         <div className="single-accordion">
           <h5>
+            <Link
+              to={siteRoutes.blog}
+              className="collapse show text-uppercase d-block p-3 posts-sidebar-button posts-sidebar-button--desktop"
+            >
+              More Posts
+            </Link>
             <a
               role="button"
-              className="collapse show text-uppercase d-block p-3"
+              className="collapse show text-uppercase d-block p-3 posts-sidebar-button posts-sidebar-button--mobile"
               data-toggle="collapse"
               href="#accordion2"
             >

@@ -6,6 +6,8 @@ import BlogBreadcrumb from "./BlogBreadcrumb"
 import { FacebookMessengerShareButton, WhatsappShareButton } from "react-share"
 import { blogApi } from "../api/api"
 import PostsSidebar from "./PostsSidebar"
+import { Link } from "gatsby"
+import { siteRoutes } from "../utils/siteRoutes"
 
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
@@ -34,7 +36,7 @@ const BlogContent = props => {
         <div className="container">
           <div className="row blog-content-wrapper">
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
-              <aside className="sidebar ">
+              <aside className="sidebar">
                 {/* Single Widget */}
                 <PostsSidebar></PostsSidebar>
               </aside>
@@ -136,6 +138,10 @@ const BlogContent = props => {
             </div>
           </div>
         </div>
+
+        <Link className="btn blog-content-more" to={siteRoutes.shop}>
+          View all blogs
+        </Link>
       </section>
     </React.Fragment>
   )
