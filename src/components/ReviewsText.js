@@ -1,29 +1,15 @@
 import React, { Component, useEffect } from "react"
 import "./ReviewsText.scss"
 
-import Swiper from "react-id-swiper"
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper"
+
+import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
 import "../css/swiper.scss"
 
-const swiperConfig = {
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: true,
-  },
-  spaceBetween: 50,
-  slidesPerView: "auto",
-  speed: 750,
-  freeMode: false,
-  resistance: true,
-  resistanceRatio: 0.6,
-  grabCursor: true,
-  centeredSlides: true,
-  navigation: {
-    nextEl: ".reviews-text-container .swiper-button-next",
-    prevEl: ".reviews-text-container .swiper-button-prev",
-  },
-}
+// the slider for this section can be found at custom.js, at the bottom of the file.
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const reviews = [
   {
@@ -249,19 +235,37 @@ function ReviewsText() {
           id="reviewsTextSlider"
           className="reviews-text-slider swiper-wrapper"
         >
-          <Swiper {...swiperConfig}>
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={"auto"}
+            speed={750}
+            freeMode={false}
+            resistance={true}
+            resistanceRatio={0.6}
+            grabCursor={true}
+            centeredSlides={true}
+            navigation={{
+              nextEl: ".reviews-text-container .swiper-button-next",
+              prevEl: ".reviews-text-container .swiper-button-prev",
+            }}
+            scrollbar={{
+              el: ".swiper-scrollbar",
+              draggable: false,
+              dragSize: 30,
+            }}
+          >
             {reviews.map((data, i) => (
-              <div>
+              <SwiperSlide>
                 <Review key={i} data={data}></Review>
-              </div>
+              </SwiperSlide>
             ))}
           </Swiper>
         </div>
-        {/* 
+
         <div className="review-text-button-prev swiper-button-next"></div>
         <div className="review-text-button-next swiper-button-prev"></div>
 
-        <div className="swiper-scrollbar"></div> */}
+        <div className="swiper-scrollbar"></div>
       </div>
     </div>
   )
