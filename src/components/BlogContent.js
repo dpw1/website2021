@@ -9,6 +9,9 @@ import PostsSidebar from "./PostsSidebar"
 import { Link } from "gatsby"
 import { siteRoutes } from "../utils/siteRoutes"
 
+import hljs from "highlight.js"
+import "highlight.js/styles/github.css"
+
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
   const [url, setUrl] = useState(null)
@@ -24,6 +27,15 @@ const BlogContent = props => {
 
   useEffect(() => {
     setUrl(window !== undefined ? window.location.href : "https://ezfycode.com")
+
+    document.querySelectorAll("pre,code").forEach(block => {
+      console.log(block, " block code           ")
+      console.log("raw block", block.textContent)
+      const code = hljs.highlightAuto(block.textContent).value
+
+      console.log(code)
+      block.innerHTML = code
+    })
   }, [])
 
   return (
