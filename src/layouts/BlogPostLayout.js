@@ -27,6 +27,7 @@ const BlogPostLayout = props => {
     setTimeout(() => {
       window.scrollTo(0, 0)
       window.ezfy.start()
+      window.ezfy.removeLoader()
     }, 100)
   }, [])
 

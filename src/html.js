@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { withPrefix } from "gatsby"
 import { Helmet } from "react-helmet"
+import Shop from "./components/Shop"
+import Loader from "./components/Loader"
 
 export default function HTML(props) {
+  useEffect(() => {
+    console.log("NPROGRESS - HTML IS LOADED")
+  }, [])
+
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -57,6 +63,8 @@ export default function HTML(props) {
             rel="stylesheet"
           ></link>
         }
+
+        <Loader></Loader>
       </body>
     </html>
   )

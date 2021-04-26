@@ -12,6 +12,7 @@ import License from "../components/License"
 const LicenseLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
+    setTimeout(window.ezfy.removeLoader, 50)
   }, [])
 
   return (

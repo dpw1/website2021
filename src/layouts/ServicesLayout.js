@@ -14,6 +14,7 @@ import { ToastProvider } from "react-toast-notifications"
 const ServicesLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
+    setTimeout(window.ezfy.removeLoader, 50)
   }, [])
 
   return (

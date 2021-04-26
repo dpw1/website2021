@@ -11,6 +11,7 @@ import { SEO } from "./../components/SEO"
 const ShopLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
+    setTimeout(window.ezfy.removeLoader, 50)
   }, [])
 
   return (

@@ -66,7 +66,7 @@ export default function ProductShowcase(props) {
             </div>
           </div>
         </div>
-        <div className="row ProductShowcase-products">
+        <div className="row ProductShowcase-products two-per-row-mobile">
           {[...products].map(e => {
             return <ProductItem page={"home"} item={e}></ProductItem>
           })}

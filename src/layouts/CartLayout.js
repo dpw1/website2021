@@ -12,6 +12,7 @@ import Steps from "./../components/Steps"
 const CartLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
+    setTimeout(window.ezfy.removeLoader, 50)
   }, [])
 
   return (

@@ -19,7 +19,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-use-query-params",
     `gatsby-plugin-sass`,
-    `gatsby-plugin-remove-console`,
+    // `gatsby-plugin-remove-console`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -56,15 +56,6 @@ module.exports = {
         //
         // Defaults to false meaning GTM will only be loaded in production.
         includeInDevelopment: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        // Setting a color is optional.
-        color: `tomato`,
-        // Disable the loading spinner.
-        showSpinner: true,
       },
     },
     // {
@@ -109,6 +100,7 @@ module.exports = {
           "ProductItem.scss",
           "BlogContent.scss",
           "SalesPop.scss",
+          "Loader.scss",
         ],
       },
     },

@@ -10,6 +10,7 @@ import Footer from "./../components/Footer"
 const PortfolioLayout = () => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
+    setTimeout(window.ezfy.removeLoader, 50)
   }, [])
 
   return (

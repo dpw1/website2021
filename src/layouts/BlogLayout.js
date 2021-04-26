@@ -12,6 +12,7 @@ import BlogShowcase from "../components/BlogShowcase"
 const BlogLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.start, 50)
+    setTimeout(window.ezfy.removeLoader, 50)
   }, [])
 
   return (

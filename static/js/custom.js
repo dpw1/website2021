@@ -649,7 +649,38 @@ ezfy = (function () {
     })
   }
 
+  /**
+   * Removes loading icon once the page is fully loaded.
+   */
+  function showLoader() {
+    const $links = window.document.querySelectorAll(`a[href^='/blog']`)
+
+    if (!$links) {
+      return
+    }
+
+    for (const each of $links) {
+      each.addEventListener("click", function () {
+        const $loader = window.document.querySelector(`.loader`)
+
+        console.log("nprogress - moving to new url ", $loader)
+        if ($loader) {
+          $loader.classList.add("loader--visible")
+        }
+      })
+    }
+  }
+
+  function removeLoader() {
+    const $loader = window.document.querySelector(`.loader--visible`)
+
+    if ($loader) {
+      $loader.classList.remove("loader--visible")
+    }
+  }
+
   return {
+    removeLoader: removeLoader,
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
@@ -666,7 +697,7 @@ ezfy = (function () {
 
     start: () => {
       window.ezfy.lazyload()
-      window.ezfy.activateEJunkieCart()
+      // window.ezfy.activateEJunkieCart()
       addTagsToPortfolioItems()
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
@@ -678,6 +709,7 @@ ezfy = (function () {
       window.ezfy.closeSidebarMenu()
       window.ezfy.addModalToGumRoadAndEjunkieLinks()
       testBackbutton()
+      showLoader()
     },
     init: function () {
       window.ezfy.start()

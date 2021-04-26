@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ScrollToTop from "../components/ScrollToTop"
 import Header from "../components/Header"
 import Hero from "../components/Hero"
@@ -18,6 +18,10 @@ import Features from "./../components/Features"
 import ProductShowcase from "./../components/ProductShowcase"
 
 const HomeLayout = props => {
+  useEffect(() => {
+    setTimeout(window.ezfy.removeLoader, 50)
+  }, [])
+
   return (
     <React.Fragment>
       <SEO />
