@@ -19,7 +19,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-use-query-params",
     `gatsby-plugin-sass`,
-    // `gatsby-plugin-remove-console`,
+    `gatsby-plugin-remove-console`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -58,18 +58,6 @@ module.exports = {
         includeInDevelopment: false,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-gtag`,
-    //   options: {
-    //     // your google analytics tracking id
-    //     trackingId: `UA-112401482-2`,
-    //     // Puts tracking script in the head instead of the body
-    //     head: false,
-    //     // enable ip anonymization
-    //     anonymize: true,
-    //   },
-    // },
-
     {
       resolve: "gatsby-source-wordpress",
       options: {

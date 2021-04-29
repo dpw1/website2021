@@ -1,0 +1,112 @@
+@import "../css/variables";
+@import "../css/animations";
+
+$height: 20px;
+$width: 20px;
+
+$border-padding: 30px;
+$wrapper-height: $height * 2;
+$wrapper-width: $width * 2;
+
+.Benefits {
+  -ms-flex-align: center;
+  align-items: center;
+  color: #2d2f43;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 11px;
+  border-top: 1px solid #e8e8e1;
+  padding-top: $border-padding;
+
+  background: #fff;
+
+  color: #2d2f43;
+  font-size: 18px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 15px;
+  }
+
+  .content___26q-V {
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+
+  .wkawaii-warranty:not(.fullWidth___2wdcC) {
+    border-radius: 6px;
+  }
+
+  .list___2_ww6 {
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .item___2Jemt,
+  .list___2_ww6 {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 0.8889rem;
+  }
+
+  .item___2Jemt {
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .item___2Jemt:last-child {
+    margin-bottom: 0;
+  }
+
+  .text___1QLAN {
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .icon___QdN3F {
+    height: $height;
+
+    width: $width;
+  }
+
+  .iconWrapper___2yaCw {
+    background: #ff7676;
+    // border-radius: 15rem;
+
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-right: 0.8889rem;
+    overflow: hidden;
+
+    height: #{$wrapper-height};
+    width: #{$wrapper-width};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .header___yioDv {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  svg {
+    fill: white;
+  }
+}

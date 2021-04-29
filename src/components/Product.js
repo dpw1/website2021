@@ -6,6 +6,7 @@ import StarRating from "./StarRating"
 import FloatingButton from "./FloatingButton"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
+import Benefits from "./Benefits"
 
 /**
  *
@@ -85,6 +86,8 @@ export default function Product(props) {
             By downloading this product you confirm you have read the product's
             description.
           </small> */}
+
+          <Benefits></Benefits>
 
           <div className="Product-text">
             {parse(productData.description || " ")}
