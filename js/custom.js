@@ -649,6 +649,16 @@ ezfy = (function () {
     })
   }
 
+  function reviewFeedback() {
+    const isBad = /email_feedback=bad/.test(window.location.href)
+
+    if (!isBad) {
+      return
+    }
+
+    alert("Your feedback was successfully sent. Thank you!")
+  }
+
   /**
    * Removes loading icon once the page is fully loaded.
    */
@@ -663,7 +673,7 @@ ezfy = (function () {
       each.addEventListener("click", function () {
         const $loader = window.document.querySelector(`.loader`)
 
-        console.log("nprogress - moving to new url ", $loader)
+        console.log("nprogress - moving to new url             ", $loader)
         if ($loader) {
           $loader.classList.add("loader--visible")
         }
@@ -697,7 +707,7 @@ ezfy = (function () {
 
     start: () => {
       window.ezfy.lazyload()
-      // window.ezfy.activateEJunkieCart()
+      window.ezfy.activateEJunkieCart()
       addTagsToPortfolioItems()
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
@@ -710,6 +720,7 @@ ezfy = (function () {
       window.ezfy.addModalToGumRoadAndEjunkieLinks()
       testBackbutton()
       showLoader()
+      reviewFeedback()
     },
     init: function () {
       window.ezfy.start()
