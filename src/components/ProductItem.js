@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import "./ProductItem.scss"
 import parse from "html-react-parser"
-import { replaceAll } from "../utils/utils"
+
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import { Link } from "gatsby"
+import { replaceAll } from "./../utils/utils"
 
 function ProductItem(props) {
   const {

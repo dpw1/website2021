@@ -8,6 +8,8 @@ import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
 import Benefits from "./Benefits"
 
+// import { replaceAll } from "./../utils/utils"
+
 /**
  *
  * Item for product page.
@@ -26,7 +28,11 @@ export default function Product(props) {
 
   const url = productData.addToCart ? productData.addToCart : productData.url
 
+  const description =
+    productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
+
   useEffect(() => {
+    console.log("ok          ", description)
     window.productPage = (function () {
       function stickyImage() {
         const el = window.document.querySelector(".Product-figure")
@@ -89,9 +95,7 @@ export default function Product(props) {
 
           <Benefits></Benefits>
 
-          <div className="Product-text">
-            {parse(productData.description || " ")}
-          </div>
+          <div className="Product-text">{parse(description)}</div>
 
           <small>
             Important note: by purchasing this product you agree to our{" "}
