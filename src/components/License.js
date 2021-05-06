@@ -14,7 +14,8 @@ function License(props) {
         <div className="License-text">
           <p>
             EZFY plugins come with a simple unlimited use license, which means
-            they can be used an unlimited amount of times per Shopify domain.
+            they can be used an unlimited amount of times in one (1) Shopify
+            store.
           </p>
 
           <p>
@@ -25,9 +26,9 @@ function License(props) {
 
           <ol>
             <li>
-              {" "}
               1. Sell or redistribute any EZFY plugins as a service or as a
-              product;{" "}
+              product; We prohibit a directly resell, or provide as free, of
+              downloaded items from our service.
             </li>
             <li>2. Claim ownership of any EZFY plugins;</li>
             <li>3. Copy and offer any EZFY plugins on a similar service;</li>

@@ -28,7 +28,6 @@ function ProductItem(props) {
     >
       {/* <a
         href="https://www.fatfreecartpro.com/ecom/gb.php?&c=cart&ejc=2&cl=374804&i=1695842"
-        onclick="return EJEJC_lc(this);"
         style={{
           display: "inline-block",
           background:

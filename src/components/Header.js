@@ -46,6 +46,7 @@ function Header(props) {
         checkWidth(false)
       })
     })
+
     function checkWidth(init) {
       // If browser resized, check width again
       if ($(window).width() <= 991) {

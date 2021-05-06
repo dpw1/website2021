@@ -27,6 +27,7 @@ module.exports = {
         display: "swap",
       },
     },
+
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
@@ -58,6 +59,7 @@ module.exports = {
         includeInDevelopment: false,
       },
     },
+
     {
       resolve: "gatsby-source-wordpress",
       options: {
@@ -89,6 +91,7 @@ module.exports = {
           "BlogContent.scss",
           "SalesPop.scss",
           "Loader.scss",
+          "License.scss",
         ],
       },
     },

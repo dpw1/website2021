@@ -50,6 +50,7 @@
     "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-query-params": "^1.2.1",
     "gatsby-remark-embed-gist": "^1.2.1",
+    "gatsby-source-ecwid": "^1.0.3",
     "gatsby-source-wordpress": "^3.7.0",
     "gatsby-source-wordpress-experimental": "^6.0.0",
     "gatsby-transformer-remark": "^4.0.0",

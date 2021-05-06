@@ -35,8 +35,8 @@ const HomeLayout = props => {
         your Shopify theme. <br /> No coding knowledge required.`}
         chosenProducts={[
           "Debut Theme Slider (PRO)",
-          "Debut Theme - Second Image on Hover",
-          `Debut Slider & Sticky Nav (Ultimate Bundle)`,
+          "Minimal Theme Slider (PRO)",
+          `Ultimate Debut Bundle - Slider, Sticky Nav & Image on Hover`,
         ]}
         page="home"
       ></ProductShowcase>

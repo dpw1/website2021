@@ -47,9 +47,9 @@ const BlogPostLayout = props => {
       <ProductShowcase
         backgroundColor="gray"
         chosenProducts={[
-          `Debut Slider & Sticky Nav (Ultimate Bundle)`,
           "Debut Theme Slider (PRO)",
-          "Debut Theme - Second Image on Hover",
+          "Minimal Theme Slider (PRO)",
+          `Ultimate Debut Bundle - Slider, Sticky Nav & Image on Hover`,
         ]}
         page="home"
       />

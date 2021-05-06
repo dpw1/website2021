@@ -57,8 +57,8 @@ const ProductLayout = props => {
         backgroundColor={"gray"}
         chosenProducts={[
           "Debut Theme Slider (PRO)",
-          "Debut Theme - Second Image on Hover",
-          `Debut Slider & Sticky Nav (Ultimate Bundle)`,
+          "Minimal Theme Slider (PRO)",
+          `Ultimate Debut Bundle - Slider, Sticky Nav & Image on Hover`,
         ]}
         page="home"
       ></ProductShowcase>
