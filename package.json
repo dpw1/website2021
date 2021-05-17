@@ -37,6 +37,7 @@
     "gatsby-plugin-hotjar": "^1.1.1",
     "gatsby-plugin-load-script": "^1.1.0",
     "gatsby-plugin-manifest": "^2.6.0",
+    "gatsby-plugin-minify": "^0.4.0",
     "gatsby-plugin-modal-routing": "^1.2.0",
     "gatsby-plugin-nprogress": "^3.3.0",
     "gatsby-plugin-preact": "^4.5.0",

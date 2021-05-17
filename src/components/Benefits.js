@@ -75,7 +75,7 @@ export default function Benefits() {
               </span>
             </div>
 
-            <div className="item___2Jemt">
+            {/* <div className="item___2Jemt">
               <div className="iconWrapper___2yaCw">
                 <svg
                   className="image___1yp2c icon___QdN3F contain___K2Ner"
@@ -97,7 +97,7 @@ export default function Benefits() {
                 Not comfortable with coding? We offer <b>free installation</b>{" "}
                 within 24 hours post purchase.
               </span>
-            </div>
+            </div> */}
 
             {/* <div className="item___2Jemt">
               <div className="iconWrapper___2yaCw">

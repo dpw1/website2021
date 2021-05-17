@@ -95,5 +95,13 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-minify`,
+      options: {
+        removeAttributeQuotes: false,
+        removeEmptyAttributes: false,
+        removeScriptTypeAttributes: false,
+      },
+    },
   ],
 }

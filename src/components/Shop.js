@@ -143,7 +143,11 @@ function Shop(props) {
           </div>
           <div className="col-12 col-lg-12">
             <div className="portfolio-row row">
-              {products && products.map(e => ProductItem(e))}
+              {products ? (
+                products.map(e => ProductItem(e))
+              ) : (
+                <p>Loading products, please wait...</p>
+              )}
             </div>
           </div>
         </div>
