@@ -9,11 +9,20 @@ exports.createPages = async ({ actions }) => {
   const { data: blogPosts } = await axios.get(
     "https://ezfy.club/json/wp/v2/posts?per_page=100"
   )
-  const { data: _products } = await axios.get(
-    `https://ezfy.club/json/custom/products`
+  // const { data: _products } = await axios.get(
+  //   `https://ezfy.club/json/custom/products`
+  // )
+
+  const { data: ecwidProducts } = await axios.get(
+    `https://app.ecwid.com/api/v3/37374877/products?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
   )
 
-  const products = globalUtils.sanitizeProducts(_products, (graphql = false))
+  // const products = globalUtils.sanitizeProducts(
+  //   _products ,
+  //   (graphql = false)
+  // )
+
+  const products = await globalUtils.sanitizeEcwidProducts(ecwidProducts.items)
 
   blogPosts.map(async e => {
     console.log(`################### Blog page: blog/${e.slug}\n`)

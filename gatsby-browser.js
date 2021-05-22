@@ -1,4 +1,6 @@
 const React = require("react")
+const { useStatePersist } = require("use-state-persist")
+const { globalUtils } = require("./global-utils")
 
 // Logs when the client route changes
 

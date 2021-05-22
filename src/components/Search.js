@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import useInput from "./../hooks/useInput"
 import { useStatePersist as useStickyState } from "use-state-persist"
 import { decode } from "html-entities"
+import { getTotalVisibleProducts } from "../utils/utils"
 
 /**
  *
@@ -41,6 +42,7 @@ function Search(props) {
     className: "form-control",
   })
 
+  const [visible, setVisible] = useState("")
   const [results, setResults] = useStickyState("@totalProducts", null)
 
   /**
@@ -73,6 +75,10 @@ function Search(props) {
   }
 
   useEffect(() => {
+    setVisible(getTotalVisibleProducts())
+  }, [])
+
+  useEffect(() => {
     const res = handleSearch(search)
 
     if (!res) {
@@ -83,11 +89,15 @@ function Search(props) {
     setResults(res.length)
   }, [search])
 
+  useEffect(() => {
+    setVisible(getTotalVisibleProducts())
+  }, [results])
+
   return (
     <section id="Search" className="SearchBox">
       <div className="SearchBox-filter">
         <div className="SearchBox-total  ">
-          {`Total of ${data.length} results.`}
+          {`Showing ${visible} of ${data.length} product(s).`}
           {/* {`Showing ${results} ${results === 1 ? "result" : "results"} out of ${
             data.length
           }.`} */}

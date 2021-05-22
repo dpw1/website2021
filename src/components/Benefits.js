@@ -75,6 +75,25 @@ export default function Benefits() {
               </span>
             </div>
 
+            <div className="item___2Jemt">
+              <div className="iconWrapper___2yaCw">
+                <svg
+                  className="image___1yp2c icon___QdN3F contain___K2Ner"
+                  viewBox="0 0 480.096 480.096"
+                  style={{ enableBackground: "new 0 0 480.096 480.096" }}
+                >
+                  <g>
+                    <g>
+                      <path d="M370.032,178.808h-107.08L292.744,0l-182.68,258.808h108.704l-29.504,221.288L370.032,178.808z M140.944,242.808    l124.512-176.4l-21.4,128.4h97.72L215.352,405.52l21.688-162.712H140.944z" />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <span className="text___1QLAN">
+                <b>Immediate download.</b>
+              </span>
+            </div>
+
             {/* <div className="item___2Jemt">
               <div className="iconWrapper___2yaCw">
                 <svg

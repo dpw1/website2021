@@ -270,6 +270,16 @@ export function replaceAll(word, obj) {
   return finalString
 }
 
+export function getTotalVisibleProducts() {
+  const $products = window.document.querySelectorAll(`.portfolio-row > article`)
+
+  if (!$products) {
+    return
+  }
+
+  return parseInt($products.length)
+}
+
 export const productsQuery = () => {
   const data = useStaticQuery(graphql`
     query ProductsShowcaseQuery {

@@ -17,6 +17,8 @@ function ProductItem(props) {
     slug: _slug,
   } = "item" in props ? props.item : props
 
+  // debugger
+
   const slug = props.page === "home" ? `/shop/${_slug}` : _slug
   const fancyboxOptions = { buttons: ["close"], gutter: 15, loop: true }
 
@@ -76,14 +78,16 @@ function ProductItem(props) {
               </Link>
             </h3>
             <h3 className="services-price-small ProductItem-price-small color-primary">
-              {/free/gim.test(price) || <small className="fw-7">$</small>}
-              {price}
+              {/free/gim.test(price)
+                ? price
+                : price.toString().replace(".00", "")}
             </h3>
           </div>
 
           <div className="ProductItem-description ">
             <React.Fragment>
-              {parse(replaceAll(miniDescription, { "\n": " ", "<br>": "" }))}
+              {miniDescription &&
+                parse(replaceAll(miniDescription, { "\n": " ", "<br>": "" }))}
             </React.Fragment>
           </div>
         </div>

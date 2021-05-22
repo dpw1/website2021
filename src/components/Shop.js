@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
 import "./Shop.scss"
 import { graphql, useStaticQuery } from "gatsby"
+import axios from "axios"
 
+import { useStatePersist as useStickyState } from "use-state-persist"
 import ProductItem from "./ProductItem"
 // import { sanitizeProducts } from "../utils/utils"
 
@@ -12,18 +14,35 @@ import Tags from "./Tags"
 
 function Shop(props) {
   const [rawProducts, setRawProducts] = useState(null)
-  const [products, setProducts] = useState(null)
+  const [products, setProducts] = useStickyState("@products", [])
   const [isSearching, setIsSearching] = useState(false)
 
-  let data = productsQuery()
+  // let data = productsQuery()
 
   const populateWithProducts = () => {
     setProducts(rawProducts)
   }
   useEffect(() => {
-    const _products = globalUtils.sanitizeProducts(data)
-    setRawProducts(_products)
-    setProducts(_products)
+    // const _products = globalUtils.sanitizeProducts(data)
+    // setRawProducts(_products)
+    // setProducts(_products)
+
+    const getProducts = async () => {
+      const { data: ecwidProducts } = await axios.get(
+        `https://app.ecwid.com/api/v3/37374877/products?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
+      )
+
+      const _products = await globalUtils.sanitizeEcwidProducts(
+        ecwidProducts.items
+      )
+
+      setProducts(_products)
+      setRawProducts(_products)
+    }
+
+    getProducts()
+
+    console.log("products from gatsby browser", products)
 
     console.log("all shop     props", props)
   }, [])
@@ -128,9 +147,11 @@ function Shop(props) {
               </div> */}
 
               <div>
-                <Tags data={rawProducts} updateData={setProducts}></Tags>
+                {rawProducts && (
+                  <Tags data={rawProducts} updateData={setProducts}></Tags>
+                )}
               </div>
-              {rawProducts && (
+              {products && rawProducts && (
                 <Search
                   data={rawProducts}
                   dataKey="title"
@@ -143,10 +164,12 @@ function Shop(props) {
           </div>
           <div className="col-12 col-lg-12">
             <div className="portfolio-row row">
-              {products ? (
+              {products && products.length >= 1 ? (
                 products.map(e => ProductItem(e))
               ) : (
-                <p>Loading products, please wait...</p>
+                <div className="container">
+                  <p>Loading products, please wait...</p>
+                </div>
               )}
             </div>
           </div>

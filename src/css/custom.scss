@@ -815,3 +815,13 @@ $loader-transition: all 0.2s ease-in-out;
   opacity: 1;
   transition: $loader-transition;
 }
+
+/* ECWID CUSTOM CODE
+======================================== */
+
+.ecwid-popup {
+  @media (min-width: $xs) {
+    // top: 50% !important;
+    // transform: translateY(-50%) !important;
+  }
+}

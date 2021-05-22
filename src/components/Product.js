@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import parse from "html-react-parser"
 
 import "./Product.scss"
@@ -19,12 +19,12 @@ import Benefits from "./Benefits"
  */
 
 export default function Product(props) {
+  const [loading, setLoading] = useState(false)
   const { product: productData } = props
 
-  const price =
-    productData.price.toLowerCase() === "free"
-      ? productData.price
-      : `$${productData.price}`
+  console.log(productData)
+
+  const price = productData.price
 
   const url = productData.addToCart ? productData.addToCart : productData.url
 
@@ -32,7 +32,8 @@ export default function Product(props) {
     productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
 
   useEffect(() => {
-    console.log("ok          ", description)
+    window.ezfy.loadEcwidScript()
+
     window.productPage = (function () {
       function stickyImage() {
         const el = window.document.querySelector(".Product-figure")
@@ -60,12 +61,45 @@ export default function Product(props) {
     console.log(productData)
   }, [])
 
+  /* 
+  The add to cart ought to be made via a function because of Google Tag Manager click detection.
+  */
+  const addToCart = async e => {
+    e.preventDefault()
+
+    setLoading(true)
+
+    while (!window.hasOwnProperty("Ecwid")) {
+      console.log("waiting for Ecwid")
+      await new Promise(resolve => setTimeout(resolve, 50))
+    }
+
+    while (!Ecwid.hasOwnProperty("Cart")) {
+      console.log("waiting for Ecwid Cart")
+      await new Promise(resolve => setTimeout(resolve, 50))
+    }
+
+    while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
+      console.log("waiting for 'add to product' ")
+      await new Promise(resolve => setTimeout(resolve, 50))
+    }
+
+    Ecwid.Cart.addProduct({
+      id: productData.id,
+      quantity: 1,
+      callback: function (success, product, cart) {
+        Ecwid.Cart.gotoCheckout()
+        setLoading(false)
+      },
+    })
+  }
+
   return (
     <section className="Product" data-product-slug={productData.slug}>
       <div className="Product-container container">
         <div className="Product-picture">
           <figure className="Product-figure">
-            <img className="Product-img" src={productData.thumbnail} alt="" />
+            <img className="Product-img" src={productData.image} alt="" />
           </figure>
         </div>
 
@@ -78,15 +112,26 @@ export default function Product(props) {
 
           <a
             href={url}
-            onClick={e => {
-              e.preventDefault()
-              window.open(url, "_blank", "noopener,noreferrer")
-            }}
+            onClick={e => addToCart(e)}
             target="_blank"
             className="Product-atc btn--custom"
           >
-            Download now
+            {loading ? "Adding to cart..." : "Download now"}
           </a>
+
+          <div
+            className="ecsp ecsp-SingleProduct-v2 ecsp-Product ec-Product-359233331"
+            itemType="http://schema.org/Product"
+            data-single-product-id={359233331}
+          >
+            <div
+              className="ecsp-title"
+              itemProp="name"
+              style={{ display: "none" }}
+              content="Brooklyn Theme Slider (PRO)"
+            />
+            <div customprop="addtobag" />
+          </div>
 
           {/* <small className="Product-license">
             By downloading this product you confirm you have read the product's
@@ -103,7 +148,12 @@ export default function Product(props) {
           </small>
         </div>
       </div>
-      <FloatingButton url={url} price={price} />
+      <FloatingButton
+        loading={loading}
+        addToCart={addToCart}
+        url={url}
+        price={price}
+      />
     </section>
   )
 }

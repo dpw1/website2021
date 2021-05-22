@@ -1,6 +1,7 @@
 const parse = require("html-react-parser")
 const replaceAll = require("string.prototype.replaceall")
 const striptags = require("striptags")
+const axios = require("axios")
 
 /**/ ;(function (exports) {
   exports.sleep = function (ms) {
@@ -39,6 +40,7 @@ const striptags = require("striptags")
    */
   exports.sanitizeProducts = function (data, graphql = true) {
     const _data = graphql ? data.allWordpressProducts.edges[0].node : data
+
     const ejunkie = _data.ejunkie.products
     const gumroad = _data.gumroad.products
 
@@ -134,5 +136,84 @@ const striptags = require("striptags")
     })
 
     return products.filter(e => e !== null).sort((a, b) => b.id - a.id)
+  }
+
+  /**
+   *
+   * Sanitizes Ecwid products to create product pages.
+   *
+   * @param {*} data
+   * @param {*} graphql
+   * @returns
+   */
+
+  exports.sanitizeEcwidProducts = async function (_data) {
+    return new Promise(async (resolve, reject) => {
+      const { data: _categories } = await axios.get(
+        `https://app.ecwid.com/api/v3/37374877/categories?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
+      )
+
+      // console.log("my data: ", _data)
+      const allCategories = _categories.items
+
+      let products = []
+
+      _data.map(product => {
+        if (!product.hasOwnProperty("name")) {
+          return
+        }
+
+        console.log("each item: ", product)
+        const _slug = product.name
+          .replace(/[^\w\s]/gi, "")
+          .toLowerCase()
+          .split(" ")
+          .join("-")
+
+        const slug = replaceAll(_slug, "--", "-")
+
+        const getTags = () => {
+          let all = []
+
+          product.categories.map(i => {
+            if (!i.enabled) {
+              return
+            }
+
+            const name = allCategories.filter(x => x.id === i.id)[0].name
+
+            console.log("LOOK NAME", name)
+            all.push(name)
+          })
+
+          return all
+        }
+
+        const tags = getTags()
+
+        return products.push({
+          id: product.id,
+          title: product.name,
+          price: product.defaultDisplayedPriceFormatted,
+          comparePrice: product.compareToPriceFormatted,
+          tags,
+          miniDescription: product.subtitle,
+          description: product.description,
+          thumbnail: product.thumbnailUrl,
+          image: product.originalImageUrl,
+          slug,
+          url: `https://ezfy.e-junkie.com/product/${product.id}`,
+          addToCart: `https://www.fatfreecartpro.com/ecom/gb.php?&c=cart&ejc=2&cl=374804&i=${product.id}`,
+        })
+      })
+
+      console.log(
+        "All Products:        ",
+        products.filter(each => each !== null).sort((a, b) => b.id - a.id)
+      )
+      resolve(
+        products.filter(each => each !== null).sort((a, b) => b.id - a.id)
+      )
+    })
   }
 })(typeof exports === "undefined" ? (this.globalUtils = {}) : exports)

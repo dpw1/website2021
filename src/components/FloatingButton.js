@@ -7,7 +7,9 @@ import "./FloatingButton.scss"
 export default function FloatingButton(props) {
   const [isVisible, setIsVisible] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
-  const { url, name, price } = props
+  const { url, name: _name, price: _price, addToCart, loading } = props
+
+  const price = _price.toString().replace(".00", "")
 
   useEffect(() => {
     const checkVisibility = () => {
@@ -49,10 +51,13 @@ export default function FloatingButton(props) {
       ${isLoading || "FloatingButton--loaded"} 
       `}
     >
-      <a className="FloatingButton-button" href={url} target="_blank">
-        {/* {isVisible ? "true" : "false"} */}
-        {name ? name : "Download now"}
-
+      <a
+        onClick={e => addToCart(e)}
+        className="FloatingButton-button"
+        href={url}
+        target="_blank"
+      >
+        {loading ? "Adding to cart..." : "Download now"}
         {price && <div className="FloatingButton-price ">{price}</div>}
       </a>
     </div>

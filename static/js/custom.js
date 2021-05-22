@@ -555,6 +555,8 @@ ezfy = (function () {
   function activateEJunkieCart() {
     // console.log("CART: ejunkie cart")
 
+    return
+
     const $ejunkieScript = document.querySelector(
       `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
     )
@@ -689,11 +691,22 @@ ezfy = (function () {
     }
   }
 
+  function loadEcwidScript() {
+    const url = `https://app.ecwid.com/script.js?37374877`
+
+    if (document.querySelector(`script[src*='app.ecwid']`)) {
+      return
+    }
+
+    _loadScript(url)
+  }
+
   return {
     removeLoader: removeLoader,
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
+    loadEcwidScript: loadEcwidScript,
     addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
 
     initServices: () => {
@@ -721,6 +734,7 @@ ezfy = (function () {
       testBackbutton()
       showLoader()
       reviewFeedback()
+      loadEcwidScript()
     },
     init: function () {
       window.ezfy.start()

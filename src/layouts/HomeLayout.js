@@ -17,9 +17,15 @@ import WhatDoWeDo from "./../components/WhatDoWeDo"
 import Features from "./../components/Features"
 import ProductShowcase from "./../components/ProductShowcase"
 
+import axios from "axios"
+
 const HomeLayout = props => {
   useEffect(() => {
     setTimeout(window.ezfy.removeLoader, 50)
+
+    async function test() {}
+
+    test()
   }, [])
 
   return (
