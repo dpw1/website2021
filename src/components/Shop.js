@@ -5,6 +5,8 @@ import axios from "axios"
 
 import { useStatePersist as useStickyState } from "use-state-persist"
 import ProductItem from "./ProductItem"
+import Skeleton from "react-loading-skeleton"
+
 // import { sanitizeProducts } from "../utils/utils"
 
 import globalUtils from "../../global-utils"
@@ -42,7 +44,7 @@ function Shop(props) {
 
     getProducts()
 
-    console.log("products from gatsby browser", products)
+    console.log("products from gatsby browser           ", products)
 
     console.log("all shop     props", props)
   }, [])
@@ -81,6 +83,28 @@ function Shop(props) {
   }, [isSearching])
 
   const { paddingTop } = props
+
+  const SkeletonLoader = () => {
+    return (
+      <div className="shop-SkeletonLoader">
+        <div className="shop-SkeletonLoader-item">
+          <Skeleton count={1} height={190} />
+          <Skeleton count={1} />
+          <Skeleton count={3} />
+        </div>
+        <div className="shop-SkeletonLoader-item">
+          <Skeleton count={1} height={190} />
+          <Skeleton count={1} />
+          <Skeleton count={3} />
+        </div>
+        <div className="shop-SkeletonLoader-item">
+          <Skeleton count={1} height={190} />
+          <Skeleton count={1} />
+          <Skeleton count={3} />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <section
@@ -147,9 +171,7 @@ function Shop(props) {
               </div> */}
 
               <div>
-                {rawProducts && (
-                  <Tags data={rawProducts} updateData={setProducts}></Tags>
-                )}
+                <Tags data={rawProducts} updateData={setProducts}></Tags>
               </div>
               {products && rawProducts && (
                 <Search
@@ -162,13 +184,14 @@ function Shop(props) {
               )}
             </div>
           </div>
+
           <div className="col-12 col-lg-12">
             <div className="portfolio-row row">
               {products && products.length >= 1 ? (
                 products.map(e => ProductItem(e))
               ) : (
                 <div className="container">
-                  <p>Loading products, please wait...</p>
+                  {isSearching ? <p>No products found.</p> : <SkeletonLoader />}
                 </div>
               )}
             </div>

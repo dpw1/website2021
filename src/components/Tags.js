@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useQueryParam, StringParam, QueryParams } from "use-query-params"
 import { getSearchParams } from "gatsby-query-params"
 import { useStatePersist as useStickyState } from "use-state-persist"
+import Skeleton from "react-loading-skeleton"
 
 import "./Tags.scss"
 import { sleep } from "../../global-utils"
@@ -14,7 +15,7 @@ function Tags(props) {
 
   const keyName = tagKeyName ? tagKeyName : "tags"
 
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState(null)
   const [isActive, setIsActive] = useState("")
   const [results, setResults] = useStickyState("@totalProducts", null)
 
@@ -43,7 +44,7 @@ function Tags(props) {
   useEffect(() => {
     const filtered = filterTags(data)
     setTags(filtered)
-    console.log(`my filtered   `, filtered)
+    console.log(`my filtered `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
 
@@ -111,11 +112,23 @@ function Tags(props) {
     setActiveClass($tag)
   }
 
+  const SkeletonLoader = () => {
+    return (
+      <div className="Tags-SkeletonLoader">
+        <div className="Tags-SkeletonLoader-item">
+          <Skeleton count={1} />
+          <Skeleton count={1} height={40} />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="Tags">
       <h3 className="Tags-title">Browse by tags:</h3>
+      {/* <SkeletonLoader></SkeletonLoader> */}
       <div className="Tags-list">
-        {tags && (
+        {tags ? (
           <div className="Tags-wrapper">
             <a
               href="#"
@@ -138,6 +151,8 @@ function Tags(props) {
               </a>
             ))}
           </div>
+        ) : (
+          <SkeletonLoader></SkeletonLoader>
         )}
       </div>
     </div>

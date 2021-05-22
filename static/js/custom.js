@@ -691,14 +691,15 @@ ezfy = (function () {
     }
   }
 
-  function loadEcwidScript() {
+  async function loadEcwidScript() {
     const url = `https://app.ecwid.com/script.js?37374877`
 
     if (document.querySelector(`script[src*='app.ecwid']`)) {
-      return
+      return Ecwid.init()
     }
 
-    _loadScript(url)
+    await _loadScript(url)
+    Ecwid.init()
   }
 
   return {

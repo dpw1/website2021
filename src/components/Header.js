@@ -11,6 +11,7 @@ import { renderNav } from "../utils/utils"
 import $ from "jquery"
 import { Link } from "gatsby"
 import CartButton from "./atom/CartButton"
+import CartEcwid from "./CartEcwid"
 
 const createNavbarSingleItem = props => {
   return (
@@ -142,6 +143,7 @@ function Header(props) {
 
           <div className="navbar-mobile-actions">
             {/* {isDesktop || <CartButton type="mobile"></CartButton>} */}
+            <CartEcwid isMobile={true}></CartEcwid>
             <button
               className="navbar-toggler d-lg-none"
               type="button"
@@ -171,8 +173,10 @@ function Header(props) {
                     <CartButton type="desktop"></CartButton>
                   </li>
                 )} */}
+                <li>
+                  <CartEcwid></CartEcwid>
+                </li>
               </ul>
-
               {/* <a
                 href="https://www.fatfreecartpro.com/ecom/gb.php?c=cart&ejc=2&cl=374804"
                 target="ej_ejc"

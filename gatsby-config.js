@@ -92,6 +92,7 @@ module.exports = {
           "SalesPop.scss",
           "Loader.scss",
           "License.scss",
+          "CartEcwid.scss",
         ],
       },
     },
