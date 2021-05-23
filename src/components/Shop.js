@@ -10,7 +10,7 @@ import Skeleton from "react-loading-skeleton"
 // import { sanitizeProducts } from "../utils/utils"
 
 import globalUtils from "../../global-utils"
-import { productsQuery } from "../utils/utils"
+import { getEcwidProducts } from "../utils/utils"
 import Search from "./Search"
 import Tags from "./Tags"
 
@@ -24,39 +24,22 @@ function Shop(props) {
   const populateWithProducts = () => {
     setProducts(rawProducts)
   }
+
+  const getProducts = async () => {
+    const _products = await getEcwidProducts()
+
+    setProducts(_products)
+    setRawProducts(_products)
+  }
+
   useEffect(() => {
-    // const _products = globalUtils.sanitizeProducts(data)
-    // setRawProducts(_products)
-    // setProducts(_products)
-
-    const getProducts = async () => {
-      const { data: ecwidProducts } = await axios.get(
-        `https://app.ecwid.com/api/v3/37374877/products?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
-      )
-
-      const _products = await globalUtils.sanitizeEcwidProducts(
-        ecwidProducts.items
-      )
-
-      setProducts(_products)
-      setRawProducts(_products)
-    }
-
     getProducts()
-
-    console.log("products from gatsby browser           ", products)
-
-    console.log("all shop     props", props)
   }, [])
 
   useEffect(() => {
-    console.log("my products", products)
-
     if (!products) {
       return
     }
-
-    console.log("we are searching", products)
 
     setTimeout(() => {
       if (window.ezfy) {

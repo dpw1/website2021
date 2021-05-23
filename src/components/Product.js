@@ -65,12 +65,13 @@ export default function Product(props) {
   The add to cart ought to be made via a function because of Google Tag Manager click detection.
   */
   const addToCart = async e => {
+    let productsInCart = []
     e.preventDefault()
 
     setLoading(true)
 
     while (!window.hasOwnProperty("Ecwid")) {
-      console.log("waiting for Ecwid")
+      console.log("waiting for Ecwid         ")
       await new Promise(resolve => setTimeout(resolve, 50))
     }
 
@@ -80,8 +81,22 @@ export default function Product(props) {
     }
 
     while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
-      console.log("waiting for 'add to product' ")
+      console.log("waiting for 'addProduct' ")
       await new Promise(resolve => setTimeout(resolve, 50))
+    }
+
+    Ecwid.Cart.get(function (cart) {
+      console.log(
+        cart.items
+          .map(e => e.product)
+          .map(_product => productsInCart.push(_product.id))
+      )
+    })
+
+    if (productsInCart.filter(e => e === productData.id).length >= 1) {
+      Ecwid.Cart.gotoCheckout()
+      setLoading(false)
+      return
     }
 
     Ecwid.Cart.addProduct({
@@ -118,20 +133,6 @@ export default function Product(props) {
           >
             {loading ? "Adding to cart..." : "Download now"}
           </a>
-
-          <div
-            className="ecsp ecsp-SingleProduct-v2 ecsp-Product ec-Product-359233331"
-            itemType="http://schema.org/Product"
-            data-single-product-id={359233331}
-          >
-            <div
-              className="ecsp-title"
-              itemProp="name"
-              style={{ display: "none" }}
-              content="Brooklyn Theme Slider (PRO)"
-            />
-            <div customprop="addtobag" />
-          </div>
 
           {/* <small className="Product-license">
             By downloading this product you confirm you have read the product's

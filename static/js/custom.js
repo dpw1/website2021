@@ -393,7 +393,7 @@ ezfy = (function () {
         const video = entry[0]
         console.log(video)
         if (video.isIntersecting) {
-          console.log("play", video.target)
+          console.log("play    ", video.target)
           video.target.play()
         } else if (!video.isIntersecting) {
           console.log("pause", video.target)
@@ -695,11 +695,11 @@ ezfy = (function () {
     const url = `https://app.ecwid.com/script.js?37374877`
 
     if (document.querySelector(`script[src*='app.ecwid']`)) {
-      return Ecwid.init()
+      return window.Ecwid.init()
     }
 
     await _loadScript(url)
-    Ecwid.init()
+    window.Ecwid.init()
   }
 
   return {

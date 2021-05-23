@@ -1,8 +1,35 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { _waitForElement } from "../utils/utils"
 import "./CartEcwid.scss"
 
 export default function CartEcwid(props) {
   const { isMobile } = props
+
+  const handleBackToShoppingButtonClick = async () => {
+    const $cart = window.document.querySelector(`.ec-cart-widget`)
+
+    if (!$cart) {
+      return
+    }
+
+    $cart.addEventListener("click", async function () {
+      const $button = await _waitForElement(
+        `.ec-cart__button > .form-control > button`
+      )
+
+      $button.addEventListener("click", function () {
+        const $close = document.querySelector(`.ecwid-popup-closeButton`)
+
+        $close.click()
+      })
+      console.log("continue shopping btn", $button)
+    })
+  }
+
+  useEffect(() => {
+    handleBackToShoppingButtonClick()
+  }, [])
+
   return (
     <div
       className={`CartEcwid ${

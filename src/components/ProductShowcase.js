@@ -7,9 +7,10 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 import globalUtils from "../../global-utils"
-import { productsQuery } from "../utils/utils"
+// import { productsQuery } from "../utils/utils"
 import ProductItem from "./ProductItem"
 import emitter from "./../../.cache/emitter"
+import { getEcwidProducts } from "../utils/utils"
 
 /**
  *
@@ -26,10 +27,14 @@ export default function ProductShowcase(props) {
 
   const [products, setProducts] = useState([])
 
-  let graphqlProducts = productsQuery()
+  // let graphqlProducts = productsQuery()
+  const populateProducts = async () => {
+    const sanitizedProducts = await getEcwidProducts()
 
-  useEffect(() => {
-    const sanitizedProducts = globalUtils.sanitizeProducts(graphqlProducts)
+    console.log("loading    ", sanitizedProducts)
+
+    setProducts(sanitizedProducts)
+    return
 
     if (!chosenProducts) {
       return setProducts(sanitizedProducts)
@@ -46,6 +51,10 @@ export default function ProductShowcase(props) {
     })
 
     setProducts(_products)
+  }
+
+  useEffect(() => {
+    populateProducts()
   }, [])
 
   return (
@@ -67,9 +76,13 @@ export default function ProductShowcase(props) {
           </div>
         </div>
         <div className="row ProductShowcase-products two-per-row-mobile">
-          {[...products].map(e => {
-            return <ProductItem page={"home"} item={e}></ProductItem>
-          })}
+          {products && products.length >= 1 ? (
+            [...products].map(e => {
+              return <ProductItem page={"home"} item={e}></ProductItem>
+            })
+          ) : (
+            <p>loading...</p>
+          )}
         </div>
         <div className="row">
           <div className="col-12 ProductShowcase-col">

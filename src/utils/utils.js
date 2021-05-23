@@ -6,6 +6,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import * as timeago from "timeago.js"
 import { siteRoutes } from "./siteRoutes"
 import { Link } from "gatsby"
+import axios from "axios"
+import globalUtils from "../../global-utils"
 
 export function groupItems(items, n) {
   return items.reduce((acc, x, i) => {
@@ -278,6 +280,46 @@ export function getTotalVisibleProducts() {
   }
 
   return parseInt($products.length)
+}
+
+export function _waitForElement(selector, delay = 50, tries = 250) {
+  const element = window.document.querySelector(selector)
+
+  if (!window[`__${selector}`]) {
+    window[`__${selector}`] = 0
+  }
+
+  function _search() {
+    return new Promise(resolve => {
+      window[`__${selector}`]++
+      setTimeout(resolve, delay)
+    })
+  }
+
+  if (element === null) {
+    if (window[`__${selector}`] >= tries) {
+      window[`__${selector}`] = 0
+      return Promise.reject(null)
+    }
+
+    return _search().then(() => _waitForElement(selector))
+  } else {
+    return Promise.resolve(element)
+  }
+}
+
+export function getEcwidProducts() {
+  return new Promise(async (resolve, reject) => {
+    const { data: ecwidProducts } = await axios.get(
+      `https://app.ecwid.com/api/v3/37374877/products?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
+    )
+
+    const _products = await globalUtils.sanitizeEcwidProducts(
+      ecwidProducts.items
+    )
+
+    resolve(_products)
+  })
 }
 
 export const productsQuery = () => {
