@@ -34,7 +34,7 @@ import { getTotalVisibleProducts } from "../utils/utils"
  */
 
 function Search(props) {
-  const { data, dataKey, updateData, isSearching, setIsSearching } = props
+  const { type, data, dataKey, updateData, isSearching, setIsSearching } = props
 
   const [search, searchInput] = useInput({
     type: "text",
@@ -97,7 +97,9 @@ function Search(props) {
     <section id="Search" className="SearchBox">
       <div className="SearchBox-filter">
         <div className="SearchBox-total  ">
-          {`Showing ${visible} of ${data.length} product(s).`}
+          {`Showing ${visible} of ${data.length} ${
+            type === "blog" ? "blog post(s)" : "product(s)"
+          }.`}
           {/* {`Showing ${results} ${results === 1 ? "result" : "results"} out of ${
             data.length
           }.`} */}

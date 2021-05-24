@@ -82,11 +82,6 @@ export const defaultNavbarLinks = [
     name: "Services",
     url: [
       {
-        name: "Services",
-        url: siteRoutes.services,
-        scroll: false,
-      },
-      {
         name: "Shop",
         url: siteRoutes.shop,
         scroll: false,
@@ -123,7 +118,7 @@ export const footerNavbarLinks = [
   },
   {
     name: "Services",
-    url: siteRoutes.services,
+    url: siteRoutes.shop,
     offset: 0,
     scroll: false,
   },
@@ -273,7 +268,9 @@ export function replaceAll(word, obj) {
 }
 
 export function getTotalVisibleProducts() {
-  const $products = window.document.querySelectorAll(`.portfolio-row > article`)
+  const $products = window.document.querySelectorAll(
+    `.portfolio-row > article, article.single-blog`
+  )
 
   if (!$products) {
     return
@@ -311,7 +308,7 @@ export function _waitForElement(selector, delay = 50, tries = 250) {
 export function getEcwidProducts() {
   return new Promise(async (resolve, reject) => {
     const { data: ecwidProducts } = await axios.get(
-      `https://app.ecwid.com/api/v3/37374877/products?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
+      `https://app.ecwid.com/api/v3/61271341/products?token=public_iNxZWDXrKMZrzGkdBWk3fvcfaJhBVgcm`
     )
 
     const _products = await globalUtils.sanitizeEcwidProducts(

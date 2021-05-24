@@ -373,6 +373,31 @@ video {
 
 $btn-custom-bg: linear-gradient(to bottom, #00baba, #00aaaa);
 
+.btn--LiveDemo {
+  display: block;
+  max-width: 144px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: black;
+  /* padding-top: 2px; */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: -10px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  background-image: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+  color: $black;
+
+  &:focus,
+  &:hover {
+    color: inherit !important;
+  }
+  &:active {
+    color: inherit !important;
+    background: inherit !important;
+  }
+}
+
 .btn--custom {
   font-weight: 500;
   display: inline-block;

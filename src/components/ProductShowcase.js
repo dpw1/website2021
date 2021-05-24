@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import "./ProductShowcase.scss"
+import Skeleton from "react-loading-skeleton"
 
 import parse from "html-react-parser"
 
@@ -27,13 +28,34 @@ export default function ProductShowcase(props) {
 
   const [products, setProducts] = useState([])
 
-  // let graphqlProducts = productsQuery()
+  const SkeletonLoader = () => {
+    return (
+      <div className="ProductShowcase-SkeletonLoader">
+        <div className="ProductShowcase-SkeletonLoader-item">
+          <Skeleton count={1} height={190} />
+          <Skeleton count={1} />
+          <Skeleton count={3} />
+        </div>
+        <div className="ProductShowcase-SkeletonLoader-item">
+          <Skeleton count={1} height={190} />
+          <Skeleton count={1} />
+          <Skeleton count={3} />
+        </div>
+        <div className="ProductShowcase-SkeletonLoader-item">
+          <Skeleton count={1} height={190} />
+          <Skeleton count={1} />
+          <Skeleton count={3} />
+        </div>
+      </div>
+    )
+  }
+
   const populateProducts = async () => {
     const sanitizedProducts = await getEcwidProducts()
 
     console.log("loading    ", sanitizedProducts)
 
-    setProducts(sanitizedProducts)
+    setProducts(sanitizedProducts.slice(3))
     return
 
     if (!chosenProducts) {
@@ -81,7 +103,7 @@ export default function ProductShowcase(props) {
               return <ProductItem page={"home"} item={e}></ProductItem>
             })
           ) : (
-            <p>loading...</p>
+            <SkeletonLoader></SkeletonLoader>
           )}
         </div>
         <div className="row">

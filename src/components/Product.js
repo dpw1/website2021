@@ -26,8 +26,6 @@ export default function Product(props) {
 
   const price = productData.price
 
-  const url = productData.addToCart ? productData.addToCart : productData.url
-
   const description =
     productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
 
@@ -57,13 +55,19 @@ export default function Product(props) {
     })()
 
     window.productPage.init()
-
-    console.log(productData)
   }, [])
+
+  function openInNewTab(href) {
+    Object.assign(window.document.createElement("a"), {
+      target: "_blank",
+      href: href,
+    }).click()
+  }
 
   /* 
   The add to cart ought to be made via a function because of Google Tag Manager click detection.
   */
+
   const addToCart = async e => {
     let productsInCart = []
     e.preventDefault()
@@ -81,7 +85,7 @@ export default function Product(props) {
     }
 
     while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
-      console.log("waiting for 'addProduct' ")
+      console.log("waiting for 'addProduct'                  ")
       await new Promise(resolve => setTimeout(resolve, 50))
     }
 
@@ -94,6 +98,7 @@ export default function Product(props) {
     })
 
     if (productsInCart.filter(e => e === productData.id).length >= 1) {
+      // openInNewTab(`https://store61271341.company.site/products/cart`)
       Ecwid.Cart.gotoCheckout()
       setLoading(false)
       return
@@ -103,6 +108,7 @@ export default function Product(props) {
       id: productData.id,
       quantity: 1,
       callback: function (success, product, cart) {
+        // openInNewTab(`https://store61271341.company.site/products/cart`)
         Ecwid.Cart.gotoCheckout()
         setLoading(false)
       },
@@ -114,7 +120,13 @@ export default function Product(props) {
       <div className="Product-container container">
         <div className="Product-picture">
           <figure className="Product-figure">
-            <img className="Product-img" src={productData.image} alt="" />
+            {productData.liveDemo ? (
+              <a href={productData.liveDemo} target="_blank">
+                <img className="Product-img" src={productData.image} alt="" />
+              </a>
+            ) : (
+              <img className="Product-img" src={productData.image} alt="" />
+            )}
           </figure>
         </div>
 
@@ -126,13 +138,21 @@ export default function Product(props) {
           </div> */}
 
           <a
-            href={url}
+            href={"#"}
             onClick={e => addToCart(e)}
             target="_blank"
             className="Product-atc btn--custom"
           >
             {loading ? "Adding to cart..." : "Download now"}
           </a>
+
+          {/* <a
+            href={productData.liveDemo}
+            target="_blank"
+            className="btn  btn--LiveDemo"
+          >
+            Live Demo
+          </a> */}
 
           {/* <small className="Product-license">
             By downloading this product you confirm you have read the product's
@@ -149,12 +169,7 @@ export default function Product(props) {
           </small>
         </div>
       </div>
-      <FloatingButton
-        loading={loading}
-        addToCart={addToCart}
-        url={url}
-        price={price}
-      />
+      <FloatingButton loading={loading} addToCart={addToCart} price={price} />
     </section>
   )
 }

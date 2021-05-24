@@ -38,7 +38,7 @@ const axios = require("axios")
    * @param {object} data = All the ejunkie and gumroad products.
    * @param {bool} graphql = Graphql (true) or REST API (false)
    */
-  exports.sanitizeProducts = function (data, graphql = true) {
+  exports.sanitizeProducts = function (data, graphql = false) {
     const _data = graphql ? data.allWordpressProducts.edges[0].node : data
 
     const ejunkie = _data.ejunkie.products
@@ -142,18 +142,23 @@ const axios = require("axios")
    *
    * Sanitizes Ecwid products to create product pages.
    *
-   * @param {*} data
-   * @param {*} graphql
+   * @param {*} _data = data coming from Ecwid's API
    * @returns
    */
 
-  exports.sanitizeEcwidProducts = async function (_data) {
+  exports.sanitizeEcwidProducts = async function (ecwidData, graphql = false) {
+    const _data = graphql
+      ? ecwidData.allWordpressProducts.edges[0].node.ecwid.items
+      : ecwidData
+
+    console.log("ECWID PRODUCTS : ", _data)
+
     return new Promise(async (resolve, reject) => {
       const { data: _categories } = await axios.get(
-        `https://app.ecwid.com/api/v3/37374877/categories?token=public_nn2wmpuLRsXkuLhRKtVyHqpBPudrpP2r`
+        `https://app.ecwid.com/api/v3/61271341/categories?token=public_iNxZWDXrKMZrzGkdBWk3fvcfaJhBVgcm`
       )
 
-      // console.log("my data: ", _data)
+      // console.log("my data: ", data)
       const allCategories = _categories.items
 
       let products = []
@@ -163,7 +168,9 @@ const axios = require("axios")
           return
         }
 
-        console.log("each item: ", product)
+        console.log("CURR PROD: ", product)
+
+        const id = product.id ? product.id : product.wordpress_id
         const _slug = product.name
           .replace(/[^\w\s]/gi, "")
           .toLowerCase()
@@ -189,10 +196,31 @@ const axios = require("axios")
           return all
         }
 
+        const getLiveDemoLink = () => {
+          let link = null
+
+          product.hasOwnProperty("attributes") &&
+            product.attributes.map(attribute => {
+              try {
+                if (
+                  attribute.hasOwnProperty("name") &&
+                  attribute.name.toLowerCase() === "demo"
+                ) {
+                  link = attribute.value
+                }
+              } catch (err) {
+                return
+              }
+            })
+
+          return link
+        }
+
         const tags = getTags()
+        const liveDemo = getLiveDemoLink()
 
         return products.push({
-          id: product.id,
+          id,
           title: product.name,
           price: product.defaultDisplayedPriceFormatted,
           comparePrice: product.compareToPriceFormatted,
@@ -202,15 +230,10 @@ const axios = require("axios")
           thumbnail: product.thumbnailUrl,
           image: product.originalImageUrl,
           slug,
-          url: `https://ezfy.e-junkie.com/product/${product.id}`,
-          addToCart: `https://www.fatfreecartpro.com/ecom/gb.php?&c=cart&ejc=2&cl=374804&i=${product.id}`,
+          liveDemo,
         })
       })
 
-      console.log(
-        "All Products:        ",
-        products.filter(each => each !== null).sort((a, b) => b.id - a.id)
-      )
       resolve(
         products.filter(each => each !== null).sort((a, b) => b.id - a.id)
       )

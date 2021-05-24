@@ -23,7 +23,7 @@ const questions = [
       <p>
         We do not code themes from scratch, however we already do have some
         premium quality themes built by us at a pretty accessible price. Just
-        send us an email so we can send you a live preivew of them!
+        send us an email so we can send you a live preview of them!
       </p>
     ),
   },
@@ -49,7 +49,7 @@ const questions = [
           shop
         </Link>{" "}
         you'll be redirected to a safe checkout payment platform where you can
-        pay with PayPal or Credit Card.
+        pay with PayPal or Credit/Debit card (processed via Stripe).
       </p>
     ),
   },

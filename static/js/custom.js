@@ -692,7 +692,7 @@ ezfy = (function () {
   }
 
   async function loadEcwidScript() {
-    const url = `https://app.ecwid.com/script.js?37374877`
+    const url = `https://app.ecwid.com/script.js?61271341`
 
     if (document.querySelector(`script[src*='app.ecwid']`)) {
       return window.Ecwid.init()

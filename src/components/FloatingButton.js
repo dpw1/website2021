@@ -7,7 +7,7 @@ import "./FloatingButton.scss"
 export default function FloatingButton(props) {
   const [isVisible, setIsVisible] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
-  const { url, name: _name, price: _price, addToCart, loading } = props
+  const { name: _name, price: _price, addToCart, loading } = props
 
   const price = _price.toString().replace(".00", "")
 
@@ -54,7 +54,7 @@ export default function FloatingButton(props) {
       <a
         onClick={e => addToCart(e)}
         className="FloatingButton-button"
-        href={url}
+        href={"#"}
         target="_blank"
       >
         {loading ? "Adding to cart..." : "Download now"}

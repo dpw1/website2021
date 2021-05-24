@@ -11,6 +11,7 @@ $loader-size: 13px;
   * {
     transition: $transition-basic;
   }
+
   .ec-minicart:hover svg {
     transition: $transition-basic;
     opacity: 0.75 !important;
@@ -20,6 +21,7 @@ $loader-size: 13px;
     width: 30px !important;
     height: 30px !important;
   }
+
   svg[class*="icon"] * {
     stroke: white !important;
   }
@@ -28,6 +30,7 @@ $loader-size: 13px;
     background-color: $black !important;
   }
 
+  // Sticky cart
   @at-root {
     .navbar-sticky-transitioned {
       .CartEcwid {
@@ -35,6 +38,10 @@ $loader-size: 13px;
       }
       .CartEcwid svg[class*="icon"] * {
         stroke: $black !important;
+      }
+
+      .ec-minicart__counter {
+        transform: scale(0.8) !important;
       }
     }
   }
@@ -61,6 +68,7 @@ $loader-size: 13px;
     top: -3px;
     right: -4px;
   }
+
   .lds-ring div {
     box-sizing: border-box;
     display: block;
@@ -71,6 +79,12 @@ $loader-size: 13px;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
+
+    @at-root {
+      .navbar-sticky-transitioned .CartEcwid .lds-ring div {
+        border-color: $black transparent transparent transparent;
+      }
+    }
   }
   .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
@@ -101,4 +115,11 @@ $loader-size: 13px;
   @media (min-width: $md) {
     display: none;
   }
+}
+
+/* Other styles related to the popup per se */
+
+.ecwid-ProductBrowserPopup > div {
+  max-height: 90vh;
+  overflow-y: scroll;
 }
