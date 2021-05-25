@@ -55,7 +55,7 @@ export default function ProductShowcase(props) {
 
     console.log("loading    ", sanitizedProducts)
 
-    setProducts(sanitizedProducts.slice(3))
+    setProducts(sanitizedProducts.slice(sanitizedProducts.length - 3))
     return
 
     if (!chosenProducts) {

@@ -27,6 +27,9 @@ $wrapper-width: $width * 2;
   color: #2d2f43;
   font-size: 18px;
 
+  border-bottom: 1px solid #e8e8e1;
+  padding-bottom: 15px;
+
   &:last-child {
     margin-bottom: 0;
   }

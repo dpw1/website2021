@@ -138,6 +138,29 @@ const axios = require("axios")
     return products.filter(e => e !== null).sort((a, b) => b.id - a.id)
   }
 
+  function populateWithRelatedProducts(allProducts) {
+    return allProducts.map(product => {
+      if (product.relatedProducts && product.relatedProducts.length >= 1) {
+        var updatedRelatedProducts = []
+        var relatedProducts = product.relatedProducts
+
+        relatedProducts.map(_relatedProductID => {
+          const currentRelatedProduct = allProducts.filter(
+            all => all.id === _relatedProductID
+          )[0]
+          console.log("current ", currentRelatedProduct.title)
+
+          updatedRelatedProducts.push({ ...currentRelatedProduct })
+        })
+
+        product.relatedProducts = updatedRelatedProducts
+        console.log(updatedRelatedProducts)
+      }
+
+      return product
+    })
+  }
+
   /**
    *
    * Sanitizes Ecwid products to create product pages.
@@ -147,11 +170,11 @@ const axios = require("axios")
    */
 
   exports.sanitizeEcwidProducts = async function (ecwidData, graphql = false) {
-    const _data = graphql
+    const _rawProducts = graphql
       ? ecwidData.allWordpressProducts.edges[0].node.ecwid.items
       : ecwidData
 
-    console.log("ECWID PRODUCTS : ", _data)
+    console.log("ECWID PRODUCTS : ", _rawProducts)
 
     return new Promise(async (resolve, reject) => {
       const { data: _categories } = await axios.get(
@@ -163,7 +186,7 @@ const axios = require("axios")
 
       let products = []
 
-      _data.map(product => {
+      _rawProducts.map(async product => {
         if (!product.hasOwnProperty("name")) {
           return
         }
@@ -216,12 +239,38 @@ const axios = require("axios")
           return link
         }
 
+        // const getRelatedProducts = async () => {
+        //   return new Promise(async (resolve, reject) => {
+        //     let allRelatedProducts = []
+
+        //     console.log("CURRENT LOOP: ", product, product.relatedProducts)
+
+        //     if (
+        //       !product.hasOwnProperty("relatedProducts") ||
+        //       product.relatedProducts.productIds.length <= 0
+        //     ) {
+        //       return null
+        //     }
+
+        //     product.relatedProducts.productIds.map(async relatedProductID => {
+
+        //     })
+
+        //     console.log("THIS IS #### loop end")
+
+        //     resolve(allRelatedProducts)
+        //   })
+        // }
+
         const tags = getTags()
         const liveDemo = getLiveDemoLink()
+        // const relatedProducts = getRelatedProducts()
 
         return products.push({
           id,
           title: product.name,
+          rawPrice: product.price,
+          rawComparePrice: product.compareToPrice,
           price: product.defaultDisplayedPriceFormatted,
           comparePrice: product.compareToPriceFormatted,
           tags,
@@ -231,11 +280,19 @@ const axios = require("axios")
           image: product.originalImageUrl,
           slug,
           liveDemo,
+          relatedProducts: product.relatedProducts.productIds,
         })
       })
 
+      const populatedProducts = populateWithRelatedProducts(products)
+
+      // Adds "related products" to product
+      // let products = []
+
       resolve(
-        products.filter(each => each !== null).sort((a, b) => b.id - a.id)
+        populatedProducts
+          .filter(each => each !== null)
+          .sort((a, b) => b.id - a.id)
       )
     })
   }

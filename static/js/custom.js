@@ -695,11 +695,16 @@ ezfy = (function () {
     const url = `https://app.ecwid.com/script.js?61271341`
 
     if (document.querySelector(`script[src*='app.ecwid']`)) {
-      return window.Ecwid.init()
+      if (window.Ecwid) {
+        window.Ecwid.init()
+      }
+      return
     }
 
     await _loadScript(url)
-    window.Ecwid.init()
+    if (window.Ecwid) {
+      window.Ecwid.init()
+    }
   }
 
   return {

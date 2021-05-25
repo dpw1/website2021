@@ -1,0 +1,85 @@
+@import "../css/variables";
+
+.fbt {
+  margin: 20px auto;
+  width: 100%;
+  height: auto;
+  clear: both;
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  max-width: 400px;
+
+  &-title {
+    font-size: 15px;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 1rem;
+
+    border-color: rgb(170, 170, 170);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 0.5em;
+    padding-top: 15px;
+  }
+
+  &-figures {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  &-figure {
+    max-width: 100px;
+    width: 100%;
+    position: relative;
+
+    &:after {
+      content: "+";
+      font-size: 14px;
+      display: inline-block;
+      position: absolute;
+      right: -17px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:last-of-type:after {
+      display: none;
+    }
+  }
+
+  &-subtitle {
+    display: inline-block;
+    border-width: initial;
+    border-image: initial;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 0;
+    text-decoration: none;
+    text-transform: none;
+    margin-bottom: 10px;
+  }
+
+  &-total {
+    margin-top: 15px;
+
+    &-big {
+      text-decoration: line-through;
+    }
+  }
+
+  &-option {
+    display: flex;
+    align-items: center;
+  }
+
+  &-checkbox {
+    margin-right: 10px;
+    transform: scale(1.3);
+    transform-origin: center;
+  }
+}

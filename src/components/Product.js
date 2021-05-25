@@ -9,6 +9,7 @@ import { siteRoutes } from "./../utils/siteRoutes"
 import Benefits from "./Benefits"
 
 // import { replaceAll } from "./../utils/utils"
+import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether"
 
 /**
  *
@@ -20,11 +21,14 @@ import Benefits from "./Benefits"
 
 export default function Product(props) {
   const [loading, setLoading] = useState(false)
+  const [currentProduct, setCurrentProduct] = useState("")
   const { product: productData } = props
 
-  console.log(productData)
+  console.log("my product data", productData)
 
   const price = productData.price
+    .replace("$0.00 or more", "Free")
+    .replace("$0.00", "Free")
 
   const description =
     productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
@@ -57,12 +61,9 @@ export default function Product(props) {
     window.productPage.init()
   }, [])
 
-  function openInNewTab(href) {
-    Object.assign(window.document.createElement("a"), {
-      target: "_blank",
-      href: href,
-    }).click()
-  }
+  useEffect(() => {
+    setCurrentProduct(productData)
+  }, [productData])
 
   /* 
   The add to cart ought to be made via a function because of Google Tag Manager click detection.
@@ -107,6 +108,7 @@ export default function Product(props) {
     Ecwid.Cart.addProduct({
       id: productData.id,
       quantity: 1,
+
       callback: function (success, product, cart) {
         // openInNewTab(`https://store61271341.company.site/products/cart`)
         Ecwid.Cart.gotoCheckout()
@@ -160,6 +162,12 @@ export default function Product(props) {
           </small> */}
 
           <Benefits></Benefits>
+
+          {currentProduct && (
+            <FrequentlyBoughtTogether
+              product={currentProduct}
+            ></FrequentlyBoughtTogether>
+          )}
 
           <div className="Product-text">{parse(description)}</div>
 
