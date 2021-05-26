@@ -20,8 +20,13 @@ export default function CartEcwid(props) {
       $button.addEventListener("click", function () {
         const $close = document.querySelector(`.ecwid-popup-closeButton`)
 
-        $close.click()
+        if (!/shop/.test(window.location.href)) {
+          return (window.location.href = `${window.location.origin}/shop`)
+        }
+
+        return $close.click()
       })
+
       console.log("continue shopping btn", $button)
     })
   }
