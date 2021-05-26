@@ -280,6 +280,7 @@ const axios = require("axios")
           image: product.originalImageUrl,
           slug,
           liveDemo,
+          updateTimestamp: product.updateTimestamp,
           relatedProducts: product.relatedProducts.productIds,
         })
       })
@@ -292,7 +293,7 @@ const axios = require("axios")
       resolve(
         populatedProducts
           .filter(each => each !== null)
-          .sort((a, b) => b.id - a.id)
+          .sort((a, b) => b.updateTimestamp - a.updateTimestamp)
       )
     })
   }

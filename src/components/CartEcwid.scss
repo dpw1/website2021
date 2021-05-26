@@ -123,3 +123,11 @@ $loader-size: 13px;
   max-height: 90vh;
   overflow-y: scroll;
 }
+
+.ec-cart-item__count-inner {
+  display: none;
+}
+
+.ec-cart-item__price-inner {
+  text-align: left;
+}

@@ -14,6 +14,16 @@
 
 `npm run deploy`
 
+## Ecwid Products
+
+Always rebuild and deploy after updating Ecwid products.
+
+There are two things to notice:
+
+- Product pages are generated via the GraphQL interface wired up with Ecwid's API and Wordpress. If you update something at Ecwid, it will not update immediately on the website. You will need to rebuild & deploy to see the changes.
+
+- Product showcases and the page /shop are wired up with the REST API. They will change immediately.
+
 ## New blog posts
 
 1. Write the blog post at `ezfy.club/wp-admin` and publish it;

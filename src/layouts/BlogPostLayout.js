@@ -49,7 +49,7 @@ const BlogPostLayout = props => {
         chosenProducts={[
           "Debut Theme Slider (PRO)",
           "Minimal Theme Slider (PRO)",
-          `Ultimate Debut Bundle - Slider, Sticky Nav & Image on Hover`,
+          `Brooklyn Theme Slider (PRO)`,
         ]}
         page="home"
       />
