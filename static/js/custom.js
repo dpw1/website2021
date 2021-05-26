@@ -683,6 +683,36 @@ ezfy = (function () {
     }
   }
 
+  function forceHrefLinkOnFirefox() {
+    var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+
+    if (!isFirefox) {
+      return
+    }
+
+    console.log("ALPACA this is firefox! listening clicks.")
+
+    const $links = window.document.querySelectorAll(`a[href]`)
+
+    if (!$links) {
+      return
+    }
+
+    for (const each of $links) {
+      each.addEventListener("click", function () {
+        console.log("ALPACA clicked! checking redirect.")
+        const href = each.getAttribute("href")
+        const target = each.getAttribute("target")
+
+        if (/#/.test(href) || /_blank/.test(target)) {
+          return
+        }
+
+        window.location.href = href
+      })
+    }
+  }
+
   function removeLoader() {
     const $loader = window.document.querySelector(`.loader--visible`)
 
@@ -692,19 +722,20 @@ ezfy = (function () {
   }
 
   async function loadEcwidScript() {
-    const url = `https://app.ecwid.com/script.js?61271341`
+    try {
+      const url = `https://app.ecwid.com/script.js?61271341`
+      const $script = document.querySelector(`script[src*='app.ecwid']`)
 
-    if (document.querySelector(`script[src*='app.ecwid']`)) {
-      if (window.Ecwid) {
+      if ($script) {
         window.Ecwid.init()
-      }
-      return
-    }
 
-    await _loadScript(url)
-    if (window.Ecwid) {
+        return
+      }
+
+      await _loadScript(url)
+
       window.Ecwid.init()
-    }
+    } catch (err) {}
   }
 
   return {
@@ -714,6 +745,7 @@ ezfy = (function () {
     activateEJunkieCart: activateEJunkieCart,
     loadEcwidScript: loadEcwidScript,
     addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
+    forceHrefLinkOnFirefox: forceHrefLinkOnFirefox,
 
     initServices: () => {
       readMoreForServices()
@@ -741,13 +773,18 @@ ezfy = (function () {
       showLoader()
       reviewFeedback()
       loadEcwidScript()
+      window.ezfy.forceHrefLinkOnFirefox()
     },
     init: function () {
       window.ezfy.start()
-      document.addEventListener("DOMContentLoaded", function () {})
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          window.ezfy.forceHrefLinkOnFirefox()
+        }, 3000)
+      })
 
       window.onresize = function (event) {
-        window.ezfy.activateEJunkieCart()
+        // window.ezfy.activateEJunkieCart()
       }
 
       window.onload = function () {

@@ -42,6 +42,8 @@ export default function HTML(props) {
           src={withPrefix("js/vendors.js")}
         ></script>
 
+        {/* <script type="text/javascript" src={withPrefix("js/ecwid.js")}></script> */}
+
         <script
           type="text/javascript"
           src={withPrefix("js/custom.js")}

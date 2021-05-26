@@ -36,6 +36,7 @@ export default function Product(props) {
 
   useEffect(() => {
     window.ezfy.loadEcwidScript()
+    window.ezfy.forceHrefLinkOnFirefox()
 
     window.productPage = (function () {
       function stickyImage() {
