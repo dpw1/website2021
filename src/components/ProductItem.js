@@ -80,7 +80,7 @@ function ProductItem(props) {
             <h3 className="services-price-small ProductItem-price-small color-primary">
               {/free/gim.test(price)
                 ? price
-                : price.toString().replace(".00", "")}
+                : price.toString().replace(".00", "").replace("$0", "Free")}
             </h3>
           </div>
 

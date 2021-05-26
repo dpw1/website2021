@@ -293,7 +293,7 @@ const axios = require("axios")
       resolve(
         populatedProducts
           .filter(each => each !== null)
-          .sort((a, b) => b.updateTimestamp - a.updateTimestamp)
+          .sort((a, b) => b.rawPrice - a.rawPrice)
       )
     })
   }

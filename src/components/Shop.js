@@ -112,47 +112,6 @@ function Shop(props) {
         <div className="row">
           <div className="col-12 col-lg-12 shop-filter">
             <div className="sidebar">
-              {/* <div className="single-widget">
-
-                <div
-                  className="accordions widget tags-widget"
-                  id="tags-accordion"
-                >
-                  <div className="single-accordion blog-accordion">
-                    <h5>
-                      <a
-                        role="button"
-                        className="collapse show text-uppercase d-block p-3 "
-                        data-toggle="collapse"
-                        href="#accordion3"
-                      >
-                        Filter
-                      </a>
-                    </h5>
-
-                    <div
-                      id="accordion3"
-                      className="accordion-content widget-content collapse show"
-                      data-parent="#tags-accordion"
-                    >
-
-                      <div
-                        id="tagsWidget"
-                        className="widget-content tags-widget-items pt-2"
-                      >
-                        <a
-                          href="#"
-                          data-tag-name="all"
-                          className="d-inline-block mt-2 mr-1 px-2 py-1 tags-widget-item tags-widget-item--active "
-                        >
-                          All
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
               <div>
                 <Tags data={rawProducts} updateData={setProducts}></Tags>
               </div>
