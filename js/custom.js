@@ -393,7 +393,7 @@ ezfy = (function () {
         const video = entry[0]
         console.log(video)
         if (video.isIntersecting) {
-          console.log("play", video.target)
+          console.log("play    ", video.target)
           video.target.play()
         } else if (!video.isIntersecting) {
           console.log("pause", video.target)
@@ -555,6 +555,8 @@ ezfy = (function () {
   function activateEJunkieCart() {
     // console.log("CART: ejunkie cart")
 
+    return
+
     const $ejunkieScript = document.querySelector(
       `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
     )
@@ -689,11 +691,28 @@ ezfy = (function () {
     }
   }
 
+  async function loadEcwidScript() {
+    const url = `https://app.ecwid.com/script.js?61271341`
+
+    if (document.querySelector(`script[src*='app.ecwid']`)) {
+      if (window.Ecwid) {
+        window.Ecwid.init()
+      }
+      return
+    }
+
+    await _loadScript(url)
+    if (window.Ecwid) {
+      window.Ecwid.init()
+    }
+  }
+
   return {
     removeLoader: removeLoader,
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
+    loadEcwidScript: loadEcwidScript,
     addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
 
     initServices: () => {
@@ -721,6 +740,7 @@ ezfy = (function () {
       testBackbutton()
       showLoader()
       reviewFeedback()
+      loadEcwidScript()
     },
     init: function () {
       window.ezfy.start()
