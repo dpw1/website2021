@@ -131,3 +131,9 @@ $loader-size: 13px;
 .ec-cart-item__price-inner {
   text-align: left !important;
 }
+
+@media (max-width: $xxs) {
+  button.ecwid-popup-closeButton {
+    top: 15px !important;
+  }
+}
