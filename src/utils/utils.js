@@ -319,6 +319,10 @@ export function getEcwidProducts() {
   })
 }
 
+export function ruleOfThree(a, b, c) {
+  return parseFloat((b * c) / a)
+}
+
 export const productsQuery = () => {
   const data = useStaticQuery(graphql`
     query ProductsShowcaseQuery {

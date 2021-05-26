@@ -24,11 +24,12 @@ export default function Product(props) {
   const [currentProduct, setCurrentProduct] = useState("")
   const { product: productData } = props
 
-  console.log("my product data", productData)
+  // console.log("my product data      ", productData)
 
   const price = productData.price
     .replace("$0.00 or more", "Free")
     .replace("$0.00", "Free")
+    .replace(".00", "")
 
   const description =
     productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
@@ -62,8 +63,25 @@ export default function Product(props) {
   }, [])
 
   useEffect(() => {
+    console.log("current product: ", productData)
     setCurrentProduct(productData)
   }, [productData])
+
+  const hasToDisplayFrequentlyBoughtTogether = () => {
+    if (window.document.querySelector(`.fbt`)) {
+      return true
+    }
+
+    if (
+      !currentProduct ||
+      !currentProduct.relatedProducts ||
+      currentProduct.relatedProducts.length <= 0
+    ) {
+      return false
+    }
+
+    return true
+  }
 
   /* 
   The add to cart ought to be made via a function because of Google Tag Manager click detection.
@@ -76,7 +94,7 @@ export default function Product(props) {
     setLoading(true)
 
     while (!window.hasOwnProperty("Ecwid")) {
-      console.log("waiting for Ecwid         ")
+      console.log("waiting for Ecwid          ")
       await new Promise(resolve => setTimeout(resolve, 50))
     }
 
@@ -91,11 +109,9 @@ export default function Product(props) {
     }
 
     Ecwid.Cart.get(function (cart) {
-      console.log(
-        cart.items
-          .map(e => e.product)
-          .map(_product => productsInCart.push(_product.id))
-      )
+      cart.items
+        .map(e => e.product)
+        .map(_product => productsInCart.push(_product.id))
     })
 
     if (productsInCart.filter(e => e === productData.id).length >= 1) {
@@ -163,11 +179,9 @@ export default function Product(props) {
 
           <Benefits></Benefits>
 
-          {currentProduct && (
-            <FrequentlyBoughtTogether
-              product={currentProduct}
-            ></FrequentlyBoughtTogether>
-          )}
+          <FrequentlyBoughtTogether
+            product={currentProduct}
+          ></FrequentlyBoughtTogether>
 
           <div className="Product-text">{parse(description)}</div>
 

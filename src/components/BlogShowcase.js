@@ -243,6 +243,7 @@ const BlogShowcase = props => {
               tagKeyName="tag_names"
             ></Tags>
             <Search
+              type="blog"
               data={sortedData}
               dataKey="title"
               updateData={setPosts}

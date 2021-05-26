@@ -1,5 +1,8 @@
 @import "../css/variables";
 
+$blue: #00ffffd4;
+$pink: #ff00ffab;
+
 .fbt {
   margin: 20px auto;
   width: 100%;
@@ -10,6 +13,10 @@
   border: 1px solid #d4d4d4;
   border-radius: 4px;
   max-width: 400px;
+
+  @media (min-width: $xs) {
+    margin-left: 0;
+  }
 
   &-title {
     font-size: 15px;
@@ -29,25 +36,97 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 10px;
+
+    @media (max-width: $xxs) {
+      flex-direction: column;
+
+      & > * {
+        display: block;
+      }
+    }
   }
 
   &-figure {
     max-width: 100px;
     width: 100%;
     position: relative;
+    display: flex;
+    align-items: center;
 
-    &:after {
-      content: "+";
-      font-size: 14px;
-      display: inline-block;
-      position: absolute;
-      right: -17px;
-      top: 50%;
-      transform: translateY(-50%);
+    @media (max-width: $xxs) {
+      flex-direction: column;
+      max-width: 200px;
+      width: 100%;
     }
 
-    &:last-of-type:after {
-      display: none;
+    img {
+      //   box-shadow: inset 0 0 10px #fff, inset 2px 0 10px $pink,
+      //     inset -2px 0 10px $blue, inset 2px 0 10px $pink, inset -2px 0 10px $blue,
+      //     0 0 10px #fff, -1px 0 10px $pink, 1px 0 10px $blue;
+    }
+
+    // &:after {
+    //   content: "+";
+    //   font-size: 14px;
+    //   display: inline-block;
+    //   position: relative;
+    // }
+
+    // &:last-of-type:after {
+    //   display: none;
+    // }
+  }
+
+  &-icon {
+    pointer-events: none;
+    margin-left: 4px;
+
+    @media (max-width: $xxs) {
+      display: block;
+      margin-top: 10px;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    @at-root {
+      .fbt-figures > span:last-of-type {
+        display: none;
+      }
+    }
+  }
+
+  &-button {
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none solid black;
+    text-align: center;
+    vertical-align: top;
+    max-height: 70px;
+    letter-spacing: 0;
+    white-space: normal;
+    line-height: normal;
+    color: #000;
+    background: #3d3d3d;
+    box-shadow: none;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: #ffc621;
+    padding: 10px 50px;
+    opacity: 1;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    cursor: pointer;
+    border-style: none;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: $transition-basic;
+    &:hover {
+      background: lighten(#3d3d3d, 10%);
     }
   }
 
@@ -67,7 +146,12 @@
   &-total {
     margin-top: 15px;
 
-    &-big {
+    &-small {
+      font-size: 16px;
+      margin-right: 6px;
+    }
+
+    &-small + &-big {
       text-decoration: line-through;
     }
   }
@@ -75,11 +159,33 @@
   &-option {
     display: flex;
     align-items: center;
+    text-align: left;
+  }
+
+  &-name {
+    > span {
+      font-size: 11px;
+    }
   }
 
   &-checkbox {
     margin-right: 10px;
     transform: scale(1.3);
     transform-origin: center;
+    position: relative;
+    top: 2px;
+  }
+
+  &-label {
+    text-align: left;
+    & > * {
+      display: inline-block;
+    }
+  }
+
+  &-price {
+    margin-left: 5px;
+    font-style: italic;
+    font-size: 12px;
   }
 }
