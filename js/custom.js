@@ -393,7 +393,7 @@ ezfy = (function () {
         const video = entry[0]
         console.log(video)
         if (video.isIntersecting) {
-          console.log("play", video.target)
+          console.log("play    ", video.target)
           video.target.play()
         } else if (!video.isIntersecting) {
           console.log("pause", video.target)
@@ -555,6 +555,8 @@ ezfy = (function () {
   function activateEJunkieCart() {
     // console.log("CART: ejunkie cart")
 
+    return
+
     const $ejunkieScript = document.querySelector(
       `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
     )
@@ -681,6 +683,36 @@ ezfy = (function () {
     }
   }
 
+  function forceHrefLinkOnFirefox() {
+    var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+
+    if (!isFirefox) {
+      return
+    }
+
+    console.log("ALPACA this is firefox! listening clicks.")
+
+    const $links = window.document.querySelectorAll(`a[href]`)
+
+    if (!$links) {
+      return
+    }
+
+    for (const each of $links) {
+      each.addEventListener("click", function () {
+        console.log("ALPACA clicked! checking redirect.")
+        const href = each.getAttribute("href")
+        const target = each.getAttribute("target")
+
+        if (/#/.test(href) || /_blank/.test(target)) {
+          return
+        }
+
+        window.location.href = href
+      })
+    }
+  }
+
   function removeLoader() {
     const $loader = window.document.querySelector(`.loader--visible`)
 
@@ -689,12 +721,31 @@ ezfy = (function () {
     }
   }
 
+  async function loadEcwidScript() {
+    try {
+      const url = `https://app.ecwid.com/script.js?61271341`
+      const $script = document.querySelector(`script[src*='app.ecwid']`)
+
+      if ($script) {
+        window.Ecwid.init()
+
+        return
+      }
+
+      await _loadScript(url)
+
+      window.Ecwid.init()
+    } catch (err) {}
+  }
+
   return {
     removeLoader: removeLoader,
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
     activateEJunkieCart: activateEJunkieCart,
+    loadEcwidScript: loadEcwidScript,
     addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
+    forceHrefLinkOnFirefox: forceHrefLinkOnFirefox,
 
     initServices: () => {
       readMoreForServices()
@@ -721,13 +772,19 @@ ezfy = (function () {
       testBackbutton()
       showLoader()
       reviewFeedback()
+      loadEcwidScript()
+      window.ezfy.forceHrefLinkOnFirefox()
     },
     init: function () {
       window.ezfy.start()
-      document.addEventListener("DOMContentLoaded", function () {})
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          window.ezfy.forceHrefLinkOnFirefox()
+        }, 3000)
+      })
 
       window.onresize = function (event) {
-        window.ezfy.activateEJunkieCart()
+        // window.ezfy.activateEJunkieCart()
       }
 
       window.onload = function () {
