@@ -16,11 +16,6 @@ $color-sticky: white;
       position: relative;
       top: -7px;
 
-      @supports (-webkit-text-size-adjust: none) and
-        (not (-ms-accelerator: true)) {
-        top: 0px;
-      }
-
       .cart-button {
         position: relative;
         left: 5px;

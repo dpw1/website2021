@@ -156,6 +156,10 @@ $pink: #ff00ffab;
     }
   }
 
+  &-options {
+    margin-top: 15px;
+  }
+
   &-option {
     display: flex;
     align-items: center;
@@ -163,7 +167,7 @@ $pink: #ff00ffab;
   }
 
   &-name {
-    > span {
+    > .fbt-this-item {
       font-size: 11px;
     }
   }
@@ -187,5 +191,6 @@ $pink: #ff00ffab;
     margin-left: 5px;
     font-style: italic;
     font-size: 12px;
+    display: inline-block;
   }
 }

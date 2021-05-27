@@ -132,8 +132,14 @@ $loader-size: 13px;
   text-align: left !important;
 }
 
+.ecwid-overlay {
+  z-index: 9999 !important;
+}
+
 @media (max-width: $xxs) {
   button.ecwid-popup-closeButton {
-    top: 15px !important;
+    top: 23px !important;
+    transform: scale(1.2);
+    right: 14px !important;
   }
 }

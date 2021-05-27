@@ -152,6 +152,8 @@
 
   &-SkeletonLoader {
     display: flex;
+    width: 100%;
+    max-width: 100%;
     &-item {
       max-width: 33.333%;
       width: 100%;

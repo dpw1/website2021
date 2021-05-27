@@ -49,7 +49,7 @@ function Shop(props) {
   }, [products])
 
   useEffect(() => {
-    console.log("searching? ", isSearching)
+    console.log("searching?            ", isSearching)
 
     if (isSearching) {
       console.log("inside is searching")
@@ -128,7 +128,7 @@ function Shop(props) {
           </div>
 
           <div className="col-12 col-lg-12">
-            <div className="portfolio-row row">
+            <div className="portfolio-row row two-per-row-mobile">
               {products && products.length >= 1 ? (
                 products.map(e => ProductItem(e))
               ) : (

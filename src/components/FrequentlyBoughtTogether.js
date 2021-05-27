@@ -169,17 +169,19 @@ export default function FrequentlyBoughtTogether(props) {
                 return (
                   <div className="fbt-option">
                     <label className="fbt-label" htmlFor={`fbt-checkbox${i}`}>
-                      <input
-                        checked
-                        className="fbt-checkbox"
-                        type="checkbox"
-                        id={`fbt-checkbox${i}`}
-                      />
                       <div className="fbt-name">
-                        {i === 0 && <span>This item: </span>}
-                        {e.title}
+                        <input
+                          checked
+                          className="fbt-checkbox"
+                          type="checkbox"
+                          id={`fbt-checkbox${i}`}
+                        />
+                        {i === 0 && (
+                          <span className="fbt-this-item">This item: </span>
+                        )}
+                        <span>{e.title} </span>
+                        <div className="fbt-price">{e.price}</div>
                       </div>
-                      <div className="fbt-price">{e.price}</div>
                     </label>
                   </div>
                 )

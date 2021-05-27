@@ -24,6 +24,10 @@ There are two things to notice:
 
 - Product showcases and the page /shop are wired up with the REST API. They will change immediately.
 
+## Ecwid Bundle within website
+
+The discount is hard coded. Currently it is %15 OFF for orders over \$45, if it changes please update the code.
+
 ## New blog posts
 
 1. Write the blog post at `ezfy.club/wp-admin` and publish it;

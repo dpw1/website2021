@@ -97,7 +97,7 @@ export default function ProductShowcase(props) {
             </div>
           </div>
         </div>
-        <div className="row ProductShowcase-products two-per-row-mobile">
+        <div className="row ProductShowcase-products">
           {products && products.length >= 1 ? (
             [...products].map(e => {
               return <ProductItem page={"home"} item={e}></ProductItem>

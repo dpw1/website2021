@@ -130,12 +130,10 @@ $self: ".ProductItem";
 
 /* Shows two per row on mobile. Make sure you add this class to the div encapsulating <ProductItem> */
 @media (max-width: $xs) {
-  .two-per-row-mobile {
-    .portfolio-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      /*     gap: 0px; */
-    }
+  .two-per-row-mobile.portfolio-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /*     gap: 0px; */
 
     .ProductItem {
       padding: unset;
