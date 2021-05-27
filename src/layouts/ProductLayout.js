@@ -36,7 +36,7 @@ const ProductLayout = props => {
       window.scrollTo(0, 0)
       window.ezfy.start()
       window.ezfy.removeLoader()
-    }, 100)
+    }, 10)
   }, [])
 
   return (
