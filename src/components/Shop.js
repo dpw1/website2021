@@ -49,10 +49,10 @@ function Shop(props) {
   }, [products])
 
   useEffect(() => {
-    console.log("searching?            ", isSearching)
+    console.log("searching? ", isSearching)
 
     if (isSearching) {
-      console.log("inside is searching")
+      console.log("inside is searching        ")
       setTimeout(() => {
         if (window.ezfy) {
           window.ezfy.init()
@@ -128,15 +128,17 @@ function Shop(props) {
           </div>
 
           <div className="col-12 col-lg-12">
-            <div className="portfolio-row row two-per-row-mobile">
-              {products && products.length >= 1 ? (
-                products.map(e => ProductItem(e))
-              ) : (
+            {products && products.length >= 1 ? (
+              <div className="portfolio-row row two-per-row-mobile">
+                {products.map(e => ProductItem(e))}{" "}
+              </div>
+            ) : (
+              <div className="portfolio-row row">
                 <div className="container">
                   {isSearching ? <p>No products found.</p> : <SkeletonLoader />}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
