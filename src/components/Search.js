@@ -90,7 +90,9 @@ function Search(props) {
   }, [search])
 
   useEffect(() => {
-    setVisible(getTotalVisibleProducts())
+    setTimeout(() => {
+      return setVisible(getTotalVisibleProducts())
+    }, 100)
   }, [results])
 
   return (

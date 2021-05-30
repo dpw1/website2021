@@ -103,7 +103,8 @@ function Shop(props) {
               <h2 className="text-capitalize">Shop</h2>
               <p className="d-sm-block mt-4">
                 Simple, affordable and high quality copy-paste code snippets for
-                your Shopify theme. <br /> No coding knowledge required.
+                your Shopify theme. <br /> Pay once, use forever - no monthly
+                fees.
               </p>
             </div>
           </div>

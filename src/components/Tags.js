@@ -19,13 +19,6 @@ function Tags(props) {
   const [isActive, setIsActive] = useState("")
   const [results, setResults] = useStickyState("@totalProducts", null)
 
-  const swiperConfig = {
-    slidesPerView: "auto",
-    freeMode: true,
-    grabCursor: true,
-    slidesOffsetAfter: 100,
-  }
-
   const filterTags = _data => {
     if (!_data) {
       return
