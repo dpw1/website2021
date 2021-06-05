@@ -690,8 +690,6 @@ ezfy = (function () {
       return
     }
 
-    console.log("ALPACA this is firefox! listening clicks.")
-
     const $links = window.document.querySelectorAll(`a[href]`)
 
     if (!$links) {
@@ -700,7 +698,6 @@ ezfy = (function () {
 
     for (const each of $links) {
       each.addEventListener("click", function () {
-        console.log("ALPACA clicked! checking redirect.")
         const href = each.getAttribute("href")
         const target = each.getAttribute("target")
 
