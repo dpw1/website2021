@@ -4,6 +4,7 @@ import { ruleOfThree } from "./../utils/utils"
 
 export default function FrequentlyBoughtTogether(props) {
   const minimumPriceForDiscount = 45
+  const discount = 20
 
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
@@ -31,7 +32,6 @@ export default function FrequentlyBoughtTogether(props) {
    * @returns Calculates the sum of all products with a specific % discount.
    */
   const smallPriceSum = () => {
-    const discount = 15
     const subtotal = products.map(e => e.rawPrice).reduce((a, b) => a + b, 0)
     const subtract = ruleOfThree(100, subtotal, discount)
     const total = subtotal - subtract
@@ -41,6 +41,8 @@ export default function FrequentlyBoughtTogether(props) {
       currency: "USD",
     }).format(total)
   }
+
+  const BigPriceSubtractedBySmallPrice = () => {}
 
   const addToCartBundle = async event => {
     let productsInCart = []
@@ -114,16 +116,10 @@ export default function FrequentlyBoughtTogether(props) {
     return (
       <div className="fbt">
         <div className="fbt-container">
-          <h3 className="fbt-title">
-            {hasDiscount()
-              ? "Save With Our Special Bundle"
-              : "Improve Your Theme With Our Special Bundle "}
-          </h3>
-
           <div className="fbt-products">
             <h4 className="fbt-subtitle">
               {hasDiscount()
-                ? "Save by buying these products together"
+                ? "Save by buying these products together:"
                 : "Products frequently bought together:"}
             </h4>
 
@@ -146,7 +142,7 @@ export default function FrequentlyBoughtTogether(props) {
                 })}
             </div>
             <p className="fbt-total">
-              Total bundle price:{" "}
+              <span>Total bundle price: </span>
               {hasDiscount() && (
                 <span className="fbt-total-small">
                   {products && smallPriceSum()}
@@ -155,6 +151,11 @@ export default function FrequentlyBoughtTogether(props) {
               <span className="fbt-total-big">
                 {products && allProductsSumFormatted()}
               </span>
+              {hasDiscount() && (
+                <div className="fbt-discount">
+                  <span class="discount">{discount}% OFF</span>
+                </div>
+              )}
             </p>
 
             <button onClick={e => addToCartBundle(e)} className="fbt-button">

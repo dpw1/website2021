@@ -70,6 +70,36 @@
   right: -2px;
 }
 
+.discount {
+  animation-name: discount;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 6px;
+  border-radius: 3px;
+  position: relative;
+  top: -2px;
+  background-color: #00a3ff21;
+}
+
+@keyframes discount {
+  0% {
+    color: #00a3ff;
+    border-color: #00a3ff;
+  }
+
+  50% {
+    color: #ce00ff;
+    border-color: #ce00ff;
+  }
+
+  100% {
+    color: #00a3ff;
+    border-color: #00a3ff;
+  }
+}
+
 @keyframes hue {
   from {
     filter: hue-rotate(0deg);
