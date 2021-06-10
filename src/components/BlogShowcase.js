@@ -35,7 +35,6 @@ const BlogItem = props => {
           <figure className="aspect-ratio blog-thumb">
             <img
               className="lazyload"
-              loading="lazy"
               data-src={image}
               alt={imagealt && imagealt.length >= 1 ? imagealt : title}
             />
@@ -97,7 +96,13 @@ const BlogShowcase = props => {
   const totalPages = Math.ceil(sortedData.length / postsPerPage)
 
   const scrollToBlogStart = () => {
-    window.document.querySelector(".row--first").scrollIntoView()
+    /* force lazyload */
+    window.ezfy.forceLazyload()
+
+    setTimeout(
+      () => window.document.querySelector(".row--first").scrollIntoView(),
+      200
+    )
   }
 
   const organizePosts = () => {
@@ -180,6 +185,7 @@ const BlogShowcase = props => {
                 if (page > 1) {
                   setPage(page - 1)
                 }
+
                 scrollToBlogStart()
               }}
               aria-label="Previous"
@@ -204,6 +210,7 @@ const BlogShowcase = props => {
                 if (page < totalPages) {
                   setPage(page + 1)
                 }
+
                 scrollToBlogStart()
               }}
               aria-label="Next"
@@ -255,7 +262,11 @@ const BlogShowcase = props => {
         <div className="row row--first">
           {posts
             ? [...posts].map((data, i) => (
-                <BlogItem key={i} data={data}></BlogItem>
+                <BlogItem
+                  isSearching={isSearching}
+                  key={i}
+                  data={data}
+                ></BlogItem>
               ))
             : "Retrieving blog posts, please wait..."}
         </div>
@@ -271,9 +282,7 @@ const BlogShowcase = props => {
         <div className="row">
           <div className="col-12">
             {/* Pagination */}
-            {!isSearching && posts && posts.length >= 9 && (
-              <PaginationButton></PaginationButton>
-            )}
+            {!isSearching && posts && <PaginationButton></PaginationButton>}
           </div>
         </div>
       </div>

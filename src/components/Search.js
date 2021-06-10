@@ -54,6 +54,9 @@ function Search(props) {
     const query = _query.toLowerCase().trim()
 
     setIsSearching(true)
+
+    window.ezfy.forceLazyload()
+
     if (!query) {
       setIsSearching(false)
     }

@@ -37,6 +37,7 @@ function Tags(props) {
   useEffect(() => {
     const filtered = filterTags(data)
     setTags(filtered)
+
     console.log(`my filtere         `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
@@ -45,6 +46,7 @@ function Tags(props) {
     setActiveClass(e.target)
     updateItemsWithNewTag(tag)
     removeQueryParameters()
+    window.ezfy.forceLazyload()
     // setTagChosen(tag)
   }
 

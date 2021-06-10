@@ -170,29 +170,46 @@ ezfy = (function () {
   }
 
   function lazyLoadImages() {
+    let images = document.querySelectorAll("img.lazyload")
+    lazyload(images)
+
     /* Add class="lazyload" and data-src="image.png" to image elements */
 
-    var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"))
+    // var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"))
 
-    if ("IntersectionObserver" in window) {
-      let lazyImageObserver = new IntersectionObserver(function (
-        entries,
-        observer
-      ) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            let lazyImage = entry.target
-            lazyImage.src = lazyImage.dataset.src
-            lazyImage.classList.remove("lazy")
-            lazyImageObserver.unobserve(lazyImage)
-          }
-        })
-      })
+    // if ("IntersectionObserver" in window) {
+    //   let lazyImageObserver = new IntersectionObserver(function (
+    //     entries,
+    //     observer
+    //   ) {
+    //     entries.forEach(function (entry) {
+    //       if (entry.isIntersecting) {
+    //         let lazyImage = entry.target
+    //         lazyImage.src = lazyImage.dataset.src
+    //         lazyImage.classList.remove("lazy")
+    //         lazyImageObserver.unobserve(lazyImage)
+    //       }
+    //     })
+    //   })
 
-      lazyImages.forEach(function (lazyImage) {
-        lazyImageObserver.observe(lazyImage)
-      })
+    //   lazyImages.forEach(function (lazyImage) {
+    //     lazyImageObserver.observe(lazyImage)
+    //   })
+    // }
+  }
+
+  /* Forcefully loads/reloads all lazyloaded images */
+  function forceLazyload() {
+    let $images = document.querySelectorAll("img.lazyloaded")
+
+    if (!$images) {
+      return
     }
+
+    for (let each of $images) {
+      each.setAttribute("src", "")
+    }
+    lazyload($images)
   }
 
   function lazyLoadVideos() {
@@ -743,6 +760,7 @@ ezfy = (function () {
     loadEcwidScript: loadEcwidScript,
     addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
     forceHrefLinkOnFirefox: forceHrefLinkOnFirefox,
+    forceLazyload: forceLazyload,
 
     initServices: () => {
       readMoreForServices()
