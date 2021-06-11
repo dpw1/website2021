@@ -6,6 +6,7 @@ export default function FrequentlyBoughtTogether(props) {
   const minimumPriceForDiscount = 45
   const discount = 20
 
+  const [currentProduct, setCurrentProduct] = useState(null)
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
 
@@ -89,11 +90,18 @@ export default function FrequentlyBoughtTogether(props) {
   }
 
   const sanitizeRelatedProducts = product => {
-    if (product.length <= 0 || typeof product.relatedProducts !== "object") {
-      return
+    console.log(
+      "xxx sanitizing this: ",
+      product,
+      typeof product.relatedProducts === "object"
+    )
+    if (typeof product.relatedProducts !== "object") {
+      return []
     }
 
-    let productCopy = product
+    console.log("xxx after sanitizing...", product.relatedProducts)
+
+    let productCopy = { ...product }
     const related = productCopy.relatedProducts
     delete productCopy.relatedProducts
 
@@ -101,15 +109,22 @@ export default function FrequentlyBoughtTogether(props) {
   }
 
   useEffect(() => {
+    setTimeout(() => {
+      console.log("XXX FULL SANI: ", sanitizeRelatedProducts(props.product))
+    }, 2000)
+  }, [props.product])
+
+  useEffect(() => {
+    console.log("xxx props.product: ", props.product)
     if (!props.product || props.product.length <= 0) {
-      return
+      // return
     }
 
     setProducts(sanitizeRelatedProducts(props.product))
   }, [props.product])
 
   useEffect(() => {
-    console.log("MY RELATED PRODUCTS          ", products)
+    console.log("xxx MY RELATED PRODUCTS          ", products)
   }, [products])
 
   const RenderFBT = () => {
@@ -193,5 +208,9 @@ export default function FrequentlyBoughtTogether(props) {
     )
   }
 
-  return products && products.length >= 2 && <RenderFBT></RenderFBT>
+  return products && products.length >= 2 ? (
+    <RenderFBT></RenderFBT>
+  ) : (
+    <div></div>
+  )
 }
