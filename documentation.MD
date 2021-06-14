@@ -78,3 +78,7 @@ Note: You may need to run `gatsby develop` to ensure the changes were effected.
 1. Run this:
 
    `gatsby develop --host localhost --port 8000`
+
+## Adding a popup modal for promotions
+
+Under the Popup.js file you can configure a popup modal.
