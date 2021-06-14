@@ -8,7 +8,6 @@ export default function Popup() {
   const COOKIE_NAME = `ezfy-modal-popup`
   const COOKIE_EXPIRATION = 5
   const [open, setOpen] = useState(false)
-  const [timer, setTimer] = useState()
 
   useEffect(() => {
     /**
@@ -39,7 +38,21 @@ export default function Popup() {
       })
     }
 
+    /* In case something goes wrong, removes the broken popup */
+    function removePopup() {
+      const $popup = window.document.querySelector(
+        `.modal-backdrop--visible.modal-backdrop--invisible`
+      )
+
+      if (!$popup) {
+        return
+      }
+
+      $popup.remove()
+    }
+
     ;(async _ => {
+      removePopup()
       /* Popup has already been shown, return. */
       if (getCookie(COOKIE_NAME) === "true") {
         // alert("cookie exists")
@@ -56,6 +69,8 @@ export default function Popup() {
       setOpen(true)
       setCookie(COOKIE_NAME, "true", COOKIE_EXPIRATION)
 
+      removePopup()
+
       document.addEventListener(
         "click",
         function (event) {
@@ -66,6 +81,7 @@ export default function Popup() {
 
           if (hasToClose) {
             setOpen(false)
+            removePopup()
             return
           }
         },
