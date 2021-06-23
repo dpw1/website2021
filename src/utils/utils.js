@@ -9,6 +9,20 @@ import { Link } from "gatsby"
 import axios from "axios"
 import globalUtils from "../../global-utils"
 
+export function extractTextBetween(text, start, end) {
+  if (!start || !end) {
+    throw new Error(`Please add a "start" and "end" parameter`)
+  }
+
+  if (text.split(start).length % 2 === 0) {
+    throw new Error(`There is an uneven number of "starts" and "ends".`)
+  }
+
+  return text.split(start).filter(function (v, i) {
+    return i % 2 !== 0
+  })
+}
+
 export function groupItems(items, n) {
   return items.reduce((acc, x, i) => {
     const idx = Math.floor(i / n)

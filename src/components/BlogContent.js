@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from "react"
 import "./BlogContent.scss"
 import parse from "html-react-parser"
-import { formatDate, getWordpressImageBiggestSize } from "../utils/utils"
+import {
+  extractTextBetween,
+  formatDate,
+  getWordpressImageBiggestSize,
+} from "../utils/utils"
 import BlogBreadcrumb from "./BlogBreadcrumb"
 import { FacebookMessengerShareButton, WhatsappShareButton } from "react-share"
 import { blogApi } from "../api/api"
 import PostsSidebar from "./PostsSidebar"
 import { Link } from "gatsby"
 import { siteRoutes } from "../utils/siteRoutes"
+import Gist from "react-gist"
+const reactStringReplace = require("react-string-replace")
+import ReactDOMServer from "react-dom/server"
 
 // import hljs from "highlight.js"
 // import "highlight.js/styles/github.css"
+import { renderToStaticMarkup } from "react-dom/server"
 
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
   const [url, setUrl] = useState(null)
+  const [githubGists, setGithubGists] = useState([])
   const { post } = props
+
+  const Llama = text => <p>llama: {text}</p>
 
   // if (!post) {
   //   // window.location = window.location.origin;
@@ -25,14 +36,44 @@ const BlogContent = props => {
   const title = post.title.rendered
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
+  const cleanDescription = desc => {
+    let description = desc
+
+    var regex = /\[gist\](.*?)\[gist\]/g
+    let m
+
+    while ((m = regex.exec(description)) !== null) {
+      if (m.index === regex.lastIndex) {
+        regex.lastIndex++
+      }
+
+      m.forEach(async (match, groupIndex) => {
+        var test = reactStringReplace(description, m[0], (match, i) => (
+          <Llama key="123" />
+        ))
+
+        console.log("shit sh                 it, ", test)
+      })
+    }
+
+    // setGithubGists(gists)
+
+    return parse(description)
+  }
+
   useEffect(() => {
     setUrl(window !== undefined ? window.location.href : "https://ezfycode.com")
 
-    // document.querySelectorAll("pre,code").forEach(block => {
-    //   const code = hljs.highlightAuto(block.textContent).value
-
-    //   block.innerHTML = code
-    // })
+    console.log("ok            ")
+    // ;(async _ => {
+    //   try {
+    //     const url = `https://gist.github.com/dpw1/e53c3dffd9cb43d49274f8df5d91a499.json`
+    //     const data = await axios.get(url)
+    //     console.log("FFFFFFFF ", data)
+    //   } catch (err) {
+    //     console.log("FFFFFFFFFFFF", err)
+    //   }
+    // })()
   }, [])
 
   return (
@@ -68,6 +109,8 @@ const BlogContent = props => {
                   </div>
                   {/* Blog Details */}
 
+                  {/* <Gist id={"e53c3dffd9cb43d49274f8df5d91a499"} /> */}
+
                   <div className="blog-details blog-content-details">
                     <h3 className="blog-title py-2 py-sm-3">
                       <span>{parse(title)}</span>
@@ -75,8 +118,9 @@ const BlogContent = props => {
                     <figure className="blog-featured-image">
                       <img src={image} alt="" />
                     </figure>
-                    <div>{parse(post.content.rendered)}</div>
+                    <div>{cleanDescription(post.content.rendered)}</div>
                   </div>
+
                   {/* Blog Share */}
                   <div className="blog-share blog-content-share ml-auto d-none d-sm-block">
                     {/* Social Icons */}

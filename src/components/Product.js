@@ -105,7 +105,7 @@ export default function Product(props) {
     }
 
     while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
-      console.log("waiting for 'addProduct'                  ")
+      console.log("waiting for 'addProduct'                      ")
       await new Promise(resolve => setTimeout(resolve, 50))
     }
 
@@ -197,7 +197,7 @@ export default function Product(props) {
             Live Demo
           </a> */}
 
-          {/* <small className="Product-license">
+          {/* <small className="Product-license     ">
             By downloading this product you confirm you have read the product's
             description.
           </small> */}

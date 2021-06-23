@@ -77,11 +77,11 @@ function ProductItem(props) {
                 <span>{parse(title)}</span>
               </Link>
             </h3>
-            <h3 className="services-price-small ProductItem-price-small color-primary">
+            <p className="services-price-small ProductItem-price-small color-primary">
               {/free/gim.test(price)
                 ? price
                 : price.toString().replace(".00", "").replace("$0", "Free")}
-            </h3>
+            </p>
           </div>
 
           <div className="ProductItem-description ">
