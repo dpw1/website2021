@@ -165,7 +165,11 @@ $pink: #ff00ffab;
     margin-top: 10px;
     margin-bottom: 3px;
     * {
-      font-size: 15px !important;
+      font-size: 15px;
+    }
+
+    &--small {
+      font-size: 12px !important;
     }
   }
 

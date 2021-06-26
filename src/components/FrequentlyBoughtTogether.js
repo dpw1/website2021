@@ -10,19 +10,37 @@ export default function FrequentlyBoughtTogether(props) {
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
 
-  const allProductsSum = () => {
-    return products.map(e => e.rawPrice).reduce((a, b) => a + b, 0)
-  }
+  /**
+   * Shows how much the user will save in a bundle.
+   * For example, if the sum of all products is $40 and the bundle discount totalizes in $30,
+   * this function will return "$10".
+   */
+  const youSave = () => {
+    const total = allProductsSum(false) - smallPriceSum(false)
 
-  const allProductsSumFormatted = () => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
-    }).format(allProductsSum())
+    }).format(total)
+  }
+
+  const sumAllProducts = () => {
+    return products.map(e => e.rawPrice).reduce((a, b) => a + b, 0)
+  }
+
+  const allProductsSum = (formatted = true) => {
+    if (!formatted) {
+      return sumAllProducts()
+    }
+
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(sumAllProducts())
   }
 
   const hasDiscount = () => {
-    if (allProductsSum() >= 45) {
+    if (sumAllProducts() >= 45) {
       return true
     }
     return false
@@ -32,18 +50,19 @@ export default function FrequentlyBoughtTogether(props) {
    *
    * @returns Calculates the sum of all products with a specific % discount.
    */
-  const smallPriceSum = () => {
+  const smallPriceSum = (formatted = true) => {
     const subtotal = products.map(e => e.rawPrice).reduce((a, b) => a + b, 0)
     const subtract = ruleOfThree(100, subtotal, discount)
     const total = subtotal - subtract
 
+    if (!formatted) {
+      return total
+    }
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
     }).format(total)
   }
-
-  const BigPriceSubtractedBySmallPrice = () => {}
 
   const addToCartBundle = async event => {
     let productsInCart = []
@@ -91,7 +110,7 @@ export default function FrequentlyBoughtTogether(props) {
 
   const sanitizeRelatedProducts = product => {
     console.log(
-      "xxx sanitizing this: ",
+      "xxx sanitizing this:      ",
       product,
       typeof product.relatedProducts === "object"
     )
@@ -108,11 +127,7 @@ export default function FrequentlyBoughtTogether(props) {
     return [productCopy, ...related]
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("XXX FULL SANI: ", sanitizeRelatedProducts(props.product))
-    }, 2000)
-  }, [props.product])
+  useEffect(() => {}, [props.product])
 
   useEffect(() => {
     console.log("xxx props.product: ", props.product)
@@ -124,7 +139,7 @@ export default function FrequentlyBoughtTogether(props) {
   }, [props.product])
 
   useEffect(() => {
-    console.log("xxx MY RELATED PRODUCTS          ", products)
+    console.log("XXX look      :")
   }, [products])
 
   const RenderFBT = () => {
@@ -164,11 +179,16 @@ export default function FrequentlyBoughtTogether(props) {
                 </span>
               )}{" "}
               <span className="fbt-total-big">
-                {products && allProductsSumFormatted()}
+                {products && allProductsSum()}
               </span>
               {hasDiscount() && (
                 <div className="fbt-discount">
-                  <span class="discount">{discount}% OFF</span>
+                  <span class="discount">
+                    <span>{discount}% OFF </span>
+                    <span className="fbt-discount--small">
+                      (YOU SAVE {youSave()})
+                    </span>
+                  </span>
                 </div>
               )}
             </p>

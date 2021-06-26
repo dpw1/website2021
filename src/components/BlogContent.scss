@@ -1,6 +1,13 @@
 @import "../css/variables";
 
 [id] .blog-content {
+  @media (min-width: $md) {
+    & > .container {
+      max-width: 1200px !important;
+      width: 100%;
+    }
+  }
+
   pre,
   pre[class] {
     max-width: 100%;
