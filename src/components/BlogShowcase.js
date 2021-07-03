@@ -134,11 +134,13 @@ const BlogShowcase = props => {
   }
 
   useEffect(() => {
-    organizePosts()
-  }, [])
+    setPosts(sortedData)
+    console.log("axe - ", sortedData)
+    // organizePosts()
+  }, [sortedData])
 
   useEffect(() => {
-    populateWithPostsForThisPage()
+    // populateWithPostsForThisPage()
   }, [page])
 
   useEffect(() => {
@@ -171,7 +173,7 @@ const BlogShowcase = props => {
       return
     }
 
-    return populateWithPostsForThisPage()
+    return setPosts(sortedData)
   }, [isSearching])
 
   const PaginationButton = () => {
@@ -282,7 +284,7 @@ const BlogShowcase = props => {
         <div className="row">
           <div className="col-12">
             {/* Pagination */}
-            {!isSearching && posts && <PaginationButton></PaginationButton>}
+            {/* {!isSearching && posts && <PaginationButton></PaginationButton>} */}
           </div>
         </div>
       </div>

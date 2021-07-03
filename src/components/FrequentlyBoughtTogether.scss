@@ -80,6 +80,7 @@ $pink: #ff00ffab;
   &-icon {
     pointer-events: none;
     margin-left: 4px;
+    font-size: 18px;
 
     @media (max-width: $xxs) {
       display: block;
