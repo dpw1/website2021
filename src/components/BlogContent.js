@@ -192,7 +192,7 @@ const BlogContent = props => {
           </div>
         </div>
 
-        <Link className="btn blog-content-more" to={siteRoutes.shop}>
+        <Link className="btn blog-content-more" to={siteRoutes.blog}>
           View all blogs
         </Link>
       </section>
