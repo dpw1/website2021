@@ -35,10 +35,49 @@ function Tags(props) {
   }
 
   useEffect(() => {
+    function activateSwipingDesktop() {
+      const $slider = document.querySelector(".Tags-list")
+      let mouseDown = false
+      let startX, scrollLeft
+
+      let startDragging = function (e) {
+        mouseDown = true
+        startX = e.pageX - $slider.offsetLeft
+        scrollLeft = $slider.scrollLeft
+      }
+      let stopDragging = function (event) {
+        mouseDown = false
+        $slider.classList.remove("Tags-list--scrolling")
+      }
+
+      $slider.addEventListener("mousemove", e => {
+        e.preventDefault()
+
+        if (!mouseDown) {
+          return
+        }
+
+        const x = e.pageX - $slider.offsetLeft
+        const scroll = x - startX
+        $slider.scrollLeft = scrollLeft - scroll
+        window.lastScroll = scrollLeft - scroll
+
+        $slider.classList.add("Tags-list--scrolling")
+      })
+
+      // Add the event listeners
+      $slider.addEventListener("mousedown", startDragging, false)
+      $slider.addEventListener("mouseup", stopDragging, false)
+      $slider.addEventListener("mouseleave", stopDragging, false)
+    }
+    activateSwipingDesktop()
+  }, [])
+
+  useEffect(() => {
     const filtered = filterTags(data)
     setTags(filtered)
 
-    console.log(`my filtere         `, filtered)
+    console.log(`my filtere      `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
 

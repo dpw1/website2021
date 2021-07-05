@@ -17,6 +17,7 @@ import ProductShowcase from "./../components/ProductShowcase"
 const BlogPostLayout = props => {
   const [url, setUrl] = useState("")
 
+  /* This is coming directly from WP, so you have access to all object's values. */
   const post = props.pageContext
 
   console.log("look at me", post)
@@ -39,7 +40,7 @@ const BlogPostLayout = props => {
       <SEO
         title={parse(post.title.rendered)}
         description={description}
-        image={post.featured_image_src}
+        image={post.featured_image_large_src}
         url={url}
       ></SEO>
       <Header page={"blog"}></Header>
