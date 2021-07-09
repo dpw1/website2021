@@ -27,9 +27,9 @@ export default function Popup() {
           let remaining = localStorage.endTime - new Date()
           if (remaining >= 0) {
             let currentTime = Math.floor(remaining / 1000)
-            console.log("my timer:               ", currentTime)
           } else {
             clearInterval(intervalLoop)
+            localStorage.removeItem("endTime")
             resolve(true)
           }
         }
@@ -55,8 +55,8 @@ export default function Popup() {
       removePopup()
       /* Popup has already been shown, return. */
       if (getCookie(COOKIE_NAME) === "true") {
-        // alert("cookie exists")
         return
+      } else {
       }
 
       console.log("waiting handle timer...")
@@ -82,6 +82,7 @@ export default function Popup() {
           if (hasToClose) {
             setOpen(false)
             removePopup()
+
             return
           }
         },
