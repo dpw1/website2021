@@ -40,10 +40,8 @@
 <url> <loc>https://ezfycode.com/shop/debut-read-more</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ezfycode.com/cart/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/license/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/portfolio/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ezfycode.com/services/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
