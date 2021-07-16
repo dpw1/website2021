@@ -1,8 +1,8 @@
-import React from "react"
+// import React from "react"
 
-import ServicesLayout from "./../layouts/ServicesLayout"
+// import ServicesLayout from "./../layouts/ServicesLayout"
 
-const services = props => {
-  return <ServicesLayout></ServicesLayout>
-}
-export default services
+// const services = props => {
+//   return <ServicesLayout></ServicesLayout>
+// }
+// export default services

@@ -63,7 +63,7 @@ const BlogItem = props => {
 }
 
 const BlogShowcase = props => {
-  let { postsPerPage, totalPosts, page: currentPage } = props
+  let { postsPerPage, totalPosts, isHomePage, page: currentPage } = props
 
   let { nodes: data } = useStaticQuery(graphql`
     query BlogsQuery {
@@ -83,7 +83,7 @@ const BlogShowcase = props => {
     }
   `).allWordpressPost
 
-  const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
+  let sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const _isBlogPage = () => {
     return currentPage === "blog" ? true : false
@@ -134,8 +134,12 @@ const BlogShowcase = props => {
   }
 
   useEffect(() => {
+    if (isHomePage) {
+      return setPosts(sortedData.slice(0, 3))
+    }
     setPosts(sortedData)
-    console.log("axe - ", sortedData)
+
+    console.log("axe            - ", isHomePage)
     // organizePosts()
   }, [sortedData])
 
@@ -173,58 +177,12 @@ const BlogShowcase = props => {
       return
     }
 
+    if (isHomePage) {
+      return setPosts(sortedData.slice(0, 3))
+    }
+
     return setPosts(sortedData)
   }, [isSearching])
-
-  const PaginationButton = () => {
-    return (
-      <ul className="pagination justify-content-center">
-        {page > 1 && (
-          <li className="pagination-arrow pagination-arrow-prev">
-            <a
-              href="#"
-              onClick={() => {
-                if (page > 1) {
-                  setPage(page - 1)
-                }
-
-                scrollToBlogStart()
-              }}
-              aria-label="Previous"
-            >
-              <i className="fas fa-arrow-left " />
-              <span> Previous Page</span>
-            </a>
-          </li>
-        )}
-        {!totalPosts && (
-          <li>
-            <p>
-              {page} / {totalPages}
-            </p>
-          </li>
-        )}
-        {page < totalPages && (
-          <li className="pagination-arrow pagination-arrow-next">
-            <a
-              href="#"
-              onClick={() => {
-                if (page < totalPages) {
-                  setPage(page + 1)
-                }
-
-                scrollToBlogStart()
-              }}
-              aria-label="Next"
-            >
-              <span>Next Page</span>
-              <i className="fas fa-arrow-right" />
-            </a>
-          </li>
-        )}
-      </ul>
-    )
-  }
 
   return (
     <section

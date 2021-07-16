@@ -82,6 +82,7 @@ export default function Popup() {
           if (hasToClose) {
             setOpen(false)
             removePopup()
+            localStorage.removeItem("endTime")
 
             return
           }

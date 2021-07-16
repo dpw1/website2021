@@ -82,3 +82,8 @@ Note: You may need to run `gatsby develop` to ensure the changes were effected.
 ## Adding a popup modal for promotions
 
 Under the Popup.js file you can configure a popup modal.
+
+## Adding GISTS to blog posts
+
+1. Inside your blog post, add \[gist\]codehere\[gist\]. It automatically detects the dpw1 before the code.
+2. It will be rendered by the function "renderGistsDynamically" within utils.js

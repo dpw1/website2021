@@ -19,6 +19,8 @@ import ReactDOMServer from "react-dom/server"
 // import hljs from "highlight.js"
 // import "highlight.js/styles/github.css"
 import { renderToStaticMarkup } from "react-dom/server"
+import { renderGistsDynamically } from "./../utils/utils"
+import { sleep } from "../../global-utils"
 
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
@@ -37,6 +39,7 @@ const BlogContent = props => {
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
   const cleanDescription = desc => {
+    let $description = document.querySelector(`.blog-text`)
     let description = desc
 
     var regex = /\[gist\](.*?)\[gist\]/g
@@ -48,15 +51,20 @@ const BlogContent = props => {
       }
 
       m.forEach(async (match, groupIndex) => {
-        var test = reactStringReplace(description, m[0], (match, i) => (
-          <Llama key="123" />
-        ))
+        var id = m[1].toString()
 
-        console.log("shit sh                 it, ", test)
+        description = description.replace(
+          m[0],
+          `<span data-gist-id="${id}"></span>`
+        )
+
+        console.log("shit IDDD, ", match)
       })
     }
 
     // setGithubGists(gists)
+
+    // $description.innerHTML = description
 
     return parse(description)
   }
@@ -65,15 +73,10 @@ const BlogContent = props => {
     setUrl(window !== undefined ? window.location.href : "https://ezfycode.com")
 
     console.log("ok            ")
-    // ;(async _ => {
-    //   try {
-    //     const url = `https://gist.github.com/dpw1/e53c3dffd9cb43d49274f8df5d91a499.json`
-    //     const data = await axios.get(url)
-    //     console.log("FFFFFFFF ", data)
-    //   } catch (err) {
-    //     console.log("FFFFFFFFFFFF", err)
-    //   }
-    // })()
+    ;(async _ => {
+      await sleep(1000)
+      renderGistsDynamically()
+    })()
   }, [])
 
   return (
@@ -118,7 +121,9 @@ const BlogContent = props => {
                     <figure className="blog-featured-image">
                       <img src={image} alt="" />
                     </figure>
-                    <div>{cleanDescription(post.content.rendered)}</div>
+                    <div className="blog-text">
+                      {cleanDescription(post.content.rendered)}
+                    </div>
                   </div>
 
                   {/* Blog Share */}

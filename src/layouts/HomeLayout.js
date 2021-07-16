@@ -46,7 +46,7 @@ const HomeLayout = props => {
         ]}
         page="home"
       ></ProductShowcase>
-      <BlogShowcase totalPosts={3} posts={props.posts}></BlogShowcase>
+      <BlogShowcase isHomePage={true} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
       <Parallax
         title="Request immediate assistance"
