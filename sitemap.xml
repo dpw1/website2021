@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://ezfycode.com/blog/removing-return-to-cart-text-from-the-checkout-page</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/supply-theme-add-a-slideshow-to-your-product-pages</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/add-age-verification-popup-without-apps-to-any-shopify-theme</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/brooklyn-theme-hamburger-menu-on-desktop</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -38,7 +39,6 @@
 <url> <loc>https://ezfycode.com/shop/debut-theme-second-image-on-hover</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/debut-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/brooklyn-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ezfycode.com/shop/responsive-banner-free</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/debut-read-more</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
