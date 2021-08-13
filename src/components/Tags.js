@@ -173,17 +173,22 @@ function Tags(props) {
               All
             </a>
 
-            {tags.map(currentTag => (
-              <a
-                href="#"
-                onClick={e => handleClickOnTag(e, currentTag)}
-                className="Tags-tag"
-                data-tag={currentTag}
-                key={currentTag}
-              >
-                {currentTag}
-              </a>
-            ))}
+            {tags
+              .sort((a, b) => {
+                console.log("0rc", a, b)
+                return a.localeCompare(b)
+              })
+              .map(currentTag => (
+                <a
+                  href="#"
+                  onClick={e => handleClickOnTag(e, currentTag)}
+                  className="Tags-tag"
+                  data-tag={currentTag}
+                  key={currentTag}
+                >
+                  {currentTag}
+                </a>
+              ))}
           </div>
         ) : (
           <SkeletonLoader></SkeletonLoader>

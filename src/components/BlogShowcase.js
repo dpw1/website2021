@@ -232,7 +232,7 @@ const BlogShowcase = props => {
         </div>
         <div className="row">
           <div className="col-12">
-            {totalPosts && (
+            {isHomePage && (
               <Link className="btn" to={siteRoutes.blog}>
                 See all blogs
               </Link>

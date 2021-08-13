@@ -39,7 +39,6 @@ const BlogContent = props => {
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
   const cleanDescription = desc => {
-    let $description = document.querySelector(`.blog-text`)
     let description = desc
 
     var regex = /\[gist\](.*?)\[gist\]/g

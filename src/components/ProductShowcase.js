@@ -84,6 +84,8 @@ export default function ProductShowcase(props) {
       className={`ptb_50 section ProductShowcase ${
         props.page === "home" ? "ProductShowcase--homepage" : ""
       }
+
+      ${products && products.length >= 1 && "ProductShowcase--loaded"}
       ${props.backgroundColor === "gray" ? "bg-gray" : ""}
       `}
     >

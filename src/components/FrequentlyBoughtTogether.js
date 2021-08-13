@@ -3,8 +3,14 @@ import "./FrequentlyBoughtTogether.scss"
 import { ruleOfThree } from "./../utils/utils"
 
 export default function FrequentlyBoughtTogether(props) {
+  /* Those variables are wired up to Ecwid. 
+  You can navigate to "Automatic Discounts" from the ecwid admin to configure them. 
+  
+  https://my.ecwid.com/store/61271341#discounts
+  
+  */
   const minimumPriceForDiscount = 45
-  const discount = 20
+  const discount = 15
 
   const [currentProduct, setCurrentProduct] = useState(null)
   const [loading, setLoading] = useState(false)
