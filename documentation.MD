@@ -35,13 +35,21 @@ The discount is hard coded. Currently it is %15 OFF for orders over \$45, if it 
 ## New blog posts
 
 1. Write the blog post at `ezfy.club/wp-admin` and publish it;
-2. build locally to auto generate blog pages & sitemap if you have new pages:
 
-   `gatsby build && gatsby serve`
+After that you have two options:
 
-3. deploy.
+- Send a post request via PostMan to http://localhost:8000/\_\_refresh
+- Deploy
 
-   `npm run deploy`
+or...
+
+- build locally to auto generate blog pages & sitemap if you have new pages:
+
+  `gatsby build && gatsby serve`
+
+- deploy.
+
+  `npm run deploy`
 
 ## Updating content of already existing blog post
 
@@ -87,3 +95,8 @@ Under the Popup.js file you can configure a popup modal.
 
 1. Inside your blog post, add \[gist\]codehere\[gist\]. It automatically detects the dpw1 before the code.
 2. It will be rendered by the function "renderGistsDynamically" within utils.js
+
+## Hiding a product from the online page while developing
+
+1. From the Ecwid admin, go to the product page that you are currently making
+2. Go to "attributes" and, on the "development" textbox, add "true". You can use any value.

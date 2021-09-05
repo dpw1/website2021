@@ -239,32 +239,15 @@ const axios = require("axios")
           return link
         }
 
-        // const getRelatedProducts = async () => {
-        //   return new Promise(async (resolve, reject) => {
-        //     let allRelatedProducts = []
-
-        //     console.log("CURRENT LOOP: ", product, product.relatedProducts)
-
-        //     if (
-        //       !product.hasOwnProperty("relatedProducts") ||
-        //       product.relatedProducts.productIds.length <= 0
-        //     ) {
-        //       return null
-        //     }
-
-        //     product.relatedProducts.productIds.map(async relatedProductID => {
-
-        //     })
-
-        //     console.log("THIS IS #### loop end")
-
-        //     resolve(allRelatedProducts)
-        //   })
-        // }
+        const getAttributes = () => {
+          return product.hasOwnProperty("attributes")
+            ? product.attributes
+            : null
+        }
 
         const tags = getTags()
         const liveDemo = getLiveDemoLink()
-        // const relatedProducts = getRelatedProducts()
+        const attributes = getAttributes()
 
         return products.push({
           id,
@@ -280,6 +263,7 @@ const axios = require("axios")
           image: product.originalImageUrl,
           slug,
           liveDemo,
+          attributes,
           updateTimestamp: product.updateTimestamp,
           relatedProducts: product.relatedProducts.productIds,
         })

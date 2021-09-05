@@ -10,6 +10,7 @@ function ProductItem(props) {
   const {
     title,
     price,
+    attributes,
     description,
     miniDescription,
     thumbnail,
@@ -17,19 +18,21 @@ function ProductItem(props) {
     slug: _slug,
   } = "item" in props ? props.item : props
 
-  // debugger
-
   const slug = props.page === "home" ? `/shop/${_slug}` : _slug
   const fancyboxOptions = { buttons: ["close"], gutter: 15, loop: true }
+  const isHidden = attributes
+    ? attributes.find(e => e.name.toLowerCase() === "development")
+    : false
 
   return (
-    <article
-      key={JSON.stringify(props)}
-      className={`product ProductItem col-12 col-md-6 col-lg-4      portfolio-item services-item ${
-        props.page === "home" ? "ProductItem--homepage" : ""
-      }`}
-    >
-      {/* <a
+    !isHidden && (
+      <article
+        key={JSON.stringify(props)}
+        className={`product ProductItem col-12 col-md-6 col-lg-4      portfolio-item services-item ${
+          props.page === "home" ? "ProductItem--homepage" : ""
+        }`}
+      >
+        {/* <a
         href="https://www.fatfreecartpro.com/ecom/gb.php?&c=cart&ejc=2&cl=374804&i=1695842"
         style={{
           display: "inline-block",
@@ -47,60 +50,60 @@ function ProductItem(props) {
         add item
       </a> */}
 
-      <div className="single-portfolio service-single res-margin">
-        {/* Portfolio Thumb  */}
-        <Link
-          className="ProductItem-image portfolio-thumb blog-thumb"
-          to={slug}
-        >
-          {/\.mp4/gim.test(thumbnail) ? (
-            <video controls>
-              <source src={thumbnail} />
-            </video>
-          ) : (
-            <figure className="aspect-ratio custom-overlay ">
-              <img
-                className="lazyload"
-                src={""}
-                data-src={thumbnail}
-                alt={title}
-              />
-            </figure>
-          )}
-        </Link>
-        {/* Portfolio Content */}
-        <div className="ProductItem-content   portfolio-content services-content blog-content p-4">
-          {/* Portfolio Title */}
-          <div className="services-price ProductItem-price">
-            <h3 className="ProductItem-title blog-title services-price-title my-3">
-              <Link to={slug} data-options={JSON.stringify(fancyboxOptions)}>
-                <span>{parse(title)}</span>
-              </Link>
-            </h3>
-            <p className="services-price-small ProductItem-price-small color-primary">
-              {/free/gim.test(price)
-                ? price
-                : price.toString().replace(".00", "").replace("$0", "Free")}
-            </p>
-          </div>
-
-          <div className="ProductItem-description ">
-            <React.Fragment>
-              {miniDescription &&
-                parse(replaceAll(miniDescription, { "\n": " ", "<br>": "" }))}
-            </React.Fragment>
-          </div>
-        </div>
-        <div className="ProductItem-action">
-          {/* <p>Slug: {slug}</p> */}
-
+        <div className="single-portfolio service-single res-margin">
+          {/* Portfolio Thumb  */}
           <Link
+            className="ProductItem-image portfolio-thumb blog-thumb"
             to={slug}
-            className="ProductItem-action-button btn mt-4 buy-now-button"
           >
-            View Details
+            {/\.mp4/gim.test(thumbnail) ? (
+              <video controls>
+                <source src={thumbnail} />
+              </video>
+            ) : (
+              <figure className="aspect-ratio custom-overlay ">
+                <img
+                  className="lazyload"
+                  src={""}
+                  data-src={thumbnail}
+                  alt={title}
+                />
+              </figure>
+            )}
           </Link>
-          {/* <a
+          {/* Portfolio Content */}
+          <div className="ProductItem-content   portfolio-content services-content blog-content p-4">
+            {/* Portfolio Title */}
+            <div className="services-price ProductItem-price">
+              <h3 className="ProductItem-title blog-title services-price-title my-3">
+                <Link to={slug} data-options={JSON.stringify(fancyboxOptions)}>
+                  <span>{parse(title)}</span>
+                </Link>
+              </h3>
+              <p className="services-price-small ProductItem-price-small color-primary">
+                {/free/gim.test(price)
+                  ? price
+                  : price.toString().replace(".00", "").replace("$0", "Free")}
+              </p>
+            </div>
+
+            <div className="ProductItem-description ">
+              <React.Fragment>
+                {miniDescription &&
+                  parse(replaceAll(miniDescription, { "\n": " ", "<br>": "" }))}
+              </React.Fragment>
+            </div>
+          </div>
+          <div className="ProductItem-action">
+            {/* <p>Slug: {slug}</p> */}
+
+            <Link
+              to={slug}
+              className="ProductItem-action-button btn mt-4 buy-now-button"
+            >
+              View Details
+            </Link>
+            {/* <a
             className="product-action-button btn mt-4 buy-now-button"
             data-type="iframe"
             data-src={url}
@@ -110,9 +113,10 @@ function ProductItem(props) {
           >
             View Details
           </a> */}
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    )
   )
 }
 
