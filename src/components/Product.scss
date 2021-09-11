@@ -9,6 +9,11 @@ $border-padding: 30px;
   padding-bottom: 40px;
   padding-top: 120px;
 
+  &-password {
+    margin-left: 10px;
+    font-size: 13px;
+  }
+
   &-license {
     display: block;
     margin-bottom: 20px;

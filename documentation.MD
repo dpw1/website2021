@@ -8,10 +8,6 @@
    git add .
    git commit -m "[ADD]"
    git push origin HEAD:dev
-
-   or
-
-   git push origin dev
    ```
 
 3. Push to Github Pages:
