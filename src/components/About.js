@@ -32,7 +32,7 @@ function About(props) {
               data-wow-delay="0.2s"
             >
               {/* Work Slider */}
-              <img src={image} alt="Diego Fortes - EZFY's creator" />
+              <img src={image} alt="Diego Moretti- EZFY's creator" />
             </figure>
           </div>
           <div className="col-12 col-md-6 pt-4 pt-md-0">
@@ -46,9 +46,9 @@ function About(props) {
                 >
                   <div className="about-text icon-text media-body align-self-center align-self-md-start">
                     <p className="d-sm-block">
-                      Greetings! My name is Diego Fortes. I am a Computer
-                      Science graduate software engineer who has been working as
-                      a Shopify developer since 2012.
+                      Greetings! My name is Diego. I am a Computer Science
+                      graduate software engineer who has been working as a
+                      Shopify developer since 2012.
                     </p>
 
                     <p className="d-block mt-4">

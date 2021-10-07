@@ -15,26 +15,26 @@ const items = [
   website for them.`,
     alt: "Arval's Printing Machinery Website",
   },
-  {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
-    video: require("../copy/videos/video-bubs.mp4"),
-    image: require("../copy/img/thumbnail/thumbnail-bubs.jpg"),
-    sourceCode: "",
-    liveWebsite: "http://www.blankrefer.com/?https://www.bubswarehouse.com/",
-    title: "Bubswarehouse",
-    subtitle: `Bubswarehouse is one of the biggest online stores in
-    Australia selling baby clothes and toys. We've worked
-    closely together to maximize the store's converion rates.`,
-    alt: "Portfolio - Bubswarehouse's Shopify website",
-  },
+  // {
+  //   tags: [
+  //     "HTML5",
+  //     "CSS3",
+  //     "Shopify",
+  //     "Liquid",
+  //     "ES7",
+  //     "SCSS / SASS",
+  //     "jQuery",
+  //   ],
+  //   video: require("../copy/videos/video-bubs.mp4"),
+  //   image: require("../copy/img/thumbnail/thumbnail-bubs.jpg"),
+  //   sourceCode: "",
+  //   liveWebsite: "http://www.blankrefer.com/?https://www.bubswarehouse.com/",
+  //   title: "Bubswarehouse",
+  //   subtitle: `Bubswarehouse is one of the biggest online stores in
+  //   Australia selling baby clothes and toys. We've worked
+  //   closely together to maximize the store's converion rates.`,
+  //   alt: "Portfolio - Bubswarehouse's Shopify website",
+  // },
   {
     tags: [
       "HTML5",

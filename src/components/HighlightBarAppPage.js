@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import ScrollToTop from "./../components/ScrollToTop";
+import React, { Component } from "react"
+import ScrollToTop from "./../components/ScrollToTop"
 
 const HighlightBarAppPage = () => (
   <React.Fragment>
@@ -73,10 +73,10 @@ const HighlightBarAppPage = () => (
         <br />
         Contact Us For more information about our privacy practices, if you have
         questions, or if you would like to make a complaint, please contact us
-        by e-mail at diego.boarutto.fortes@gmail.com.
+        by e-mail at ezfycode@gmail.com.
       </p>
     </div>
   </React.Fragment>
-);
+)
 
-export default HighlightBarAppPage;
+export default HighlightBarAppPage

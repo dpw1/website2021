@@ -74,7 +74,7 @@ function Footer(props) {
                       rel="noopener noreferrer"
                       className="google-plus"
                       target="_blank"
-                      href="mailto:diego.boarutto.fortes@gmail.com"
+                      href="mailto:ezfycode@gmail.com"
                     >
                       <i className="fas fa-envelope-square" />
                       <i className="fas fa-envelope-square" />

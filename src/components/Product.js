@@ -181,7 +181,15 @@ export default function Product(props) {
             )}
           </div>
 
-          <h2 className="Product-price">{price}</h2>
+          <div className="Product-prices">
+            <h2 className="Product-price">{price}</h2>
+
+            {productData.comparePrice && (
+              <span className="Product-big-price">
+                {productData.comparePrice}
+              </span>
+            )}
+          </div>
           {/* <div className="Product-stars">
             <StarRating></StarRating>
           </div> */}

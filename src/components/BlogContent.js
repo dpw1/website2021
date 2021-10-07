@@ -102,7 +102,7 @@ const BlogContent = props => {
                   <div className="meta-info d-flex flex-wrap align-items-center py-2">
                     <ul className="blog-content-info">
                       <li className="d-inline-block p-2">
-                        By <span>Diego Fortes</span>
+                        By <span>Diego Moretti</span>
                       </li>
                       <li className="d-inline-block p-2">
                         <span>{date}</span>

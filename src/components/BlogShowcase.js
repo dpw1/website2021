@@ -44,7 +44,7 @@ const BlogItem = props => {
         <div className="blog-content p-4">
           <ul className="meta-info d-flex justify-content-between">
             <li>
-              By <Link to={url}>Diego Fortes</Link>
+              By <Link to={url}>Diego Moretti</Link>
             </li>
           </ul>
           {/* Blog Title */}

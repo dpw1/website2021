@@ -41,8 +41,8 @@ const HomeLayout = props => {
         your Shopify theme. <br /> Pay once, use forever - no monthly fees.`}
         chosenProducts={[
           "Debut Theme Slider (PRO)",
+          "Slideshow Section (PRO)",
           "Minimal Theme Slider (PRO)",
-          `Brooklyn Theme Slider (PRO)`,
         ]}
         page="home"
       ></ProductShowcase>
