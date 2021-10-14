@@ -6,6 +6,7 @@ import parse from "html-react-parser"
 import { blogApi } from "../api/api"
 import { Link } from "gatsby"
 import { siteRoutes } from "../utils/siteRoutes"
+import Advertise from "./Advertise"
 
 const PostsSidebar = props => {
   const [posts, setPosts] = useState([])
@@ -81,6 +82,8 @@ const PostsSidebar = props => {
           </div>
         </div>
       </div>
+
+      <Advertise></Advertise>
     </div>
   )
 }
