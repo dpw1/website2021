@@ -195,10 +195,6 @@ const BlogContent = props => {
             </div>
           </div>
         </div>
-
-        <Link className="btn blog-content-more" to={siteRoutes.blog}>
-          View all blogs
-        </Link>
       </section>
     </React.Fragment>
   )

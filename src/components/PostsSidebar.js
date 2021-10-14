@@ -83,6 +83,10 @@ const PostsSidebar = props => {
         </div>
       </div>
 
+      <Link className="btn posts-sidebar-view-more" to={siteRoutes.blog}>
+        View all blogs
+      </Link>
+
       <Advertise></Advertise>
     </div>
   )
