@@ -24,6 +24,27 @@ $self: ".ProductItem";
     }
   }
 
+  &-price-big {
+    text-decoration: line-through !important;
+  }
+
+  /* Styling for sales pricing */
+  &-sale {
+    text-align: right;
+    margin-bottom: 10px;
+
+    .ProductItem-price-big {
+      font-size: 12px;
+      margin-top: 5px;
+      font-weight: bold;
+      opacity: 0.8;
+
+      @media (max-width: $xs) {
+        margin-top: -2px;
+      }
+    }
+  }
+
   &-description {
     @media (min-width: $xs) {
       margin-top: 10px;

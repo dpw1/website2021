@@ -173,7 +173,7 @@ export default function Advertise() {
               data-v-cad483e2
               href={siteRoutes.shop}
             >
-              VIEW CODE SNIPPETS
+              VIEW PLUGINS
             </a>
             <p
               data-v-570454cb

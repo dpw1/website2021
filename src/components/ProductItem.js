@@ -5,11 +5,15 @@ import parse from "html-react-parser"
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import { Link } from "gatsby"
 import { replaceAll } from "./../utils/utils"
+import Label from "./Label"
 
 function ProductItem(props) {
   const {
     title,
     price,
+    comparePrice,
+    rawPrice,
+    rawComparePrice,
     attributes,
     description,
     miniDescription,
@@ -24,6 +28,7 @@ function ProductItem(props) {
     ? attributes.find(e => e.name.toLowerCase() === "development")
     : false
 
+  console.log("all", props)
   return (
     !isHidden && (
       <article
@@ -49,6 +54,10 @@ function ProductItem(props) {
       >
         add item
       </a> */}
+
+        {comparePrice && (
+          <Label rawPrice={rawPrice} rawComparePrice={rawComparePrice}></Label>
+        )}
 
         <div className="single-portfolio service-single res-margin">
           {/* Portfolio Thumb  */}
@@ -80,11 +89,18 @@ function ProductItem(props) {
                   <span>{parse(title)}</span>
                 </Link>
               </h3>
-              <p className="services-price-small ProductItem-price-small color-primary">
-                {/free/gim.test(price)
-                  ? price
-                  : price.toString().replace(".00", "").replace("$0", "Free")}
-              </p>
+              <div className="ProductItem-sale   ">
+                <p className="services-price-small ProductItem-price-small color-primary">
+                  {/free/gim.test(price)
+                    ? price
+                    : price.toString().replace(".00", "").replace("$0", "Free")}
+                </p>
+                {comparePrice && (
+                  <p className="ProductItem-price-big color-primary">
+                    {comparePrice}
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="ProductItem-description ">

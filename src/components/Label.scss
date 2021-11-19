@@ -1,0 +1,110 @@
+@import "../css/variables";
+@import "../css/animations";
+
+.Label--sale {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  z-index: 1;
+
+  color: #212529;
+  background-color: white !important;
+  box-shadow: #d8d8d8a3 0px 3px 8px;
+
+  padding: 0 12px !important;
+  border-radius: 30px !important;
+  position: absolute !important;
+  right: 9px !important;
+  top: -22px !important;
+
+  pointer-events: none;
+
+  @media (max-width: $xs) {
+    right: 0px !important;
+    top: -17px !important;
+  }
+
+  * {
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .mo-fire,
+  .mo-fire > svg {
+    width: 15px;
+    height: auto;
+  }
+
+  .mo-fire {
+    margin-right: 8px;
+    margin-left: -4px;
+  }
+
+  .mo-fire svg {
+    position: relative;
+    top: -5px;
+  }
+  .flame {
+    animation-name: flamefly;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    transform-origin: 50% 50% 0;
+  }
+  .flame.one {
+    animation-delay: 1s;
+    animation-duration: 3s;
+  }
+  .flame3.two {
+    animation-duration: 5s;
+    animation-delay: 1s;
+  }
+
+  .flame-main {
+    animation-name: flameWobble;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .flame-main.one {
+    animation-duration: 4s;
+    animation-delay: 1s;
+  }
+  .flame-main.two {
+    animation-duration: 3s;
+    animation-delay: 2s;
+  }
+  .flame-main.three {
+    animation-duration: 2.1s;
+    animation-delay: 3s;
+  }
+  .flame-main.four {
+    animation-duration: 3.2s;
+    animation-delay: 4s;
+  }
+  .flame-main.five {
+    animation-duration: 2.5s;
+    animation-delay: 5s;
+  }
+  @keyframes flameWobble {
+    50% {
+      transform: scale(1, 1.2) translate(0, -30px) rotate(-2deg);
+    }
+  }
+  @keyframes flamefly {
+    0% {
+      transform: translate(0) rotate(180deg);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-20px, -100px) rotate(180deg);
+      opacity: 0;
+    }
+  }
+}
