@@ -363,44 +363,44 @@ export function ruleOfThree(a, b, c) {
 }
 
 export const productsQuery = () => {
-  const data = useStaticQuery(graphql`
-    query ProductsShowcaseQuery {
-      allWordpressProducts {
-        edges {
-          node {
-            wordpress_id
-            ejunkie {
-              products {
-                number
-                images
-                name
-                details
-                number
-                tags
-                description
-                sub_items {
-                  price
-                }
-              }
-            }
-            gumroad {
-              products {
-                wordpress_id
-                name
-                formatted_price
-                preview_url
-                short_url
-                description
-                published
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query ProductsShowcaseQuery {
+  //     allWordpressProducts {
+  //       edges {
+  //         node {
+  //           wordpress_id
+  //           ejunkie {
+  //             products {
+  //               number
+  //               images
+  //               name
+  //               details
+  //               number
+  //               tags
+  //               description
+  //               sub_items {
+  //                 price
+  //               }
+  //             }
+  //           }
+  //           gumroad {
+  //             products {
+  //               wordpress_id
+  //               name
+  //               formatted_price
+  //               preview_url
+  //               short_url
+  //               description
+  //               published
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  return data
+  return {}
 }
 
 export function shuffle(array) {
