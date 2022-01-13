@@ -27,14 +27,14 @@ export default function Advertise() {
           <img
             data-v-c1b39a62
             data-v-66b79341
-            src="https://zyro.com/cdn-cgi/image/w=1920,q=85/_nuxt/img/figure-1.5cb1672.png"
+            src="https://www.ezfy.club/wp-content/uploads/2022/01/New-Tech-Futuristic-Purple-and-Yellow-Youtube-Thumbnail.png"
             loading="lazy"
             className="zyro-image trial-popup__bg-figure trial-popup__bg-figure--top ls-is-cached lazyload"
           />
           <img
             data-v-c1b39a62
             data-v-66b79341
-            src="https://zyro.com/cdn-cgi/image/w=1100,q=85/_nuxt/img/figure-2.7c0c8f9.png"
+            src="https://www.ezfy.club/wp-content/uploads/2022/01/cute-flower-1.png"
             className="zyro-image trial-popup__bg-figure trial-popup__bg-figure--bottom lazyload"
           />
           <div

@@ -208,13 +208,15 @@
     opacity: 0.2;
   }
   .trial-popup__bg-figure--top[data-v-66b79341]:not(.s) {
-    width: 46px;
-    border-top-left-radius: 15px;
+    width: 120px;
+    border-top-left-radius: 0;
+    left: -37px;
+    top: -45px;
   }
   .trial-popup__bg-figure--bottom[data-v-66b79341]:not(.s) {
-    right: 0;
-    bottom: -5px;
-    width: 60px;
+    right: -81px;
+    bottom: -51px;
+    width: 180px;
     border-bottom-right-radius: 15px;
   }
   .trial-popup__content[data-v-66b79341] {
