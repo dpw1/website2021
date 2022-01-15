@@ -115,8 +115,7 @@ export default function Popup() {
           <img
             data-v-c1b39a62
             data-v-66b79341
-            src="https://www.ezfy.club/wp-content/uploads/2022/01/New-Tech-Futuristic-Purple-and-Yellow-Youtube-Thumbnail.png"
-            loading="lazy"
+            src="https://www.ezfy.club/wp-content/uploads/2022/01/cute-flower-x.png"
             className="zyro-image trial-popup__bg-figure trial-popup__bg-figure--top ls-is-cached lazyload"
           />
           <img
