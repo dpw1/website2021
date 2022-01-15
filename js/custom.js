@@ -20,18 +20,6 @@
     var $window = $(window)
     var zero = 0
 
-    // :: 1.0 PRELOADER ACTIVE CODE
-    // $(window).on("load", function () {
-    //   $(".preloader-wapper").addClass("loaded");
-    //   if ($(".preloader-wapper").hasClass("loaded")) {
-    //     $(".preloader-main")
-    //       .delay(400)
-    //       .queue(function () {
-    //         $(this).remove();
-    //       });
-    //   }
-    // });
-
     // :: 3.0 SCROLL TO TOP ACTIVE CODE
     var offset = 300
     var duration = 500
@@ -98,19 +86,6 @@
 
     // :: 7.0 WOW ACTIVE CODE
     // new WOW().init();
-
-    // :: 8.0 PREVENT DEFAULT ACTIVE CODE
-    $("a[href='#']").on("click", function ($) {
-      $.preventDefault()
-    })
-
-    // :: 10.0 FANCYBOX VIDEO POPUP ACTIVE CODE
-    $(".fancyVideo").fancybox({
-      animationEffect: "zoom-in-out",
-      transitionEffect: "circular",
-      maxWidth: 800,
-      maxHeight: 600,
-    })
   }
   // window.customCode();
 })(window.jQuery)
@@ -172,30 +147,6 @@ ezfy = (function () {
   function lazyLoadImages() {
     let images = document.querySelectorAll("img.lazyload")
     lazyload(images)
-
-    /* Add class="lazyload" and data-src="image.png" to image elements */
-
-    // var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"))
-
-    // if ("IntersectionObserver" in window) {
-    //   let lazyImageObserver = new IntersectionObserver(function (
-    //     entries,
-    //     observer
-    //   ) {
-    //     entries.forEach(function (entry) {
-    //       if (entry.isIntersecting) {
-    //         let lazyImage = entry.target
-    //         lazyImage.src = lazyImage.dataset.src
-    //         lazyImage.classList.remove("lazy")
-    //         lazyImageObserver.unobserve(lazyImage)
-    //       }
-    //     })
-    //   })
-
-    //   lazyImages.forEach(function (lazyImage) {
-    //     lazyImageObserver.observe(lazyImage)
-    //   })
-    // }
   }
 
   /* Forcefully loads/reloads all lazyloaded images */
@@ -752,7 +703,22 @@ ezfy = (function () {
     } catch (err) {}
   }
 
+  function preventDefaultActiveCode() {
+    const $links = document.querySelectorAll(`a[href='#']`)
+
+    if (!$links) {
+      return
+    }
+
+    for (var each of $links) {
+      each.addEventListener("click", function (e) {
+        e.preventDefault()
+      })
+    }
+  }
+
   return {
+    preventDefaultActiveCode: preventDefaultActiveCode,
     removeLoader: removeLoader,
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
@@ -773,7 +739,7 @@ ezfy = (function () {
 
     start: () => {
       window.ezfy.lazyload()
-      window.ezfy.activateEJunkieCart()
+      window.ezfy.preventDefaultActiveCode()
       addTagsToPortfolioItems()
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
