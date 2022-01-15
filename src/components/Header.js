@@ -4,8 +4,6 @@ import logo from "../copy/img/logo/ezfy-logo-transparent-small.png"
 import stickyLogo from "../copy/img/logo/ezfy-logo-small.png"
 import { useMediaQuery } from "react-responsive"
 
-import { useStatePersist as useStickyState } from "use-state-persist"
-
 import { renderNav } from "../utils/utils"
 
 import $ from "jquery"
@@ -35,8 +33,6 @@ const createNavbarSingleItem = props => {
 
 function Header(props) {
   const isDesktop = useMediaQuery({ query: "(min-width: 991px)" })
-
-  const [cartServices, setCartServices] = useStickyState("@services", [])
 
   const { page, darkMode } = props
 

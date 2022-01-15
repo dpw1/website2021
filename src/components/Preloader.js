@@ -1,49 +1,27 @@
-import React, { Component, useEffect } from "react";
-import "./Preloader.scss";
-import $ from "jquery";
+import React, { Component, useEffect } from "react"
+import "./Preloader.scss"
+import $ from "jquery"
 
 function Preloader() {
   useEffect(() => {
-    // var $ = window.$;
-    // $(window).on("load", function () {});
-    // window.addEventListener("load", () => {
-    //   console.log("remove preloader");
-    //   setTimeout(() => {
-    //     const preloader = window.document.querySelector(`.preloader-wapper`);
-    //     preloader.classList.add("loaded");
-    //     if (preloader.classList.contains("loaded")) {
-    //       window.document.querySelector(`.preloader-main`).remove();
-    //     }
-    //     console.log(preloader);
-    //   }, 100);
-    //   $(".preloader-wapper").addClass("loaded");
-    //   if ($(".preloader-wapper").hasClass("loaded")) {
-    //     $(".preloader-main")
-    //       .delay(1200)
-    //       .queue(function () {
-    //         $(this).remove();
-    //       });
-    //   }
-    // });
-
     window.addEventListener("load", () => {
       setTimeout(() => {
-        const preloader = window.document.querySelector(`.preloader-wapper`);
+        const preloader = window.document.querySelector(`.preloader-wapper`)
 
         if (!preloader) {
-          return;
+          return
         }
 
-        preloader.classList.add("loaded");
+        preloader.classList.add("loaded")
         if (preloader.classList.contains("loaded")) {
-          const loader = window.document.querySelector(`.preloader-main`);
+          const loader = window.document.querySelector(`.preloader-main`)
 
-          setTimeout(() => loader.remove(), 500);
+          setTimeout(() => loader.remove(), 500)
         }
-        console.log(preloader);
-      }, 100);
-    });
-  }, []);
+        console.log(preloader)
+      }, 100)
+    })
+  }, [])
 
   return (
     <div className="preloader-main">
@@ -53,7 +31,8 @@ function Preloader() {
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
           width={600}
-          height={200}>
+          height={200}
+        >
           <defs>
             <filter id="goo" x="-40%" y="-40%" height="200%" width="400%">
               <feGaussianBlur
@@ -80,7 +59,7 @@ function Preloader() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Preloader;
+export default Preloader
