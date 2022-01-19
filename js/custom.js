@@ -1,5 +1,3 @@
-// Index of jQuery Active Code
-
 // :: 1.0 PRELOADER ACTIVE CODE
 // :: 2.0 NAVIGATION MENU ACTIVE CODE
 // :: 3.0 SCROLL TO TOP ACTIVE CODE
@@ -14,81 +12,6 @@
 // :: 12.0 TESTIMONIALS ACTIVE CODE
 // :: 13.0 REVIEWS SLIDER
 // :: 14.0 CONTACT FORM ACTIVE CODE
-
-;(function ($) {
-  window.customCode = function () {
-    var $window = $(window)
-    var zero = 0
-
-    // :: 3.0 SCROLL TO TOP ACTIVE CODE
-    var offset = 300
-    var duration = 500
-
-    $window.on("scroll", function () {
-      if ($(this).scrollTop() > offset) {
-        $("#scrollUp").fadeIn(duration)
-      } else {
-        $("#scrollUp").fadeOut(duration)
-      }
-    })
-
-    $("#scrollUp").on("click", function (e) {
-      e.preventDefault()
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      })
-    })
-
-    // :: 4.0 SCROLL LINK ACTIVE CODE
-    var scrollLink = $(".scroll")
-
-    const closeMenu = () => {
-      const menu = document.querySelector(
-        `.canvas-open .navbar-inner button.navbar-toggler`
-      )
-
-      if (!menu) {
-        return
-      }
-
-      menu.click()
-    }
-
-    // :: 5.0 SMOOTH SCROLLING ACTIVE CODE
-    scrollLink.on("click", function (e) {
-      e.preventDefault()
-      ;(function closeMobileMenuIfLogoIsClicked() {
-        const menuIsOpen = $(".navbar-inner").css("right") === "0px"
-
-        if (menuIsOpen) {
-          document.querySelector(".navbar-toggler").click()
-        }
-      })()
-
-      const offset = e.target.getAttribute("data-scroll-offset")
-        ? parseInt(e.target.getAttribute("data-scroll-offset"))
-        : 0
-
-      $("body,html").animate(
-        {
-          scrollTop: $(this.hash).offset().top + offset,
-        },
-        500
-      )
-
-      closeMenu()
-    })
-
-    // :: 6.0 AOS ACTIVE CODE
-    // AOS.init();
-
-    // :: 7.0 WOW ACTIVE CODE
-    // new WOW().init();
-  }
-  // window.customCode();
-})(window.jQuery)
 
 /* Custom Code 
   ===================================== */
@@ -464,6 +387,7 @@ ezfy = (function () {
     return /blog/gim.test(window.location.href)
   }
 
+  /* If there is a has on the URL, automatically scrolls to it.*/
   function scrollToHash() {
     const hash = window.location.hash.trim().replace("#", "")
 
@@ -520,88 +444,9 @@ ezfy = (function () {
     }, 1000)
   }
 
-  function activateEJunkieCart() {
-    // console.log("CART: ejunkie cart")
-
-    return
-
-    const $ejunkieScript = document.querySelector(
-      `script[src*='https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=']`
-    )
-
-    if ($ejunkieScript) {
-      $ejunkieScript.remove()
-    }
-
-    // console.log("CART: re-injecting code!")
-
-    var d = document
-    var EJV1_cart_version = 1
-    var EJV1_loadFlag = false // this defines whether or not box.js should search for ?cl
-    var EJV1_box_preloaded = true
-    var url =
-      "https://www.e-junkie.com/ecom/restified/checkStatusL.php?cl=" +
-      EJV1_cart_version
-    var t = d.createElement("script")
-    t.setAttribute("src", url)
-    d.getElementsByTagName("head")[0].appendChild(t)
-  }
-
   /**
    * Adds an ejunkie lightbox to every ejunkie cart link.
    */
-  async function addModalToGumRoadAndEjunkieLinks() {
-    if (!_isBlogPage()) {
-      return
-    }
-
-    const links = document.querySelectorAll(
-      `a[href*='ezfy.e-junkie'], 
-      .blog-details a[href*='fatfreecartpro.com'], 
-      .blog-details a[href*='gumroad.com'], 
-      .blog-details a[href*='gum.co']`
-    )
-
-    if (!links) {
-      return
-    }
-
-    for (const each of links) {
-      each.setAttribute("data-src", each.href)
-      each.setAttribute("data-type", "iframe")
-      each.setAttribute("data-options", `{buttons: ["close"]}`)
-      each.setAttribute(
-        "data-fancybox",
-        window.location.pathname.replace("/blog/", "")
-      )
-    }
-  }
-
-  async function addModalToFatFreeCartProLinks() {
-    if (!_isBlogPage()) {
-      return
-    }
-
-    const links = document.querySelectorAll(
-      `.blog-details a[href*='fatfreecartpro.com']`
-    )
-
-    if (!links) {
-      return
-    }
-
-    for (const each of links) {
-      each.setAttribute("data-src", each.href)
-      each.setAttribute("data-type", "iframe")
-      each.setAttribute(
-        "data-fancybox",
-        window.location.pathname.replace("/blog/", "")
-      )
-      // each.setAttribute("class", "ec_ejc_thkbx")
-      // each.setAttribute("rel", "noopener")
-      // each.setAttribute("target", "ej_ejc")
-    }
-  }
 
   function emailSuccess() {
     const isSuccess = /contact_form=success/.test(window.location.href)
@@ -717,14 +562,54 @@ ezfy = (function () {
     }
   }
 
+  function _scrollTo(selector, yOffset = 0) {
+    const el = document.querySelector(selector)
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+    window.scrollTo({ top: y, behavior: "smooth" })
+  }
+
+  function handleScrollLinks() {
+    var $links = document.querySelectorAll(`.scroll`)
+
+    if (!$links) {
+      return
+    }
+
+    // Close mobile menu if logo is clicked
+    const $menu = document.querySelector(`#navbarSection.active`)
+
+    if ($menu) {
+      const $button = document.querySelector(
+        ".navbar-inner button.navbar-toggler"
+      )
+
+      if ($button) {
+        $button.click()
+      }
+    }
+
+    for (const $link of $links) {
+      $link.addEventListener(`click`, function (e) {
+        e.preventDefault()
+
+        const offset = e.target.getAttribute("data-scroll-offset")
+          ? parseInt(e.target.getAttribute("data-scroll-offset"))
+          : 0
+
+        const id = e.target.getAttribute(`href`)
+
+        _scrollTo(id, offset)
+      })
+    }
+  }
+
   return {
     preventDefaultActiveCode: preventDefaultActiveCode,
     removeLoader: removeLoader,
     closeSidebarMenu: closeSidebarMenu,
     reviewsTextSlider: reviewsTextSlider,
-    activateEJunkieCart: activateEJunkieCart,
     loadEcwidScript: loadEcwidScript,
-    addModalToGumRoadAndEjunkieLinks: addModalToGumRoadAndEjunkieLinks,
     forceHrefLinkOnFirefox: forceHrefLinkOnFirefox,
     forceLazyload: forceLazyload,
 
@@ -740,6 +625,7 @@ ezfy = (function () {
     start: () => {
       window.ezfy.lazyload()
       window.ezfy.preventDefaultActiveCode()
+      loadEcwidScript()
       addTagsToPortfolioItems()
       addTagsToPortfolioFilter()
       portfolioTagHandleOnClick()
@@ -747,14 +633,13 @@ ezfy = (function () {
       // autoplayVideo()
       setTimeout(scrollToHash, 350)
       window.ezfy.initServices()
-      window.customCode()
+
       window.ezfy.closeSidebarMenu()
-      window.ezfy.addModalToGumRoadAndEjunkieLinks()
       testBackbutton()
       showLoader()
       reviewFeedback()
-      loadEcwidScript()
       window.ezfy.forceHrefLinkOnFirefox()
+      handleScrollLinks()
     },
     init: function () {
       window.ezfy.start()
@@ -763,10 +648,6 @@ ezfy = (function () {
           window.ezfy.forceHrefLinkOnFirefox()
         }, 3000)
       })
-
-      window.onresize = function (event) {
-        // window.ezfy.activateEJunkieCart()
-      }
 
       window.onload = function () {
         setTimeout(emailSuccess, 100)
