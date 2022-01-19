@@ -64,6 +64,8 @@ export default function CartEcwid(props) {
 
     /* if the user clicks the cart and it hasn't loaded yet,
     it will wait until the cart loads and then show it up */
+
+    // TODO - shower loader only if user click here
     function handleDelayedEcwidCartOpen() {
       const $carts = document.querySelectorAll(`.CartEcwid-loader`)
 
@@ -73,6 +75,7 @@ export default function CartEcwid(props) {
 
       for (const $cart of $carts) {
         $cart.addEventListener(`click`, async function () {
+          $cart.classList.add(`CartEcwid-loader--loading`)
           const $counter = document.querySelector(`.ec-minicart__counter`)
 
           if ($counter) {
