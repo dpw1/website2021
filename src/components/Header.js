@@ -56,15 +56,32 @@ function Header(props) {
     }
     function navMenu() {
       // MAIN MENU TOGGLER ICON (MOBILE SITE ONLY)
-      $('[data-toggle="navbarToggler"]').click(function () {
-        $(".navbar").toggleClass("active")
-        $("body").toggleClass("canvas-open")
-      })
-      // MAIN MENU TOGGLER ICON
-      $(".navbar-toggler").click(function () {
-        $(".navbar-toggler-icon").toggleClass("active")
-      })
+
+      const $button = document.querySelector(`[data-toggle="navbarToggler"]`)
+
+      if (!$button) {
+        return
+      }
+
+      const $navbar = document.querySelector(`.navbar`)
+      const $togglers = document.querySelectorAll(`.navbar-toggler`)
+      const $icons = document.querySelectorAll(`.navbar-toggler-icon`)
+
+      for (var $toggler of $togglers) {
+        $toggler.addEventListener("click", function () {
+          console.log("togg")
+
+          $toggler.classList.toggle(`active`)
+          $navbar.classList.toggle(`active`)
+          document.body.classList.toggle(`canvas-open`)
+          for (var $icon of $icons) {
+            $icon.classList.toggle(`active`)
+          }
+        })
+      }
+
       // NAVBAR STICKY
+
       var $stickyNav = $(".navbar-sticky")
       $(window).on("scroll load", function () {
         var scroll = $(window).scrollTop()
@@ -114,8 +131,34 @@ function Header(props) {
       }
     }
 
+    function handleDropdown() {
+      const $dropdowns = document.querySelectorAll(
+        `.navbar-nav .nav-item.dropdown`
+      )
+
+      if (!$dropdowns) {
+        return
+      }
+
+      for (var $dropdown of $dropdowns) {
+        $dropdown.addEventListener(`click`, function (e) {
+          const id = e.target.getAttribute(`id`)
+          const $child = document.querySelector(
+            `.dropdown-menu[aria-labelledby="${id}"]`
+          )
+
+          if (!$child) {
+            return
+          }
+
+          $child.classList.toggle(`show`)
+        })
+      }
+    }
+
     setTimeout(handleLinkClick, 10)
-    setTimeout(navMenu, 10)
+    navMenu()
+    handleDropdown()
   }, [])
 
   return (

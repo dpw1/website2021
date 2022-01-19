@@ -5,6 +5,10 @@ $color-dark-mode: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
 $color-sticky: white;
 
 #navbarSection {
+  .dropdown {
+    cursor: pointer;
+  }
+
   &.navbar-sticky-on {
     padding: 0;
     height: 50px;
