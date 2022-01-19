@@ -6,9 +6,8 @@ import { useMediaQuery } from "react-responsive"
 
 import { renderNav } from "../utils/utils"
 
-import $ from "jquery"
 import { Link } from "gatsby"
-import CartButton from "./atom/CartButton"
+
 import CartEcwid from "./CartEcwid"
 
 const createNavbarSingleItem = props => {
@@ -37,26 +36,7 @@ function Header(props) {
   const { page, darkMode } = props
 
   useEffect(() => {
-    $(document).ready(function () {
-      checkWidth(true)
-      $(window).resize(function () {
-        checkWidth(false)
-      })
-    })
-
-    function checkWidth(init) {
-      // If browser resized, check width again
-      if ($(window).width() <= 991) {
-        $(".dropdown-submenu a").on("click", function (e) {
-          $(this).next("ul").toggle()
-          e.stopPropagation()
-          e.preventDefault()
-        })
-      }
-    }
     function navMenu() {
-      // MAIN MENU TOGGLER ICON (MOBILE SITE ONLY)
-
       const $button = document.querySelector(`[data-toggle="navbarToggler"]`)
 
       if (!$button) {
@@ -69,8 +49,6 @@ function Header(props) {
 
       for (var $toggler of $togglers) {
         $toggler.addEventListener("click", function () {
-          console.log("togg")
-
           $toggler.classList.toggle(`active`)
           $navbar.classList.toggle(`active`)
           document.body.classList.toggle(`canvas-open`)
@@ -82,25 +60,29 @@ function Header(props) {
 
       // NAVBAR STICKY
 
-      var $stickyNav = $(".navbar-sticky")
-      $(window).on("scroll load", function () {
-        var scroll = $(window).scrollTop()
+      var $stickyNav = document.querySelector(`.navbar-sticky`)
+
+      window.addEventListener("scroll", function () {
+        const scroll = window.scrollY
+
         if (scroll >= 120) {
-          $stickyNav.addClass("navbar-sticky-moved-up")
+          $stickyNav.classList.add("navbar-sticky-moved-up")
         } else {
-          $stickyNav.removeClass("navbar-sticky-moved-up")
+          $stickyNav.classList.remove("navbar-sticky-moved-up")
         }
+
         // apply transition
         if (scroll >= 250) {
-          $stickyNav.addClass("navbar-sticky-transitioned")
+          $stickyNav.classList.add("navbar-sticky-transitioned")
         } else {
-          $stickyNav.removeClass("navbar-sticky-transitioned")
+          $stickyNav.classList.remove("navbar-sticky-transitioned")
         }
+
         // sticky on
         if (scroll >= 500) {
-          $stickyNav.addClass("navbar-sticky-on")
+          $stickyNav.classList.add("navbar-sticky-on")
         } else {
-          $stickyNav.removeClass("navbar-sticky-on")
+          $stickyNav.classList.remove("navbar-sticky-on")
         }
       })
     }
@@ -154,6 +136,18 @@ function Header(props) {
           $child.classList.toggle(`show`)
         })
       }
+    }
+
+    const closeMenu = () => {
+      const menu = document.querySelector(
+        `.canvas-open .navbar-inner button.navbar-toggler`
+      )
+
+      if (!menu) {
+        return
+      }
+
+      menu.click()
     }
 
     setTimeout(handleLinkClick, 10)

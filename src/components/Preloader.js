@@ -1,6 +1,5 @@
 import React, { Component, useEffect } from "react"
 import "./Preloader.scss"
-import $ from "jquery"
 
 function Preloader() {
   useEffect(() => {

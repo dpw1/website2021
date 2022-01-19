@@ -162,12 +162,6 @@ section[id]:not(#footerSection) {
   z-index: -2;
 }
 
-#scrollUp {
-  border-radius: $border-radius;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 /* Blog
 ===================================== */
 
@@ -293,12 +287,6 @@ section[id]:not(#footerSection) {
 
 #footerSection {
   // z-index: -2;
-}
-
-#scrollUp {
-  border-radius: $border-radius;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 .media-body {
