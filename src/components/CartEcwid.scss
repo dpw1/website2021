@@ -63,13 +63,16 @@ $loader-size: 13px;
   .lds-ring {
     display: inline-block;
     position: absolute;
-    width: $loader-size;
-    height: $loader-size;
+    width: 53px;
+    height: 53px;
     top: -3px;
     right: -4px;
+    cursor: pointer;
   }
 
   .lds-ring div {
+    right: -1px;
+    top: 2px;
     box-sizing: border-box;
     display: block;
     position: absolute;

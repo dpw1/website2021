@@ -47,7 +47,7 @@ $pink: #ff00ffab;
   }
 
   &-figure {
-    max-width: 100px;
+    max-width: 300px;
     width: 100%;
     position: relative;
     display: flex;
@@ -55,7 +55,7 @@ $pink: #ff00ffab;
 
     @media (max-width: $xxs) {
       flex-direction: column;
-      max-width: 200px;
+      max-width: 100%;
       width: 100%;
     }
 
@@ -64,17 +64,6 @@ $pink: #ff00ffab;
       //     inset -2px 0 10px $blue, inset 2px 0 10px $pink, inset -2px 0 10px $blue,
       //     0 0 10px #fff, -1px 0 10px $pink, 1px 0 10px $blue;
     }
-
-    // &:after {
-    //   content: "+";
-    //   font-size: 14px;
-    //   display: inline-block;
-    //   position: relative;
-    // }
-
-    // &:last-of-type:after {
-    //   display: none;
-    // }
   }
 
   &-icon {
@@ -159,6 +148,14 @@ $pink: #ff00ffab;
     &-small + &-big {
       text-decoration: line-through;
       font-size: 13px;
+    }
+
+    &-big--no-discount {
+      display: table;
+      width: auto;
+      font-size: 16px !important;
+      margin: 0 auto;
+      margin-top: 8px;
     }
   }
 

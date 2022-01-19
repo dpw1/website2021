@@ -5,34 +5,89 @@ import "./CartEcwid.scss"
 export default function CartEcwid(props) {
   const { isMobile } = props
 
-  const handleBackToShoppingButtonClick = async () => {
-    const $cart = window.document.querySelector(`.ec-cart-widget`)
+  useEffect(() => {
+    const handleBackToShoppingButtonClick = async () => {
+      const $cart = window.document.querySelector(`.ec-cart-widget`)
 
-    if (!$cart) {
-      return
+      if (!$cart) {
+        return
+      }
+
+      $cart.addEventListener("click", async function () {
+        const $button = await _waitForElement(
+          `.ec-cart__button > .form-control > button`
+        )
+
+        $button.addEventListener("click", function () {
+          const $close = document.querySelector(`.ecwid-popup-closeButton`)
+
+          if (!/shop/.test(window.location.href)) {
+            return (window.location.href = `${window.location.origin}/shop`)
+          }
+
+          return $close.click()
+        })
+
+        console.log("continue shopping btn", $button)
+      })
     }
 
-    $cart.addEventListener("click", async function () {
-      const $button = await _waitForElement(
-        `.ec-cart__button > .form-control > button`
-      )
+    function _waitForElement(selector, delay = 50, tries = 250) {
+      const element = document.querySelector(selector)
 
-      $button.addEventListener("click", function () {
-        const $close = document.querySelector(`.ecwid-popup-closeButton`)
+      if (!window[`__${selector}`]) {
+        window[`__${selector}`] = 0
+      }
 
-        if (!/shop/.test(window.location.href)) {
-          return (window.location.href = `${window.location.origin}/shop`)
+      function _search() {
+        return new Promise(resolve => {
+          window[`__${selector}`]++
+          setTimeout(resolve, delay)
+        })
+      }
+
+      if (element === null) {
+        if (window[`__${selector}`] >= tries) {
+          window[`__${selector}`] = 0
+          return Promise.reject(null)
         }
 
-        return $close.click()
-      })
+        return _search().then(() => _waitForElement(selector))
+      } else {
+        return Promise.resolve(element)
+      }
+    }
 
-      console.log("continue shopping btn", $button)
-    })
-  }
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms))
+    }
 
-  useEffect(() => {
+    /* if the user clicks the cart and it hasn't loaded yet,
+    it will wait until the cart loads and then show it up */
+    function handleDelayedEcwidCartOpen() {
+      const $carts = document.querySelectorAll(`.CartEcwid-loader`)
+
+      if (!$carts) {
+        return
+      }
+
+      for (const $cart of $carts) {
+        $cart.addEventListener(`click`, async function () {
+          const $counter = document.querySelector(`.ec-minicart__counter`)
+
+          if ($counter) {
+            return
+          }
+
+          await _waitForElement(`.ec-minicart__counter`)
+
+          Ecwid.ShoppingCartController.openCart()
+        })
+      }
+    }
+
     handleBackToShoppingButtonClick()
+    handleDelayedEcwidCartOpen()
   }, [])
 
   return (
@@ -73,7 +128,7 @@ export default function CartEcwid(props) {
             ></circle>
           </g>
         </svg>
-        <div className="lds-ring">
+        <div className="lds-ring CartEcwid-loader">
           <div></div>
           <div></div>
           <div></div>

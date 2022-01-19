@@ -184,7 +184,13 @@ export default function FrequentlyBoughtTogether(props) {
                   {products && smallPriceSum()}
                 </span>
               )}{" "}
-              <span className="fbt-total-big">
+              <span
+                className={`fbt-total-big ${
+                  hasDiscount() || `fbt-total-big--no-discount shiny-text`
+                }`}
+              >
+                {hasDiscount() ? "" : "Only "}
+
                 {products && allProductsSum()}
               </span>
               {hasDiscount() && (
