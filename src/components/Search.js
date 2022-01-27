@@ -43,6 +43,7 @@ function Search(props) {
   })
 
   const [visible, setVisible] = useState("")
+  const [total, setTotal] = useState(null)
   const [results, setResults] = useStickyState("@totalProducts", null)
 
   /**
@@ -68,6 +69,7 @@ function Search(props) {
         }
       })
       .filter(e => e !== undefined)
+
     return filtered
   }
 
@@ -77,8 +79,22 @@ function Search(props) {
     }
   }
 
+  const getTotalProducts = () => {
+    const _total = data.filter(e => {
+      const attributes = JSON.stringify(e.attributes)
+
+      if (!/Development/gim.test(attributes)) {
+        return e
+      }
+    })
+
+    return _total.length
+  }
+
   useEffect(() => {
     setVisible(getTotalVisibleProducts())
+
+    setTotal(getTotalProducts())
   }, [])
 
   useEffect(() => {
@@ -102,7 +118,7 @@ function Search(props) {
     <section id="Search" className="SearchBox">
       <div className="SearchBox-filter">
         <div className="SearchBox-total  ">
-          {`Showing ${visible} of ${data.length} ${
+          {`Showing ${visible} of ${total} ${
             type === "blog" ? "blog post(s)" : "product(s)"
           }.`}
           {/* {`Showing ${results} ${results === 1 ? "result" : "results"} out of ${

@@ -82,7 +82,7 @@ $loader-size: 13px;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
-    visibility: hidden;
+    // visibility: hidden;
 
     @at-root {
       .navbar-sticky-transitioned .CartEcwid .CartEcwid-loader div {
@@ -110,7 +110,7 @@ $loader-size: 13px;
 }
 
 .CartEcwid-loader.CartEcwid-loader--loading div {
-  visibility: visible;
+  // visibility: visible;
 }
 
 .CartEcwid--desktop {

@@ -8,7 +8,7 @@ const items = [
     video: require("../copy/videos/video-arval.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-arval.jpg"),
     sourceCode: "",
-    liveWebsite: "https://arvalmq.com/",
+    liveWebsite: "https://arval.business/",
     title: "Arval",
     subtitle: `Arval is a printing machine company. They needed their old
   website updated so we developed a brand new design +
@@ -28,7 +28,7 @@ const items = [
   //   video: require("../copy/videos/video-bubs.mp4"),
   //   image: require("../copy/img/thumbnail/thumbnail-bubs.jpg"),
   //   sourceCode: "",
-  //   liveWebsite: "http://www.blankrefer.com/?https://www.bubswarehouse.com/",
+  //   liveWebsite: "https://www.bubswarehouse.com/",
   //   title: "Bubswarehouse",
   //   subtitle: `Bubswarehouse is one of the biggest online stores in
   //   Australia selling baby clothes and toys. We've worked
@@ -48,7 +48,7 @@ const items = [
     video: require("../copy/videos/video-light-bricks.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-light-bricks.jpg"),
     sourceCode: "",
-    liveWebsite: "http://www.blankrefer.com/?http://lightmybricks.com.au/",
+    liveWebsite: "http://lightmybricks.com.au/",
     title: "Light My Bricks",
     subtitle: `A worldwide famous company selling leds for Legos®. Our
     work consisted of the implementation of new Shopify
@@ -68,7 +68,7 @@ const items = [
     video: require("../copy/videos/video-zudo.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-zudo.jpg"),
     sourceCode: "",
-    liveWebsite: "http://www.blankrefer.com/?http://zudo.co/",
+    liveWebsite: "http://zudo.co/",
     title: "Zudo",
     subtitle: `Shopify website fully customized for client.`,
     alt: "Portfolio - Zudo Shopify Store",
@@ -88,8 +88,7 @@ const items = [
     video: require("../copy/videos/video-megalancers.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-megalancers.jpg"),
     sourceCode: "",
-    liveWebsite:
-      "http://www.blankrefer.com/?https://www.facebook.com/megalancers/",
+    liveWebsite: "https://www.facebook.com/megalancers/",
     title: "Megalancers",
     subtitle: `Popularly known as the <i>“Brazilian Fiverr”</i> , EZFY
     assisted the company to bring their website idea to life in. Everything was coded
@@ -109,7 +108,7 @@ const items = [
     video: require("../copy/videos/video-yokd.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-yokd.jpg"),
     sourceCode: "",
-    liveWebsite: "http://www.blankrefer.com/?https://www.getyokd.com/",
+    liveWebsite: "https://www.getyokd.com/",
     title: "GET YOK'D",
     subtitle: `The project owner requested website optimizations (namely lazy loading and image compressing), implementation of custom sections and
     multiple styling modifications.`,
@@ -129,8 +128,7 @@ const items = [
     video: require("../copy/videos/video-dog.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-dog.jpg"),
     sourceCode: "",
-    liveWebsite:
-      "http://www.blankrefer.com/?https://dogsbestfriendaustralia.com.au/",
+    liveWebsite: "https://dogsbestfriendaustralia.com.au/",
     title: "DOG'S BEST FRIEND AUSTRALIA",
     subtitle: `    Creation of new components on top of a theme.
     Implementation of the new collection section "Best
@@ -150,7 +148,7 @@ const items = [
     video: require("../copy/videos/video-birthcanva.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-birthcanva.jpg"),
     sourceCode: "",
-    liveWebsite: "http://www.blankrefer.com/?https://birthcanva.com/",
+    liveWebsite: "https://birthcanva.com/",
     title: "Birthcanva",
     subtitle: `Shopify website. We worked together to improve the overall
     performance, add new sections and styles customizations.`,
@@ -169,7 +167,7 @@ const items = [
     video: require("../copy/videos/video-jim.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-jim.jpg"),
     sourceCode: "",
-    liveWebsite: "http://www.blankrefer.com/?https://www.cosycribs.com.au/",
+    liveWebsite: "https://www.cosycribs.com.au/",
     title: "Cosy Cribs",
     subtitle: `Australian e-commerce based on Shopify selling furnitures.`,
     alt: "Portfolio - Cosy Cribs' Website",

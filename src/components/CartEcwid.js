@@ -75,7 +75,7 @@ export default function CartEcwid(props) {
 
       for (const $cart of $carts) {
         $cart.addEventListener(`click`, async function () {
-          $cart.classList.add(`CartEcwid-loader--loading`)
+          // $cart.classList.add(`CartEcwid-loader--loading`)
           const $counter = document.querySelector(`.ec-minicart__counter`)
 
           if ($counter) {

@@ -181,7 +181,7 @@ export default function Advertise() {
               data-v-cad483e2
             >
               <span data-v-66b79341 data-v-570454cb>
-                Free and premium options available.
+                No coding knowledge required.
               </span>
             </p>
           </div>
