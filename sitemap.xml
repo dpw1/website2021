@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://ezfycode.com/blog/how-to-disable-right-click-image-and-text-copying-without-apps</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/dawn-theme-clickable-banner-tutorial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/dawn-theme-show-description-below-images</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/dawn-theme-hide-price-when-sold-out</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -43,6 +44,7 @@
 <url> <loc>https://ezfycode.com/blog/shopify-remove-your-shop-name-from-the-website-title</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/optimize-shopify-product-page-images</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/slideshow-section-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/anti-theft-disable-right-click</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/minimal-theme-second-image-on-hover</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/supply-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/age-verification-popup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
