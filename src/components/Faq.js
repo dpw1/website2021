@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useLayoutEffect } from "react"
 import "./Faq.scss"
 import { groupItems } from "../utils/utils"
 import { Link } from "gatsby"
@@ -43,13 +43,33 @@ const questions = [
     question: `How safe is purchasing from this website?`,
     answer: () => (
       <p>
-        100% safe. We take privacy and security seriously, when making a
+        100% safe. We take privacy and security very seriously. When making a
         purchase in our{" "}
         <Link to={siteRoutes.shop} className="custom-link">
           shop
         </Link>{" "}
         you'll be redirected to a safe checkout payment platform where you can
         pay with PayPal or Credit/Debit card (processed via Stripe).
+      </p>
+    ),
+  },
+  {
+    question: `Is there a refund policy for the EZFY plugins?`,
+    answer: () => (
+      <p>
+        Taking into consideration that it's a digital product, we do not offer
+        refunds for our copy & paste plugins. However, if you would like to test
+        some plugin in your theme beforehand, please contact us!
+      </p>
+    ),
+  },
+  {
+    question: `Can you customize a plugin that I have purchased from your website?`,
+    answer: () => (
+      <p>
+        Absolutely! Additional customizations have an additional fee depending
+        on what is needed. Please contact us before your purchase for more
+        information.
       </p>
     ),
   },
@@ -87,8 +107,8 @@ const questions = [
     question: `How much do you charge?`,
     answer: () => (
       <p>
-        We charge $40 USD/hour. If anything we coded breaks we fix it free of
-        charge within the next 10 days.
+        We charge $50 USD/hour. If anything we coded breaks we fix it free of
+        charge within the next 15 days as well.
       </p>
     ),
   },
@@ -97,6 +117,10 @@ const questions = [
 const FaqItem = props => {
   const { question, answer, isOpen } = props
   // const newLine = false
+
+  useEffect(() => {}, [])
+
+  const handleCollpse = btn => {}
 
   const id = question.replace(/[^a-zA-Z]/g, "").toLowerCase()
   return (
@@ -109,6 +133,14 @@ const FaqItem = props => {
             type="button"
             data-toggle="collapse"
             data-target={`#${id}`}
+            onClick={e => {
+              const $el = e.target
+              const content = $el.getAttribute(`data-target`)
+              const $content = document.querySelector(`${content}`)
+
+              $el.classList.toggle(`collapsed`)
+              $content.classList.toggle(`show`)
+            }}
           >
             {question}
           </button>
