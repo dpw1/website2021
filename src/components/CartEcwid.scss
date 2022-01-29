@@ -151,3 +151,8 @@ $loader-size: 13px;
     right: 14px !important;
   }
 }
+
+/* Styles for the ecwid itself */
+.ec-cart-summary__row--discount {
+  display: none !important;
+}

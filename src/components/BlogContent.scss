@@ -18,6 +18,11 @@ $font-size: 16px;
     // border: 1px solid rgba(128, 128, 128, 0.356);
   }
 
+  img[src*="giphy"][src$="gif"] {
+    max-width: 200px !important;
+    width: 100%;
+  }
+
   pre,
   pre[class] {
     max-width: 100%;

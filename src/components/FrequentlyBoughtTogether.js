@@ -10,7 +10,7 @@ export default function FrequentlyBoughtTogether(props) {
   
   */
   const minimumPriceForDiscount = 45
-  const discount = 20
+  const discount = 10
 
   const [currentProduct, setCurrentProduct] = useState(null)
   const [loading, setLoading] = useState(false)
