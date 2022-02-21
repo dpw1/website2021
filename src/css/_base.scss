@@ -19824,15 +19824,28 @@ $navbar-speed: 0.1s;
 }
 
 .meta-info > ul > li::after {
+  // position: absolute;
+  // content: "";
+  // height: 30%;
+  // width: 2px;
+  // background-color: #777;
+  // top: 50%;
+  // left: 100%;
+  // -webkit-transform: translateY(-50%);
+  // transform: translateY(-50%);
+
   position: absolute;
   content: "";
-  height: 30%;
+  height: 10px;
   width: 2px;
   background-color: #777;
   top: 50%;
   left: 100%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  background: #8731e880;
 }
 
 .meta-info > ul > li:last-child::after {

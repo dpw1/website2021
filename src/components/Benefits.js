@@ -91,7 +91,7 @@ export default function Benefits() {
               </span>
             </div>
 
-            <div className="item___2Jemt">
+            {/* <div className="item___2Jemt">
               <div className="iconWrapper___2yaCw">
                 <svg
                   className="image___1yp2c icon___QdN3F contain___K2Ner"
@@ -138,7 +138,7 @@ export default function Benefits() {
               <span className="text___1QLAN">
                 Fully compatible with <b>Online Store 2.0.</b>
               </span>
-            </div>
+            </div> */}
 
             {/* 
             <div className="item___2Jemt">

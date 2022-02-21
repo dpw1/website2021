@@ -25,7 +25,7 @@
     "@testing-library/user-event": "^7.1.2",
     "acorn": "^8.4.0",
     "acorn-jsx": "^5.3.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "country-flags-svg": "^1.1.0",
     "element-in-view": "^0.1.0",
     "embla-carousel": "^4.3.1",
@@ -96,16 +96,17 @@
     "react-toast-notifications": "^2.4.0",
     "react-use-cart": "^1.9.0",
     "react-video-scroll": "^1.0.1",
+    "reading-time": "^1.5.0",
     "sanitize-html": "^2.4.0",
     "string-strip-html": "^8.2.10",
     "string.prototype.replaceall": "^1.0.4",
-    "striptags": "^3.1.1",
+    "striptags": "^3.2.0",
     "swiper": "^6.6.2",
     "timeago.js": "^4.0.2",
     "truncate": "^2.1.0",
     "use-query-params": "^1.1.9",
     "use-state-persist": "^0.2.3",
-    "validator": "^13.5.2"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "babel-plugin-transform-remove-console": "^6.9.4",

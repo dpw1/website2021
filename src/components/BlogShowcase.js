@@ -7,6 +7,9 @@ import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 import Search from "./Search"
 import Tags from "./Tags"
+import { cleanDescription } from "../utils/utils"
+
+const readingTime = require("reading-time")
 
 // const PAGINATION_BUTTONS = 3
 // posts per page is defined via props
@@ -19,14 +22,17 @@ const BlogItem = props => {
     excerpt,
     title,
     tag_names,
+    content,
   } = props.data
 
   let description = excerpt
   title = parse(title)
-  // let date = timeSince(_date)
+
   let url = `/blog/${slug}`
   const imagealt = props.data.image_alt
   const tags = tag_names.map(e => e.toLowerCase()).join(";")
+
+  const time = readingTime(content).text
 
   return (
     <div data-blog-tags={tags} className="col-12 col-md-6 col-lg-4 blog-item">
@@ -42,9 +48,38 @@ const BlogItem = props => {
         </Link>
 
         <div className="blog-content p-4">
-          <ul className="meta-info d-flex justify-content-between">
-            <li>
-              By <Link to={url}>Diego Moretti</Link>
+          <ul className="meta-info d-flex justify-content-between blog-content-info">
+            <li className="d-inline-block p-2 blog-content-info--time">
+              <svg
+                className="blog-content-info-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 14 14"
+              >
+                <g>
+                  <circle
+                    cx={7}
+                    cy={7}
+                    r="6.5"
+                    style={{
+                      fill: "none",
+                      stroke: "#000000",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                    }}
+                  />
+                  <polyline
+                    points="7 4.5 7 7 9.54 9.96"
+                    style={{
+                      fill: "none",
+                      stroke: "#000000",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                    }}
+                  />
+                </g>
+              </svg>
+
+              <span className="blog-content-info-length">{time}</span>
             </li>
           </ul>
           {/* Blog Title */}
@@ -72,6 +107,7 @@ const BlogShowcase = props => {
       ) {
         nodes {
           title
+          content
           slug
           date
           featured_image_src

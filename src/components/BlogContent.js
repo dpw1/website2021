@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from "react"
 import "./BlogContent.scss"
 import parse from "html-react-parser"
+
 import {
+  cleanDescription,
   extractTextBetween,
   formatDate,
   getWordpressImageBiggestSize,
 } from "../utils/utils"
 import BlogBreadcrumb from "./BlogBreadcrumb"
 import { FacebookMessengerShareButton, WhatsappShareButton } from "react-share"
-import { blogApi } from "../api/api"
-import PostsSidebar from "./PostsSidebar"
-import { Link } from "gatsby"
-import { siteRoutes } from "../utils/siteRoutes"
-import Gist from "react-gist"
-const reactStringReplace = require("react-string-replace")
-import ReactDOMServer from "react-dom/server"
 
-// import hljs from "highlight.js"
-// import "highlight.js/styles/github.css"
-import { renderToStaticMarkup } from "react-dom/server"
+import PostsSidebar from "./PostsSidebar"
+
 import { renderGistsDynamically } from "./../utils/utils"
 import { sleep } from "../../global-utils"
+
+const readingTime = require("reading-time")
 
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
   const [url, setUrl] = useState(null)
-  const [githubGists, setGithubGists] = useState([])
-  const { post } = props
 
-  const Llama = text => <p>llama: {text}</p>
+  const { post } = props
 
   // if (!post) {
   //   // window.location = window.location.origin;
@@ -38,40 +32,10 @@ const BlogContent = props => {
   const title = post.title.rendered
   const image = getWordpressImageBiggestSize(post.featured_image_src)
 
-  const cleanDescription = desc => {
-    let description = desc
-
-    var regex = /\[gist\](.*?)\[gist\]/g
-    let m
-
-    while ((m = regex.exec(description)) !== null) {
-      if (m.index === regex.lastIndex) {
-        regex.lastIndex++
-      }
-
-      m.forEach(async (match, groupIndex) => {
-        var id = m[1].toString()
-
-        description = description.replace(
-          m[0],
-          `<span data-gist-id="${id}"></span>`
-        )
-
-        console.log("shit IDDD, ", match)
-      })
-    }
-
-    // setGithubGists(gists)
-
-    // $description.innerHTML = description
-
-    return parse(description)
-  }
+  const time = readingTime(post.content.rendered).text
 
   useEffect(() => {
     setUrl(window !== undefined ? window.location.href : "https://ezfycode.com")
-
-    console.log("ok            ")
     ;(async _ => {
       await sleep(1000)
       renderGistsDynamically()
@@ -102,11 +66,43 @@ const BlogContent = props => {
                   <div className="meta-info d-flex flex-wrap align-items-center py-2">
                     <ul className="blog-content-info">
                       <li className="d-inline-block p-2">
-                        By <span>Diego Moretti</span>
+                        <span>By Diego Moretti</span>
                       </li>
-                      <li className="d-inline-block p-2">
+                      <li className="d-inline-block p-2 blog-content-info--time">
+                        <svg
+                          className="blog-content-info-svg"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 14 14"
+                        >
+                          <g>
+                            <circle
+                              cx={7}
+                              cy={7}
+                              r="6.5"
+                              style={{
+                                fill: "none",
+                                stroke: "#000000",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                              }}
+                            />
+                            <polyline
+                              points="7 4.5 7 7 9.54 9.96"
+                              style={{
+                                fill: "none",
+                                stroke: "#000000",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                              }}
+                            />
+                          </g>
+                        </svg>
+
+                        <span className="blog-content-info-length">{time}</span>
+                      </li>
+                      {/* <li className="d-inline-block p-2">
                         <span>{date}</span>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                   {/* Blog Details */}

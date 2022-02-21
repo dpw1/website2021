@@ -1,13 +1,12 @@
 import React from "react"
 import { createBrowserHistory } from "history"
 
-import { useStaticQuery, graphql } from "gatsby"
-
 import * as timeago from "timeago.js"
 import { siteRoutes } from "./siteRoutes"
 import { Link } from "gatsby"
 import axios from "axios"
 import globalUtils from "../../global-utils"
+import parse from "html-react-parser"
 
 export function extractTextBetween(text, start, end) {
   if (!start || !end) {
@@ -491,6 +490,30 @@ export function randomNoRepeats(array) {
   }
 }
 
+export const cleanDescription = desc => {
+  let description = desc
+
+  var regex = /\[gist\](.*?)\[gist\]/g
+  let m
+
+  while ((m = regex.exec(description)) !== null) {
+    if (m.index === regex.lastIndex) {
+      regex.lastIndex++
+    }
+
+    m.forEach(async (match, groupIndex) => {
+      var id = m[1].toString()
+
+      description = description.replace(
+        m[0],
+        `<span data-gist-id="${id}"></span>`
+      )
+    })
+  }
+
+  return parse(description)
+}
+
 /* Searches for all elements containing a [data-gist-ids], renders the gist within them */
 export function renderGistsDynamically() {
   var $gists = window.document.querySelectorAll(`[data-gist-id]`)
@@ -533,9 +556,23 @@ export function renderGistsDynamically() {
     /* Add height to iframe */
     const $iframe = document.querySelector(`.gistFrame--${i}`)
 
-    $iframe.addEventListener("load", function () {
+    $iframe.addEventListener("load", async function (e) {
       const height = $iframe.contentWindow.document.body.scrollHeight
       $iframe.style.height = `${height}px`
+
+      /* ======== */
+      const $html = gistFrameDoc
+      const $meta = $html.querySelector(`.gist-meta a`)
+      const code = $meta.getAttribute("href")
+
+      console.log("loadd code", code)
+
+      $zone.insertAdjacentHTML(
+        `afterbegin`,
+        `<a target="_blank" class="GistRawCode btn" href="${code}">Open code in new tab</a>`
+      )
     })
   }
 }
+
+function extractCodeFromGist() {}

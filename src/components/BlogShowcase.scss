@@ -4,6 +4,12 @@
   .single-blog {
     transition: $transition-basic;
   }
+
+  .blog-content-info--time {
+    margin-left: 0;
+    padding: 0 !important;
+  }
+
   .btn {
     display: block;
     max-width: 158px;
