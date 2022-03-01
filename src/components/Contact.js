@@ -59,7 +59,7 @@ function Contact(props) {
               <p className="mb-3">
                 Send us an e-mail and we'll get back to you within 24 hours!
                 Before you click on "send message" please make sure to do the{" "}
-                <b>ReCaptcha</b> so your e-mail can be sent safely. 🙂
+                <b>ReCaptcha</b> so your e-mail can be sent safely.
               </p>
               <ul className="contact-social-icons">
                 <li className="py-2">

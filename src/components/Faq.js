@@ -12,8 +12,8 @@ const questions = [
     answer: () => (
       <p>
         Shopify sections are customizable elements of a page which can have
-        multiple functions. They're super lightweight since they're coded into
-        your theme.
+        multiple functions. Because they're coded directly into the theme, they
+        are lightweight and loads faster than any app.
       </p>
     ),
   },
@@ -53,16 +53,7 @@ const questions = [
       </p>
     ),
   },
-  {
-    question: `Is there a refund policy for the EZFY plugins?`,
-    answer: () => (
-      <p>
-        Taking into consideration that it's a digital product, we do not offer
-        refunds for our copy & paste plugins. However, if you would like to test
-        some plugin in your theme beforehand, please contact us!
-      </p>
-    ),
-  },
+
   {
     question: `Can you customize a plugin that I have purchased from your website?`,
     answer: () => (
@@ -107,8 +98,8 @@ const questions = [
     question: `How much do you charge?`,
     answer: () => (
       <p>
-        We charge $50 USD/hour. If anything we coded breaks we fix it free of
-        charge within the next 15 days as well.
+        We charge $50 USD/hour, all code is thoroughly tested via BrowserStack
+        to ensure it works properly on all modern devices and browsers.
       </p>
     ),
   },

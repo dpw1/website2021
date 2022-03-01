@@ -24,6 +24,11 @@ const createNavbarSingleItem = props => {
       ) : (
         <Link className="nav-link" to={props.url}>
           {props.name}
+          {props.hasOwnProperty("badge") && (
+            <span className="badge badge-pill badge-warning ml-2">
+              {props.badge}
+            </span>
+          )}
         </Link>
       )}
     </li>

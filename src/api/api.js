@@ -42,6 +42,7 @@ export const blogApi = {
               date
               excerpt
               tag_names
+              content
             }
           }
         }

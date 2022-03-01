@@ -63,7 +63,7 @@ function About(props) {
                       <Link to={siteRoutes.shop} className="custom-link">
                         shop
                       </Link>{" "}
-                      out for some ideas.
+                      out for some ideas as well.
                     </p>
                     <p className="d-block mt-4">
                       We also invite you to take a look at what our previous

@@ -70,9 +70,6 @@ const PostsSidebar = props => {
                         </div>
                         <div className="post-content media-body pl-3">
                           <h6>{parse(e.title)}</h6>
-                          <p className="post-date posts-sidebar-date mb-2">
-                            {formatDate(e.date)}
-                          </p>
                         </div>
                       </a>
                     </li>

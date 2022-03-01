@@ -117,15 +117,9 @@ export const defaultNavbarLinks = [
     ],
   },
   {
-    name: "Services",
-    url: [
-      {
-        name: "Shop",
-        url: siteRoutes.shop,
-        scroll: false,
-        badge: "Popular",
-      },
-    ],
+    name: "Shop",
+    url: siteRoutes.shop,
+    scroll: false,
   },
   {
     name: "Blog",
