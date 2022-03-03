@@ -1,6 +1,8 @@
 import React, { useEffect } from "react"
 import { _waitForElement } from "../utils/utils"
 import "./CartEcwid.scss"
+import { Link } from "gatsby"
+import { siteRoutes } from "./../utils/siteRoutes"
 
 export default function CartEcwid(props) {
   const { isMobile } = props
@@ -89,12 +91,16 @@ export default function CartEcwid(props) {
       }
     }
 
+    function openCartExternally() {}
+
     handleBackToShoppingButtonClick()
     handleDelayedEcwidCartOpen()
+    openCartExternally()
   }, [])
 
   return (
-    <div
+    <Link
+      to={siteRoutes.shop}
       className={`CartEcwid ${
         isMobile ? "CartEcwid--mobile" : "CartEcwid--desktop"
       }`}
@@ -131,7 +137,7 @@ export default function CartEcwid(props) {
             ></circle>
           </g>
         </svg>
-        <div className="lds-ring CartEcwid-loader">
+        <div style={{ display: "none" }} className="lds-ring CartEcwid-loader">
           <div></div>
           <div></div>
           <div></div>
@@ -143,6 +149,6 @@ export default function CartEcwid(props) {
         data-icon="CART"
         className="ec-cart-widget"
       ></div>
-    </div>
+    </Link>
   )
 }
