@@ -99,56 +99,60 @@ export default function CartEcwid(props) {
   }, [])
 
   return (
-    <Link
-      to={siteRoutes.shop}
+    <div
       className={`CartEcwid ${
         isMobile ? "CartEcwid--mobile" : "CartEcwid--desktop"
       }`}
     >
-      <div className="CartEcwid-skeleton">
-        <svg
-          className="icon-default"
-          width="36"
-          height="30"
-          viewBox="0 0 36 30"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g fill="none" fillRule="evenodd">
-            <path
-              d="M2 3h5l4 17h18l3-12H9"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-            <circle
-              cx="13.5"
-              cy="26.5"
-              r="2.5"
-              stroke="currentColor"
-              strokeWidth="2"
-            ></circle>
-            <circle
-              cx="27.5"
-              cy="26.5"
-              r="2.5"
-              stroke="currentColor"
-              strokeWidth="2"
-            ></circle>
-          </g>
-        </svg>
-        <div style={{ display: "none" }} className="lds-ring CartEcwid-loader">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+      <Link to={siteRoutes.shop}>
+        <div className="CartEcwid-skeleton">
+          <svg
+            className="icon-default"
+            width="36"
+            height="30"
+            viewBox="0 0 36 30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="none" fillRule="evenodd">
+              <path
+                d="M2 3h5l4 17h18l3-12H9"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <circle
+                cx="13.5"
+                cy="26.5"
+                r="2.5"
+                stroke="currentColor"
+                strokeWidth="2"
+              ></circle>
+              <circle
+                cx="27.5"
+                cy="26.5"
+                r="2.5"
+                stroke="currentColor"
+                strokeWidth="2"
+              ></circle>
+            </g>
+          </svg>
+          <div
+            style={{ display: "none" }}
+            className="lds-ring CartEcwid-loader"
+          >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
-      </div>
-      <div
-        data-responsive="FALSE"
-        data-icon="CART"
-        className="ec-cart-widget"
-      ></div>
-    </Link>
+        <div
+          data-responsive="FALSE"
+          data-icon="CART"
+          className="ec-cart-widget"
+        ></div>
+      </Link>
+    </div>
   )
 }
