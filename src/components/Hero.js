@@ -76,7 +76,7 @@ function Hero(props) {
                 </span>
               </h3>
               <p className="text-white mt-3 mb-4">
-                <span>More than 3050+ Shopify merchants helped.</span>
+                <span>More than 3000+ Shopify merchants helped.</span>
               </p>
               {/* Store Buttons */}
               <div className="button-group store-buttons d-flex">

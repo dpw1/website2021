@@ -42,7 +42,7 @@ const HomeLayout = props => {
         chosenProducts={[
           "Debut Theme Slider (PRO)",
           "Slideshow Section (PRO)",
-          "Minimal Theme Slider (PRO)",
+          "Anti Theft - Disable Right Click",
         ]}
         page="home"
       ></ProductShowcase>

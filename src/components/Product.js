@@ -24,7 +24,7 @@ export default function Product(props) {
   const [currentProduct, setCurrentProduct] = useState("")
   const { product: productData } = props
 
-  // console.log("my product data      ", productData)
+  console.log("my product data      ", productData)
 
   const price = productData.price
     .replace("$0.00 or more", "Free")
@@ -89,10 +89,16 @@ export default function Product(props) {
   */
 
   const addToCart = async e => {
-    let productsInCart = []
     e.preventDefault()
 
     setLoading(true)
+    const url = `https://store61271341.company.site/products/${productData.slug}-p${productData.id}`
+
+    window.location.href = url
+
+    return
+
+    let productsInCart = []
 
     while (!window.hasOwnProperty("Ecwid")) {
       console.log("waiting for Ecwid          ")
@@ -200,7 +206,7 @@ export default function Product(props) {
             target="_blank"
             className="Product-atc btn--custom"
           >
-            {loading ? "Adding to cart..." : "Download now"}
+            {loading ? "Loading..." : "Download now"}
           </a>
 
           {/* <a
@@ -218,9 +224,9 @@ export default function Product(props) {
 
           <Benefits></Benefits>
 
-          <FrequentlyBoughtTogether
+          {/* <FrequentlyBoughtTogether
             product={currentProduct}
-          ></FrequentlyBoughtTogether>
+          ></FrequentlyBoughtTogether> */}
 
           <div className="Product-text">{parse(description)}</div>
 

@@ -57,7 +57,7 @@ export default function FloatingButton(props) {
         href={"#"}
         target="_blank"
       >
-        {loading ? "Adding to cart..." : "Download now"}
+        {loading ? "Loading..." : "Download now"}
         {price && <div className="FloatingButton-price ">{price}</div>}
       </a>
     </div>
