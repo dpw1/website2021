@@ -532,6 +532,7 @@ ezfy = (function () {
   }
 
   async function loadEcwidScript() {
+    return
     try {
       const url = `https://app.ecwid.com/script.js?61271341`
       const $script = document.querySelector(`script[src*='app.ecwid']`)
