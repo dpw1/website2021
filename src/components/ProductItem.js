@@ -65,20 +65,9 @@ function ProductItem(props) {
             className="ProductItem-image portfolio-thumb blog-thumb"
             to={slug}
           >
-            {/\.mp4/gim.test(thumbnail) ? (
-              <video controls>
-                <source src={thumbnail} />
-              </video>
-            ) : (
-              <figure className="aspect-ratio custom-overlay ">
-                <img
-                  className="lazyload"
-                  src={""}
-                  data-src={thumbnail}
-                  alt={title}
-                />
-              </figure>
-            )}
+            <figure className="aspect-ratio custom-overlay ">
+              <img className="lazyload" src={thumbnail} alt={title} />
+            </figure>
           </Link>
           {/* Portfolio Content */}
           <div className="ProductItem-content   portfolio-content services-content blog-content p-4">
