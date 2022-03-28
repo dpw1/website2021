@@ -224,9 +224,9 @@ export default function Product(props) {
 
           <Benefits></Benefits>
 
-          {/* <FrequentlyBoughtTogether
+          <FrequentlyBoughtTogether
             product={currentProduct}
-          ></FrequentlyBoughtTogether> */}
+          ></FrequentlyBoughtTogether>
 
           <div className="Product-text">{parse(description)}</div>
 

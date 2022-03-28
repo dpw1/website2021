@@ -3,18 +3,21 @@ import "./FrequentlyBoughtTogether.scss"
 import { ruleOfThree } from "./../utils/utils"
 
 export default function FrequentlyBoughtTogether(props) {
-  /* Those variables are wired up to Ecwid. 
-  You can navigate to "Automatic Discounts" from the ecwid admin to configure them. 
+  /* Those variables are wired up to Ecwid's discount coupons. 
+
+  You can navigate to "Discount Coupons" from the ecwid admin to configure them. 
   
-  https://my.ecwid.com/store/61271341#discounts
-  
+  https://my.ecwid.com/store/61271341#discount-coupons
   */
+
   const minimumPriceForDiscount = 45
-  const discount = 20
+  const discount = 15
+  const discountCoupon = `648P8OQGJD4I`
 
   const [currentProduct, setCurrentProduct] = useState(null)
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
+  const [bundleURL, setBundleURL] = useState("")
 
   /**
    * Shows how much the user will save in a bundle.
@@ -70,48 +73,12 @@ export default function FrequentlyBoughtTogether(props) {
     }).format(total)
   }
 
-  const addToCartBundle = async event => {
-    let productsInCart = []
+  const addToCartBundle = event => {
     event.preventDefault()
 
     setLoading(true)
 
-    while (!window.hasOwnProperty("Ecwid")) {
-      console.log("waiting for Ecwid                      ")
-      await new Promise(resolve => setTimeout(resolve, 50))
-    }
-
-    while (!Ecwid.hasOwnProperty("Cart")) {
-      console.log("waiting for Ecwid Cart")
-      await new Promise(resolve => setTimeout(resolve, 50))
-    }
-
-    while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
-      console.log("waiting for 'addProduct'              ")
-      await new Promise(resolve => setTimeout(resolve, 50))
-    }
-
-    Ecwid.Cart.get(function (cart) {
-      cart.items
-        .map(e => e.product)
-        .map(_product => productsInCart.push(_product.id))
-    })
-
-    products.map(e => {
-      const id = e.id
-
-      if (productsInCart.filter(_e => _e === id).length >= 1) {
-        return
-      }
-
-      Ecwid.Cart.addProduct({
-        id,
-        quantity: 1,
-      })
-    })
-
-    Ecwid.Cart.gotoCheckout()
-    setLoading(false)
+    window.location.href = bundleURL
   }
 
   const sanitizeRelatedProducts = product => {
@@ -145,7 +112,11 @@ export default function FrequentlyBoughtTogether(props) {
   }, [props.product])
 
   useEffect(() => {
-    console.log("XXX look      :")
+    const url = `https://store61271341.company.site/cart?bundle_products=${products
+      .map(e => e.id)
+      .join(",")}&bundle_discount=${discountCoupon}`
+
+    setBundleURL(url)
   }, [products])
 
   const RenderFBT = () => {
