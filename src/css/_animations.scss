@@ -131,5 +131,40 @@
   }
 }
 
+$color1: #00a3ff;
+$color2: #ce00ff;
+
+.animated-gradient {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    $color1 0%,
+    $color2 50%,
+    $color1 100%
+  );
+  width: 100%;
+  background-size: 200% auto;
+  background-position: 0 100%;
+
+  animation: gradient 4s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  transition: all 0.32s;
+
+  border-radius: 20px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* ANIMATIONS end
 =============================================== */

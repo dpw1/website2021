@@ -7,6 +7,7 @@ import "./FloatingButton.scss"
 export default function FloatingButton(props) {
   const [isVisible, setIsVisible] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
+
   const { name: _name, price: _price, addToCart, loading } = props
 
   const price = _price.toString().replace(".00", "")

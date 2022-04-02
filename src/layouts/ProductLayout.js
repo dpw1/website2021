@@ -63,9 +63,8 @@ const ProductLayout = props => {
         page="home"
       ></ProductShowcase>
       <Parallax
-        title="Looking for something different?"
-        subtitle={`Feel free to reach out, we'll work together to find
-            a custom solution that attend your needs.`}
+        title="Can't find a code snippet that fits your needs?"
+        subtitle={`Feel free to reach out and let us know - most apps and pricy custom development can be replaced by custom code snippets.`}
         buttonText="Send us an email"
       ></Parallax>
       <Contact></Contact>

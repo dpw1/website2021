@@ -1,0 +1,137 @@
+@import "../css/variables";
+
+$blue: #00ffffd4;
+$pink: #ff00ffab;
+
+/* Item styles 
+================================ */
+
+.fbt-items {
+  border-bottom: 1px solid rgb(170, 170, 170);
+  margin-bottom: 15px;
+  .fbt-item {
+    display: flex;
+    margin-bottom: 12px;
+    align-items: center;
+    position: relative;
+
+    &:first-child {
+      border-top: 1px solid rgb(170, 170, 170);
+      padding-top: 10px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgb(170, 170, 170);
+      padding-bottom: 10px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 70px;
+      height: 70px;
+    }
+
+    &-title {
+      text-align: left;
+      display: block;
+      width: 100%;
+      line-height: 150%;
+      margin-bottom: -5px;
+      font-weight: 500;
+      max-width: 90%;
+    }
+
+    &-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    &-content {
+      margin-left: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-price {
+      font-weight: bold;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    &-atc {
+      background: transparent;
+      border-radius: $border-radius;
+      font-size: 11px;
+      padding: 0 5px;
+    }
+
+    &-details {
+      font-size: 10px;
+      text-decoration: underline;
+      text-align: left;
+      display: block;
+      margin-top: -5px;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(calc(-50% - 0px));
+      right: 0;
+
+      width: 20px;
+      height: 20px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      overflow: hidden;
+      border-radius: 2px;
+
+      &:checked {
+        background: #127bff;
+      }
+
+      &:not(:checked) {
+        border: 1px solid #00000063;
+        background: white;
+      }
+
+      &:not(:checked):after {
+        display: none;
+      }
+
+      &:after {
+        content: url("data:image/svg+xml; utf8, <svg class='fbt-item-svg' xmlns='http://www.w3.org/2000/svg' style='position:relative;top:8px;margin-left:2px;' width='20' height='20' viewBox='0 0 40 40'><path fill='white' d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/></svg>");
+
+        font-weight: bold;
+        display: inline-block;
+        color: white;
+
+        position: relative;
+        bottom: 3px;
+        left: 2px;
+      }
+    }
+
+    svg {
+      width: 100px;
+    }
+
+    &-text {
+    }
+
+    label {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      cursor: pointer;
+      height: 100%;
+      width: 35px;
+      font-size: 0;
+      right: 0;
+    }
+  }
+}

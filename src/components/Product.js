@@ -17,11 +17,14 @@ import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether"
  *
  * @param {*} props
  *
+ * @param productData {object} = object containing product's information. (name, price, images, etc)
+ *
  */
 
 export default function Product(props) {
   const [loading, setLoading] = useState(false)
   const [currentProduct, setCurrentProduct] = useState("")
+
   const { product: productData } = props
 
   console.log("my product data      ", productData)
@@ -64,7 +67,6 @@ export default function Product(props) {
   }, [])
 
   useEffect(() => {
-    console.log("xxx current product: ", productData)
     setCurrentProduct(productData)
   }, [productData])
 
@@ -95,49 +97,6 @@ export default function Product(props) {
     const url = `https://store61271341.company.site/products/${productData.slug}-p${productData.id}`
 
     window.location.href = url
-
-    return
-
-    let productsInCart = []
-
-    while (!window.hasOwnProperty("Ecwid")) {
-      console.log("waiting for Ecwid          ")
-      await new Promise(resolve => setTimeout(resolve, 50))
-    }
-
-    while (!Ecwid.hasOwnProperty("Cart")) {
-      console.log("waiting for Ecwid Cart")
-      await new Promise(resolve => setTimeout(resolve, 50))
-    }
-
-    while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
-      console.log("waiting for 'addProduct'                      ")
-      await new Promise(resolve => setTimeout(resolve, 50))
-    }
-
-    Ecwid.Cart.get(function (cart) {
-      cart.items
-        .map(e => e.product)
-        .map(_product => productsInCart.push(_product.id))
-    })
-
-    if (productsInCart.filter(e => e === productData.id).length >= 1) {
-      // openInNewTab(`https://store61271341.company.site/products/cart`)
-      Ecwid.Cart.gotoCheckout()
-      setLoading(false)
-      return
-    }
-
-    Ecwid.Cart.addProduct({
-      id: productData.id,
-      quantity: 1,
-
-      callback: function (success, product, cart) {
-        // openInNewTab(`https://store61271341.company.site/products/cart`)
-        Ecwid.Cart.gotoCheckout()
-        setLoading(false)
-      },
-    })
   }
 
   return (
