@@ -1,5 +1,10 @@
 import { createStore, createHook } from "react-sweet-state"
 
+/**
+ * This store is used for the upsell cart at the product page.
+ *
+ * This is not an actual cart.
+ */
 const Store = createStore({
   initialState: {
     products: [],

@@ -27,6 +27,7 @@
     "acorn": "^8.4.0",
     "acorn-jsx": "^5.3.1",
     "axios": "^0.21.4",
+    "canvas-confetti": "^1.5.1",
     "country-flags-svg": "^1.1.0",
     "element-in-view": "^0.1.0",
     "embla-carousel": "^4.3.1",

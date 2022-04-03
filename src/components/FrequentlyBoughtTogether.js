@@ -3,6 +3,7 @@ import "./FrequentlyBoughtTogether.scss"
 import { ruleOfThree } from "./../utils/utils"
 import FBTItem from "./FBTItem"
 import { useCart } from "../store/cartStore"
+import confetti from "canvas-confetti"
 
 export default function FrequentlyBoughtTogether(props) {
   /* Those variables are wired up to Ecwid's discount coupons. 
@@ -183,6 +184,12 @@ export default function FrequentlyBoughtTogether(props) {
     }
 
     if (state.products.length === 3) {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      })
+
       return (
         <span className="fbt-title--discount-unlocked">
           {" "}
@@ -222,13 +229,15 @@ export default function FrequentlyBoughtTogether(props) {
 
   useEffect(() => {
     actions.resetProducts()
+
+    console.log("confetti,", confetti)
   }, [])
 
   return products && products.length >= 2 ? (
     <div className="fbt">
       <div className="fbt-container">
         <div className="fbt-products">
-          <h4 className="fbt-title">Buy More Save More</h4>
+          <h4 className="fbt-title">Bundle And Save More</h4>
           <h5 className="fbt-subtitle">{handleTitle()}</h5>
           <div className="fbt-progress">
             <div
