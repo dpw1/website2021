@@ -189,10 +189,10 @@ export default function Product(props) {
 
           <div className="Product-text">{parse(description)}</div>
 
-          <small>
+          {/* <small>
             Important note: by purchasing this product you agree to our{" "}
             <Link to="/license">terms of service</Link>.
-          </small>
+          </small> */}
         </div>
       </div>
       <FloatingButton loading={loading} addToCart={addToCart} price={price} />

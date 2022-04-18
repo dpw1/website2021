@@ -12,13 +12,41 @@ const PostsSidebar = props => {
   const [posts, setPosts] = useState([])
 
   const _posts = blogApi.getSidebarPostsGraphql()
+  const { id, tags } = props
 
   useEffect(() => {
     const getPosts = async () => {
-      console.log("side bar posts:           ", _posts)
-      const filteredPosts = shuffle(_posts).slice(0, 5)
+      /* gets all post with same tag */
+      let _filtered = _posts
+        .map(e => {
+          const res = e.tag_names.filter(x => tags.includes(x))
 
-      setPosts(filteredPosts)
+          if (res.length > 0) {
+            return e
+          }
+        })
+        .filter(x => x !== undefined)
+
+      console.log("xx", _filtered.length)
+      /* If there are not enough tags, return "all themes" as well */
+      if (_filtered.length < 5) {
+        _filtered = [
+          ..._filtered,
+          ..._posts
+            .map(e => {
+              const res = e.tag_names.filter(x === "all themes")
+
+              if (res.length > 0) {
+                return e
+              }
+            })
+            .filter(x => x !== undefined),
+        ]
+      }
+
+      const filtered = shuffle(_filtered).slice(0, 5)
+
+      setPosts(filtered)
     }
 
     getPosts()

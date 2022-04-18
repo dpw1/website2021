@@ -54,7 +54,7 @@ const BlogContent = props => {
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
               <aside className="sidebar">
                 {/* Single Widget */}
-                <PostsSidebar></PostsSidebar>
+                <PostsSidebar id={post.id} tags={post.tag_names}></PostsSidebar>
               </aside>
             </div>
             <div className="blog-content-block col-12 col-lg-9">

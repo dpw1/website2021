@@ -49,8 +49,8 @@ const HomeLayout = props => {
       <BlogShowcase isHomePage={true} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
       <Parallax
-        title="Request immediate assistance"
-        subtitle={`In need of technical support? Send us a message or an email, we'll get back to you within 24 hours.`}
+        title="Can't find the code snippet you're looking for?"
+        subtitle={`Most apps can be replaced by simple, portable and lightweight code snippets that will save you time and money. Let us know what you need, we'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
       ></Parallax>
       <Faq></Faq>

@@ -120,7 +120,6 @@ function Footer(props) {
       </footer>
 
       {/* <SalesPop></SalesPop> */}
-      <Popup></Popup>
     </React.Fragment>
   )
 }
