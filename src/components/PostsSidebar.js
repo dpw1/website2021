@@ -27,7 +27,7 @@ const PostsSidebar = props => {
         })
         .filter(x => x !== undefined)
 
-      console.log("xx", _filtered.length)
+      console.log("xx", _filtered)
       /* If there are not enough tags, return "all themes" as well */
       if (_filtered.length < 5) {
         _filtered = [

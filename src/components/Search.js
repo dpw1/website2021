@@ -73,12 +73,6 @@ function Search(props) {
     return filtered
   }
 
-  const updateUI = () => {
-    if (results.length !== data.length) {
-      alert("different")
-    }
-  }
-
   const getTotalProducts = () => {
     const _total = data.filter(e => {
       const attributes = JSON.stringify(e.attributes)
@@ -98,14 +92,14 @@ function Search(props) {
   }, [])
 
   useEffect(() => {
-    const res = handleSearch(search)
+    const items = handleSearch(search)
 
-    if (!res) {
+    if (!items) {
       return
     }
 
-    updateData(res)
-    setResults(res.length)
+    updateData(items)
+    setResults(items.length)
   }, [search])
 
   useEffect(() => {

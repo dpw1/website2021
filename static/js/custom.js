@@ -189,6 +189,12 @@ ezfy = (function () {
 
   /* Forcefully loads/reloads all lazyloaded images */
   function forceLazyload() {
+    console.timeLog("changing - force lazy")
+    var _lazy = new LazyLoad()
+
+    _lazy.loadImages()
+
+    return
     let $images = document.querySelectorAll("img.lazyloaded")
 
     if (!$images) {
