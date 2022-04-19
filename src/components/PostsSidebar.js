@@ -17,6 +17,8 @@ const PostsSidebar = props => {
   useEffect(() => {
     const getPosts = async () => {
       /* gets all post with same tag */
+
+      let filtered
       let _filtered = _posts
         .map(e => {
           const res = e.tag_names.filter(x => tags.includes(x))
@@ -27,24 +29,26 @@ const PostsSidebar = props => {
         })
         .filter(x => x !== undefined)
 
-      console.log("xx", _filtered)
+      console.log("x     x     ", _filtered)
+
       /* If there are not enough tags, return "all themes" as well */
       if (_filtered.length < 5) {
-        _filtered = [
-          ..._filtered,
-          ..._posts
-            .map(e => {
-              const res = e.tag_names.filter(x === "all themes")
+        const _all = _posts
+          .map(e => {
+            const res = e.tag_names.filter(x => x.includes("all themes"))
 
-              if (res.length > 0) {
-                return e
-              }
-            })
-            .filter(x => x !== undefined),
-        ]
+            console.log(e)
+            if (res.length > 0 || res) {
+              return e
+            }
+          })
+          .filter(x => x !== undefined)
+        const all = shuffle(_all).slice(0, 5 - _filtered.length)
+
+        _filtered = [..._filtered, ...all]
       }
 
-      const filtered = shuffle(_filtered).slice(0, 5)
+      filtered = shuffle(_filtered).slice(0, 5)
 
       setPosts(filtered)
     }
