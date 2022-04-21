@@ -8,12 +8,14 @@ const faqId = `apolo-accordion`
 
 const questions = [
   {
-    question: `What is a Shopify section?`,
+    question: `What are these Shopfiy code snippets in your shop?`,
     answer: () => (
       <p>
-        Shopify sections are customizable elements of a page which can have
-        multiple functions. Because they're coded directly into the theme, they
-        are lightweight and loads faster than any app.
+        Shopify code snippets are pieces of code that enhances your theme in
+        some way (like Shopify Apps). They do not require technical knowledge to
+        be installed, plus they ship with detailed instructions. The main
+        advantage is that they load faster than apps and do not have monthly
+        fees.
       </p>
     ),
   },
@@ -133,7 +135,7 @@ const FaqItem = props => {
               $content.classList.toggle(`show`)
             }}
           >
-            {question}
+            <span className="FAQ-question">{question}</span>
           </button>
         </h2>
       </div>

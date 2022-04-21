@@ -41,6 +41,8 @@ function Shop(props) {
       return
     }
 
+    console.log("proddd", products)
+
     setTimeout(() => {
       if (window.ezfy) {
         window.ezfy.init()
@@ -131,7 +133,9 @@ function Shop(props) {
           <div className="col-12 col-lg-12">
             {products && products.length >= 1 ? (
               <div className="portfolio-row row two-per-row-mobile">
-                {products.map(e => ProductItem(e))}{" "}
+                {products
+                  .sort((a, b) => b.updateTimestamp - a.updateTimestamp)
+                  .map(e => ProductItem(e))}
               </div>
             ) : (
               <div className="portfolio-row row">

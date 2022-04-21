@@ -96,7 +96,7 @@ function Tags(props) {
       window.location.pathname
     )
   }
-  const setActiveClass = el => {
+  const setActiveClass = $pill => {
     const _class = `Tags-tag--active`
 
     const $active = window.document.querySelectorAll(`.${_class}`)
@@ -106,7 +106,12 @@ function Tags(props) {
         each.classList.remove(_class)
       }
     }
-    el.classList.add(_class)
+
+    if (!$pill) {
+      return
+    }
+
+    $pill.classList.add(_class)
   }
 
   const updateItemsWithNewTag = async tag => {

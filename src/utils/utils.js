@@ -8,6 +8,10 @@ import axios from "axios"
 import globalUtils from "../../global-utils"
 import parse from "html-react-parser"
 
+export function isShopPage() {
+  return /shop\/?\??/gim.test(window.location.href)
+}
+
 export function extractTextBetween(text, start, end) {
   if (!start || !end) {
     throw new Error(`Please add a "start" and "end" parameter`)
@@ -118,8 +122,39 @@ export const defaultNavbarLinks = [
   },
   {
     name: "Shop",
-    url: siteRoutes.shop,
-    scroll: false,
+
+    url: [
+      {
+        name: "Dawn Theme",
+        url: `${siteRoutes.shop}?tag=dawn%20theme`,
+        offset: -60,
+        scroll: false,
+      },
+      {
+        name: "Debut Theme",
+        url: `${siteRoutes.shop}?tag=debut%20theme`,
+        offset: -40,
+        scroll: false,
+      },
+      {
+        name: "Minimal Theme",
+        url: `${siteRoutes.shop}?tag=minimal%20theme`,
+        offset: -40,
+        scroll: false,
+      },
+      {
+        name: "Popular",
+        url: `${siteRoutes.shop}?tag=popular`,
+        offset: -60,
+        scroll: false,
+      },
+      {
+        name: "All themes",
+        url: `${siteRoutes.shop}`,
+        offset: -40,
+        scroll: false,
+      },
+    ],
   },
   {
     name: "Blog",
@@ -184,7 +219,8 @@ export const footerNavbarLinks = [
 function createNavbarDropdownItem(items) {
   return (
     <li key={items.name} className="nav-item dropdown">
-      <a
+      <Link
+        to={items.name === "Shop" && siteRoutes.shop}
         className="nav-link dropdown-toggle"
         id={`navbarDropdownMenuLink-${items.name}`}
         data-toggle="dropdown"
@@ -192,7 +228,7 @@ function createNavbarDropdownItem(items) {
         aria-expanded="false"
       >
         {items.name}
-      </a>
+      </Link>
       <ul
         className="dropdown-menu"
         aria-labelledby={`navbarDropdownMenuLink-${items.name}`}
@@ -213,7 +249,18 @@ function createNavbarDropdownItem(items) {
                   {e.name}
                 </a>
               ) : (
-                <Link className="nav-link dropdown-item" to={e.url}>
+                <Link
+                  onClick={() => {
+                    if (isShopPage()) {
+                      console.log("reload")
+                      setTimeout(() => {
+                        window.location.href = window.location.href
+                      }, 50)
+                    }
+                  }}
+                  className="nav-link dropdown-item"
+                  to={e.url}
+                >
                   {e.name}
 
                   {e.hasOwnProperty("badge") && (

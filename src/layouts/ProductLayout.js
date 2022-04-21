@@ -56,8 +56,8 @@ const ProductLayout = props => {
         title="You may also like"
         backgroundColor={"gray"}
         chosenProducts={[
-          "Debut Theme Slider (PRO)",
-          `Slideshow Section (PRO)`,
+          "Dawn Theme Slider (PRO)",
+          "Slideshow Section (PRO)",
           "Anti Theft - Disable Right Click",
         ]}
         page="home"

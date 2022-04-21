@@ -48,17 +48,16 @@ const BlogPostLayout = props => {
       <ProductShowcase
         backgroundColor="gray"
         chosenProducts={[
-          "Debut Theme Slider (PRO)",
-          `Slideshow Section (PRO)`,
+          "Dawn Theme Slider (PRO)",
+          "Slideshow Section (PRO)",
           "Anti Theft - Disable Right Click",
         ]}
         page="home"
       />
       <Parallax
-        title="In need of a Shopify developer?"
-        subtitle={`Feel free to reach out, we'll work together to find
-            a custom solution that attend your needs.`}
-        buttonText="Request a free quote"
+        title="Can't find the code snippet you're looking for?"
+        subtitle={`Most apps can be replaced by simple, portable and lightweight code snippets that will save you time and money. Let us know what you need, we'll get back to you within 24 hours.`}
+        buttonText={"Request a free quote"}
       ></Parallax>
       <Contact></Contact>
       <Footer page={"blog"}></Footer>

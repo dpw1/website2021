@@ -40,7 +40,7 @@ const HomeLayout = props => {
         subtitle={`Simple, affordable and high quality copy-paste code snippets for
         your Shopify theme. <br /> Pay once, use forever - no monthly fees.`}
         chosenProducts={[
-          "Debut Theme Slider (PRO)",
+          "Dawn Theme Slider (PRO)",
           "Slideshow Section (PRO)",
           "Anti Theft - Disable Right Click",
         ]}
