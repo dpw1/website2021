@@ -260,4 +260,18 @@ $font-size: 16px;
       max-height: 50vw;
     }
   }
+
+      #you-may-also-like + p{
+        
+    a > span{
+      width: 100%;
+      display: block;
+    }
+    a > span img{
+      width: 100%;
+      display: block;
+      max-width: 500px !important;
+    }
+
+  }
 }

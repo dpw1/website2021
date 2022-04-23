@@ -94,7 +94,7 @@ export default function Product(props) {
     e.preventDefault()
 
     setLoading(true)
-    const url = `https://store61271341.company.site/products/${productData.slug}-p${productData.id}`
+    const url = `https://ezfyshop.company.site/products/${productData.slug}-p${productData.id}`
 
     window.location.href = url
   }

@@ -86,7 +86,7 @@ export default function FrequentlyBoughtTogether(props) {
       }
     }
 
-    const url = `https://store61271341.company.site/cart?bundle_products=${state.products
+    const url = `https://ezfyshop.company.site/cart?bundle_products=${state.products
       .map(e => e.id)
       .join(",")}&bundle_discount=${getCoupon()}`
 
