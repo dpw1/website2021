@@ -261,8 +261,9 @@ $font-size: 16px;
     }
   }
 
-      #you-may-also-like + p{
-        
+
+   
+#you-may-also-like + p{
     a > span{
       width: 100%;
       display: block;
@@ -273,5 +274,18 @@ $font-size: 16px;
       max-width: 500px !important;
     }
 
+  }
+}
+
+
+[id] [id] [class] [class] .custom-you-may-also-like{
+  a{
+    display: flex;
+    flex-direction: column; 
+  }
+  img{
+    width: 100%;
+    display: block;
+    max-width: 500px !important;
   }
 }

@@ -306,6 +306,10 @@ export function renderNav(page, createNavItem) {
   }
 }
 
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 export function generateBlogUrl(slug, addUrlBefore = true) {
   const url = `${addUrlBefore ? window.location.origin : ""}/blog/${slug}`
   return url
@@ -598,20 +602,40 @@ export function renderGistsDynamically() {
     const $iframe = document.querySelector(`.gistFrame--${i}`)
 
     $iframe.addEventListener("load", async function (e) {
-      const height = $iframe.contentWindow.document.body.scrollHeight
-      $iframe.style.height = `${height}px`
+      try {
+        console.log("loadd", $iframe)
 
-      /* ======== */
-      const $html = gistFrameDoc
-      const $meta = $html.querySelector(`.gist-meta a`)
-      const code = $meta.getAttribute("href")
+        var height = $iframe.contentWindow.document.body.scrollHeight
+        $iframe.style.height = `${height}px`
 
-      console.log("loadd code", code)
+        /* ======== */
+        var $html = gistFrameDoc
 
-      $zone.insertAdjacentHTML(
-        `afterbegin`,
-        `<a target="_blank" class="GistRawCode btn" href="${code}">Open code in new tab</a>`
-      )
+        if (!$html) {
+          console.log("lll no $html")
+        }
+
+        await sleep(1000)
+
+        console.log("lll html", $html)
+
+        var $meta = $html.querySelector(`.gist-meta a`)
+
+        if (!$meta) {
+          console.log("lll no $eta")
+        }
+
+        var code = $meta.getAttribute("href")
+
+        console.log("lll", code, $zone)
+
+        $zone.insertAdjacentHTML(
+          `afterbegin`,
+          `<a target="_blank" class="GistRawCode btn" href="${code}">Open code in new tab</a>`
+        )
+      } catch (err) {
+        console.log("lll iframe error: ", err)
+      }
     })
   }
 }
