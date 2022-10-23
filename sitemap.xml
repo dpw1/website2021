@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://ezfycode.com/blog/change-any-text-on-your-shopify-store-works-on-all-themes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/remove-options-from-the-collection-filter-shopify</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/craft-theme-vertical-thumbnails-and-arrows-tutorial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/keep-sticky-header-visible-after-scrolling</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -55,9 +56,9 @@
 <url> <loc>https://ezfycode.com/blog/remove-powered-by-shopify-from-footer</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/shopify-remove-your-shop-name-from-the-website-title</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/optimize-shopify-product-page-images</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ezfycode.com/shop/ezfy-task-bianca</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/ezfy-task-storm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/ezfy-task-justin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/ezfy-task-eugene</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/simple-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/supply-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/minimal-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
