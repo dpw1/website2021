@@ -55,8 +55,8 @@ const BlogPostLayout = props => {
         page="home"
       />
       <Parallax
-        title="Can't find what you're looking for?"
-        subtitle={`Most problems related to Shopify themes can be solved rather quickly and save you both time and money. Let us know what you need, we'll get back to you within 24 hours.`}
+        title="In need of coding help for your Shopify store?"
+        subtitle={`Let us know what you need, we'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
       ></Parallax>
       <Contact></Contact>

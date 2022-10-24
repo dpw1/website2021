@@ -28,9 +28,12 @@ const BlogContent = props => {
   //   // window.location = window.location.origin;
   // }
 
+  console.log("ppp", post)
+
   let date = `${formatDate(post.date)}`
   const title = post.title.rendered
   const image = getWordpressImageBiggestSize(post.featured_image_src)
+  const alt = post.featured_image_url_alt
 
   const time = readingTime(post.content.rendered).text
 
@@ -114,7 +117,7 @@ const BlogContent = props => {
                       <span>{parse(title)}</span>
                     </h3>
                     <figure className="blog-featured-image">
-                      <img src={image} alt="" />
+                      <img src={image} alt={alt} />
                     </figure>
                     <div className="blog-text">
                       {cleanDescription(post.content.rendered)}

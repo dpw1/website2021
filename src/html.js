@@ -32,11 +32,11 @@ export default function HTML(props) {
         />
         {props.postBodyComponents}
         <div id="fb-root"></div>
-
+        {/* 
         <script
           type="text/javascript"
           src={withPrefix("js/fb-messenger.js")}
-        ></script>
+        ></script> */}
         <script
           type="text/javascript"
           src={withPrefix("js/vendors.js")}

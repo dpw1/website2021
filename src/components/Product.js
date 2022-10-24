@@ -67,6 +67,7 @@ export default function Product(props) {
   }, [])
 
   useEffect(() => {
+    console.log("myyy", productData)
     setCurrentProduct(productData)
   }, [productData])
 

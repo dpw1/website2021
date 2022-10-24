@@ -580,7 +580,7 @@ export function renderGistsDynamically() {
     // Create the iframe's document
     var gistFrameHTML =
       "<html><body><scr" +
-      'ipt type="text/javascript" src="https://gist.github.com/dpw1/' +
+      `ipt type="text/javascript" src="https://gist.github.com/dpw1/` +
       gistId +
       '.js"></sc' +
       "ript></body></html>"

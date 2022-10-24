@@ -63,9 +63,9 @@ const ProductLayout = props => {
         page="home"
       ></ProductShowcase>
       <Parallax
-        title="Can't find a code snippet that fits your needs?"
-        subtitle={`Feel free to reach out and let us know - most apps and pricy custom development can be replaced by custom code snippets.`}
-        buttonText="Send us an email"
+        title="In need of coding help for your Shopify store?"
+        subtitle={`Let us know what you need, we'll get back to you within 24 hours.`}
+        buttonText={"Request a free quote"}
       ></Parallax>
       <Contact></Contact>
       <Footer page={"blog"}></Footer>

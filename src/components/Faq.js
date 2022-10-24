@@ -96,15 +96,6 @@ const questions = [
       </p>
     ),
   },
-  {
-    question: `How much do you charge?`,
-    answer: () => (
-      <p>
-        We charge $50 USD/hour, all code is thoroughly tested via BrowserStack
-        to ensure it works properly on all modern devices and browsers.
-      </p>
-    ),
-  },
 ]
 
 const FaqItem = props => {

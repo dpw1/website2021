@@ -37,7 +37,7 @@ function ProductItem(props) {
           props.page === "home" ? "ProductItem--homepage" : ""
         }`}
       >
-        {comparePrice && (
+        {comparePrice && rawComparePrice > rawPrice && (
           <Label rawPrice={rawPrice} rawComparePrice={rawComparePrice}></Label>
         )}
 
@@ -66,7 +66,7 @@ function ProductItem(props) {
                     ? price
                     : price.toString().replace(".00", "").replace("$0", "Free")}
                 </p>
-                {comparePrice && (
+                {rawComparePrice > rawPrice && (
                   <p className="ProductItem-price-big color-primary">
                     {comparePrice}
                   </p>

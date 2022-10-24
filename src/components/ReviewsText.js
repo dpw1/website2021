@@ -213,17 +213,7 @@ function ReviewsText() {
               </span>
               <h2 className="text-capitalize">Testimonials</h2>
               <p className="d-sm-block mt-4">
-                Our clients' satisfaction is our main priority. <br />
-                Here are some reviews, yet you can find much more in our{" "}
-                <a
-                  rel="noreferrer"
-                  className="custom-link"
-                  target="_blank"
-                  href="https://fb.com/ezfyforshopify/reviews"
-                >
-                  official Facebook page
-                </a>
-                .
+                Our clients' satisfaction is our main priority.
               </p>
             </div>
           </div>

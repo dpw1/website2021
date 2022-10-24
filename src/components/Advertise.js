@@ -129,7 +129,7 @@ export default function Advertise() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Over <b>6000</b> active users
+                  Over <b>9500</b> active users
                 </p>
               </div>
               <div

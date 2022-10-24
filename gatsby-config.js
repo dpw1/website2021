@@ -10,8 +10,6 @@ require("dotenv").config({
 
 const config = require("./data/config")
 
-config
-
 module.exports = {
   /* Your site config here */
   siteMetadata: {

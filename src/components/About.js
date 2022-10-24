@@ -53,13 +53,13 @@ function About(props) {
 
                     <p className="d-block mt-4">
                       The main intent of <b className="custom-emphasis">EZFY</b>{" "}
-                      is to cater all of your technical Shopify needs so you can
+                      is to take care of all of your technical Shopify needs so you can
                       focus on the business side of your e-commerce.
                     </p>
                     <p className="d-block mt-4">
-                      We'll help you with small customizations, bug fixes,
-                      adding extra options to your theme, creating custom
-                      sections and so on and so forth. Feel free to check our{" "}
+                      We'll help you with customizations, bug fixes, creating
+                      custom sections and anything else related to customizing
+                      your theme. Feel free to check our{" "}
                       <Link to={siteRoutes.shop} className="custom-link">
                         shop
                       </Link>{" "}
