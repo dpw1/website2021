@@ -7,7 +7,7 @@ import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 import Search from "./Search"
 import Tags from "./Tags"
-import { cleanDescription } from "../utils/utils"
+import { cleanDescription, isThereCurrentActiveTag } from "../utils/utils"
 
 const readingTime = require("reading-time")
 
@@ -23,6 +23,8 @@ const BlogItem = props => {
     title,
     tag_names,
     content,
+    isSearching,
+    isTagActive,
   } = props.data
 
   let description = excerpt
@@ -41,6 +43,7 @@ const BlogItem = props => {
           <figure className="aspect-ratio blog-thumb">
             <img
               className="lazyload"
+              src={isSearching || isThereCurrentActiveTag() ? image : ""}
               data-src={image}
               alt={imagealt && imagealt.length >= 1 ? imagealt : title}
             />
@@ -126,6 +129,7 @@ const BlogShowcase = props => {
   }
 
   const [isSearching, setIsSearching] = useState(false)
+
   const [page, setPage] = useQueryParam("page", NumberParam)
   const [posts, setPosts] = useState(null)
 
@@ -203,7 +207,6 @@ const BlogShowcase = props => {
     console.log("searching? ", isSearching)
 
     if (isSearching) {
-      console.log("inside is searching")
       setTimeout(() => {
         if (window.ezfy) {
           window.ezfy.init()

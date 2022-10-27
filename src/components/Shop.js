@@ -54,7 +54,6 @@ function Shop(props) {
     console.log("searching? ", isSearching)
 
     if (isSearching) {
-      console.log("inside is searching        ")
       setTimeout(() => {
         if (window.ezfy) {
           window.ezfy.init()

@@ -559,6 +559,18 @@ export const cleanDescription = desc => {
   return parse(description)
 }
 
+export function isThereCurrentActiveTag() {
+  const $active = document.querySelector(
+    `.Tags-wrapper > .Tags-tag--active:not(:nth-child(1))`
+  )
+
+  if ($active) {
+    return true
+  }
+
+  return false
+}
+
 /* Searches for all elements containing a [data-gist-ids], renders the gist within them */
 export function renderGistsDynamically() {
   var $gists = window.document.querySelectorAll(`[data-gist-id]`)

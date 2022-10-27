@@ -77,7 +77,6 @@ function Tags(props) {
     const filtered = filterTags(data)
     setTags(filtered)
 
-    console.log(`my filtere      `, filtered)
     setTimeout(updateItemsOnLoad, UPDATE_DELAY)
   }, [data])
 
@@ -180,7 +179,6 @@ function Tags(props) {
 
             {tags
               .sort((a, b) => {
-                console.log("0rc", a, b)
                 return a.localeCompare(b)
               })
               .map(currentTag => (
