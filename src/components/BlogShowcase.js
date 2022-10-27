@@ -7,7 +7,11 @@ import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 import Search from "./Search"
 import Tags from "./Tags"
-import { cleanDescription, isThereCurrentActiveTag } from "../utils/utils"
+import {
+  cleanDescription,
+  isThereCurrentActiveTag,
+  resetImagesOnSearch,
+} from "../utils/utils"
 
 const readingTime = require("reading-time")
 
@@ -212,15 +216,13 @@ const BlogShowcase = props => {
           window.ezfy.init()
         }
       }, 50)
-
-      return
     }
 
     if (isHomePage) {
-      return setPosts(sortedData.slice(0, 3))
+      setPosts(sortedData.slice(0, 3))
+    } else {
+      setPosts(sortedData)
     }
-
-    return setPosts(sortedData)
   }, [isSearching])
 
   return (

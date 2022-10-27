@@ -46,8 +46,7 @@ function Contact(props) {
             <div className="section-heading text-center">
               <h2 className="text-capitalize">Contact Us</h2>
               <p className="d-block mt-4">
-                Contact us to learn more about how we can help grow your
-                business. No strings attached.
+                Let us know what type of customizations you're looking for.
               </p>
             </div>
           </div>

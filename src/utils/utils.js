@@ -559,6 +559,21 @@ export const cleanDescription = desc => {
   return parse(description)
 }
 
+export async function resetImagesOnSearch() {
+  var $images = document.querySelectorAll(`.single-blog img`)
+
+  for (var each of $images) {
+    var src = each.getAttribute(`data-src`)
+    each.setAttribute(
+      `src`,
+      "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="
+    )
+    each.classList.remove(`lazyload`)
+    await sleep(50)
+    each.setAttribute(`src`, src)
+  }
+}
+
 export function isThereCurrentActiveTag() {
   const $active = document.querySelector(
     `.Tags-wrapper > .Tags-tag--active:not(:nth-child(1))`

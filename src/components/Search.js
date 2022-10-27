@@ -7,7 +7,7 @@ import { useEffect } from "react"
 import useInput from "./../hooks/useInput"
 import { useStatePersist as useStickyState } from "use-state-persist"
 import { decode } from "html-entities"
-import { getTotalVisibleProducts } from "../utils/utils"
+import { getTotalVisibleProducts, resetImagesOnSearch } from "../utils/utils"
 
 /**
  *
@@ -69,6 +69,10 @@ function Search(props) {
         }
       })
       .filter(e => e !== undefined)
+
+    setTimeout(() => {
+      resetImagesOnSearch()
+    }, 200)
 
     return filtered
   }
