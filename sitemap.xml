@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://ezfycode.com/blog/dawn-theme-customizable-text-below-mobile-navigation-hamburger-menu-icon</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/sense-theme-zoom-slider-with-arrows</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/studio-theme-zoom-images-with-arrows</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/studio-theme-adding-vertical-thumbnails-and-arrows-to-the-product-page-images</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -60,9 +61,8 @@
 <url> <loc>https://ezfycode.com/blog/remove-powered-by-shopify-from-footer</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/shopify-remove-your-shop-name-from-the-website-title</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/optimize-shopify-product-page-images</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ezfycode.com/shop/ezfy-task-storm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/ezfy-task-affinitycustomdesign</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/ezfy-task-justin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ezfycode.com/shop/ezfy-task-eugene</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/simple-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/supply-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/minimal-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -85,6 +85,7 @@
 <url> <loc>https://ezfycode.com/shop/responsive-image-section-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/debut-theme-sticky-navbar-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/debut-theme-second-image-on-hover</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/logo-by-yasminn_designs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/app-detector/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
