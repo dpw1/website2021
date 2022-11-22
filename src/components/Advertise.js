@@ -47,7 +47,7 @@ export default function Advertise() {
               className="trial-popup__title advertise-title body body--desktop  strong advertise-custom-link"
               data-v-cad483e2
               target="_blank"
-              href={siteRoutes.shop}
+              href={siteRoutes.shopBlogSidebar}
             ></a>
             <p
               data-v-570454cb
@@ -129,7 +129,7 @@ export default function Advertise() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Over <b>9500</b> active users
+                  Over <b>14000</b> active users
                 </p>
               </div>
               <div
@@ -160,7 +160,7 @@ export default function Advertise() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Coded by certified Shopify Partners
+                  Coded exclusively by certified Shopify Partners
                 </p>
               </div>
             </div>{" "}
@@ -170,7 +170,7 @@ export default function Advertise() {
               className="button button--medium button--medium-mobile btn"
               data-qa="trialpopup-button-startfreetrial"
               data-v-cad483e2
-              href={siteRoutes.shop}
+              href={siteRoutes.shopBlogSidebar}
             >
               VIEW PLUGINS
             </a>

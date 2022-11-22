@@ -133,7 +133,42 @@ function Shop(props) {
             {products && products.length >= 1 ? (
               <div className="portfolio-row row two-per-row-mobile">
                 {products
-                  .sort((a, b) => b.updateTimestamp - a.updateTimestamp)
+                  .sort(function (a, b) {
+                    /* sort by popularity */
+                    if (
+                      a.tags.some(e => e.toLowerCase() === "popular") &&
+                      !b.tags.some(e => e.toLowerCase() === "popular")
+                    ) {
+                      return -1
+                    } else if (
+                      b.tags.some(e => e.toLowerCase() === "popular") &&
+                      !a.tags.some(e => e.toLowerCase() === "popular")
+                    ) {
+                      return 1
+                    }
+
+                    /* sort by "all themes" */
+                    if (
+                      a.tags.some(e => e.toLowerCase() === "all themes") &&
+                      !b.tags.some(e => e.toLowerCase() === "all themes")
+                    ) {
+                      return -1
+                    } else if (
+                      b.tags.some(e => e.toLowerCase() === "all themes") &&
+                      !a.tags.some(e => e.toLowerCase() === "all themes")
+                    ) {
+                      return 1
+                    }
+
+                    /* sort by title */
+                    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                      return -1
+                    }
+                    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                      return 1
+                    }
+                    return 0
+                  })
                   .map(e => ProductItem(e))}
               </div>
             ) : (

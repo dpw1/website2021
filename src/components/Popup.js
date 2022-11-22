@@ -240,7 +240,7 @@ export default function Popup() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Coded by certified Shopify Partners
+                  Coded exclusively by certified Shopify Partners
                 </p>
               </div>
             </div>{" "}

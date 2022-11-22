@@ -34,6 +34,8 @@ export default function Product(props) {
     .replace("$0.00", "Free")
     .replace(".00", "")
 
+  debugger
+
   const description =
     productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
 
@@ -113,6 +115,12 @@ export default function Product(props) {
               <img className="Product-img" src={productData.image} alt="" />
             )}
           </figure>
+          {/* <div className="Product-compatible">
+            <h4 className="Product-compatible-text">
+              This product is compatible with the following theme(s):
+            </h4>
+            <div className="Product-compatible-themes"></div>
+          </div> */}
         </div>
 
         <div className="Product-description">

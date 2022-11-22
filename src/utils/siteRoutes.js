@@ -10,4 +10,5 @@ export const siteRoutes = {
   cart: "/cart",
   contactSection: "/#contact",
   license: "/license",
+  shopBlogSidebar: `/shop?source=blog-sidebar`,
 }

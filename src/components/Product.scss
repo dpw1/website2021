@@ -57,6 +57,12 @@ $border-padding: 30px;
     }
   }
 
+  &-compatible {
+    &-text {
+      line-height: 140%;
+    }
+  }
+
   &-text {
     // border-top: 1px solid #e8e8e1;
     // padding-top: $border-padding;
