@@ -6,7 +6,9 @@ import {
   cleanDescription,
   extractTextBetween,
   formatDate,
+  getEcwidProducts,
   getWordpressImageBiggestSize,
+  productPromos,
 } from "../utils/utils"
 import BlogBreadcrumb from "./BlogBreadcrumb"
 import { FacebookMessengerShareButton, WhatsappShareButton } from "react-share"
@@ -21,6 +23,7 @@ const readingTime = require("reading-time")
 const BlogContent = props => {
   const [posts, setPosts] = useState(null)
   const [url, setUrl] = useState(null)
+  const [ad, setAd] = useState([])
 
   const { post } = props
 
@@ -42,8 +45,75 @@ const BlogContent = props => {
     ;(async _ => {
       await sleep(1000)
       renderGistsDynamically()
+      /* Todo 
+      show custom sidebar depending on the blog post being viewed
+      */
+      showProductsRelatedToBlog(post)
     })()
   }, [])
+
+  async function showProductsRelatedToBlog(post) {
+    //const products = await getEcwidProducts()
+
+    let all = []
+
+    const blogTags = post.tag_names.map(e => {
+      return e.toLowerCase().replace("theme", "").trim()
+    })
+
+    const productTags = productPromos.map(e => {
+      const tags = e.tags.map(e =>
+        e
+          .toLowerCase()
+          .replace(/\s?theme(s)?/, "")
+          .trim()
+      )
+
+      const filtered = blogTags.filter(
+        value =>
+          tags.includes(value) ||
+          tags.includes("app functionality") ||
+          tags.includes("all")
+      )
+
+      if (filtered && filtered.length >= 1) {
+        all.push([...tags])
+      }
+
+      // const filtered = blogTags.filter(value => {
+      //   if (
+      //     tags.includes(value) ||
+      //     tags.includes("app functionality") ||
+      //     tags.includes("all themes")
+      //   ) {
+      //     return value
+      //   }
+      // })
+
+      // console.log("xx my tags", tags)
+    })
+
+    const _result = all
+      .map(e => {
+        var isRemovable = e.filter(x =>
+          x.match(
+            /sense|craft|refresh|colorblock|taste|ride|studio|crave|origina|publisher/
+          )
+        )
+
+        if (isRemovable.length >= 1) {
+          return null
+        }
+        return e.join("|")
+      })
+      .filter(e => e !== null)
+      .join("|")
+      .split("|")
+
+    const result = [...new Set(_result)]
+
+    console.log("xx all tags", result)
+  }
 
   return (
     <React.Fragment>
@@ -57,7 +127,21 @@ const BlogContent = props => {
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
               <aside className="sidebar">
                 {/* Single Widget */}
-                <PostsSidebar id={post.id} tags={post.tag_names}></PostsSidebar>
+                <PostsSidebar
+                  advertisement={{
+                    title: `Replace apps with code snippets.`,
+                    image: `https://media0.giphy.com/media/WvvzxI0VWF8kVo4olS/giphy.gif`,
+                    link: `https://ezfycode.com/shop?source=blog-sidebar`,
+                    list: [
+                      "No monthly fees",
+                      "Plugins tested in real stores w/ thousands of daily visits",
+                      "Same day response support",
+                      "Pay once use forever",
+                    ],
+                  }}
+                  id={post.id}
+                  tags={post.tag_names}
+                ></PostsSidebar>
               </aside>
             </div>
             <div className="blog-content-block col-12 col-lg-9">

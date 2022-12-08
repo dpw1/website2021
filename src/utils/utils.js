@@ -406,6 +406,44 @@ export function ruleOfThree(a, b, c) {
   return parseFloat((b * c) / a)
 }
 
+/*
+Shows a specific promotion depending on the blog post being viewed.
+
+Example: 
+
+- user is watching a Dawn theme's blog
+- show "dawn zoom slider" on the sidebar
+
+*/
+export const productPromos = [
+  {
+    tags: ["dawn"],
+    title: `Make your Dawn theme feel premium`,
+    subtitle: `Enhance your theme with <b>copy & paste</b> snippets.`,
+    image: `https://media0.giphy.com/media/WvvzxI0VWF8kVo4olS/giphy.gif`,
+    link: `https://ezfycode.com/shop/dawn-theme-zoom-slider-pro`,
+    list: [
+      "Same day response support",
+      "No coding",
+      "Hundreds of coding hours for cheap",
+      "Loads faster than apps",
+    ],
+  },
+  {
+    tags: ["all"],
+    title: `Make your Dawn theme feel premium`,
+    subtitle: `Enhance your theme with <b>copy & paste</b> snippets.`,
+    image: `https://media0.giphy.com/media/WvvzxI0VWF8kVo4olS/giphy.gif`,
+    link: `https://ezfycode.com/shop/dawn-theme-zoom-slider-pro`,
+    list: [
+      "Same day response support",
+      "No coding",
+      "Hundreds of coding hours for cheap",
+      "Loads faster than apps",
+    ],
+  },
+]
+
 export const productsQuery = () => {
   // const data = useStaticQuery(graphql`
   //   query ProductsShowcaseQuery {

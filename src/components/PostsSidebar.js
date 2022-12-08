@@ -116,7 +116,7 @@ const PostsSidebar = props => {
         View all blogs
       </Link>
 
-      <Advertise></Advertise>
+      <Advertise advertisement={props.advertisement}></Advertise>
     </div>
   )
 }

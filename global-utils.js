@@ -174,8 +174,6 @@ const axios = require("axios")
       ? ecwidData.allWordpressProducts.edges[0].node.ecwid.items
       : ecwidData
 
-    console.log("ECWID PRODUCTS : ", _rawProducts)
-
     return new Promise(async (resolve, reject) => {
       const { data: _categories } = await axios.get(
         `https://app.ecwid.com/api/v3/61271341/categories?token=public_iNxZWDXrKMZrzGkdBWk3fvcfaJhBVgcm`
@@ -239,6 +237,26 @@ const axios = require("axios")
           return link
         }
 
+        const getVideo = () => {
+          let link = null
+
+          product.hasOwnProperty("attributes") &&
+            product.attributes.map(attribute => {
+              try {
+                if (
+                  attribute.hasOwnProperty("name") &&
+                  attribute.name.toLowerCase() === "video 1"
+                ) {
+                  link = attribute.value
+                }
+              } catch (err) {
+                return
+              }
+            })
+
+          return link
+        }
+
         const getAttributes = () => {
           return product.hasOwnProperty("attributes")
             ? product.attributes
@@ -248,6 +266,9 @@ const axios = require("axios")
         const tags = getTags()
         const liveDemo = getLiveDemoLink()
         const attributes = getAttributes()
+        const video1 = getVideo()
+
+        console.log("all tags", tags)
 
         return products.push({
           id,
@@ -266,13 +287,13 @@ const axios = require("axios")
           attributes,
           updateTimestamp: product.updateTimestamp,
           relatedProducts: product.relatedProducts.productIds,
+          video1,
         })
       })
 
       const populatedProducts = populateWithRelatedProducts(products)
 
-      // Adds "related products" to product
-      // let products = []
+      console.log("cleaned products", populatedProducts)
 
       resolve(
         populatedProducts
