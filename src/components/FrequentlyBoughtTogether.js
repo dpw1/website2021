@@ -159,6 +159,7 @@ export default function FrequentlyBoughtTogether(props) {
 
   function handleTitle() {
     if (state.products.length <= 0) {
+      window.confettiPlayed = false
       return (
         <span>
           Add <b>2</b> to unlock{" "}
@@ -168,6 +169,7 @@ export default function FrequentlyBoughtTogether(props) {
     }
 
     if (state.products.length === 1) {
+      window.confettiPlayed = false
       return (
         <span>
           Add <b>1</b> to unlock{" "}
@@ -177,6 +179,7 @@ export default function FrequentlyBoughtTogether(props) {
     }
 
     if (state.products.length === 2) {
+      window.confettiPlayed = false
       return (
         <span>
           <b>{discounts[0].amount} </b>unlocked! Add <b>1</b> more for{" "}
@@ -186,11 +189,15 @@ export default function FrequentlyBoughtTogether(props) {
     }
 
     if (state.products.length === 3) {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      })
+      if (!window.confettiPlayed) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        })
+
+        window.confettiPlayed = true
+      }
 
       return (
         <span className="fbt-title--discount-unlocked">

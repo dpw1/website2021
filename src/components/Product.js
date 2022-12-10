@@ -10,7 +10,12 @@ import Benefits from "./Benefits"
 
 // import { replaceAll } from "./../utils/utils"
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether"
-import { awaitEcwid } from "../utils/utils"
+import {
+  addDiscountCoupon,
+  awaitEcwid,
+  discounts,
+  getProductsInCart,
+} from "../utils/utils"
 
 /**
  *
@@ -110,6 +115,16 @@ export default function Product(props) {
 
     if (productsInCart.filter(e => e === productData.id).length >= 1) {
       Ecwid.Cart.gotoCheckout()
+
+      /* Add coupon */
+      var quantity = await getProductsInCart()
+      const _discount = discounts.filter(e => e.quantity === quantity.length)[0]
+
+      if (_discount) {
+        const discount = _discount.coupon
+        addDiscountCoupon(discount)
+      }
+
       setLoading(false)
       return
     }
