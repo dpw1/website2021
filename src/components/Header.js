@@ -215,35 +215,9 @@ function Header(props) {
                   <CartEcwid></CartEcwid>
                 </li>
               </ul>
-              {/* <a
-                href="https://www.fatfreecartpro.com/ecom/gb.php?c=cart&ejc=2&cl=374804"
-                target="ej_ejc"
-                className="ec_ejc_thkbx"
-                onclick="return EJEJC_lc(this);"
-                style={{
-                  display: "inline-block",
-                  background:
-                    "#3da5d9 url(https://www.e-junkie.com/ej/images/newviewcart.png) center/90px no-repeat",
-                  border: "none",
-                  padding: "7px 55px",
-                  borderRadius: 3,
-                  boxShadow: "1px 2px 2px rgba(0,0,0,0.2)",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                }}
-              >
-                cart{"{"}" "{"}"}
-              </a> */}
             </nav>
           </div>
         </div>
-
-        <div
-          className="fb-customerchat"
-          attribution={"setup_tool"}
-          page_id="2076491679249035"
-          greeting_dialog_display="hide"
-        ></div>
       </header>
     </React.Fragment>
   )

@@ -419,49 +419,6 @@ ezfy = (function () {
     }
   }
 
-  function addToCartListener() {
-    const atc = document.querySelectorAll(".services-button")
-    const redirectText = `Redirecting to PayPal...`
-
-    if (!atc) {
-      return
-    }
-
-    for (const each of atc) {
-      each.addEventListener("click", function (e) {
-        e.preventDefault()
-
-        console.log(each.innerHTML)
-        e.target.textContent = redirectText
-        const button = each.querySelector(`form`)
-
-        button.submit()
-      })
-    }
-  }
-
-  function redirectToPaymentGateway() {
-    const atc = document.querySelectorAll(
-      ".services-button:not(.services-button--contact)"
-    )
-    const redirectText = `Please wait...`
-
-    if (!atc) {
-      return
-    }
-
-    for (const each of atc) {
-      each.addEventListener("click", function (e) {
-        // e.preventDefault();
-
-        e.target.textContent = redirectText
-        const button = each.querySelector(`form`)
-
-        button.submit()
-      })
-    }
-  }
-
   function readMoreForServices() {
     const readmore = document.querySelectorAll(`.services-read-more`)
 
@@ -653,7 +610,6 @@ ezfy = (function () {
   }
 
   async function loadEcwidScript() {
-    return
     try {
       const url = `https://app.ecwid.com/script.js?61271341`
       const $script = document.querySelector(`script[src*='app.ecwid']`)
@@ -737,7 +693,6 @@ ezfy = (function () {
 
     initServices: () => {
       readMoreForServices()
-      redirectToPaymentGateway()
     },
     lazyload: () => {
       loadLazyloadLibrary()

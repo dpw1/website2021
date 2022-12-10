@@ -1,0 +1,30 @@
+@import "../css/variables";
+
+.Announcement {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: white;
+  &-link {
+    display: block;
+    width: 100%;
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
+.navbar-sticky-moved-up .Announcement {
+  display: none;
+  //   position: fixed;
+  //   top: 0;
+  //   background: #fff;
+  //   margin-top: -100px;
+}
+
+.navbar-sticky-on .Announcement {
+  display: block;
+  margin-top: 0;
+  color: black;
+}

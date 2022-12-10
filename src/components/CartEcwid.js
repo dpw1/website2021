@@ -1,13 +1,49 @@
 import React, { useEffect } from "react"
-import { _waitForElement } from "../utils/utils"
+import {
+  addDiscountCoupon,
+  awaitEcwid,
+  discounts,
+  getProductsInCart,
+  removeDiscountCoupon,
+  _waitForElement,
+} from "../utils/utils"
 import "./CartEcwid.scss"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
+import { sleep } from "../../global-utils"
 
 export default function CartEcwid(props) {
   const { isMobile } = props
 
-  useEffect(() => {
+  useEffect(async () => {
+    await awaitEcwid()
+
+    Ecwid.OnCartChanged.add(async function (cart) {
+      var quantity = cart.productsQuantity
+      const _discount = discounts.filter(e => e.quantity === quantity)[0]
+
+      if (
+        window.previousCartQuantity &&
+        quantity !== window.previousCartQuantity
+      ) {
+        console.log(
+          "xx cart current X prev",
+          quantity,
+
+          window.previousCartQuantity
+        )
+        await removeDiscountCoupon()
+        await sleep(1000)
+
+        if (_discount) {
+          const discount = _discount.coupon
+          addDiscountCoupon(discount)
+        }
+      }
+
+      window.previousCartQuantity = cart.productsQuantity
+    })
+
     const handleBackToShoppingButtonClick = async () => {
       const $cart = window.document.querySelector(`.ec-cart-widget`)
 
@@ -32,36 +68,6 @@ export default function CartEcwid(props) {
 
         console.log("continue shopping btn", $button)
       })
-    }
-
-    function _waitForElement(selector, delay = 50, tries = 250) {
-      const element = document.querySelector(selector)
-
-      if (!window[`__${selector}`]) {
-        window[`__${selector}`] = 0
-      }
-
-      function _search() {
-        return new Promise(resolve => {
-          window[`__${selector}`]++
-          setTimeout(resolve, delay)
-        })
-      }
-
-      if (element === null) {
-        if (window[`__${selector}`] >= tries) {
-          window[`__${selector}`] = 0
-          return Promise.reject(null)
-        }
-
-        return _search().then(() => _waitForElement(selector))
-      } else {
-        return Promise.resolve(element)
-      }
-    }
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms))
     }
 
     /* if the user clicks the cart and it hasn't loaded yet,
@@ -103,8 +109,19 @@ export default function CartEcwid(props) {
       className={`CartEcwid ${
         isMobile ? "CartEcwid--mobile" : "CartEcwid--desktop"
       }`}
+      onClick={async () => {
+        var quantity = await getProductsInCart()
+        const _discount = discounts.filter(
+          e => e.quantity === quantity.length
+        )[0]
+
+        if (_discount) {
+          const discount = _discount.coupon
+          addDiscountCoupon(discount)
+        }
+      }}
     >
-      <Link to={siteRoutes.shop}>
+      <a href="#">
         <div className="CartEcwid-skeleton">
           <svg
             className="icon-default"
@@ -152,7 +169,7 @@ export default function CartEcwid(props) {
           data-icon="CART"
           className="ec-cart-widget"
         ></div>
-      </Link>
+      </a>
     </div>
   )
 }

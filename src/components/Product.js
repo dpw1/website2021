@@ -10,6 +10,7 @@ import Benefits from "./Benefits"
 
 // import { replaceAll } from "./../utils/utils"
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether"
+import { awaitEcwid } from "../utils/utils"
 
 /**
  *
@@ -33,8 +34,6 @@ export default function Product(props) {
     .replace("$0.00 or more", "Free")
     .replace("$0.00", "Free")
     .replace(".00", "")
-
-  debugger
 
   const description =
     productData.description.replace(/<img /g, `<img loading="lazy"`) || " "
@@ -96,10 +95,42 @@ export default function Product(props) {
   const addToCart = async e => {
     e.preventDefault()
 
+    let productsInCart = []
+    e.preventDefault()
+
+    setLoading(true)
+
+    await awaitEcwid()
+
+    Ecwid.Cart.get(function (cart) {
+      cart.items
+        .map(e => e.product)
+        .map(_product => productsInCart.push(_product.id))
+    })
+
+    if (productsInCart.filter(e => e === productData.id).length >= 1) {
+      Ecwid.Cart.gotoCheckout()
+      setLoading(false)
+      return
+    }
+
+    Ecwid.Cart.addProduct({
+      id: productData.id,
+      quantity: 1,
+
+      callback: function (success, product, cart) {
+        // openInNewTab(`https://store61271341.company.site/products/cart`)
+        Ecwid.Cart.gotoCheckout()
+        setLoading(false)
+      },
+    })
+
+    /*
     setLoading(true)
     const url = `https://ezfyshop.company.site/products/${productData.slug}-p${productData.id}`
 
     window.location.href = url
+	*/
   }
 
   return (

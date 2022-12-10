@@ -153,6 +153,10 @@ $loader-size: 13px;
 }
 
 /* Styles for the ecwid itself */
+
+/* Hide coupon input */
+.ec-cart__discount,
+.ec-cart-discount-group__coupon,
 .ec-cart-summary__row--discount {
   display: none !important;
 }

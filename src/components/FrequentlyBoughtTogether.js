@@ -1,33 +1,18 @@
 import React, { useEffect, useState } from "react"
 import "./FrequentlyBoughtTogether.scss"
-import { ruleOfThree } from "./../utils/utils"
+import {
+  addDiscountCoupon,
+  addEcwidProductsToCart,
+  discounts,
+  getProductsInCart,
+  ruleOfThree,
+} from "./../utils/utils"
 import FBTItem from "./FBTItem"
 import { useCart } from "../store/cartStore"
 import confetti from "canvas-confetti"
+import { sleep } from "../../global-utils"
 
 export default function FrequentlyBoughtTogether(props) {
-  /* Those variables are wired up to Ecwid's discount coupons. 
-
-  You can navigate to "Discount Coupons" from the ecwid admin to configure them. 
-  
-  https://my.ecwid.com/store/61271341#discount-coupons
-  */
-
-  const discounts = [
-    {
-      quantity: 2,
-      percentage: 15,
-      amount: `15%`,
-      coupon: "JN6BOKABBVPO10OFF",
-    },
-    {
-      quantity: 3,
-      percentage: 20,
-      amount: `20%`,
-      coupon: "FWIUSNPXEDTW15OFF",
-    },
-  ]
-
   const [state, actions] = useCart()
 
   const [loading, setLoading] = useState(false)
@@ -71,10 +56,26 @@ export default function FrequentlyBoughtTogether(props) {
     }).format(sumAllProducts())
   }
 
-  const addToCartBundle = event => {
+  const addToCartBundle = async event => {
     event.preventDefault()
 
-    setLoading(true)
+    //setLoading(true)
+
+    await addEcwidProductsToCart(state.products)
+
+    await sleep(50)
+
+    const cart = await getProductsInCart()
+
+    const _discount = discounts.filter(e => e.quantity === cart.length)[0]
+
+    if (_discount) {
+      const discount = _discount.coupon
+      addDiscountCoupon(discount)
+    }
+
+    //alert("end")
+    /*
 
     const getCoupon = _ => {
       if (state.products.length === 2) {
@@ -91,6 +92,7 @@ export default function FrequentlyBoughtTogether(props) {
       .join(",")}&bundle_discount=${getCoupon()}`
 
     window.location.href = url
+	*/
   }
 
   const sanitizeRelatedProducts = product => {

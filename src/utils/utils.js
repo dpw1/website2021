@@ -125,29 +125,18 @@ export const defaultNavbarLinks = [
 
     url: [
       {
-        name: "Dawn Theme",
-        url: `${siteRoutes.shop}?tag=dawn%20theme`,
-        offset: -60,
-        scroll: false,
-      },
-      {
-        name: "Debut Theme",
-        url: `${siteRoutes.shop}?tag=debut%20theme`,
-        offset: -40,
-        scroll: false,
-      },
-      {
-        name: "Minimal Theme",
-        url: `${siteRoutes.shop}?tag=minimal%20theme`,
-        offset: -40,
-        scroll: false,
-      },
-      {
         name: "Popular",
         url: `${siteRoutes.shop}?tag=popular`,
         offset: -60,
         scroll: false,
       },
+      {
+        name: "Dawn Theme",
+        url: `${siteRoutes.shop}?tag=dawn%20theme`,
+        offset: -60,
+        scroll: false,
+      },
+
       {
         name: "All themes",
         url: `${siteRoutes.shop}`,
@@ -622,6 +611,163 @@ export function isThereCurrentActiveTag() {
   }
 
   return false
+}
+
+/* Those variables are wired up to Ecwid's discount coupons. 
+
+  You can navigate to "Discount Coupons" from the ecwid admin to configure them. 
+  
+  https://my.ecwid.com/store/61271341#discount-coupons
+  */
+export const discounts = [
+  {
+    quantity: 2,
+    percentage: 10,
+    amount: `10%`,
+    coupon: "JN6BOKABBVPO10OFF",
+  },
+  {
+    quantity: 3,
+    percentage: 15,
+    amount: `15%`,
+    coupon: "FWIUSNPXEDTW15OFF",
+  },
+]
+
+export async function awaitEcwid() {
+  return new Promise(async (resolve, reject) => {
+    while (!window.hasOwnProperty("Ecwid")) {
+      console.log("waiting for Ecwid          ")
+      await new Promise(resolve => setTimeout(resolve, 10))
+    }
+
+    while (!Ecwid.hasOwnProperty("Cart")) {
+      console.log("waiting for Ecwid Cart")
+      await new Promise(resolve => setTimeout(resolve, 10))
+    }
+
+    while (!Ecwid.Cart.hasOwnProperty("addProduct")) {
+      console.log("waiting for 'addProduct'                      ")
+      await new Promise(resolve => setTimeout(resolve, 10))
+    }
+
+    resolve()
+  })
+}
+
+export function getProductsInCart() {
+  return new Promise((resolve, reject) => {
+    let products = []
+
+    window.Ecwid.Cart.get(function (cart) {
+      cart.items.map(e => e.product).map(_product => products.push(_product.id))
+    })
+
+    resolve(products)
+  })
+}
+
+export async function removeDiscountCoupon() {
+  return new Promise(async (resolve, reject) => {
+    const selector = `.ec-cart-coupon--applied .ec-cart-coupon__button--cancel > button`
+    const $button = _waitForElement(selector, 50, 10)
+
+    if (!$button) {
+      resolve()
+      return
+    }
+
+    const $buttons = document.querySelectorAll(selector)
+
+    for (var each of $buttons) {
+      each.click()
+    }
+
+    resolve()
+  })
+}
+
+export async function addDiscountCoupon(discount) {
+  if (!discount) {
+    return
+  }
+
+  const $discount = await _waitForElement(`[class*='cart-coupon'] > a`, 100, 25)
+
+  if (!$discount) {
+    return
+  }
+
+  const $cancel = document.querySelector(`.ec-cart-coupon__button--cancel`)
+
+  if ($cancel) {
+    $cancel.click()
+  }
+
+  const $forms = document.querySelectorAll(`[class*='ec-cart__discount']`)
+
+  for (var each of $forms) {
+    const $redeem = each.querySelector(`[class*='cart-coupon'] > a`)
+
+    if (!$redeem) {
+      return
+    }
+
+    $redeem.click()
+
+    await sleep(50)
+
+    const $input = each.querySelector(`input.form-control__text`)
+
+    if (!$input) {
+      return
+    }
+
+    await sleep(25)
+
+    var event = new Event("input", {
+      bubbles: true,
+      cancelable: true,
+    })
+
+    $input.value = discount
+    $input.dispatchEvent(event)
+
+    await sleep(50)
+
+    const $button = each.querySelector(`.ec-cart-coupon__button--apply`)
+
+    if (!$button) {
+      return
+    }
+
+    $button.click()
+  }
+}
+
+export function addEcwidProductsToCart(products) {
+  return new Promise(async (resolve, reject) => {
+    await awaitEcwid()
+
+    const productsInCart = await getProductsInCart()
+
+    for (var [index, each] of products.entries()) {
+      const isInCart = productsInCart.filter(e => e === each.id).length >= 1
+
+      if (!isInCart) {
+        Ecwid.Cart.addProduct({
+          id: each.id,
+          quantity: 1,
+          callback: function (success, product, cart) {},
+        })
+      }
+
+      if (index >= products.length - 1) {
+        Ecwid.Cart.gotoCheckout()
+        resolve()
+      }
+    }
+  })
 }
 
 /* Searches for all elements containing a [data-gist-ids], renders the gist within them */
