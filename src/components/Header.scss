@@ -5,15 +5,39 @@ $color-dark-mode: linear-gradient(-47deg, #8731e8 0%, #4528dc 100%);
 $color-sticky: white;
 
 #navbarSection {
+  padding: 0;
+
+  @media (min-width: $xs) {
+    display: flex;
+    flex-direction: column;
+  }
+
   .dropdown {
     cursor: pointer;
   }
 
+  .container {
+    height: 60px;
+    padding: 0.5rem 1rem;
+  }
+
+  &:not(.navbar-sticky-on) {
+    .navbar-toggler {
+      @media (max-width: $xs) {
+        margin-right: 15px;
+      }
+    }
+  }
+
   &.navbar-sticky-on {
-    padding: 0;
-    height: 50px;
+    // height: 50px;
     .container {
+      padding: 0;
       height: 50px;
+
+      @media (min-width: $xs) {
+        padding: 0 15px !important;
+      }
     }
 
     .navbar-mobile-actions {
@@ -43,6 +67,10 @@ $color-sticky: white;
 
     .container {
       padding: 0;
+
+      @media (max-width: $xs) {
+        padding: 0px 1rem;
+      }
     }
 
     .navbar-brand-regular {
@@ -57,7 +85,9 @@ $color-sticky: white;
   }
 
   &:not(.navbar-sticky-on) .container {
-    padding-top: 5px;
+    @media (min-width: $md) {
+      padding-top: 40px;
+    }
   }
 
   &.navbar-sticky-on a.navbar-brand {
@@ -141,5 +171,13 @@ $color-sticky: white;
 
   .canvas-open .navbar-expand-lg .navbar-inner {
     left: 0 !important;
+  }
+}
+
+[id] .navbar--dark-mode {
+  .container {
+    @media (max-width: $xs) {
+      padding: 0 20px;
+    }
   }
 }

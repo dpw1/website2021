@@ -9,6 +9,7 @@ import { renderNav } from "../utils/utils"
 import { Link } from "gatsby"
 
 import CartEcwid from "./CartEcwid"
+import Announcement from "./Announcement"
 
 const createNavbarSingleItem = props => {
   return (
@@ -165,10 +166,10 @@ function Header(props) {
       <header
         id="navbarSection"
         className={`Header navbar navbar-sticky navbar-expand-lg navbar-dark ${
-          darkMode && "navbar--dark-mode"
-        }
-          `}
+          darkMode ? "navbar--dark-mode" : ``
+        }`}
       >
+        <Announcement></Announcement>
         <div className="container position-relative">
           <Link className="navbar-brand fade-in" to="/">
             <img className="navbar-brand-regular" src={logo} alt="brand logo" />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import "./FrequentlyBoughtTogether.scss"
 import {
   addDiscountCoupon,
+  addDiscountCouponBasedOnQuantity,
   addEcwidProductsToCart,
   discounts,
   getProductsInCart,
@@ -61,21 +62,18 @@ export default function FrequentlyBoughtTogether(props) {
 
     //setLoading(true)
 
+    /*
     await addEcwidProductsToCart(state.products)
 
     await sleep(50)
 
     const cart = await getProductsInCart()
 
-    const _discount = discounts.filter(e => e.quantity === cart.length)[0]
-
-    if (_discount) {
-      const discount = _discount.coupon
-      addDiscountCoupon(discount)
-    }
+    await addDiscountCouponBasedOnQuantity()
+	*/
 
     //alert("end")
-    /*
+    /**/
 
     const getCoupon = _ => {
       if (state.products.length === 2) {
@@ -92,7 +90,6 @@ export default function FrequentlyBoughtTogether(props) {
       .join(",")}&bundle_discount=${getCoupon()}`
 
     window.location.href = url
-	*/
   }
 
   const sanitizeRelatedProducts = product => {

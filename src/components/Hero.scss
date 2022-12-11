@@ -12,12 +12,16 @@
     line-height: normal;
   }
 
+  @media (min-width: $md) {
+    padding-top: 40px;
+  }
+
   @media (max-width: $xs) {
     max-height: unset;
     height: 113vh !important;
     padding-bottom: 12vh;
     align-items: flex-start !important;
-    padding-top: 63px;
+    padding-top: 83px;
   }
 
   @media (max-width: $xxs) {

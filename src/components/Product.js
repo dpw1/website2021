@@ -12,6 +12,7 @@ import Benefits from "./Benefits"
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether"
 import {
   addDiscountCoupon,
+  addDiscountCouponBasedOnQuantity,
   awaitEcwid,
   discounts,
   getProductsInCart,
@@ -117,13 +118,7 @@ export default function Product(props) {
       Ecwid.Cart.gotoCheckout()
 
       /* Add coupon */
-      var quantity = await getProductsInCart()
-      const _discount = discounts.filter(e => e.quantity === quantity.length)[0]
-
-      if (_discount) {
-        const discount = _discount.coupon
-        addDiscountCoupon(discount)
-      }
+      await addDiscountCouponBasedOnQuantity()
 
       setLoading(false)
       return

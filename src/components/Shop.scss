@@ -3,6 +3,15 @@
 
 .shop {
   padding-bottom: 40px;
+  padding-top: 100px;
+  transition: padding 0.3s;
+  transition-delay: 0.3s;
+
+  @at-root {
+    .AnnouncementBar--visible .shop {
+      padding-top: 140px;
+    }
+  }
 
   &-container {
     max-width: 100%;

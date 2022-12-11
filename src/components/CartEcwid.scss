@@ -110,7 +110,7 @@ $loader-size: 13px;
 }
 
 .CartEcwid-loader.CartEcwid-loader--loading div {
-  // visibility: visible;
+  visibility: visible;
 }
 
 .CartEcwid--desktop {
@@ -159,4 +159,15 @@ $loader-size: 13px;
 .ec-cart-discount-group__coupon,
 .ec-cart-summary__row--discount {
   display: none !important;
+}
+
+.ec-cart__message {
+  font-size: 0 !important;
+}
+
+.ec-cart__message:after {
+  font-size: 16px !important;
+  display: block;
+  position: relative;
+  content: "The cart is currently empty.";
 }

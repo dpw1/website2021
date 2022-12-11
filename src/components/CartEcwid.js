@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import {
   addDiscountCoupon,
+  addDiscountCouponBasedOnQuantity,
   awaitEcwid,
   discounts,
   getProductsInCart,
@@ -20,7 +21,6 @@ export default function CartEcwid(props) {
 
     Ecwid.OnCartChanged.add(async function (cart) {
       var quantity = cart.productsQuantity
-      const _discount = discounts.filter(e => e.quantity === quantity)[0]
 
       if (
         window.previousCartQuantity &&
@@ -34,11 +34,7 @@ export default function CartEcwid(props) {
         )
         await removeDiscountCoupon()
         await sleep(1000)
-
-        if (_discount) {
-          const discount = _discount.coupon
-          addDiscountCoupon(discount)
-        }
+        await addDiscountCouponBasedOnQuantity()
       }
 
       window.previousCartQuantity = cart.productsQuantity
@@ -83,7 +79,7 @@ export default function CartEcwid(props) {
 
       for (const $cart of $carts) {
         $cart.addEventListener(`click`, async function () {
-          // $cart.classList.add(`CartEcwid-loader--loading`)
+          $cart.classList.add(`CartEcwid-loader--loading`)
           const $counter = document.querySelector(`.ec-minicart__counter`)
 
           if ($counter) {
@@ -110,15 +106,7 @@ export default function CartEcwid(props) {
         isMobile ? "CartEcwid--mobile" : "CartEcwid--desktop"
       }`}
       onClick={async () => {
-        var quantity = await getProductsInCart()
-        const _discount = discounts.filter(
-          e => e.quantity === quantity.length
-        )[0]
-
-        if (_discount) {
-          const discount = _discount.coupon
-          addDiscountCoupon(discount)
-        }
+        await addDiscountCouponBasedOnQuantity()
       }}
     >
       <a href="#">

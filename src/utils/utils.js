@@ -634,6 +634,41 @@ export const discounts = [
   },
 ]
 
+export function addDiscountCouponBasedOnQuantity() {
+  return new Promise(async (resolve, reject) => {
+    async function calculate() {
+      var quantity = await getProductsInCart()
+      let _discount = null
+
+      if (quantity.length === 2) {
+        _discount = discounts[0]
+      } else if (quantity.length >= 3) {
+        _discount = discounts[1]
+      }
+
+      if (_discount) {
+        const discount = _discount.coupon
+        addDiscountCoupon(discount)
+      }
+    }
+
+    calculate()
+
+    /* Try again X seconds later*/
+    setTimeout(async () => {
+      const $coupon = document.querySelector(
+        `.ec-cart-summary__row--discount-coupon .ec-cart-summary__title`
+      )
+
+      if (!$coupon) {
+        calculate()
+      }
+    }, 2000)
+
+    resolve()
+  })
+}
+
 export async function awaitEcwid() {
   return new Promise(async (resolve, reject) => {
     while (!window.hasOwnProperty("Ecwid")) {

@@ -1,11 +1,62 @@
 @import "../css/variables";
+@import "../css/animations";
 
 .Announcement {
   position: relative;
   display: block;
   width: 100%;
   text-align: center;
-  color: white;
+  background-color: #0f0f0f;
+  transition: max-height 0.5s;
+  max-height: 100px;
+
+  * {
+    color: #eee !important;
+    font-size: 12px;
+
+    @media (max-width: 400px) {
+      font-size: 11px;
+    }
+  }
+
+  &--hidden {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+  }
+
+  &-wrapper {
+    position: relative;
+    padding: 5px 0;
+    & {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @media (min-width: 576px) {
+      & {
+        max-width: 540px;
+      }
+    }
+    @media (min-width: 768px) {
+      & {
+        max-width: 720px;
+      }
+    }
+    @media (min-width: 992px) {
+      & {
+        max-width: 960px;
+      }
+    }
+    @media (min-width: 1200px) {
+      & {
+        max-width: 1140px;
+      }
+    }
+  }
+
   &-link {
     display: block;
     width: 100%;
@@ -13,18 +64,68 @@
       color: inherit;
     }
   }
+
+  &-close {
+    &:hover,
+    &:active,
+    &:focus {
+      border: unset !important;
+      outline: unset !important;
+    }
+    border: unset;
+    background: transparent;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-arrow {
+    width: 8px;
+    height: 8px;
+    fill: white;
+    margin-left: 10px;
+    opacity: 0.8;
+    position: relative;
+    top: -1px;
+    animation: fade-out-right 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite
+      forwards;
+
+    @media (max-width: 400px) {
+      margin-left: 0;
+    }
+  }
+
+  &-close-svg {
+    width: 18px;
+    height: 18px;
+    transition: all 0.32s;
+
+    @media (max-width: 400px) {
+      width: 13px;
+      height: 13px;
+    }
+
+    &,
+    * {
+      fill: white;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
 
 .navbar-sticky-moved-up .Announcement {
   display: none;
-  //   position: fixed;
-  //   top: 0;
-  //   background: #fff;
-  //   margin-top: -100px;
 }
 
 .navbar-sticky-on .Announcement {
   display: block;
   margin-top: 0;
-  color: black;
+}
+
+.navbar--dark-mode:not(.navbar-sticky-on) {
+  height: auto !important;
 }

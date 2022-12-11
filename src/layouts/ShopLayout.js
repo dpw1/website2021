@@ -23,7 +23,7 @@ const ShopLayout = props => {
 
       <Header page="shop" darkMode={true}></Header>
       <ScrollToTop></ScrollToTop>
-      <Shop page="shop" paddingTop={100}></Shop>
+      <Shop page="shop"></Shop>
 
       <Contact></Contact>
       <Footer></Footer>

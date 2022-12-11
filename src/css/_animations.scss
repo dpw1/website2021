@@ -166,5 +166,20 @@ $color2: #ce00ff;
   }
 }
 
+@keyframes fade-out-right {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    transform: translateX(15px);
+    opacity: 0;
+  }
+}
+
 /* ANIMATIONS end
 =============================================== */
