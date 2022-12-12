@@ -12,16 +12,29 @@ import {
 export default function Announcement() {
   const COOKIE_NAME = `announcement-bar-ezfy`
 
+  const [isHidden, setIsHidden] = useState(() => {
+    if (!isBrowser) {
+      return true
+    }
+
+    if (getCookie(COOKIE_NAME)) {
+      return true
+    }
+
+    return false
+  })
+
   function closeAnnouncementBar() {
     if (!isBrowser) {
       return
     }
-    const $bar = document.querySelector(`.Announcement`)
 
     const $body = document.querySelector(`body`)
-    setCookie(COOKIE_NAME, "true", 1)
     $body.classList.remove(`AnnouncementBarIsVisible`)
-    $bar.classList.add(`Announcement--hidden`)
+
+    setIsHidden(true)
+
+    setCookie(COOKIE_NAME, "true", 1)
   }
 
   async function isAnnouncementBarHidden() {
@@ -29,19 +42,17 @@ export default function Announcement() {
       return
     }
 
-    const $bar = document.querySelector(`.Announcement`)
-
-    const isHidden = getCookie(COOKIE_NAME)
+    const isCurrentlyHidden = getCookie(COOKIE_NAME)
     const $body = document.querySelector(`body`)
 
-    if (isHidden) {
-      $bar.classList.add(`Announcement--hidden`)
+    if (isCurrentlyHidden) {
+      setIsHidden(true)
       $body.classList.remove(`AnnouncementBarIsVisible`)
       return true
     }
 
     $body.classList.add(`AnnouncementBarIsVisible`)
-    $bar.classList.remove(`Announcement--hidden`)
+    setIsHidden(false)
 
     return false
   }
@@ -51,7 +62,7 @@ export default function Announcement() {
   }, [])
 
   return (
-    <div className={`Announcement Announcement--hidden`}>
+    <div className={`Announcement ${isHidden ? "Announcement--hidden" : ""}`}>
       <div className="Announcement-wrapper">
         <Link
           className="Announcement-link"

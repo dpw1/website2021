@@ -95,8 +95,6 @@ export default function CartEcwid(props) {
       }
     }
 
-    function openCartExternally() {}
-
     handleBackToShoppingButtonClick()
     handleDelayedEcwidCartOpen()
     openCartExternally()
