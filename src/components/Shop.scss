@@ -8,7 +8,7 @@
   transition-delay: 0.3s;
 
   @at-root {
-    .AnnouncementBar--visible .shop {
+    .AnnouncementBarIsVisible .shop {
       padding-top: 140px;
     }
   }

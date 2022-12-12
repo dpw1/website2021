@@ -5,29 +5,31 @@ import { siteRoutes } from "./../utils/siteRoutes"
 import { getCookie, setCookie } from "../utils/utils"
 
 export default function Announcement() {
+  const isBrowser = typeof window !== "undefined"
+
   const COOKIE_NAME = `announcement-bar-ezfy`
 
-  const [isHidden, setIsHidden] = useState(() =>
-    checkAnnouncementBarVisibility()
-  )
-
-  function checkAnnouncementBarVisibility() {
+  const [isHidden, setIsHidden] = useState(() => {
     const isHidden = getCookie(COOKIE_NAME)
     const $body = document.querySelector(`body`)
 
     if (isHidden) {
+      closeAnnouncementBar
       return true
-      $body.classList.remove(`AnnouncementBar--visible`)
     }
 
-    $body.classList.add(`AnnouncementBar--visible`)
+    $body.classList.add(`AnnouncementBarIsVisible`)
 
     return false
-  }
+  })
 
   function closeAnnouncementBar() {
+    if (!isBrowser) {
+      return
+    }
+
     const $body = document.querySelector(`body`)
-    $body.classList.remove(`AnnouncementBar--visible`)
+    $body.classList.remove(`AnnouncementBarIsVisible`)
     setCookie(COOKIE_NAME, "true", 1)
     setIsHidden(true)
   }
@@ -35,7 +37,11 @@ export default function Announcement() {
   useEffect(() => {}, [])
 
   return (
-    <div className={`Announcement ${isHidden ? `Announcement--hidden` : ``}`}>
+    <div
+      className={`Announcement  ${
+        isHidden === true || undefined ? `Announcement--hidden` : ``
+      }`}
+    >
       <div className="Announcement-wrapper">
         <Link
           className="Announcement-link"
@@ -60,7 +66,12 @@ export default function Announcement() {
           </svg>
         </Link>
         <button
-          onClick={() => closeAnnouncementBar()}
+          onClick={() => {
+            if (!isBrowser) {
+              return
+            }
+            closeAnnouncementBar()
+          }}
           className="Announcement-close"
         >
           <svg

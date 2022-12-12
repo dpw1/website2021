@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import "./Advertise.scss"
-import { getCookie, setCookie, removeCookie } from "../utils/utils"
 
 import { siteRoutes } from "../utils/siteRoutes"
 
