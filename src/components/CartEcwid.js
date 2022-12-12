@@ -5,6 +5,7 @@ import {
   awaitEcwid,
   discounts,
   getProductsInCart,
+  handleEmptCartButtonClick,
   removeDiscountCoupon,
   _waitForElement,
 } from "../utils/utils"
@@ -12,6 +13,7 @@ import "./CartEcwid.scss"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
 import { sleep } from "../../global-utils"
+import { isBrowser } from "./../utils/utils"
 
 export default function CartEcwid(props) {
   const { isMobile } = props
@@ -98,6 +100,7 @@ export default function CartEcwid(props) {
     handleBackToShoppingButtonClick()
     handleDelayedEcwidCartOpen()
     openCartExternally()
+    handleEmptCartButtonClick()
   }, [])
 
   return (
@@ -107,6 +110,7 @@ export default function CartEcwid(props) {
       }`}
       onClick={async () => {
         await addDiscountCouponBasedOnQuantity()
+        handleEmptCartButtonClick()
       }}
     >
       <a href="#">

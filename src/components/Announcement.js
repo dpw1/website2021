@@ -2,46 +2,56 @@ import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import "./Announcement.scss"
 import { siteRoutes } from "./../utils/siteRoutes"
-import { getCookie, setCookie } from "../utils/utils"
+import {
+  getCookie,
+  isBrowser,
+  setCookie,
+  _waitForElement,
+} from "../utils/utils"
 
 export default function Announcement() {
-  const isBrowser = typeof window !== "undefined"
-
   const COOKIE_NAME = `announcement-bar-ezfy`
-
-  const [isHidden, setIsHidden] = useState(() => {
-    const isHidden = getCookie(COOKIE_NAME)
-    const $body = document.querySelector(`body`)
-
-    if (isHidden) {
-      closeAnnouncementBar
-      return true
-    }
-
-    $body.classList.add(`AnnouncementBarIsVisible`)
-
-    return false
-  })
 
   function closeAnnouncementBar() {
     if (!isBrowser) {
       return
     }
+    const $bar = document.querySelector(`.Announcement`)
 
     const $body = document.querySelector(`body`)
-    $body.classList.remove(`AnnouncementBarIsVisible`)
     setCookie(COOKIE_NAME, "true", 1)
-    setIsHidden(true)
+    $body.classList.remove(`AnnouncementBarIsVisible`)
+    $bar.classList.add(`Announcement--hidden`)
   }
 
-  useEffect(() => {}, [])
+  async function isAnnouncementBarHidden() {
+    if (!isBrowser) {
+      return
+    }
+
+    const $bar = document.querySelector(`.Announcement`)
+
+    const isHidden = getCookie(COOKIE_NAME)
+    const $body = document.querySelector(`body`)
+
+    if (isHidden) {
+      $bar.classList.add(`Announcement--hidden`)
+      $body.classList.remove(`AnnouncementBarIsVisible`)
+      return true
+    }
+
+    $body.classList.add(`AnnouncementBarIsVisible`)
+    $bar.classList.remove(`Announcement--hidden`)
+
+    return false
+  }
+
+  useEffect(() => {
+    isAnnouncementBarHidden()
+  }, [])
 
   return (
-    <div
-      className={`Announcement  ${
-        isHidden === true || undefined ? `Announcement--hidden` : ``
-      }`}
-    >
+    <div className={`Announcement Announcement--hidden`}>
       <div className="Announcement-wrapper">
         <Link
           className="Announcement-link"

@@ -26,6 +26,8 @@ export function extractTextBetween(text, start, end) {
   })
 }
 
+export const isBrowser = typeof window !== "undefined"
+
 export function groupItems(items, n) {
   return items.reduce((acc, x, i) => {
     const idx = Math.floor(i / n)
@@ -35,6 +37,9 @@ export function groupItems(items, n) {
 }
 
 export function setCookie(name, value, days) {
+  if (!isBrowser) {
+    return
+  }
   var expires = ""
   if (days) {
     var date = new Date()
@@ -45,6 +50,9 @@ export function setCookie(name, value, days) {
 }
 
 export function getCookie(name) {
+  if (!isBrowser) {
+    return
+  }
   var nameEQ = name + "="
   var ca = document.cookie.split(";")
   for (var i = 0; i < ca.length; i++) {
@@ -56,6 +64,9 @@ export function getCookie(name) {
 }
 
 export function removeCookie(name) {
+  if (!isBrowser) {
+    return
+  }
   document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 }
 
@@ -349,6 +360,28 @@ export function getTotalVisibleProducts() {
   }
 
   return parseInt($products.length)
+}
+
+export const handleEmptCartButtonClick = async () => {
+  if (!isBrowser) {
+    return
+  }
+
+  const $button = await _waitForElement(`.ec-cart--empty button`, 25, 10)
+
+  if (!$button) {
+    return
+  }
+
+  $button.addEventListener("click", function () {
+    const $close = document.querySelector(`.ecwid-popup-closeButton`)
+
+    if (!/shop/.test(window.location.href)) {
+      window.location.href = `${window.location.origin}/shop`
+    }
+
+    return $close.click()
+  })
 }
 
 export function _waitForElement(selector, delay = 50, tries = 250) {
