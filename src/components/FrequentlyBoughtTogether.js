@@ -62,6 +62,9 @@ export default function FrequentlyBoughtTogether(props) {
 
     setLoading(true)
 
+    delete window.removedDiscountCoupon
+    delete window.discountCodeApplied
+
     await addEcwidProductsToCart(state.products)
 
     await sleep(50)
@@ -71,25 +74,6 @@ export default function FrequentlyBoughtTogether(props) {
     await addDiscountCouponBasedOnQuantity()
 
     setLoading(false)
-
-    /*
-
-    const getCoupon = _ => {
-      if (state.products.length === 2) {
-        return discounts[0].coupon
-      } else if (state.products.length === 3) {
-        return discounts[1].coupon
-      } else {
-        return ""
-      }
-    }
-
-    const url = `https://ezfyshop.company.site/cart?bundle_products=${state.products
-      .map(e => e.id)
-      .join(",")}&bundle_discount=${getCoupon()}`
-
-    window.location.href = url
-	*/
   }
 
   const sanitizeRelatedProducts = product => {

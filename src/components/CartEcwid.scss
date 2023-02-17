@@ -50,14 +50,24 @@ $loader-size: 13px;
     position: absolute;
     top: 8px;
     right: 12px;
+    opacity: 1 !important;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.5s;
+    transition-delay: 0.5s;
 
-    // hides skeleton when it's loaded
     @at-root {
-      [class^="ecwid-customer"] & {
-        animation: fade-out 0.32s ease both;
-        animation-delay: 1s;
+      [data-ec-widget-loaded="true"] + * {
+        opacity: 0 !important ;
+        transition: all 0.5s;
+        pointer-events: none;
       }
     }
+  }
+
+  &-cart {
+    position: relative;
+    z-index: 1;
   }
 
   .CartEcwid-loader {
@@ -83,6 +93,7 @@ $loader-size: 13px;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
     // visibility: hidden;
+    pointer-events: none;
 
     @at-root {
       .navbar-sticky-transitioned .CartEcwid .CartEcwid-loader div {

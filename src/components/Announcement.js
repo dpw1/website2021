@@ -12,29 +12,16 @@ import {
 export default function Announcement() {
   const COOKIE_NAME = `announcement-bar-ezfy`
 
-  const [isHidden, setIsHidden] = useState(() => {
-    if (!isBrowser) {
-      return true
-    }
-
-    if (getCookie(COOKIE_NAME)) {
-      return true
-    }
-
-    return false
-  })
-
   function closeAnnouncementBar() {
     if (!isBrowser) {
       return
     }
+    const $bar = document.querySelector(`.Announcement`)
 
     const $body = document.querySelector(`body`)
-    $body.classList.remove(`AnnouncementBarIsVisible`)
-
-    setIsHidden(true)
-
     setCookie(COOKIE_NAME, "true", 1)
+    $body.classList.remove(`AnnouncementBarIsVisible`)
+    $bar.classList.add(`Announcement--hidden`)
   }
 
   async function isAnnouncementBarHidden() {
@@ -42,17 +29,19 @@ export default function Announcement() {
       return
     }
 
-    const isCurrentlyHidden = getCookie(COOKIE_NAME)
+    const $bar = document.querySelector(`.Announcement`)
+
+    const isHidden = getCookie(COOKIE_NAME)
     const $body = document.querySelector(`body`)
 
-    if (isCurrentlyHidden) {
-      setIsHidden(true)
+    if (isHidden) {
+      $bar.classList.add(`Announcement--hidden`)
       $body.classList.remove(`AnnouncementBarIsVisible`)
       return true
     }
 
     $body.classList.add(`AnnouncementBarIsVisible`)
-    setIsHidden(false)
+    $bar.classList.remove(`Announcement--hidden`)
 
     return false
   }
@@ -62,13 +51,15 @@ export default function Announcement() {
   }, [])
 
   return (
-    <div className={`Announcement ${isHidden ? "Announcement--hidden" : ""}`}>
+    <div className={`Announcement Announcement--hidden`}>
       <div className="Announcement-wrapper">
         <Link
           className="Announcement-link"
           to={`${siteRoutes.shop}?source=announcement`}
         >
-          <span>Replace apps with copy/paste code snippets.</span>
+          <span>
+            <u>Premium copy/paste code snippets - 25% OFF!</u>
+          </span>
           <svg
             className="Announcement-arrow"
             xmlns="http://www.w3.org/2000/svg"

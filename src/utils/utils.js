@@ -385,28 +385,32 @@ export const handleEmptCartButtonClick = async () => {
 }
 
 export function _waitForElement(selector, delay = 50, tries = 250) {
-  const element = window.document.querySelector(selector)
+  try {
+    const element = window.document.querySelector(selector)
 
-  if (!window[`__${selector}`]) {
-    window[`__${selector}`] = 0
-  }
-
-  function _search() {
-    return new Promise(resolve => {
-      window[`__${selector}`]++
-      setTimeout(resolve, delay)
-    })
-  }
-
-  if (element === null) {
-    if (window[`__${selector}`] >= tries) {
+    if (!window[`__${selector}`]) {
       window[`__${selector}`] = 0
-      return Promise.reject(null)
     }
 
-    return _search().then(() => _waitForElement(selector))
-  } else {
-    return Promise.resolve(element)
+    function _search() {
+      return new Promise(resolve => {
+        window[`__${selector}`]++
+        setTimeout(resolve, delay)
+      })
+    }
+
+    if (element === null) {
+      if (window[`__${selector}`] >= tries) {
+        window[`__${selector}`] = 0
+        return Promise.reject(null)
+      }
+
+      return _search().then(() => _waitForElement(selector))
+    } else {
+      return Promise.resolve(element)
+    }
+  } catch (err) {
+    console.error(`_waitForElement - error occurred with selector: ${selector}`)
   }
 }
 
@@ -655,15 +659,15 @@ export function isThereCurrentActiveTag() {
 export const discounts = [
   {
     quantity: 2,
-    percentage: 10,
-    amount: `10%`,
-    coupon: "JN6BOKABBVPO10OFF",
+    percentage: 20,
+    amount: `20%`,
+    coupon: "DVJTI5KV1I85",
   },
   {
     quantity: 3,
-    percentage: 15,
-    amount: `15%`,
-    coupon: "FWIUSNPXEDTW15OFF",
+    percentage: 25,
+    amount: `25%`,
+    coupon: "VN0NUNXI74DV",
   },
 ]
 
@@ -737,27 +741,48 @@ export function getProductsInCart() {
 
 export async function removeDiscountCoupon() {
   return new Promise(async (resolve, reject) => {
-    const selector = `.ec-cart-coupon--applied .ec-cart-coupon__button--cancel > button`
-    const $button = _waitForElement(selector, 50, 10)
+    try {
+      // if (
+      //   window.hasOwnProperty("removedDiscountCoupon") &&
+      //   window.removedDiscountCoupon
+      // ) {
+      //   resolve()
+      //   return
+      // }
 
-    if (!$button) {
+      const selector = `.ec-cart-coupon--applied .ec-cart-coupon__button--cancel > button`
+      const $button = await _waitForElement(selector, 50, 10)
+
+      if (!$button) {
+        resolve()
+        return
+      }
+
+      const $buttons = document.querySelectorAll(selector)
+
+      for (var each of $buttons) {
+        each.click()
+        //window.removedDiscountCoupon = true
+        //window.discountCodeApplied = false
+      }
+
       resolve()
-      return
+    } catch (err) {
+      resolve()
     }
-
-    const $buttons = document.querySelectorAll(selector)
-
-    for (var each of $buttons) {
-      each.click()
-    }
-
-    resolve()
   })
 }
 
 export async function addDiscountCoupon(discount) {
   if (!discount) {
     return
+  }
+
+  if (
+    window.hasOwnProperty("discountCodeApplied") &&
+    window.discountCodeApplied
+  ) {
+    //return
   }
 
   const $discount = await _waitForElement(`[class*='cart-coupon'] > a`, 100, 25)
@@ -768,11 +793,15 @@ export async function addDiscountCoupon(discount) {
 
   const $cancel = document.querySelector(`.ec-cart-coupon__button--cancel`)
 
+  console.log("cancel", $cancel)
+
   if ($cancel) {
     $cancel.click()
   }
 
   const $forms = document.querySelectorAll(`[class*='ec-cart__discount']`)
+
+  console.log("Forms", $forms)
 
   for (var each of $forms) {
     const $redeem = each.querySelector(`[class*='cart-coupon'] > a`)
@@ -810,6 +839,10 @@ export async function addDiscountCoupon(discount) {
     }
 
     $button.click()
+  }
+
+  if (document.querySelector(`[class*='--discount-coupon']`)) {
+    window.discountCodeApplied = true
   }
 }
 

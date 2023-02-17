@@ -18,12 +18,16 @@ function Contact(props) {
   }
 
   const onSubmit = data => {
-    // console.log(data)
+    console.log(data)
 
     if (!isFormValid) {
       setError(
         "Please do the ReCaptcha above before sending your email. Thank you!"
       )
+      return
+    }
+
+    if (data._replyto.includes(".dk")) {
       return
     }
 

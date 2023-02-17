@@ -19,29 +19,6 @@ export default function CartEcwid(props) {
   const { isMobile } = props
 
   useEffect(async () => {
-    await awaitEcwid()
-
-    Ecwid.OnCartChanged.add(async function (cart) {
-      var quantity = cart.productsQuantity
-
-      if (
-        window.previousCartQuantity &&
-        quantity !== window.previousCartQuantity
-      ) {
-        console.log(
-          "xx cart current X prev",
-          quantity,
-
-          window.previousCartQuantity
-        )
-        await removeDiscountCoupon()
-        await sleep(1000)
-        await addDiscountCouponBasedOnQuantity()
-      }
-
-      window.previousCartQuantity = cart.productsQuantity
-    })
-
     const handleBackToShoppingButtonClick = async () => {
       const $cart = window.document.querySelector(`.ec-cart-widget`)
 
@@ -73,31 +50,59 @@ export default function CartEcwid(props) {
 
     // TODO - shower loader only if user click here
     function handleDelayedEcwidCartOpen() {
-      const $carts = document.querySelectorAll(`.CartEcwid-loader`)
+      const $loaders = document.querySelectorAll(`.CartEcwid-loader`)
 
-      if (!$carts) {
+      if (!$loaders) {
         return
       }
 
-      for (const $cart of $carts) {
-        $cart.addEventListener(`click`, async function () {
-          $cart.classList.add(`CartEcwid-loader--loading`)
-          const $counter = document.querySelector(`.ec-minicart__counter`)
+      for (const $loader of $loaders) {
+        $loader.addEventListener(`click`, async function () {
+          const $cart = await _waitForElement(
+            `[data-ec-widget-loaded="true"]`,
+            50,
+            10
+          )
 
-          if ($counter) {
+          if (!$cart) {
             return
           }
 
-          await _waitForElement(`.ec-minicart__counter`)
+          $cart.click()
 
           Ecwid.ShoppingCartController.openCart()
         })
       }
     }
 
+    async function handleCartChanges() {
+      await awaitEcwid()
+
+      Ecwid.OnCartChanged.add(async function (cart) {
+        var quantity = cart.productsQuantity
+
+        if (
+          window.previousCartQuantity &&
+          quantity !== window.previousCartQuantity
+        ) {
+          console.log(
+            "xx cart current X prev",
+            quantity,
+            window.previousCartQuantity
+          )
+
+          await removeDiscountCoupon()
+          await sleep(1000)
+          await addDiscountCouponBasedOnQuantity()
+        }
+
+        window.previousCartQuantity = cart.productsQuantity
+      })
+    }
+
+    handleCartChanges()
     handleBackToShoppingButtonClick()
     handleDelayedEcwidCartOpen()
-    openCartExternally()
     handleEmptCartButtonClick()
   }, [])
 
@@ -106,12 +111,17 @@ export default function CartEcwid(props) {
       className={`CartEcwid ${
         isMobile ? "CartEcwid--mobile" : "CartEcwid--desktop"
       }`}
-      onClick={async () => {
-        await addDiscountCouponBasedOnQuantity()
-        handleEmptCartButtonClick()
-      }}
     >
       <a href="#">
+        <div
+          data-responsive="FALSE"
+          data-icon="CART"
+          className="CartEcwid-cart ec-cart-widget"
+          onClick={async () => {
+            await addDiscountCouponBasedOnQuantity()
+            handleEmptCartButtonClick()
+          }}
+        ></div>
         <div className="CartEcwid-skeleton">
           <svg
             className="icon-default"
@@ -144,21 +154,13 @@ export default function CartEcwid(props) {
               ></circle>
             </g>
           </svg>
-          <div
-            style={{ display: "none" }}
-            className="lds-ring CartEcwid-loader"
-          >
+          <div className="lds-ring CartEcwid-loader">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
           </div>
         </div>
-        <div
-          data-responsive="FALSE"
-          data-icon="CART"
-          className="ec-cart-widget"
-        ></div>
       </a>
     </div>
   )
