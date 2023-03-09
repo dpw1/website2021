@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>https://ezfycode.com/blog/collection-with-tabs-shopify-section-tutorial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/blog/how-to-fix-broken-zoom-on-shopify-refresh-theme</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/how-to-detect-the-theme-and-apps-from-any-shopify-store</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/how-to-fix-broken-zoom-on-publisher-theme</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/blog/search-bar-always-visible-tutorial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -69,6 +70,16 @@
 <url> <loc>https://ezfycode.com/shop/ezfy-task-magnus</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/ezfy-task-brian</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/ezfy-task-justin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/ride-theme-zoom-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/origin-theme-zoom-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/origin-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/publisher-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/sense-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/ride-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/crave-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/colorblock-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/refresh-theme-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ezfycode.com/shop/refresh-theme-zoom-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/collections-tabs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/sense-theme-zoom-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ezfycode.com/shop/studio-theme-zoom-slider-pro</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
