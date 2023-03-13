@@ -5,6 +5,10 @@
     transition: $transition-basic;
   }
 
+  .skeleton-loader {
+    min-width: 100%;
+  }
+
   .blog-content-info--time {
     margin-left: 0;
     padding: 0 !important;
