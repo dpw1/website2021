@@ -63,20 +63,16 @@ function Hero(props) {
                 </span>
                 <br />
                 <span>
-                  Hire a{" "}
-                  <a
-                    rel="noopener noreferrer"
-                    href="https://community.shopify.com/c/user/viewprofilepage/user-id/577094"
-                    target="_blank"
-                    className="hero-link"
-                  >
-                    certified Shopify Partner
-                  </a>{" "}
-                  to quickly take care of your themes' technical needs.
+                  Customize any theme with high quality, performative and
+                  SEO-friendly code snippets.
                 </span>
               </h3>
-              <p className="text-white mt-3 mb-4">
-                <span>More than 4000+ Shopify merchants helped.</span>
+              <p className="hero-info text-white mt-3 mb-4">
+                <span>Enhance your theme with premium DIY codes.</span>
+                <br />
+                <span>
+                  More than 8000+ active Shopify stores with our products.
+                </span>
               </p>
               {/* Store Buttons */}
               <div className="button-group store-buttons d-flex">

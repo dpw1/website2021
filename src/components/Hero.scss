@@ -7,6 +7,13 @@
   z-index: 1;
   max-height: 690px;
 
+  .hero-info {
+    @media (max-width: $md) {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  }
+
   .hero-subtitle,
   .hero-subtitle * {
     line-height: normal;

@@ -18,6 +18,7 @@ import Features from "./../components/Features"
 import ProductShowcase from "./../components/ProductShowcase"
 
 import axios from "axios"
+import TabsSlider from "../components/TabsSlider"
 
 const HomeLayout = props => {
   useEffect(() => {
@@ -35,6 +36,7 @@ const HomeLayout = props => {
       <Header page={"home"}></Header>
       <Hero></Hero>
       <About></About>
+      <TabsSlider></TabsSlider>
       {/* <Features> </Features> */}
       <ProductShowcase
         subtitle={`Simple, affordable and high quality copy-paste code snippets for

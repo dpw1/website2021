@@ -19,10 +19,23 @@
   }
 
   .row:nth-child(2) {
-    max-width: 950px;
-    width: 100%;
-    margin: 0 auto;
+  }
+
+  .about-buttons {
+    display: flex;
+    flex-wrap: nowrap;
     align-items: center;
+    justify-content: center;
+
+    button {
+      &:nth-child(1) {
+        margin-right: 20px;
+      }
+
+      @media (max-width: 375px) {
+        padding: 15px !important;
+      }
+    }
   }
 }
 .about-page {

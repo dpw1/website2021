@@ -1,0 +1,193 @@
+@import "../css/variables";
+
+[id] .TabsSlider {
+  position: relative;
+
+  .TabsSlider-container {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $xs) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .TabsSlider-tab {
+    position: relative;
+    padding-left: 13px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    opacity: 0.6;
+    transition: all 2s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      height: 0%;
+      width: 3px;
+      background-color: #07273d;
+      transition: all 0.3s;
+    }
+
+    &--active {
+      opacity: 1;
+
+      &:after {
+        height: 100%;
+      }
+
+      & + * {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .TabsSlider-title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .TabsSlider-subtitle {
+    height: 0;
+    overflow: hidden;
+    margin-top: 10px;
+    transition: height 0.5s;
+
+    &,
+    & > * {
+      font-size: 16px !important;
+    }
+
+    @at-root .TabsSlider-tab--active .TabsSlider-subtitle {
+      display: block !important;
+    }
+  }
+
+  .TabsSlider-tabs-wrapper {
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1px;
+      height: calc(100% - 0.5rem);
+      width: 1px;
+      background-color: rgba(7, 39, 61, 0.2);
+    }
+  }
+
+  .TabsSlider-tabs {
+    position: relative;
+    height: 350px;
+
+    overflow: hidden;
+    min-width: 400px;
+    width: 25%;
+    overflow-y: scroll;
+    padding-right: 10px;
+
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: $xs) {
+      width: 100%;
+      display: none;
+    }
+  }
+
+  .TabsSlider-arrows {
+    position: absolute;
+    left: 0;
+
+    display: block;
+
+    &--next {
+      top: unset;
+      bottom: 0;
+      transform: rotate(90deg);
+    }
+
+    &--prev {
+      top: 0;
+      transform: rotate(90deg);
+    }
+  }
+
+  .swiper-slide {
+    height: auto !important;
+    margin-bottom: 10px;
+  }
+
+  .TabsSlider-content {
+    width: 100%;
+
+    margin-left: 30px;
+    overflow: hidden;
+
+    @media (max-width: $xs) {
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  .swiper-slide {
+    max-width: 100%;
+  }
+
+  .TabsSlider-each {
+    width: 100%;
+  }
+  video {
+    border-radius: $border-radius;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .flickity-button {
+    display: none;
+  }
+
+  .TabsSlider-mobile {
+    display: none;
+
+    height: fit-content;
+
+    & > * {
+      display: block;
+    }
+
+    @media (max-width: $xs) {
+      display: block;
+    }
+  }
+}
