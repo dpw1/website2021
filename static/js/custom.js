@@ -215,7 +215,7 @@ ezfy = (function () {
   }
 
   function lazyLoadVideos() {
-    var lazyVideos = [].slice.call(document.querySelectorAll("video"))
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"))
 
     if ("IntersectionObserver" in window) {
       var lazyVideoObserver = new IntersectionObserver(function (

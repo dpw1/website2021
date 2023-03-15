@@ -13,20 +13,20 @@ const tabs = [
   {
     title: "What are code snippets?",
     text:
-      "Code snippets are pieces of code that you can paste into any theme to add extra functionalities. Like sections, app-like codes, etc. ",
+      "Code snippets are pieces of code that you can paste into any theme to add extra functionalities. Like sections, app-like codes, between many others.",
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/ai-audio-sketrch.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/code-snippets-home-page-1.mp4",
   },
   {
     title: "No monthly fees",
-    text: "Pay once, use forever. No hidden nor additional fees.",
+    text: "Pay once, use forever. No hidden nor additional fees. ",
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/no_monthly_fees-1.mp4",
   },
   {
-    title: "Simple installation",
+    title: "Quick & Simple installation",
     text:
-      "No coding experience is needed. All products ship with clear installation instructions, taking roughly 2 minutes to install. Our friendly support staff is ready to help as well.",
+      "Simple copy/pasting, no coding experience is needed. All products ship with clear installation instructions, taking roughly 2 minutes to install. Our friendly support staff is ready to help as well.",
     image:
       "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
   },
@@ -50,7 +50,7 @@ const tabs = [
   },
   {
     title: "A/B tested in real stores",
-    text: `Our products are coded in partnership with long term clients of ours who are willing to test it in their own stores. These shops vary from 5 - 20k daily visits, giving us the opportunity to quickly A/B test what works the best, while fixing all bugs reported by customers.`,
+    text: `Our products are coded in partnership with long term clients of ours who are willing to test the code snippets in their own stores. These shops vary from 5 - 20k daily visits, giving us the opportunity to quickly A/B test what works the best, while fixing all bugs reported by customers.`,
     image:
       "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
   },
@@ -69,7 +69,7 @@ const tabs = [
   },
   {
     title: "SEO-friendly, clean code",
-    text: `Best practices coded w/ HTML5, CSS3 and ES2022. No jQuery and heavy, redundant code is used.`,
+    text: `Coded mindful of all best practices and latest technologies (HTML5, CSS3 and ES2022). No jQuery and heavy, redundant code is used.`,
     image:
       "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
   },
@@ -185,7 +185,10 @@ export default function TabsSlider() {
                   }`}
                 >
                   <p className="TabsSlider-title">{data.title}</p>
-                  <div className="TabsSlider-subtitle">
+                  <div
+                    style={{ height: i === 0 && "100%" }}
+                    className="TabsSlider-subtitle"
+                  >
                     <p>{data.text}</p>
                   </div>
                 </div>
@@ -239,17 +242,22 @@ export default function TabsSlider() {
           <div className="TabsSlider-content">
             {tabs.map((data, i) => (
               <div key={data.image + i} className="TabsSlider-each">
-                <video
-                  // poster={
-                  //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBCgKbX7HIXYrg16RO8twdPqWif4YZTv-oTcR3Y0roaw&s"
-                  // }
-                  loop
-                  webkit-playsinline=""
-                  playsinline="true"
-                  muted
-                  className="lazy"
-                  data-src={data.image}
-                ></video>
+                {data.image && data.image.includes("mp4") ? (
+                  <video
+                    // poster={
+                    //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBCgKbX7HIXYrg16RO8twdPqWif4YZTv-oTcR3Y0roaw&s"
+                    // }
+                    loop
+                    webkit-playsinline=""
+                    playsinline="true"
+                    muted
+                    className="lazy"
+                    data-src={`${data.image}#t=0.1`}
+                  ></video>
+                ) : (
+                  <img data-src={data.image} alt="" />
+                )}
+
                 <div className="TabsSlider-mobile">
                   <p className="TabsSlider-title">{data.title}</p>
                   <div className="TabsSlider-subtitle">
