@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper"
 
-import { Swiper, SwiperSlide } from "swiper/react"
+import inView from "element-in-view"
 // import Flickity from "react-flickity-component"
 
 // the slider for this section can be found at custom.js, at the bottom of the file.
@@ -39,12 +39,12 @@ const tabs = [
   },
   {
     title: "Fast, SEO-friendly and clean code",
-    text: `Coded mindful of all best practices and latest technologies (HTML5, CSS3 and ES2022). No jQuery and heavy, redundant code is used.`,
+    text: `Coded mindful of all best practices and latest technologies (HTML5, CSS3 and ES2022). No jQuery, heavy or redundant code is used.`,
     image: "https://www.ezfy.club/wp-content/uploads/2023/03/fast-code-3.mp4",
   },
   {
     title: "Mobile, pad & desktop friendly",
-    text: `We test our code thoroughly via LambdaTest plus over 20+ real devices in our office to guarantee the product's effiency in all modern browsers and devices.`,
+    text: `We use tools to test our code through 150+ real devices (not emulated), plus the 20+ physical devices at our office to guarantee the product's effiency in all modern environments.`,
     image:
       "https://www.ezfy.club/wp-content/uploads/2023/03/mobile-friendly.mp4",
   },
@@ -63,7 +63,7 @@ const tabs = [
 
   {
     title: "Focused on conversion",
-    text: `Ultimately every business has to make sales. We bear that very close to mind when coding our products, focusing in CRO from beginning to end.`,
+    text: `Ultimately every business has to make sales. We bear that very close to mind when coding our products by focusing in CRO from beginning to end. We also give you enough customization tools to A/B test what works the best for your business.`,
     image:
       "https://www.ezfy.club/wp-content/uploads/2023/03/Untitled-design-5.mp4",
   },
@@ -84,16 +84,13 @@ const tabs = [
 
 export default function TabsSlider() {
   const [active, setActive] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+
   const [swiper, setSwiper] = useState()
   const [loadedFlickty, setLoadedFlickity] = useState(false)
   const [loaded, setLoaded] = useState()
 
   async function initFlickty() {
-    if (!loadedFlickty) {
-      const res = await window.ezfy.loadFlickity()
-      setLoadedFlickity(res)
-    }
-
     const $slider = document.querySelector(`.TabsSlider-content`)
 
     var slider = new Flickity($slider, {
@@ -104,7 +101,8 @@ export default function TabsSlider() {
     })
 
     window.tabsSliderFlickity = slider
-    window.ezfy.lazyLoadVideos()
+
+    handleChange(slider)
   }
 
   function makeSubtitleVisible($el) {
@@ -125,41 +123,115 @@ export default function TabsSlider() {
     $subtitle.style.height = `${height}px`
   }
 
+  function playVideoByIndex(index = 0) {
+    const $video = document.querySelector(
+      `.TabsSlider-each:nth-child(${index + 1}) video`
+    )
+
+    if (!$video) {
+      return
+    }
+
+    const $parent = $video.closest(`.TabsSlider-video-wrapper`)
+
+    if ($video.getAttribute("src")) {
+      $video.play()
+      return
+    }
+
+    console.log("load")
+
+    const src = $video.getAttribute("data-src")
+
+    if (!src) {
+      return
+    }
+
+    $video.setAttribute("src", src)
+    $video.load()
+    $video.play()
+    $video.addEventListener("playing", function () {
+      $parent.classList.add(`TabsSlider-video--loaded`)
+    })
+  }
+
+  const checkVisibility = () => {
+    const $el = document.querySelector(`#CodeSnippets`)
+
+    if (!$el) {
+      return
+    }
+
+    if (inView($el) && window.hasOwnProperty("tabsSliderFlickity")) {
+      playVideoByIndex()
+    }
+
+    setIsVisible(inView($el))
+  }
+
+  function pauseAndResetAllVideos() {
+    const $videos = document.querySelectorAll(`.TabsSlider-video`)
+
+    if (!$videos) {
+      return
+    }
+
+    for (var each of $videos) {
+      const $parent = each.closest(`.TabsSlider-video-wrapper`)
+      $parent.classList.remove("TabsSlider-video--playing")
+      each.pause()
+      each.currentTime = 0
+    }
+  }
+
+  function handleChange($slider) {
+    $slider.on("change", function (index) {
+      console.log("play video index", index)
+      pauseAndResetAllVideos()
+      playVideoByIndex(index)
+    })
+  }
+
   useEffect(() => {
     ;(async () => {
-      function setTextHeight() {
-        const $texts = document.querySelectorAll(`.TabsSlider-mobile`)
+      await window.ezfy.loadFlickity()
+      setLoadedFlickity(true)
 
-        if (!$texts) {
-          return
-        }
+      //** init
 
-        for (var each of $texts) {
-          const height = each.offsetHeight
-          each.setAttribute("style", `height:${height}px;`)
-        }
-      }
+      initFlickty()
+      checkVisibility()
 
+      document.addEventListener("DOMContentLoaded", function () {})
+
+      //** page load
       window.addEventListener("load", function () {
+        checkVisibility()
         window.tabsSliderFlickity.destroy()
         initFlickty()
       })
 
-      initFlickty()
+      window.addEventListener("scroll", () => {
+        setTimeout(checkVisibility, 100)
+      })
     })()
   }, [])
 
   return (
-    <div id="CodeSnippets" className="TabsSlider ptb_50">
+    <div
+      id="CodeSnippets"
+      className={`TabsSlider ptb_50 ${isVisible ? "TabsSlider--visible" : ""} ${
+        loadedFlickty ? "TabsSlider--loaded" : ""
+      }`}
+    >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 ">
             <div className="section-heading text-center">
               <h2>High Quality Customizations one Click Away</h2>
               <p className="TabsSlider-main-subtitle d-sm-block mt-4">
-                Imagine you have an expert dev team working to deliver top notch
-                quality customizations but without the waiting time? We make
-                this dream real.
+                We're an expert dev team working to deliver top notch quality
+                customizations without the waiting time.
               </p>
             </div>
           </div>
@@ -245,17 +317,20 @@ export default function TabsSlider() {
             {tabs.map((data, i) => (
               <div key={data.image + i} className="TabsSlider-each">
                 {data.image && data.image.includes("mp4") ? (
-                  <video
-                    // poster={
-                    //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBCgKbX7HIXYrg16RO8twdPqWif4YZTv-oTcR3Y0roaw&s"
-                    // }
-                    loop
-                    webkit-playsinline=""
-                    playsinline="true"
-                    muted
-                    className="lazy"
-                    data-src={`${data.image}#t=0.1`}
-                  ></video>
+                  <div className="TabsSlider-video-wrapper">
+                    <div class="TabsSlider-video-loader"></div>
+
+                    <video
+                      loop
+                      webkit-playsinline=""
+                      playsinline="true"
+                      muted
+                      className="TabsSlider-video"
+                      data-src={`${data.image}`}
+                    >
+                      <source type="video/mp4"></source>
+                    </video>
+                  </div>
                 ) : (
                   <img className="lazyload" data-src={data.image} alt="" />
                 )}

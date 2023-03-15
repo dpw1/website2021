@@ -81,6 +81,7 @@ export default function ProductShowcase(props) {
 
   return (
     <section
+      id="CodeSnippets"
       className={`ptb_50 section ProductShowcase ${
         props.page === "home" ? "ProductShowcase--homepage" : ""
       }

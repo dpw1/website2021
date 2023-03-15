@@ -95,6 +95,7 @@ module.exports = {
           "Loader.scss",
           "License.scss",
           "CartEcwid.scss",
+          "TabsSlider.scss",
         ],
       },
     },
