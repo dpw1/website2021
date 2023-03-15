@@ -34,11 +34,11 @@ const HomeLayout = props => {
       <SEO />
       <ScrollToTop></ScrollToTop>
       <Header page={"home"}></Header>
-      <Hero></Hero>
+      <Hero scrollTo="#about"></Hero>
       <About></About>
       <TabsSlider></TabsSlider>
       {/* <Features> </Features> */}
-      <ProductShowcase
+      {/* <ProductShowcase
         subtitle={`Simple, affordable and high quality copy-paste code snippets for
         your Shopify theme. <br /> Pay once, use forever - no monthly fees.`}
         chosenProducts={[
@@ -47,7 +47,7 @@ const HomeLayout = props => {
           "Anti Theft - Disable Right Click",
         ]}
         page="home"
-      ></ProductShowcase>
+      ></ProductShowcase> */}
       <BlogShowcase isHomePage={true} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
       <Parallax

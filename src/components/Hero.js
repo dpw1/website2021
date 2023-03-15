@@ -87,7 +87,7 @@ function Hero(props) {
                   <a
                     className="btn custom-btn text-uppercase scroll"
                     href={scrollTo}
-                    data-scroll-offset={-60}
+                    data-scroll-offset={-80}
                   >
                     {buttonText ? buttonText : "Get started"}
                   </a>

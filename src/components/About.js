@@ -35,7 +35,18 @@ function About(props) {
           >
             Code Snippets
           </button>
-          <button className="btn btn--white">Custom Coding</button>
+          <button
+            onClick={() => {
+              const $el = window.document.querySelector(`[id='contact']`)
+
+              if ($el) {
+                scrollTo($el, -60)
+              }
+            }}
+            className="btn btn--white"
+          >
+            Custom Coding
+          </button>
         </div>
       </div>
     </section>
