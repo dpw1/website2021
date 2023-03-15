@@ -110,23 +110,15 @@ export const defaultNavbarLinks = [
         scroll: false,
       },
       {
+        name: "Code Snippets",
+        url: "/#CodeSnippets",
+        offset: -40,
+        scroll: false,
+      },
+      {
         name: "Reviews",
         url: "/#reviews",
         offset: -40,
-        scroll: false,
-      },
-
-      {
-        name: "Portfolio",
-        url: siteRoutes.portfolio,
-        offset: -40,
-        scroll: false,
-      },
-
-      {
-        name: "FAQ",
-        url: "/#faq",
-        offset: -60,
         scroll: false,
       },
     ],
@@ -869,6 +861,12 @@ export function addEcwidProductsToCart(products) {
       }
     }
   })
+}
+
+export function scrollTo($el, yOffset = 0) {
+  const y = $el.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+  window.scrollTo({ top: y, behavior: "smooth" })
 }
 
 /* Searches for all elements containing a [data-gist-ids], renders the gist within them */

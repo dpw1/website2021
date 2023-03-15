@@ -38,7 +38,7 @@ const HomeLayout = props => {
       <About></About>
       <TabsSlider></TabsSlider>
       {/* <Features> </Features> */}
-      <ProductShowcase
+      {/* <ProductShowcase
         subtitle={`Simple, affordable and high quality copy-paste code snippets for
         your Shopify theme. <br /> Pay once, use forever - no monthly fees.`}
         chosenProducts={[
@@ -47,7 +47,7 @@ const HomeLayout = props => {
           "Anti Theft - Disable Right Click",
         ]}
         page="home"
-      ></ProductShowcase>
+      ></ProductShowcase> */}
       <BlogShowcase isHomePage={true} posts={props.posts}></BlogShowcase>
       <ReviewsText></ReviewsText>
       <Parallax
@@ -55,7 +55,7 @@ const HomeLayout = props => {
         subtitle={`Let us know what you need, we'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
       ></Parallax>
-      <Faq></Faq>
+
       <Contact></Contact>
       <Footer page={"home"}></Footer>
     </React.Fragment>

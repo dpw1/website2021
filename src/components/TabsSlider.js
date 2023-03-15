@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react"
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 import "./TabsSlider.scss"
+import { Link } from "gatsby"
+import { siteRoutes } from "./../utils/siteRoutes"
 
 const tabs = [
   {
@@ -15,70 +17,69 @@ const tabs = [
     text:
       "Code snippets are pieces of code that you can paste into any theme to add extra functionalities. Like sections, app-like codes, between many others.",
     image:
-      "https://www.ezfy.club/wp-content/uploads/2023/03/code-snippets-home-page-1.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/what-are-code-snippets.mp4",
   },
   {
     title: "No monthly fees",
     text: "Pay once, use forever. No hidden nor additional fees. ",
-    image:
-      "https://www.ezfy.club/wp-content/uploads/2023/03/no_monthly_fees-1.mp4",
+    image: "https://www.ezfy.club/wp-content/uploads/2023/03/no-fees.mp4",
   },
   {
     title: "Quick & Simple installation",
     text:
       "Simple copy/pasting, no coding experience is needed. All products ship with clear installation instructions, taking roughly 2 minutes to install. Our friendly support staff is ready to help as well.",
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/code-snippets-home-page-1.mp4",
   },
   {
     title: "Lifetime free updates",
-    text: `Code snippets coded for specific products, like Dawn's "click to zoom" slider, are guaranteed to work with any version.`,
+    text: `Be notified whenever we release a new update with bug fixes and/or new features.`,
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/Untitled-design-4.mp4",
+  },
+  {
+    title: "Fast, SEO-friendly and clean code",
+    text: `Coded mindful of all best practices and latest technologies (HTML5, CSS3 and ES2022). No jQuery and heavy, redundant code is used.`,
+    image: "https://www.ezfy.club/wp-content/uploads/2023/03/fast-code-3.mp4",
   },
   {
     title: "Mobile, pad & desktop friendly",
-    text: `We test our code thoroughly via BrowerStack and over 20+ real devices to guarantee its efficiency in all modern browsers and devices.`,
+    text: `We test our code thoroughly via LambdaTest plus over 20+ real devices in our office to guarantee the product's effiency in all modern browsers and devices.`,
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/mobile-friendly.mp4",
   },
   {
     title: "No dev time",
     text: `Skip all the hurdles of testing, waiting, lengthy back & forth emails and grab the A/B tested code in one click. Hundreds of hours of professional dev time for the price of a product sale.`,
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/code-snippets-home-page-2.mp4",
   },
   {
     title: "A/B tested in real stores",
-    text: `Our products are coded in partnership with long term clients of ours who are willing to test the code snippets in their own stores. These shops vary from 5 - 20k daily visits, giving us the opportunity to quickly A/B test what works the best, while fixing all bugs reported by customers.`,
+    text: `Before being put on sale, our products are coded in partnership with long term clients of ours who are willing to test the code snippets in their own stores. This gives us the opportunity to quickly A/B test what works the best, while fixing all bug reports received.`,
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
-  },
-  {
-    title: "Focused on conversion",
-    text: `Complementing the point above, ultimately every merchant is interested in making sales. Our products' goal is the same: improve stores CRO.`,
-    image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/a-b-tested-in-real-stores.mp4",
   },
 
   {
-    title: "Loads 3 times faster than apps",
-    text: `By default all apps must wait for the webpage to load before injecting any code. Since code snippets are pasted into the theme, they load at the same time as the website.`,
+    title: "Focused on conversion",
+    text: `Ultimately every business has to make sales. We bear that very close to mind when coding our products, focusing in CRO from beginning to end.`,
     image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
+      "https://www.ezfy.club/wp-content/uploads/2023/03/Untitled-design-5.mp4",
   },
-  {
-    title: "SEO-friendly, clean code",
-    text: `Coded mindful of all best practices and latest technologies (HTML5, CSS3 and ES2022). No jQuery and heavy, redundant code is used.`,
-    image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
-  },
-  {
-    title: "Handpicked Shopify Experts",
-    text: `To ensure maximum quality, we work exclusively with qualified and experienced Shopify Experts. The devs coding our products have years of experience working in renowned Shopify themes and stores.`,
-    image:
-      "https://filmora.wondershare.com/assets/video/filmora12/product/auto-reframe.mp4",
-  },
+
+  // {
+  //   title: "Loads 3 times faster than apps",
+  //   text: `By default all apps must wait for the webpage to load before injecting any code. Since code snippets are pasted into the theme, they load at the same time as the website.`,
+  //   image: "https://www.ezfy.club/wp-content/uploads/2023/03/fast-code.mp4",
+  // },
+
+  // {
+  //   title: "Handpicked Shopify Experts",
+  //   text: `To ensure maximum quality, we don't hire freelancers and work exclusively with qualified and experienced Shopify Experts. The devs coding our products have years of experience working in renowned Shopify themes and stores.`,
+  //   image:
+  //     "",
+  // },
 ]
 
 export default function TabsSlider() {
@@ -99,7 +100,7 @@ export default function TabsSlider() {
       cellAlign: "left",
       contain: true,
       adaptiveHeight: true,
-      imagesLoaded: true,
+      imagesLoaded: false,
     })
 
     window.tabsSliderFlickity = slider
@@ -149,15 +150,16 @@ export default function TabsSlider() {
   }, [])
 
   return (
-    <div className="TabsSlider ptb_50">
+    <div id="CodeSnippets" className="TabsSlider ptb_50">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 ">
             <div className="section-heading text-center">
               <h2>High Quality Customizations one Click Away</h2>
-              <p className="d-sm-block mt-4">
-                Conversion optimization, SEO-friendly and performative: these
-                are the main pillars sustaining our products.
+              <p className="TabsSlider-main-subtitle d-sm-block mt-4">
+                Imagine you have an expert dev team working to deliver top notch
+                quality customizations but without the waiting time? We make
+                this dream real.
               </p>
             </div>
           </div>
@@ -255,7 +257,7 @@ export default function TabsSlider() {
                     data-src={`${data.image}#t=0.1`}
                   ></video>
                 ) : (
-                  <img data-src={data.image} alt="" />
+                  <img className="lazyload" data-src={data.image} alt="" />
                 )}
 
                 <div className="TabsSlider-mobile">
@@ -327,6 +329,9 @@ export default function TabsSlider() {
             </Swiper> */}
           </div>
         </div>
+        <Link className="TabsSlider-btn btn" to={siteRoutes.shop}>
+          View Products
+        </Link>
       </div>
     </div>
   )

@@ -3,6 +3,7 @@ import "./About.scss"
 import image from "../copy/img/avatar/diego.jpg"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
+import { scrollTo } from "../utils/utils"
 
 function About(props) {
   return (
@@ -22,7 +23,18 @@ function About(props) {
           </div>
         </div>
         <div className="row about-buttons">
-          <button className="btn  ">Code Snippets</button>
+          <button
+            onClick={() => {
+              const $el = window.document.querySelector(`[id='CodeSnippets']`)
+
+              if ($el) {
+                scrollTo($el, -60)
+              }
+            }}
+            className="btn  "
+          >
+            Code Snippets
+          </button>
           <button className="btn btn--white">Custom Coding</button>
         </div>
       </div>

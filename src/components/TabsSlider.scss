@@ -3,6 +3,13 @@
 [id] .TabsSlider {
   position: relative;
 
+  .TabsSlider-main-subtitle {
+    @media (min-width: $xs) {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+
   .TabsSlider-container {
     display: flex;
     align-items: center;
@@ -49,6 +56,16 @@
     }
   }
 
+  .TabsSlider-btn {
+    margin-top: 20px;
+
+    @media (max-width: $xs) {
+      margin: 0 auto;
+      margin-top: 20px;
+      display: block;
+      width: fit-content;
+    }
+  }
   .TabsSlider-title {
     font-weight: bold;
     font-size: 20px;
