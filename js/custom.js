@@ -169,19 +169,6 @@ ezfy = (function () {
     )
   }
 
-  function _loadStyle(src) {
-    return new Promise(function (resolve, reject) {
-      let link = document.createElement("link")
-      link.href = src
-      link.rel = "stylesheet"
-
-      link.onload = () => resolve(link)
-      link.onerror = () => reject(new Error(`Style load error for ${src}`))
-
-      document.head.append(link)
-    })
-  }
-
   function lazyLoadImages() {
     let images = document.querySelectorAll("img.lazyload")
     lazyload(images)
@@ -207,8 +194,28 @@ ezfy = (function () {
     lazyload($images)
   }
 
+  function loadFlickity() {
+    if (window.hasOwnProperty("loadedFlickity")) {
+      return true
+    }
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        await _loadScript(
+          `https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js`
+        )
+      } catch (err) {
+        // await loadLocalFlickity()
+      }
+
+      window["loadedFlickity"] = true
+
+      resolve(true)
+    })
+  }
+
   function lazyLoadVideos() {
-    var lazyVideos = [].slice.call(document.querySelectorAll("video"))
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"))
 
     if ("IntersectionObserver" in window) {
       var lazyVideoObserver = new IntersectionObserver(function (
@@ -223,12 +230,20 @@ ezfy = (function () {
                 typeof videoSource.tagName === "string" &&
                 videoSource.tagName === "SOURCE"
               ) {
-                videoSource.src = videoSource.dataset.src
+                videoSource.src = video.target.getAttribute("data-src")
               }
             }
 
+            const src = video.target.getAttribute("data-src")
+
+            if (!src) {
+              return
+            }
+
             // console.log("me")
-            // video.target.load();
+            // debugger
+            video.target.setAttribute("src", src)
+            video.target.load()
             video.target.play()
             video.target.classList.remove("lazy")
             lazyVideoObserver.unobserve(video.target)
@@ -690,6 +705,8 @@ ezfy = (function () {
     loadEcwidScript: loadEcwidScript,
     forceHrefLinkOnFirefox: forceHrefLinkOnFirefox,
     forceLazyload: forceLazyload,
+    loadFlickity: loadFlickity,
+    lazyLoadVideos: lazyLoadVideos,
 
     initServices: () => {
       readMoreForServices()
