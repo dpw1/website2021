@@ -58,7 +58,9 @@ export default function Announcement() {
           to={`${siteRoutes.shop}?source=announcement`}
         >
           <span>
-            <u>Premium copy/paste code snippets - 25% OFF!</u>
+            <u>
+              Premium copy/paste code snippets - <b>30%</b> OFF!
+            </u>
           </span>
           <svg
             className="Announcement-arrow"

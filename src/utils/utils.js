@@ -655,11 +655,12 @@ export const discounts = [
     amount: `20%`,
     coupon: "DVJTI5KV1I85",
   },
+
   {
     quantity: 3,
-    percentage: 25,
-    amount: `25%`,
-    coupon: "VN0NUNXI74DV",
+    percentage: 30,
+    amount: `30%`,
+    coupon: "8OMNVUPW20ZH",
   },
 ]
 
