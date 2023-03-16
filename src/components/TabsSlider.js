@@ -105,7 +105,7 @@ export default function TabsSlider() {
     handleChange(slider)
   }
 
-  function makeSubtitleVisible($el) {
+  function makeSubtitleVisibleByIndex(index = 0) {
     /* Close all other subtitles */
     const $active = document.querySelector(`.TabsSlider-tab--active`)
 
@@ -115,7 +115,10 @@ export default function TabsSlider() {
     }
 
     /* Make current subtitle visible */
-    const $parent = $el.closest(`.TabsSlider-tab`)
+    const $parent = document.querySelector(
+      `.TabsSlider-tab:nth-child(${index + 1})`
+    )
+
     const $subtitle = $parent.querySelector(`.TabsSlider-subtitle`)
 
     const height = $subtitle.querySelector(`*`).offsetHeight
@@ -186,9 +189,15 @@ export default function TabsSlider() {
 
   function handleChange($slider) {
     $slider.on("change", function (index) {
-      console.log("play video index", index)
       pauseAndResetAllVideos()
       playVideoByIndex(index)
+
+      const $tab = document.querySelector(
+        `.TabsSlider-tab[data-index="${index}"]`
+      )
+      if ($tab) {
+        $tab.click()
+      }
     })
   }
 
@@ -201,8 +210,6 @@ export default function TabsSlider() {
 
       initFlickty()
       checkVisibility()
-
-      document.addEventListener("DOMContentLoaded", function () {})
 
       //** page load
       window.addEventListener("load", function () {
@@ -230,8 +237,8 @@ export default function TabsSlider() {
             <div className="section-heading text-center">
               <h2>High Quality Customizations one Click Away</h2>
               <p className="TabsSlider-main-subtitle d-sm-block mt-4">
-                We're an expert dev team working to deliver top notch quality
-                customizations without the waiting time.
+                The easiest and most accessible way to enhance your theme with
+                top notch quality code.
               </p>
             </div>
           </div>
@@ -249,7 +256,7 @@ export default function TabsSlider() {
                       return
                     }
 
-                    makeSubtitleVisible(e.target)
+                    makeSubtitleVisibleByIndex(i)
 
                     window.tabsSliderFlickity.select(i, false, false)
                   }}
