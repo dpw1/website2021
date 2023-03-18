@@ -262,7 +262,7 @@
     width: 27px;
     height: 27px;
     @media (min-width: $xs) {
-      display: none;
+      // display: none;
     }
   }
 
@@ -278,5 +278,29 @@
     @media (max-width: $xs) {
       display: block;
     }
+  }
+
+  .TabsSlider-btn-wrapper {
+    display: flex;
+  }
+}
+
+/* Right
+================== */
+
+.TabsSlider--right {
+  .TabsSlider-container {
+    flex-direction: row-reverse;
+  }
+
+  .TabsSlider-content {
+    @media (min-width: $xs) {
+      margin-left: 0 !important;
+      margin-right: 30px;
+    }
+  }
+
+  .TabsSlider-btn-wrapper {
+    justify-content: flex-end;
   }
 }

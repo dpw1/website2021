@@ -37,7 +37,7 @@ function About(props) {
           </button>
           <button
             onClick={() => {
-              const $el = window.document.querySelector(`[id='contact']`)
+              const $el = window.document.querySelector(`[id='custom-coding']`)
 
               if ($el) {
                 scrollTo($el, -60)
