@@ -1,0 +1,62 @@
+@import "../css/variables";
+
+.PromoBar {
+  background-color: #f5f5f5;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  @media (max-width: $xs) {
+    display: none !important;
+  }
+
+  &--visible {
+    display: block;
+  }
+
+  $close-button-size: 22px;
+
+  .PromoBar-close {
+    cursor: pointer;
+    border: 1px solid #c4c4c4;
+    border-radius: 50%;
+    height: $close-button-size;
+    width: $close-button-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+
+    & > * {
+      height: #{$close-button-size / 1.95} !important;
+      width: #{$close-button-size / 1.95} !important;
+      display: block;
+    }
+  }
+
+  .PromoBar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 0 10px;
+    overflow: hidden;
+  }
+
+  .PromoBar-button {
+    margin-left: 20px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .PromoBar-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .PromoBar-subtitle {
+    font-size: 14px;
+  }
+}

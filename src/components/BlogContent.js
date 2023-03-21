@@ -17,6 +17,7 @@ import PostsSidebar from "./PostsSidebar"
 
 import { renderGistsDynamically } from "./../utils/utils"
 import { sleep } from "../../global-utils"
+import BlogPromoBar from "./BlogPromoBar"
 
 const readingTime = require("reading-time")
 
@@ -31,7 +32,7 @@ const BlogContent = props => {
   //   // window.location = window.location.origin;
   // }
 
-  console.log("ppp", post)
+  console.log("ppp", props)
 
   let date = `${formatDate(post.date)}`
   const title = post.title.rendered
@@ -53,15 +54,14 @@ const BlogContent = props => {
   }, [])
 
   async function showProductsRelatedToBlog(post) {
-    //const products = await getEcwidProducts()
-
-    let all = []
+    let productTags = []
 
     const blogTags = post.tag_names.map(e => {
       return e.toLowerCase().replace("theme", "").trim()
     })
 
-    const productTags = productPromos.map(e => {
+    // Gets all product tags
+    productPromos.map(e => {
       const tags = e.tags.map(e =>
         e
           .toLowerCase()
@@ -77,23 +77,11 @@ const BlogContent = props => {
       )
 
       if (filtered && filtered.length >= 1) {
-        all.push([...tags])
+        productTags.push([...tags])
       }
-
-      // const filtered = blogTags.filter(value => {
-      //   if (
-      //     tags.includes(value) ||
-      //     tags.includes("app functionality") ||
-      //     tags.includes("all themes")
-      //   ) {
-      //     return value
-      //   }
-      // })
-
-      // console.log("xx my tags", tags)
     })
 
-    const _result = all
+    const _result = productTags
       .map(e => {
         var isRemovable = e.filter(x =>
           x.match(
@@ -112,7 +100,9 @@ const BlogContent = props => {
 
     const result = [...new Set(_result)]
 
-    console.log("xx all tags", result)
+    const products = await getEcwidProducts()
+
+    console.log("xx - blog tags", result, products)
   }
 
   return (
@@ -279,6 +269,7 @@ const BlogContent = props => {
           </div>
         </div>
       </section>
+      <BlogPromoBar></BlogPromoBar>
     </React.Fragment>
   )
 }

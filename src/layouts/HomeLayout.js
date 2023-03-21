@@ -137,7 +137,7 @@ const HomeLayout = props => {
       <TabsSlider
         title={"High Quality Customizations one Click Away"}
         subtitle={`The easiest and most accessible way to enhance your theme with top notch quality code.`}
-        link={siteRoutes.shop}
+        link={`${siteRoutes.shop}?source=homepage-tabs`}
         tabs={codeSnippetsTabs}
         alignment={"left"}
       ></TabsSlider>
@@ -151,9 +151,12 @@ const HomeLayout = props => {
         additionalClass={"bg-gray"}
         buttonText={"Request a Quote"}
       ></TabsSlider>
+      <ReviewsText></ReviewsText>
 
       {/* <Features> </Features> */}
-      {/* <ProductShowcase
+
+      <BlogShowcase isHomePage={true} posts={props.posts}></BlogShowcase>
+      <ProductShowcase
         subtitle={`Simple, affordable and high quality copy-paste code snippets for
         your Shopify theme. <br /> Pay once, use forever - no monthly fees.`}
         chosenProducts={[
@@ -162,12 +165,10 @@ const HomeLayout = props => {
           "Anti Theft - Disable Right Click",
         ]}
         page="home"
-      ></ProductShowcase> */}
-      <BlogShowcase isHomePage={true} posts={props.posts}></BlogShowcase>
-      <ReviewsText></ReviewsText>
+      ></ProductShowcase>
       <Parallax
-        title="In need of coding help for your Shopify store?"
-        subtitle={`Let us know what you need, we'll get back to you within 24 hours.`}
+        title="Not finding what you need?"
+        subtitle={`Let us know how we can help you out! We'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
       ></Parallax>
 

@@ -408,6 +408,13 @@ export function _waitForElement(selector, delay = 50, tries = 250) {
 
 export function getEcwidProducts() {
   return new Promise(async (resolve, reject) => {
+    if (
+      window.hasOwnProperty("ecwidProducts") &&
+      window.ecwidProducts &&
+      window.ecwidProducts.length >= 1
+    ) {
+      resolve(window.ecwidProducts)
+    }
     const { data: ecwidProducts } = await axios.get(
       `https://app.ecwid.com/api/v3/61271341/products?token=public_iNxZWDXrKMZrzGkdBWk3fvcfaJhBVgcm`
     )
@@ -415,6 +422,8 @@ export function getEcwidProducts() {
     const _products = await globalUtils.sanitizeEcwidProducts(
       ecwidProducts.items
     )
+
+    window.ecwidProducts = _products
 
     resolve(_products)
   })
