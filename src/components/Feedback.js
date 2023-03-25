@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react"
-import { setCookie, getCookie, scrollToImmediate, sleep } from "../utils/utils"
-import getBrowserFingerprint from "get-browser-fingerprint"
+import {
+  setCookie,
+  getCookie,
+  scrollToImmediate,
+  sleep,
+  isBrowser,
+  getCountry,
+  getBrowserFingerprint,
+} from "../utils/utils"
+
 import Skeleton from "react-loading-skeleton"
+import confetti from "canvas-confetti"
 
 import "./Feedback.scss"
 import { flatten } from "./../utils/utils"
@@ -77,6 +86,7 @@ export default function Feedback(props) {
             content,
             fingerprint,
             answer,
+            country: getCountry(),
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -202,7 +212,7 @@ export default function Feedback(props) {
           className="Feedback-textarea"
         ></textarea>
         <button
-          disabled={feedbackText.length <= 1 || completed}
+          disabled={feedbackText.length <= 1}
           onClick={async () => {
             setLoading(true)
             setSubmitText("Submitting...")
@@ -210,9 +220,14 @@ export default function Feedback(props) {
             await postFeedbackText(feedbackText)
 
             setLoading(false)
-            setSubmitText("Thank you!")
+            setSubmitText("Thanks!")
             setCookie(COOKIE_NAME, "voted", 7)
             setCompleted(true)
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { y: 0.6 },
+            })
           }}
           className="Feedback-submit btn"
         >

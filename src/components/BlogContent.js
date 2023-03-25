@@ -8,6 +8,7 @@ import {
   formatDate,
   getEcwidProducts,
   getWordpressImageBiggestSize,
+  isBrowser,
   productPromos,
 } from "../utils/utils"
 import BlogBreadcrumb from "./BlogBreadcrumb"
