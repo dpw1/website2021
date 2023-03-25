@@ -34,6 +34,7 @@ export default function Feedback(props) {
     const cookie = getCookie(COOKIE_NAME)
 
     if (!cookie) {
+      await sleep(10000)
       setIsVisible(true)
       return
     }
@@ -128,13 +129,22 @@ export default function Feedback(props) {
   return (
     <div
       className={`Feedback
-      
+      Feedback--${props.type}
       ${completed ? "Feedback--completed" : ""}
       ${loading ? "Feedback--loading" : ""}
       ${clicked ? "Feedback--clicked" : ""}
-      ${isVisible ? "Feedback--visible" : ""}
+      ${isVisible ? "" : "Feedback--invisible"}
       `}
     >
+      <span
+        onClick={() => {
+          setIsVisible(false)
+          setCookie(COOKIE_NAME, "closed", 1)
+        }}
+        className="Feedback-close"
+      >
+        X
+      </span>
       <p className="Feedback-title">{text}</p>
 
       <div className="Feedback-buttons">
@@ -220,7 +230,8 @@ export default function Feedback(props) {
             await postFeedbackText(feedbackText)
 
             setLoading(false)
-            setSubmitText("Thanks!")
+            setText("Thanks for your feedback!")
+            setSubmitText("All done :)")
             setCookie(COOKIE_NAME, "voted", 7)
             setCompleted(true)
             confetti({

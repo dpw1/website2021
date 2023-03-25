@@ -13,6 +13,7 @@ import Parallax from "../components/Parallax"
 import parse from "html-react-parser"
 import { SEO } from "./../components/SEO"
 import ProductShowcase from "./../components/ProductShowcase"
+import BlogShowcase from "./../components/BlogShowcase"
 
 const BlogPostLayout = props => {
   const [url, setUrl] = useState("")
@@ -45,8 +46,14 @@ const BlogPostLayout = props => {
       ></SEO>
       <Header page={"blog"}></Header>
       <BlogContent post={post}></BlogContent>
+      <BlogShowcase
+        title={"You may also like"}
+        subtitle={"Here are some other blog posts you may be interested in."}
+        page={"blogpost"}
+        post={post}
+      ></BlogShowcase>
+
       <ProductShowcase
-        backgroundColor="gray"
         chosenProducts={[
           "Dawn Theme Slider (PRO)",
           "Slideshow Section (PRO)",

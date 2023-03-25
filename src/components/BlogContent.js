@@ -20,6 +20,7 @@ import { renderGistsDynamically } from "./../utils/utils"
 import { sleep } from "../../global-utils"
 import BlogPromoBar from "./BlogPromoBar"
 import Feedback from "./Feedback"
+import Advertise from "./Advertise"
 
 const readingTime = require("reading-time")
 
@@ -119,7 +120,7 @@ const BlogContent = props => {
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
               <aside className="sidebar">
                 {/* Single Widget */}
-                <PostsSidebar
+                <Advertise
                   advertisement={{
                     title: `Replace apps with code snippets.`,
                     image: `https://media0.giphy.com/media/WvvzxI0VWF8kVo4olS/giphy.gif`,
@@ -131,9 +132,12 @@ const BlogContent = props => {
                       "Pay once use forever",
                     ],
                   }}
+                ></Advertise>
+                {/* <PostsSidebar
+                 
                   id={post.id}
                   tags={post.tag_names}
-                ></PostsSidebar>
+                ></PostsSidebar> */}
               </aside>
             </div>
             <div className="blog-content-block col-12 col-lg-9">
@@ -197,7 +201,7 @@ const BlogContent = props => {
                     </figure>
                     <div className="blog-text">
                       {cleanDescription(post.content.rendered)}
-                      <Feedback></Feedback>
+                      <Feedback type="mobile"></Feedback>
                     </div>
                   </div>
 
@@ -272,7 +276,8 @@ const BlogContent = props => {
           </div>
         </div>
       </section>
-      <BlogPromoBar></BlogPromoBar>
+      {/* <BlogPromoBar></BlogPromoBar> */}
+      <Feedback type="desktop"></Feedback>
     </React.Fragment>
   )
 }

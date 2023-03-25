@@ -85,6 +85,7 @@ function Tags(props) {
     updateItemsWithNewTag(tag)
     removeQueryParameters()
     window.ezfy.forceLazyload()
+
     // setTagChosen(tag)
   }
 

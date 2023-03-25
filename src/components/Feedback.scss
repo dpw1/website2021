@@ -1,15 +1,50 @@
 @import "../css/variables";
 
 .Feedback {
-  display: block;
   background: #e9e9e94f;
   padding: 20px;
   border-radius: $border-radius;
   margin-top: 0px;
-  display: none;
+
+  &.Feedback--desktop {
+    @media (max-width: $xs) {
+      display: none;
+    }
+    @media (min-width: $xs) {
+      display: flex;
+    }
+
+    z-index: 9;
+    background: white;
+    position: fixed;
+    overflow: auto;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid rgb(145, 151, 159);
+    border-radius: 3px;
+    max-width: 234px;
+    min-height: 130px;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &.Feedback--mobile {
+    @media (min-width: $xs) {
+      display: none;
+    }
+    @media (max-width: $xs) {
+      display: block;
+    }
+  }
+
+  &.Feedback--invisible {
+    display: none;
+  }
 
   &--completed {
-    * {
+    *:not(.Feedback-close) {
       pointer-events: none;
     }
   }
@@ -22,8 +57,13 @@
     }
   }
 
-  &--visible {
-    display: block;
+  .Feedback-close {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    cursor: pointer;
+    transform: scale(1.1);
+    width: auto;
   }
 
   .Feedback-title {
@@ -40,7 +80,7 @@
 
   .Feedback-submit {
     margin-top: 20px;
-    width: fit-content;
+    width: 100%;
   }
 
   .Feedback-textarea {

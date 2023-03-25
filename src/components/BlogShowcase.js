@@ -7,10 +7,12 @@ import { useQueryParam, NumberParam } from "use-query-params"
 import { siteRoutes } from "./../utils/siteRoutes"
 import Search from "./Search"
 import Tags from "./Tags"
+
 import {
   cleanDescription,
   isThereCurrentActiveTag,
   resetImagesOnSearch,
+  shuffle,
 } from "../utils/utils"
 
 const readingTime = require("reading-time")
@@ -37,7 +39,6 @@ const BlogItem = props => {
   let url = `/blog/${slug}`
   const imagealt = props.data.image_alt
   const tags = tag_names.map(e => e.toLowerCase()).join(";")
-
   const time = readingTime(content).text
 
   return (
@@ -105,7 +106,9 @@ const BlogItem = props => {
 }
 
 const BlogShowcase = props => {
-  let { postsPerPage, totalPosts, isHomePage, page: currentPage } = props
+  let { postsPerPage, totalPosts, isHomePage, page: currentPage, post } = props
+
+  const blogPostPageLimit = 6
 
   let { nodes: data } = useStaticQuery(graphql`
     query BlogsQuery {
@@ -133,63 +136,75 @@ const BlogShowcase = props => {
   }
 
   const [isSearching, setIsSearching] = useState(false)
-
-  const [page, setPage] = useQueryParam("page", NumberParam)
-  const [posts, setPosts] = useState(null)
-
-  const totalPages = Math.ceil(sortedData.length / postsPerPage)
-
-  const scrollToBlogStart = () => {
-    /* force lazyload */
-    window.ezfy.forceLazyload()
-
-    setTimeout(
-      () => window.document.querySelector(".row--first").scrollIntoView(),
-      200
-    )
-  }
-
-  const organizePosts = () => {
-    if (totalPosts) {
-      return setPosts(sortedData.slice(0, totalPosts))
-    }
-
-    if (!page && _isBlogPage()) {
-      setPage(1)
-    }
-
-    if (postsPerPage) {
-      return setPosts(
-        sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
-      )
-    }
-
-    return setPosts(sortedData)
-  }
-
-  const populateWithPostsForThisPage = () => {
-    if (totalPosts) {
-      return setPosts(sortedData.slice(0, totalPosts))
-    }
-
-    return setPosts(
-      sortedData.slice((page - 1) * postsPerPage, page * postsPerPage)
-    )
-  }
+  const [posts, setPosts] = useState([])
+  const [randomPosts, setRandomPposts] = useState([])
 
   useEffect(() => {
     if (isHomePage) {
       return setPosts(sortedData.slice(0, 3))
     }
-    setPosts(sortedData)
 
-    console.log("axe            - ", isHomePage)
-    // organizePosts()
+    if (_isBlogPage()) {
+      setPosts(sortedData)
+    }
   }, [sortedData])
 
   useEffect(() => {
-    // populateWithPostsForThisPage()
-  }, [page])
+    if (currentPage === "blogpost") {
+      setPosts(randomPosts.slice(0, blogPostPageLimit))
+    }
+  }, [randomPosts])
+
+  useEffect(() => {
+    ;(async () => {
+      const getPosts = async () => {
+        const _posts = sortedData
+        const tags = post.tag_names
+        /* gets all post with same tag */
+
+        let filtered
+        let _filtered = _posts
+          .map(e => {
+            const res = e.tag_names.filter(x => tags.includes(x))
+
+            if (res.length > 0) {
+              return e
+            }
+          })
+          .filter(x => x !== undefined)
+
+        /* If there are not enough tags, return "all themes" as well */
+        if (_filtered.length < blogPostPageLimit) {
+          const _all = _posts
+            .map(e => {
+              const res = e.tag_names.filter(x => x.includes("all themes"))
+
+              console.log(e)
+              if (res.length > 0 || res) {
+                return e
+              }
+            })
+            .filter(x => x !== undefined)
+          const all = shuffle(_all).slice(
+            0,
+            blogPostPageLimit - _filtered.length
+          )
+
+          _filtered = [..._filtered, ...all]
+        }
+
+        filtered = shuffle(_filtered).slice(0, blogPostPageLimit)
+
+        console.log("random posts filter", filtered)
+
+        setRandomPposts(filtered)
+      }
+
+      if (currentPage === "blogpost") {
+        getPosts()
+      }
+    })()
+  }, [])
 
   useEffect(() => {
     if (!posts) {
@@ -228,28 +243,34 @@ const BlogShowcase = props => {
   return (
     <section
       id="blogShowcase"
-      className="section blog-area blog-showcase ptb_50 bg-gray"
+      className={`section blog-area blog-showcase ptb_50
+      ${props.backgroundColor === "white" ? "" : "bg-gray"}
+      `}
     >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-7">
             {/* Section Heading */}
             <div className="section-heading text-center">
-              <h2 className="text-capitalize">Blog</h2>
+              <h2 className="text-capitalize">
+                {props.title ? props.title : "Blog"}
+              </h2>
               <p className="d-sm-block mt-4">
-                Check our latest tips, tricks, articles and insights for the
-                Shopify realm.
+                {props.subtitle
+                  ? props.subtitle
+                  : `Check our latest tips, tricks, articles and insights for the
+                Shopify realm.`}
               </p>
             </div>
           </div>
         </div>
         {_isBlogPage() && (
           <React.Fragment>
-            <Tags
+            {/* <Tags
               data={sortedData}
               updateData={setPosts}
               tagKeyName="tag_names"
-            ></Tags>
+            ></Tags> */}
             <Search
               type="blog"
               data={sortedData}
