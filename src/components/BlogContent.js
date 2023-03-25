@@ -18,6 +18,7 @@ import PostsSidebar from "./PostsSidebar"
 import { renderGistsDynamically } from "./../utils/utils"
 import { sleep } from "../../global-utils"
 import BlogPromoBar from "./BlogPromoBar"
+import Feedback from "./Feedback"
 
 const readingTime = require("reading-time")
 
@@ -195,6 +196,7 @@ const BlogContent = props => {
                     </figure>
                     <div className="blog-text">
                       {cleanDescription(post.content.rendered)}
+                      <Feedback></Feedback>
                     </div>
                   </div>
 

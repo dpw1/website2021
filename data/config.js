@@ -5,7 +5,7 @@ const config = {
   siteTitleShort: "EZFY | Shopify Partner",
   siteImage:
     "https://www.ezfy.club/wp-content/uploads/2020/11/ezfy-logo-original.png",
-  googleAnalyticsID: "UA-112401482-2",
+  googleAnalyticsID: "G-9MMTLWEN98",
   siteUrl: "https://ezfycode.com",
 }
 

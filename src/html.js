@@ -19,6 +19,7 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+
         <link rel="icon" href={withPrefix("favicon.ico")} type="image/x-icon" />
 
         {props.headComponents}
@@ -55,6 +56,14 @@ export default function HTML(props) {
         }
 
         <Loader></Loader>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TR7HFTW"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
       </body>
     </html>
   )

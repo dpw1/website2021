@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { setCookie, getCookie } from "../utils/utils"
+import { setCookie, getCookie, scrollToImmediate } from "../utils/utils"
 
 import "./BlogPromoBar.scss"
 
@@ -60,7 +60,20 @@ export default function BlogPromoBar() {
             us.
           </p>
         </div>
-        <a href="#contact" className="PromoBar-button btn buy-now-button">
+        <a
+          onClick={() => {
+            try {
+              scrollToImmediate(
+                document.querySelector(`#contact #contact-form button`)
+              )
+
+              const $form = document.querySelector(`[type="email"]`)
+              $form.focus()
+            } catch (err) {}
+          }}
+          href="#"
+          className="PromoBar-button btn buy-now-button"
+        >
           Request a Quote
         </a>
       </div>

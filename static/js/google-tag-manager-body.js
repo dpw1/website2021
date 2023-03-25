@@ -12,8 +12,6 @@
 //   f.parentNode.insertBefore(j, f)
 // })(window, document, "script", "dataLayer", "GTM-TR7HFTW")
 
-alert("within")
-console.log("loaded")
 ;(function (w, d, s, l, i) {
   w[l] = w[l] || []
   w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
