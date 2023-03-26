@@ -170,7 +170,9 @@ ezfy = (function () {
   }
 
   function lazyLoadImages() {
-    let images = document.querySelectorAll("img.lazyload")
+    let images = document.querySelectorAll(
+      "img.lazyload, img[class*='wp-image-']"
+    )
     lazyload(images)
   }
 

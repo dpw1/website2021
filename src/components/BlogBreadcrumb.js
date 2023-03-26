@@ -19,12 +19,7 @@ const BlogBreadcrumb = props => {
     post ? "contain" : "cover"
   }`
   return (
-    <section
-      className="section blog-breadcrumb breadcrumb-area bg-overlay d-flex align-items-center"
-      style={{
-        background,
-      }}
-    >
+    <section className="section blog-breadcrumb breadcrumb-area bg-overlay d-flex align-items-center">
       <div className="container">
         <div className="row">
           <div className="col-12">

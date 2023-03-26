@@ -27,14 +27,14 @@ export default function Advertise(props) {
           <img
             data-v-c1b39a62
             data-v-66b79341
-            src="https://www.ezfy.club/wp-content/uploads/2022/01/cute-flower-x.png"
-            className="zyro-image trial-popup__bg-figure trial-popup__bg-figure--top ls-is-cached lazyload"
+            data-src="https://www.ezfy.club/wp-content/uploads/2022/01/cute-flower-x.png"
+            className="lazyload zyro-image trial-popup__bg-figure trial-popup__bg-figure--top ls-is-cached lazyload"
           />
           <img
             data-v-c1b39a62
             data-v-66b79341
-            src="https://www.ezfy.club/wp-content/uploads/2022/01/cute-flower-1.png"
-            className="zyro-image trial-popup__bg-figure trial-popup__bg-figure--bottom lazyload"
+            data-src="https://www.ezfy.club/wp-content/uploads/2022/01/cute-flower-1.png"
+            className="lazyload zyro-image trial-popup__bg-figure trial-popup__bg-figure--bottom lazyload"
           />
           <div
             data-v-66b79341

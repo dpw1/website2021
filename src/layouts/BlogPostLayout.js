@@ -1,8 +1,8 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { Component, useState, useEffect, Suspense } from "react"
 
 import Header from "../components/Header"
 
-import Contact from "../components/Contact"
+// import Contact from "../components/Contact"
 import Footer from "../components/Footer"
 
 import sanitizeHtml from "sanitize-html"
@@ -14,6 +14,8 @@ import parse from "html-react-parser"
 import { SEO } from "./../components/SEO"
 import ProductShowcase from "./../components/ProductShowcase"
 import BlogShowcase from "./../components/BlogShowcase"
+
+const Contact = React.lazy(() => import("../components/Contact"))
 
 const BlogPostLayout = props => {
   const [url, setUrl] = useState("")
@@ -61,12 +63,15 @@ const BlogPostLayout = props => {
         ]}
         page="home"
       />
+
       <Parallax
         title="Do you need something different?"
         subtitle={`If the tutorial above is not what you're looking for, please let us know what you need. We'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
       ></Parallax>
-      <Contact></Contact>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Contact></Contact>
+      </Suspense>
       <Footer page={"blog"}></Footer>
     </React.Fragment>
   )

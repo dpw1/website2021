@@ -3789,6 +3789,7 @@ export const cleanDescription = desc => {
   var regex = /\[gist\](.*?)\[gist\]/g
   let m
 
+  /* Add gist */
   while ((m = regex.exec(description)) !== null) {
     if (m.index === regex.lastIndex) {
       regex.lastIndex++
@@ -3803,6 +3804,9 @@ export const cleanDescription = desc => {
       )
     })
   }
+
+  description = description.replaceAll("src=", "data-src=")
+  description = description.replaceAll("srcset=", "data-srcset=")
 
   return parse(description)
 }

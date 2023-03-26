@@ -34,7 +34,7 @@ export default function Feedback(props) {
     const cookie = getCookie(COOKIE_NAME)
 
     if (!cookie) {
-      await sleep(10000)
+      await sleep(5000)
       setIsVisible(true)
       return
     }

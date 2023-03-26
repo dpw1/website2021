@@ -20,91 +20,6 @@ const readingTime = require("reading-time")
 // const PAGINATION_BUTTONS = 3
 // posts per page is defined via props
 
-const BlogItem = props => {
-  let {
-    // date: _date,
-    slug,
-    featured_image_src: image,
-    excerpt,
-    title,
-    tag_names,
-    content,
-    isSearching,
-    isTagActive,
-  } = props.data
-
-  let description = excerpt
-  title = parse(title)
-
-  let url = `/blog/${slug}`
-  const imagealt = props.data.image_alt
-  const tags = tag_names.map(e => e.toLowerCase()).join(";")
-  const time = readingTime(content).text
-
-  return (
-    <div data-blog-tags={tags} className="col-12 col-md-6 col-lg-4 blog-item">
-      <article className="single-blog res-margin">
-        <Link className="linked" to={url}>
-          <figure className="aspect-ratio blog-thumb">
-            <img
-              className="lazyload"
-              src={isSearching || isThereCurrentActiveTag() ? image : ""}
-              data-src={image}
-              alt={imagealt && imagealt.length >= 1 ? imagealt : title}
-            />
-          </figure>
-        </Link>
-
-        <div className="blog-content p-4">
-          <ul className="meta-info d-flex justify-content-between blog-content-info">
-            <li className="d-inline-block p-2 blog-content-info--time">
-              <svg
-                className="blog-content-info-svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 14 14"
-              >
-                <g>
-                  <circle
-                    cx={7}
-                    cy={7}
-                    r="6.5"
-                    style={{
-                      fill: "none",
-                      stroke: "#000000",
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                    }}
-                  />
-                  <polyline
-                    points="7 4.5 7 7 9.54 9.96"
-                    style={{
-                      fill: "none",
-                      stroke: "#000000",
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                    }}
-                  />
-                </g>
-              </svg>
-
-              <span className="blog-content-info-length">{time}</span>
-            </li>
-          </ul>
-          {/* Blog Title */}
-          <h3 className="blog-title my-3">
-            <Link to={url}>{title}</Link>
-          </h3>
-          <div>{parse(description)}</div>
-
-          <Link to={url} className="blog-btn mt-3">
-            Read More
-          </Link>
-        </div>
-      </article>
-    </div>
-  )
-}
-
 const BlogShowcase = props => {
   let { postsPerPage, totalPosts, isHomePage, page: currentPage, post } = props
 
@@ -216,13 +131,17 @@ const BlogShowcase = props => {
     console.log("we have x posts  ", posts.length)
 
     setTimeout(() => {
-      if (window.ezfy) {
+      if (window.ezfy && currentPage !== "blogpost") {
         window.ezfy.init()
       }
     }, 50)
   }, [posts])
 
   useEffect(() => {
+    if (currentPage === "blogpost") {
+      return
+    }
+
     console.log("searching? ", isSearching)
 
     if (isSearching) {
@@ -288,6 +207,7 @@ const BlogShowcase = props => {
                   isSearching={isSearching}
                   key={i}
                   data={data}
+                  currentPage={currentPage}
                 ></BlogItem>
               ))
             : "Retrieving blog posts, please wait..."}
@@ -309,6 +229,96 @@ const BlogShowcase = props => {
         </div>
       </div>
     </section>
+  )
+}
+
+const BlogItem = props => {
+  let {
+    // date: _date,
+    slug,
+    featured_image_src: image,
+    excerpt,
+    title,
+    tag_names,
+    content,
+    isSearching,
+    isTagActive,
+  } = props.data
+
+  let description = excerpt
+  title = parse(title)
+
+  let url = `/blog/${slug}`
+  const imagealt = props.data.image_alt
+  const tags = tag_names.map(e => e.toLowerCase()).join(";")
+  const time = readingTime(content).text
+
+  return (
+    <div data-blog-tags={tags} className="col-12 col-md-6 col-lg-4 blog-item">
+      <article className="single-blog res-margin">
+        <Link className="linked" to={url}>
+          <figure className="aspect-ratio blog-thumb">
+            <img
+              className="lazyload"
+              src={
+                (isSearching && props.currentPage !== "blogpost") ||
+                isThereCurrentActiveTag()
+                  ? image
+                  : ""
+              }
+              data-src={image}
+              alt={imagealt && imagealt.length >= 1 ? imagealt : title}
+            />
+          </figure>
+        </Link>
+
+        <div className="blog-content p-4">
+          <ul className="meta-info d-flex justify-content-between blog-content-info">
+            <li className="d-inline-block p-2 blog-content-info--time">
+              <svg
+                className="blog-content-info-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 14 14"
+              >
+                <g>
+                  <circle
+                    cx={7}
+                    cy={7}
+                    r="6.5"
+                    style={{
+                      fill: "none",
+                      stroke: "#000000",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                    }}
+                  />
+                  <polyline
+                    points="7 4.5 7 7 9.54 9.96"
+                    style={{
+                      fill: "none",
+                      stroke: "#000000",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                    }}
+                  />
+                </g>
+              </svg>
+
+              <span className="blog-content-info-length">{time}</span>
+            </li>
+          </ul>
+          {/* Blog Title */}
+          <h3 className="blog-title my-3">
+            <Link to={url}>{title}</Link>
+          </h3>
+          <div>{parse(description)}</div>
+
+          <Link to={url} className="blog-btn mt-3">
+            Read More
+          </Link>
+        </div>
+      </article>
+    </div>
   )
 }
 
