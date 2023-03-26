@@ -3805,8 +3805,10 @@ export const cleanDescription = desc => {
     })
   }
 
-  description = description.replaceAll("src=", "data-src=")
-  description = description.replaceAll("srcset=", "data-srcset=")
+  if (description && description === "string") {
+    description = description.replaceAll("src=", "data-src=")
+    description = description.replaceAll("srcset=", "data-srcset=")
+  }
 
   return parse(description)
 }

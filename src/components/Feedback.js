@@ -34,8 +34,9 @@ export default function Feedback(props) {
     const cookie = getCookie(COOKIE_NAME)
 
     if (!cookie) {
-      await sleep(5000)
-      setIsVisible(true)
+      setTimeout(() => {
+        setIsVisible(true)
+      }, 7500)
       return
     }
 
@@ -49,9 +50,12 @@ export default function Feedback(props) {
 
   async function checkIfRepeatedUser() {
     return new Promise(async (resolve, reject) => {
+      console.log("xx checking if repeated BEFRE...")
       const response = await fetch(
         "https://www.ezfy.club/json/ezfy/v1/feedback"
       )
+
+      console.log("xx checking if repeated...")
 
       const _feedbacks = await response.json()
 

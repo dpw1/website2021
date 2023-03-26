@@ -37,6 +37,10 @@
     @media (max-width: $xs) {
       display: block;
     }
+
+    .Feedback-close {
+      display: none;
+    }
   }
 
   &.Feedback--invisible {

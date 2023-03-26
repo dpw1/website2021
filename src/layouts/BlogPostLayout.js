@@ -15,7 +15,8 @@ import { SEO } from "./../components/SEO"
 import ProductShowcase from "./../components/ProductShowcase"
 import BlogShowcase from "./../components/BlogShowcase"
 
-const Contact = React.lazy(() => import("../components/Contact"))
+import { isBrowser } from "./../utils/utils"
+import Contact from "./../components/Contact"
 
 const BlogPostLayout = props => {
   const [url, setUrl] = useState("")
@@ -69,9 +70,9 @@ const BlogPostLayout = props => {
         subtitle={`If the tutorial above is not what you're looking for, please let us know what you need. We'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
       ></Parallax>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Contact></Contact>
-      </Suspense>
+
+      <Contact></Contact>
+
       <Footer page={"blog"}></Footer>
     </React.Fragment>
   )
