@@ -84,6 +84,7 @@
     "react-hook-form": "^6.14.2",
     "react-html-parser": "^2.0.2",
     "react-id-swiper": "^4.0.0",
+    "react-infinite-scroll-hook": "^4.1.1",
     "react-loading-skeleton": "^2.2.0",
     "react-masonry-css": "^1.0.14",
     "react-responsive": "^8.2.0",

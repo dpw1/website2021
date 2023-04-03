@@ -276,7 +276,7 @@ const BlogContent = props => {
           </div>
         </div>
       </section>
-      {/* <BlogPromoBar></BlogPromoBar> */}
+      <BlogPromoBar></BlogPromoBar>
       <Feedback type="desktop"></Feedback>
     </React.Fragment>
   )

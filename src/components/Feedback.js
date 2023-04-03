@@ -74,6 +74,7 @@ export default function Feedback(props) {
 
       console.log("xx repeated user? ", repeated)
       setRepeatedUser(repeated)
+      setIsVisible(false)
     })
   }
 

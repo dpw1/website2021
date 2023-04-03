@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect, Suspense } from "react"
+import { useLocation } from "react-router-dom"
 
 import Header from "../components/Header"
 
@@ -24,7 +25,8 @@ const BlogPostLayout = props => {
   /* This is coming directly from WP, so you have access to all object's values. */
   const post = props.pageContext
 
-  console.log("look at me", post)
+  console.log("look at me", props)
+
   // const slug = post.slug
 
   useEffect(() => {
@@ -49,21 +51,21 @@ const BlogPostLayout = props => {
       ></SEO>
       <Header page={"blog"}></Header>
       <BlogContent post={post}></BlogContent>
+
+      <ProductShowcase
+        chosenProducts={[
+          "Dawn Theme Slider (PRO)",
+          "Slideshow Section (PRO)",
+          "Collections Tabs",
+        ]}
+        page="home"
+      />
       <BlogShowcase
         title={"You may also like"}
         subtitle={"Here are some other blog posts you may be interested in."}
         page={"blogpost"}
         post={post}
       ></BlogShowcase>
-
-      <ProductShowcase
-        chosenProducts={[
-          "Dawn Theme Slider (PRO)",
-          "Slideshow Section (PRO)",
-          "Anti Theft - Disable Right Click",
-        ]}
-        page="home"
-      />
 
       <Parallax
         title="Do you need something different?"

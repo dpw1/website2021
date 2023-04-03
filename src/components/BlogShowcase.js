@@ -46,7 +46,7 @@ const BlogShowcase = props => {
 
   let sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
 
-  const _isBlogPage = () => {
+  const isBlogPage = () => {
     return currentPage === "blog" ? true : false
   }
 
@@ -59,7 +59,7 @@ const BlogShowcase = props => {
       return setPosts(sortedData.slice(0, 3))
     }
 
-    if (_isBlogPage()) {
+    if (isBlogPage()) {
       setPosts(sortedData)
     }
   }, [sortedData])
@@ -72,7 +72,7 @@ const BlogShowcase = props => {
 
   useEffect(() => {
     ;(async () => {
-      const getPosts = async () => {
+      const getPostsAtBlogPostPage = async () => {
         const _posts = sortedData
         const tags = post.tag_names
         /* gets all post with same tag */
@@ -116,7 +116,7 @@ const BlogShowcase = props => {
       }
 
       if (currentPage === "blogpost") {
-        getPosts()
+        getPostsAtBlogPostPage()
       }
     })()
   }, [])
@@ -141,8 +141,6 @@ const BlogShowcase = props => {
     if (currentPage === "blogpost") {
       return
     }
-
-    console.log("searching? ", isSearching)
 
     if (isSearching) {
       setTimeout(() => {
@@ -183,7 +181,7 @@ const BlogShowcase = props => {
             </div>
           </div>
         </div>
-        {_isBlogPage() && (
+        {isBlogPage() && (
           <React.Fragment>
             {/* <Tags
               data={sortedData}

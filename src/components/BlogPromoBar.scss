@@ -6,14 +6,17 @@
   bottom: 0;
   width: 100%;
   z-index: 99;
-  display: none;
+
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  transition: all 0.32s;
+  transform: translateY(200px);
   @media (max-width: $xs) {
-    display: none !important;
   }
 
   &--visible {
     display: block;
+    transform: translateY(0px);
+    transition: all 0.32s;
   }
 
   $close-button-size: 22px;

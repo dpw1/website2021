@@ -11,7 +11,9 @@ export default function BlogPromoBar() {
     const cookie = getCookie(COOKIE_NAME)
 
     if (!cookie) {
-      setIsVisible(true)
+      setTimeout(() => {
+        setIsVisible(true)
+      }, 25000)
     }
   }, [])
 
@@ -52,12 +54,11 @@ export default function BlogPromoBar() {
         </span>
         <div className="PromoBar-text">
           <p className="PromoBar-title">
-            Looking for a <u>reliable</u> Shopify expert?
+            Looking for a <u>reliable</u> Shopify developer?
           </p>
 
           <p className="PromoBar-subtitle">
-            From bug fixes to custom sections, feel free to get in touch with
-            us.
+            We can help you. We treat our clients' stores as our own.
           </p>
         </div>
         <a
