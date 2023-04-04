@@ -203,10 +203,19 @@ $self: ".ProductItem";
       line-height: 150%;
     }
 
-    .ProductItem-action * {
-      font-size: 12px;
-      display: block;
-      padding: 5px 10px;
+    .ProductItem-action {
+      & > * {
+        font-size: 12px;
+        display: block;
+        padding: 5px 10px;
+      }
+
+      [class*="preview"] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 10px;
+      }
     }
   }
 }

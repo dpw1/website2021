@@ -1,6 +1,6 @@
 import React from "react"
-import mobileImage from "../copy/img/ezfy-proof-mobile-up.jpg"
-import desktopImage from "../copy/img/pixel_quite_black_portrait_trim_up.png"
+import mobileImage from "../copy/img/ezfy-all-time-likes-mobile.jpg"
+import desktopImage from "../copy/img/ezfy-all-time-likes-min.png"
 import "./Hero.scss"
 import Stars from "./atom/Stars"
 import { Link } from "gatsby"
@@ -36,8 +36,9 @@ function Hero(props) {
           <div className="col-12 col-md-8 order-1 order-md-2 text-column">
             <div className="welcome-intro px-0 px-lg-4">
               <h1 className="text-white font-italic mb-2 mb-md-3">
-                <span className="animation--gradient-text">Top #1</span> Rated
-                Shopify Partner
+                <span className="animation--gradient-text">Top #4</span> Most
+                Liked Shopify Expert{" "}
+                <span className="hero-text-emphasis">(of all time)</span>
               </h1>
               <picture>
                 <source
@@ -48,7 +49,7 @@ function Hero(props) {
                 <img
                   className="mobile-only animation--float proof-image"
                   src={mobileImage}
-                  alt="Top 1 rated Shopify Partner in the official Shopify forums."
+                  alt="Top 4 rated Shopify Partner in the official Shopify forums."
                 />
               </picture>
               <h3 className="hero-subtitle text-white">
@@ -59,19 +60,18 @@ function Hero(props) {
                     marginTop: 9,
                   }}
                 >
-                  at the official Shopify forums during early 2022.
+                  at the official Shopify Forums.
                 </span>
                 <br />
                 <span>
-                  Customize any theme with high quality, performative and
-                  SEO-friendly code snippets.
+                  Build pages faster with code snippets
+                  <br />
+                  coded by one of the most active Shopify Experts.
                 </span>
               </h3>
               <p className="hero-info text-white mt-3 mb-4">
-                <span>Enhance your theme with premium DIY codes.</span>
-                <br />
                 <span>
-                  More than 8000+ active Shopify stores with our products.
+                  More than 10000+ active Shopify stores with our products.
                 </span>
               </p>
               {/* Store Buttons */}

@@ -1,6 +1,7 @@
 import React from "react"
 import "./About.scss"
 import image from "../copy/img/avatar/diego.jpg"
+import imageFounder from "../copy/img/avatar/moretti-1.png"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
 import { scrollTo } from "../utils/utils"
@@ -33,7 +34,11 @@ function About(props) {
               data-wow-delay="0.2s"
             >
               {/* Work Slider */}
-              <img src={image} alt="Diego Moretti- EZFY's creator" />
+              <img
+                data-src={imageFounder}
+                className="lazyload"
+                alt="Diego Moretti- EZFY's creator"
+              />
             </figure>
           </div>
           <div className="col-12 col-md-6 pt-4 pt-md-0">
@@ -48,14 +53,17 @@ function About(props) {
                   <div className="about-text icon-text media-body align-self-center align-self-md-start">
                     <p className="d-sm-block">
                       Greetings! My name is Diego. I am a Computer Science
-                      graduate software engineer who has been working as a
-                      Shopify developer since 2012.
+                      graduate and I have been working as an e-commerce dev
+                      since 2012.
                     </p>
 
                     <p className="d-block mt-4">
-                      The main intent of <b className="custom-emphasis">EZFY</b>{" "}
-                      is to take care of all of your technical Shopify needs so
-                      you can focus on the business side of your e-commerce.
+                      Shortly after graduation I dabbled into Shopfiy and fell
+                      in love. I have a genuine passion in technology and
+                      helping people and, from that intent, EZFY was born. I
+                      gathered a few talented professionals and created EZFY to
+                      help merchants with technicalities so they can focus on
+                      business.
                     </p>
                     <p className="d-block mt-4">
                       We'll help you with customizations, bug fixes, creating

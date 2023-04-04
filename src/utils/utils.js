@@ -3814,6 +3814,18 @@ export const cleanDescription = desc => {
 }
 
 export async function resetImagesOnSearch() {
+  const $input = document.querySelector(`.SearchBox-total + input `)
+
+  if (!$input) {
+    return
+  }
+
+  const value = $input.value.trim()
+
+  if (!value || value === "" || value.length <= 0) {
+    return
+  }
+
   var $images = document.querySelectorAll(`.single-blog img`)
 
   for (var each of $images) {
@@ -3863,8 +3875,11 @@ export const discounts = [
 ]
 
 export function addDiscountCouponBasedOnQuantity() {
+  console.log("adding discount coupon")
+
   return new Promise(async (resolve, reject) => {
     async function calculate() {
+      debugger
       var quantity = await getProductsInCart()
       let _discount = null
 

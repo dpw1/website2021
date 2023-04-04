@@ -90,6 +90,10 @@
     }
   }
 
+  .hero-text-emphasis {
+    font-size: 25px;
+  }
+
   .animation--float {
     @media (max-width: $xs) {
       animation: unset;

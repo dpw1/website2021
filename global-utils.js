@@ -184,12 +184,12 @@ const axios = require("axios")
 
       let products = []
 
+      console.log("loading ecwid")
+
       _rawProducts.map(async product => {
         if (!product.hasOwnProperty("name")) {
           return
         }
-
-        console.log("CURR PROD: ", product)
 
         const id = product.id ? product.id : product.wordpress_id
         const _slug = product.name

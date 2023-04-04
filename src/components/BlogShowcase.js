@@ -11,7 +11,6 @@ import Tags from "./Tags"
 import {
   cleanDescription,
   isThereCurrentActiveTag,
-  resetImagesOnSearch,
   shuffle,
 } from "../utils/utils"
 
@@ -257,7 +256,7 @@ const BlogItem = props => {
         <Link className="linked" to={url}>
           <figure className="aspect-ratio blog-thumb">
             <img
-              className="lazyload"
+              className="xx lazyload"
               src={
                 (isSearching && props.currentPage !== "blogpost") ||
                 isThereCurrentActiveTag()

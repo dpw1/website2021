@@ -69,8 +69,6 @@ export default function FrequentlyBoughtTogether(props) {
 
     await sleep(50)
 
-    const cart = await getProductsInCart()
-
     await addDiscountCouponBasedOnQuantity()
 
     setLoading(false)

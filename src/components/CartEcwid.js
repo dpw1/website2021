@@ -4,7 +4,6 @@ import {
   addDiscountCouponBasedOnQuantity,
   awaitEcwid,
   discounts,
-  getProductsInCart,
   handleEmptCartButtonClick,
   removeDiscountCoupon,
   _waitForElement,
