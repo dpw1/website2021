@@ -54,23 +54,24 @@ function About(props) {
                     <p className="d-sm-block">
                       Greetings! My name is Diego. I am a Computer Science
                       graduate and I have been working as an e-commerce dev
-                      since 2012.
+                      since 2012. Shortly after graduation I dabbled into
+                      Shopfiy and fell in love.
                     </p>
 
                     <p className="d-block mt-4">
-                      Shortly after graduation I dabbled into Shopfiy and fell
-                      in love. I have a genuine passion in technology and
-                      helping people and, from that intent, EZFY was born. I
-                      gathered a few talented professionals and created EZFY to
-                      help merchants with technicalities so they can focus on
-                      business.
+                      The passion I have for technology is the same for helping
+                      people grow their business and making their tech lives
+                      easier. From that intent, EZFY was born. I gathered a few{" "}
+                      <b>like-minded talented professionals</b> and created{" "}
+                      <span className="custom-link">EZFY</span> to help
+                      merchants with their Shopify stores.
                     </p>
                     <p className="d-block mt-4">
                       We'll help you with customizations, bug fixes, creating
-                      custom sections and anything else related to customizing
+                      custom sections and everything else related to customizing
                       your theme. Feel free to check our{" "}
                       <Link to={siteRoutes.shop} className="custom-link">
-                        shop
+                        copy/paste code snippets
                       </Link>{" "}
                       out for some ideas as well.
                     </p>

@@ -3879,7 +3879,6 @@ export function addDiscountCouponBasedOnQuantity() {
 
   return new Promise(async (resolve, reject) => {
     async function calculate() {
-      debugger
       var quantity = await getProductsInCart()
       let _discount = null
 
@@ -3988,8 +3987,10 @@ export async function addDiscountCoupon(discount) {
     window.hasOwnProperty("discountCodeApplied") &&
     window.discountCodeApplied
   ) {
-    //return
+    // return
   }
+
+  await _waitForElement(`.ec-cart-summary:not([class*='wait'])`)
 
   const $discount = await _waitForElement(`[class*='cart-coupon'] > a`, 100, 25)
 
@@ -4036,13 +4037,17 @@ export async function addDiscountCoupon(discount) {
     $input.value = discount
     $input.dispatchEvent(event)
 
-    await sleep(50)
+    // debugger
 
-    const $button = each.querySelector(`.ec-cart-coupon__button--apply`)
+    await sleep(500)
+
+    const $button = each.querySelector(`.ec-cart-coupon__button--apply button`)
 
     if (!$button) {
       return
     }
+
+    // debugger
 
     $button.click()
   }

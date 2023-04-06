@@ -270,3 +270,9 @@ $pink: #ff00ffab;
     display: inline-block;
   }
 }
+
+// debugging cart
+[class*="ec-cart__discount"],
+[class*="ec-cart__discount"] * {
+  // display: block !important;
+}
