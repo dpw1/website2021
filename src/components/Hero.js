@@ -33,7 +33,10 @@ function Hero(props) {
             </div>
           </div>
           {/* Welcome Intro Start */}
-          <div className="col-12 col-md-8 order-1 order-md-2 text-column">
+          <div
+            data-welcome=""
+            className="col-12 col-md-8 order-1 order-md-2 text-column"
+          >
             <div className="welcome-intro px-0 px-lg-4">
               <h1 className="text-white font-italic mb-2 mb-md-3">
                 <span className="animation--gradient-text">Top #4</span> Most

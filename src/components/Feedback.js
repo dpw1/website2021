@@ -199,7 +199,9 @@ export default function Feedback(props) {
                 await sleep(1000)
               }
 
-              setText("We're sorry to hear. How can we improve?")
+              setText(
+                "Please let us know where it went wrong, we update our tutorials often."
+              )
               setClicked(true)
               setLoading(false)
             }}
