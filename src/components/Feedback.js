@@ -11,6 +11,7 @@ import {
 
 import Skeleton from "react-loading-skeleton"
 import confetti from "canvas-confetti"
+const parse = require("html-react-parser")
 
 import "./Feedback.scss"
 import { flatten } from "./../utils/utils"
@@ -20,6 +21,7 @@ export default function Feedback(props) {
 
   const COOKIE_NAME = "feedback_cookie"
 
+  const [answer, setAnswer] = useState("")
   const [text, setText] = useState("Was this article helpful?")
   const [clicked, setClicked] = useState(false)
   const [repeatedUser, setRepeatedUser] = useState(false)
@@ -32,7 +34,6 @@ export default function Feedback(props) {
 
   useEffect(async () => {
     const cookie = getCookie(COOKIE_NAME)
-
     if (!cookie) {
       setTimeout(() => {
         setIsVisible(true)
@@ -150,7 +151,7 @@ export default function Feedback(props) {
       >
         X
       </span>
-      <p className="Feedback-title">{text}</p>
+      <p className="Feedback-title">{parse(text)}</p>
 
       <div className="Feedback-buttons">
         {loading ? (
@@ -166,8 +167,9 @@ export default function Feedback(props) {
               }
 
               setText(
-                "Thank you! Any other tutorials or products you'd like to see?"
+                `We're glad! <a href="https://ezfycode.com/shop">Check out our copy/paste snippets to keep enhancing your theme.</a>`
               )
+              setAnswer("yes")
               setClicked(true)
               setLoading(false)
             }}
@@ -202,6 +204,7 @@ export default function Feedback(props) {
               setText(
                 "Please let us know where it went wrong, we update our tutorials often."
               )
+              setAnswer("no")
               setClicked(true)
               setLoading(false)
             }}
@@ -220,38 +223,40 @@ export default function Feedback(props) {
           </button>
         )}
       </div>
-      <div className="Feedback-feedback">
-        <textarea
-          value={feedbackText}
-          onChange={onChange}
-          placeholder="Please type here"
-          resizable
-          className="Feedback-textarea"
-        ></textarea>
-        <button
-          disabled={feedbackText.length <= 1}
-          onClick={async () => {
-            setLoading(true)
-            setSubmitText("Submitting...")
+      {answer === "no" && (
+        <div className="Feedback-feedback">
+          <textarea
+            value={feedbackText}
+            onChange={onChange}
+            placeholder="Please type here"
+            resizable
+            className="Feedback-textarea"
+          ></textarea>
+          <button
+            disabled={feedbackText.length <= 1}
+            onClick={async () => {
+              setLoading(true)
+              setSubmitText("Submitting...")
 
-            await postFeedbackText(feedbackText)
+              await postFeedbackText(feedbackText)
 
-            setLoading(false)
-            setText("Thanks for your feedback!")
-            setSubmitText("All done :)")
-            setCookie(COOKIE_NAME, "voted", 7)
-            setCompleted(true)
-            confetti({
-              particleCount: 100,
-              spread: 70,
-              origin: { y: 0.6 },
-            })
-          }}
-          className="Feedback-submit btn"
-        >
-          {submitText}
-        </button>
-      </div>
+              setLoading(false)
+              setText("Thanks for your feedback!")
+              setSubmitText("All done :)")
+              setCookie(COOKIE_NAME, "voted", 7)
+              setCompleted(true)
+              confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+              })
+            }}
+            className="Feedback-submit btn"
+          >
+            {submitText}
+          </button>
+        </div>
+      )}
     </div>
   )
 }

@@ -4161,16 +4161,82 @@ export function renderGistsDynamically() {
 
         var code = $meta.getAttribute("href")
 
-        console.log("lll", code, $zone)
+        const gist = await getPublicGist(gistId)
+        const copy = gist.files[Object.keys(gist.files)[0]].content
 
         $zone.insertAdjacentHTML(
           `afterbegin`,
-          `<a target="_blank" class="GistRawCode btn" href="${code}">Open code in new tab</a>`
+          `<a id="GistButton-${gistId}"  href="#" class="GistRawCode btn" >Copy code</a>`
         )
+
+        await sleep(50)
+
+        const $button = document.querySelector(`[id='GistButton-${gistId}']`)
+
+        $button.addEventListener("click", async e => {
+          e.preventDefault()
+          const $this = e.target
+
+          const text = $this.textContent.trim()
+
+          $this.textContent = "Copied!"
+
+          copyToClipboard(copy)
+
+          await sleep(2000)
+
+          $this.textContent = text
+        })
       } catch (err) {
         console.log("lll iframe error: ", err)
       }
     })
+  }
+}
+
+function getPublicGist(gistId) {
+  return new Promise((resolve, reject) => {
+    const url = `https://api.github.com/gists/${gistId}`
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`)
+        }
+        return response.json()
+      })
+      .then(data => {
+        resolve(data) // Resolve the promise with the Gist data
+      })
+      .catch(error => {
+        // Reject the promise with the error
+        console.error("Error:", error)
+        reject(error)
+      })
+  })
+}
+
+function copyToClipboard(text) {
+  if (window.clipboardData && window.clipboardData.setData) {
+    // IE specific code path to prevent textarea being shown while dialog is visible.
+    return clipboardData.setData("Text", text)
+  } else if (
+    document.queryCommandSupported &&
+    document.queryCommandSupported("copy")
+  ) {
+    var textarea = document.createElement("textarea")
+    textarea.textContent = text
+    textarea.style.position = "fixed" // Prevent scrolling to bottom of page in MS Edge.
+    document.body.appendChild(textarea)
+    textarea.select()
+    try {
+      return document.execCommand("copy") // Security exception may be thrown by some browsers.
+    } catch (ex) {
+      console.warn("Copy to clipboard failed.", ex)
+      return false
+    } finally {
+      document.body.removeChild(textarea)
+    }
   }
 }
 
