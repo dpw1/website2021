@@ -130,6 +130,10 @@ function Header(props) {
 
       for (var $dropdown of $dropdowns) {
         $dropdown.addEventListener(`click`, function (e) {
+          if (e.target.getAttribute("data-toggle") === "dropdown") {
+            e.preventDefault()
+          }
+
           const id = e.target.getAttribute(`id`)
           const $child = document.querySelector(
             `.dropdown-menu[aria-labelledby="${id}"]`
@@ -157,6 +161,7 @@ function Header(props) {
     }
 
     setTimeout(handleLinkClick, 10)
+
     navMenu()
     handleDropdown()
   }, [])

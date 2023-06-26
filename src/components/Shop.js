@@ -119,7 +119,7 @@ function Shop(props) {
               </div>
               {products && rawProducts && (
                 <Search
-                  data={rawProducts}
+                  data={products}
                   dataKey="title"
                   updateData={setProducts}
                   isSearching={isSearching}

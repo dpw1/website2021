@@ -124,29 +124,10 @@ export const defaultNavbarLinks = [
     ],
   },
   {
-    name: "Shop",
-
-    url: [
-      {
-        name: "Popular",
-        url: `${siteRoutes.shop}?tag=popular`,
-        offset: -60,
-        scroll: false,
-      },
-      {
-        name: "Dawn Theme",
-        url: `${siteRoutes.shop}?tag=dawn%20theme`,
-        offset: -60,
-        scroll: false,
-      },
-
-      {
-        name: "All themes",
-        url: `${siteRoutes.shop}`,
-        offset: -40,
-        scroll: false,
-      },
-    ],
+    name: "Code Snippets",
+    url: siteRoutes.shop,
+    offset: -40,
+    scroll: false,
   },
   {
     name: "Blog",
@@ -209,12 +190,13 @@ export const footerNavbarLinks = [
  */
 
 function createNavbarDropdownItem(items) {
+  const name = items.name.replace(/\s+/g, "")
   return (
-    <li key={items.name} className="nav-item dropdown">
+    <li key={name} className="nav-item dropdown">
       <Link
-        to={items.name === "Shop" && siteRoutes.shop}
+        to={name === "Shop" && siteRoutes.shop}
         className="nav-link dropdown-toggle"
-        id={`navbarDropdownMenuLink-${items.name}`}
+        id={`navbarDropdownMenuLink-${name}`}
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
@@ -223,7 +205,7 @@ function createNavbarDropdownItem(items) {
       </Link>
       <ul
         className="dropdown-menu"
-        aria-labelledby={`navbarDropdownMenuLink-${items.name}`}
+        aria-labelledby={`navbarDropdownMenuLink-${name}`}
       >
         {[...items.url].map(e => {
           return (
