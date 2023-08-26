@@ -4,6 +4,7 @@ import {
   addDiscountCouponBasedOnQuantity,
   awaitEcwid,
   discounts,
+  doesCartNeedDiscountToBeApplied,
   handleEmptCartButtonClick,
   removeDiscountCoupon,
   _waitForElement,
@@ -78,24 +79,50 @@ export default function CartEcwid(props) {
       await awaitEcwid()
 
       Ecwid.OnCartChanged.add(async function (cart) {
-        var quantity = cart.productsQuantity
+        console.log("cart changes", cart)
 
         if (
-          window.previousCartQuantity &&
-          quantity !== window.previousCartQuantity
+          window.hasOwnProperty("previousCartData") &&
+          window.previousCartData === JSON.stringify(cart)
         ) {
-          console.log(
-            "xx cart current X prev",
-            quantity,
-            window.previousCartQuantity
-          )
-
-          await removeDiscountCoupon()
-          await sleep(1000)
-          await addDiscountCouponBasedOnQuantity()
+          console.log("no updates needed", cart)
+          return
         }
 
-        window.previousCartQuantity = cart.productsQuantity
+        if (cart.productsQuantity <= 1) {
+          await removeDiscountCoupon()
+        } else if (cart.productsQuantity >= 2) {
+          await addDiscountCouponBasedOnQuantity(cart)
+        }
+
+        window.previousCartData = JSON.stringify(cart)
+        return
+
+        // if (
+        //   window.previousCartQuantity &&
+        //   cart.productsQuantity !== window.previousCartQuantity
+        // ) {
+        //   const applyDiscount = doesCartNeedDiscountToBeApplied(cart)
+
+        //   console.log("apply discount? ", applyDiscount, cart)
+
+        //   if (applyDiscount === "NOTHING") {
+        //     return
+        //   }
+
+        //   if (applyDiscount === "APPLY") {
+        //     console.log("apply - applying discount...")
+        //     await removeDiscountCoupon()
+        //     await sleep(1000)
+        //     await addDiscountCouponBasedOnQuantity()
+        //   } else if (applyDiscount === "REMOVE") {
+        //     console.log("apply - REMOVING discount...")
+
+        //     await removeDiscountCoupon()
+        //   }
+        // }
+
+        // window.previousCartQuantity = cart.productsQuantity
       })
     }
 

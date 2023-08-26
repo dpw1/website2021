@@ -3856,17 +3856,19 @@ export const discounts = [
   },
 ]
 
-export function addDiscountCouponBasedOnQuantity() {
-  console.log("adding discount coupon")
+export function addDiscountCouponBasedOnQuantity(cart) {
+  console.log("adding discount coupon", cart)
 
   return new Promise(async (resolve, reject) => {
     async function calculate() {
-      var quantity = await getProductsInCart()
+      var quantity = cart.productsQuantity
       let _discount = null
 
-      if (quantity.length === 2) {
+      // debugger
+
+      if (quantity === 2) {
         _discount = discounts[0]
-      } else if (quantity.length >= 3) {
+      } else if (quantity >= 3) {
         _discount = discounts[1]
       }
 
@@ -3879,18 +3881,65 @@ export function addDiscountCouponBasedOnQuantity() {
     calculate()
 
     /* Try again X seconds later*/
-    setTimeout(async () => {
-      const $coupon = document.querySelector(
-        `.ec-cart-summary__row--discount-coupon .ec-cart-summary__title`
-      )
+    // setTimeout(async () => {
+    //   const $coupon = document.querySelector(
+    //     `.ec-cart-summary__row--discount-coupon .ec-cart-summary__title`
+    //   )
 
-      if (!$coupon) {
-        calculate()
-      }
-    }, 2000)
+    //   if (!$coupon) {
+    //     calculate()
+    //   }
+    // }, 2000)
 
     resolve()
   })
+}
+
+/* Checks whether automatic discount coupon must be applied.
+
+NOTHING = do nothing
+REMOVE = remove discount from the text box
+APPLY = apply discount coupon to text box
+
+*/
+export function doesCartNeedDiscountToBeApplied(cart) {
+  try {
+    if (
+      window.hasOwnProperty("previousCartData") &&
+      window.previousCartData === JSON.stringify(cart)
+    ) {
+      console.log("no updates needed", cart)
+      return "NOTHING"
+    }
+
+    let mustUpdate = "NOTHING"
+    if (
+      !cart ||
+      (cart.hasOwnProperty("productsQuantity") && cart.productsQuantity <= 1)
+    ) {
+      mustUpdate = "REMOVE"
+    }
+
+    if (cart.couponName === "30% OFF" && cart.productsQuantity === 2) {
+      mustUpdate = "REMOVE"
+    }
+
+    if (cart.couponName === "20% OFF" && cart.productsQuantity === 3) {
+      mustUpdate = "REMOVE"
+    }
+
+    if (!cart.hasOwnProperty("couponName") && cart.productsQuantity >= 2) {
+      mustUpdate = "APPLY"
+    }
+
+    console.log("updating previous cart data")
+    // debugger
+
+    window.previousCartData = JSON.stringify(cart)
+    return mustUpdate
+  } catch (err) {
+    return "REMOVE"
+  }
 }
 
 export async function awaitEcwid() {
@@ -3929,14 +3978,6 @@ export function getProductsInCart() {
 export async function removeDiscountCoupon() {
   return new Promise(async (resolve, reject) => {
     try {
-      // if (
-      //   window.hasOwnProperty("removedDiscountCoupon") &&
-      //   window.removedDiscountCoupon
-      // ) {
-      //   resolve()
-      //   return
-      // }
-
       const selector = `.ec-cart-coupon--applied .ec-cart-coupon__button--cancel > button`
       const $button = await _waitForElement(selector, 50, 10)
 
