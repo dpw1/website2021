@@ -59,7 +59,7 @@ export default function Announcement() {
         >
           <span>
             <u>
-              Premium copy/paste code snippets - <b>30%</b> OFF!
+              Summer sale - all code snippets for <b>only $20</b>
             </u>
           </span>
           <svg

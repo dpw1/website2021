@@ -4186,11 +4186,19 @@ export function renderGistsDynamically() {
 
         const gist = await getPublicGist(gistId)
         const copy = gist.files[Object.keys(gist.files)[0]].content
+        const $el = $iframe.closest(`[data-gist-id]`)
 
-        $zone.insertAdjacentHTML(
-          `afterbegin`,
-          `<a id="GistButton-${gistId}"  href="#" class="GistRawCode btn" >Copy code</a>`
-        )
+        try {
+          $el.insertAdjacentHTML(
+            `afterbegin`,
+            `<a id="GistButton-${gistId}"  href="#" class="GistRawCode btn" >Copy code</a>`
+          )
+        } catch (err) {
+          $zone.insertAdjacentHTML(
+            `afterbegin`,
+            `<a id="GistButton-${gistId}"  href="#" class="GistRawCode btn" >Copy code</a>`
+          )
+        }
 
         await sleep(50)
 
