@@ -58,8 +58,8 @@ export default function Announcement() {
           to={`${siteRoutes.shop}?source=announcement`}
         >
           <span>
-            <u>
-              Summer sale - all code snippets for <b>only $20</b>
+            <u data-winter>
+              Winter sale - code snippets starting at <b>only $20</b>
             </u>
           </span>
           <svg
