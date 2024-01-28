@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{aCqz:function(e,o,t){},w2l6:function(e,o,t){"use strict";t.r(o);var n=t("q1tI"),s=t.n(n);t("aCqz");o.default=e=>(Object(n.useEffect)(()=>{setTimeout(()=>{window.location.href="https://ezfycode.com"},2e3)},[]),s.a.createElement("p",{className:"FourZeroFour"},"Oops! This page does not exist. Redirecting..."))}}]);
+//# sourceMappingURL=component---src-pages-404-js-131bf09b0dd6e0a43b89.js.map
