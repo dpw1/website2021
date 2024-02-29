@@ -16,7 +16,7 @@
 
     z-index: 9;
     background: white;
-    position: fixed;
+
     overflow: auto;
     right: 15px;
     bottom: 15px;
@@ -84,9 +84,8 @@
   }
 
   .Feedback-feedback {
-    display: none;
     flex-direction: column;
-    max-width: 300px;
+
     margin-top: 10px;
   }
 
@@ -101,11 +100,11 @@
     border-radius: 0.25rem;
     box-sizing: border-box;
     color: #1f1f1f;
-    max-width: 28rem;
     outline: none;
     padding: 1rem;
     resize: none;
     width: 100%;
+    max-width: 100%;
   }
 
   .Feedback-buttons {

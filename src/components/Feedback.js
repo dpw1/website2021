@@ -33,6 +33,7 @@ export default function Feedback(props) {
   const [feedbackText, setFeedbackText] = useState("")
 
   useEffect(async () => {
+    
     const cookie = getCookie(COOKIE_NAME)
     if (!cookie) {
       setTimeout(() => {
@@ -94,7 +95,7 @@ export default function Feedback(props) {
             fingerprint,
             answer,
             country: getCountry(),
-          }),
+          }),d
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
@@ -103,8 +104,7 @@ export default function Feedback(props) {
 
       const data = await response.json()
 
-      setFeedbackID(data.data.id)
-      resolve()
+      resolve(data.data.id)
     })
   }
 
@@ -115,8 +115,10 @@ export default function Feedback(props) {
         return
       }
 
+      const id = await postFeedback("yes")
+
       const response = await fetch(
-        `https://www.ezfy.club/json/ezfy/v1/feedback/update/${feedbackID}`,
+        `https://www.ezfy.club/json/ezfy/v1/feedback/update/${id}`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -152,7 +154,7 @@ export default function Feedback(props) {
         X
       </span>
       <p className="Feedback-title">{parse(text)}</p>
-
+      {/* 
       <div className="Feedback-buttons">
         {loading ? (
           <Skeleton style={{ marginRight: 10 }} height={35} width={82} />
@@ -222,41 +224,40 @@ export default function Feedback(props) {
             <span>No</span>
           </button>
         )}
+      </div> */}
+
+      <div className="Feedback-feedback">
+        <textarea
+          value={feedbackText}
+          onChange={onChange}
+          placeholder="Please type here"
+          resizable
+          className="Feedback-textarea"
+        ></textarea>
+        <button
+          disabled={feedbackText.length <= 1}
+          onClick={async () => {
+            setLoading(true)
+            setSubmitText("Submitting...")
+
+            await postFeedbackText(feedbackText)
+
+            setLoading(false)
+            setText("Thanks for your feedback!")
+            setSubmitText("All done :)")
+            setCookie(COOKIE_NAME, "voted", 7)
+            setCompleted(true)
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { y: 0.6 },
+            })
+          }}
+          className="Feedback-submit btn"
+        >
+          {submitText}
+        </button>
       </div>
-      {answer === "no" && (
-        <div className="Feedback-feedback">
-          <textarea
-            value={feedbackText}
-            onChange={onChange}
-            placeholder="Please type here"
-            resizable
-            className="Feedback-textarea"
-          ></textarea>
-          <button
-            disabled={feedbackText.length <= 1}
-            onClick={async () => {
-              setLoading(true)
-              setSubmitText("Submitting...")
-
-              await postFeedbackText(feedbackText)
-
-              setLoading(false)
-              setText("Thanks for your feedback!")
-              setSubmitText("All done :)")
-              setCookie(COOKIE_NAME, "voted", 7)
-              setCompleted(true)
-              confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 },
-              })
-            }}
-            className="Feedback-submit btn"
-          >
-            {submitText}
-          </button>
-        </div>
-      )}
     </div>
   )
 }

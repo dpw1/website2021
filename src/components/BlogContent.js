@@ -201,7 +201,7 @@ const BlogContent = props => {
                     </figure>
                     <div className="blog-text">
                       {cleanDescription(post.content.rendered)}
-                      <Feedback type="mobile"></Feedback>
+                      <Feedback></Feedback>
                     </div>
                   </div>
 
@@ -276,8 +276,6 @@ const BlogContent = props => {
           </div>
         </div>
       </section>
-      {/* <BlogPromoBar></BlogPromoBar> */}
-      <Feedback type="desktop"></Feedback>
     </React.Fragment>
   )
 }
