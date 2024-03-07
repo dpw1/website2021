@@ -17,7 +17,6 @@ exports.createPages = async ({ actions }) => {
   const products = await globalUtils.sanitizeEcwidProducts(ecwidProducts.items)
 
   blogPosts.map(async e => {
-    console.log(`################### Blog page: blog/${e.slug}\n`)
     return createPage({
       path: `blog/${e.slug}`,
       component: path.resolve("./src/layouts/BlogPostLayout.js"),

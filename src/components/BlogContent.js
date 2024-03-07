@@ -120,7 +120,7 @@ const BlogContent = props => {
             <div className="blog-content-block blog-content-block--sidebar col-12 col-lg-3">
               <aside className="sidebar">
                 {/* Single Widget */}
-                <Advertise
+                {/* <Advertise
                   advertisement={{
                     title: `Replace apps with code snippets.`,
                     image: `https://media0.giphy.com/media/WvvzxI0VWF8kVo4olS/giphy.gif`,
@@ -130,6 +130,19 @@ const BlogContent = props => {
                       "Plugins tested in real stores w/ thousands of daily visits",
                       "Same day response support",
                       "Pay once use forever",
+                    ],
+                  }}
+                ></Advertise> */}
+                <Advertise
+                  advertisement={{
+                    title: `Available for hire!`,
+                    subtitle: `In need of a reliable Shopify developer? You've found it.`,
+                    image: `https://media0.giphy.com/media/WvvzxI0VWF8kVo4olS/giphy.gif`,
+                    link: `https://ezfycode.com/#contact`,
+                    list: [
+                      "Top #4 most active Shopify Expert in the official forums",
+                      "Replies in less than 24h",
+                      "Request a free quote clicking here!",
                     ],
                   }}
                 ></Advertise>

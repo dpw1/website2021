@@ -33,12 +33,10 @@ export default function Feedback(props) {
   const [feedbackText, setFeedbackText] = useState("")
 
   useEffect(async () => {
-    
     const cookie = getCookie(COOKIE_NAME)
     if (!cookie) {
-      setTimeout(() => {
-        setIsVisible(true)
-      }, 7500)
+      setIsVisible(true)
+
       return
     }
 
@@ -95,7 +93,7 @@ export default function Feedback(props) {
             fingerprint,
             answer,
             country: getCountry(),
-          }),d
+          }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
@@ -144,15 +142,6 @@ export default function Feedback(props) {
       ${isVisible ? "" : "Feedback--invisible"}
       `}
     >
-      <span
-        onClick={() => {
-          setIsVisible(false)
-          setCookie(COOKIE_NAME, "closed", 1)
-        }}
-        className="Feedback-close"
-      >
-        X
-      </span>
       <p className="Feedback-title">{parse(text)}</p>
       {/* 
       <div className="Feedback-buttons">
@@ -235,7 +224,7 @@ export default function Feedback(props) {
           className="Feedback-textarea"
         ></textarea>
         <button
-          disabled={feedbackText.length <= 1}
+          disabled={feedbackText.trim().length <= 1}
           onClick={async () => {
             setLoading(true)
             setSubmitText("Submitting...")

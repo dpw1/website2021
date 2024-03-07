@@ -63,7 +63,15 @@ function Hero(props) {
                     marginTop: 9,
                   }}
                 >
-                  at the official Shopify Forums.
+                  <a
+                    style={{
+                      color: "white",
+                      textDecoration: "underline",
+                    }}
+                    href="https://community.shopify.com/c/kudos/leaderboardpage/board-id/technical-qa/timerange/all/tab/authors"
+                  >
+                    at the official Shopify Forums.
+                  </a>
                 </span>
                 <br />
                 <span>

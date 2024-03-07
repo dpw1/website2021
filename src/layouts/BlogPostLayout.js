@@ -25,7 +25,7 @@ const BlogPostLayout = props => {
   /* This is coming directly from WP, so you have access to all object's values. */
   const post = props.pageContext
 
-  console.log("look at me", props)
+  console.log("look at me", post)
 
   // const slug = post.slug
 
@@ -41,10 +41,12 @@ const BlogPostLayout = props => {
   const description = parse(sanitizeHtml(post.excerpt.rendered))[0].props
     .children
 
+  const title = parse(post.title.rendered)
+
   return (
     <React.Fragment>
       <SEO
-        title={parse(post.title.rendered)}
+        title={title}
         description={description}
         image={post.featured_image_large_src}
         url={url}

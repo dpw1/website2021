@@ -324,6 +324,16 @@ export function replaceAll(word, obj) {
   return finalString
 }
 
+function replaceAllCharactersWith(word, chars) {
+  // Create a regular expression pattern using all keys of the chars object
+  const regexPattern = new RegExp(Object.keys(chars).join("|"), "g")
+
+  // Replace all occurrences of characters specified in the chars object
+  const replacedString = word.replace(regexPattern, match => chars[match])
+
+  return replacedString
+}
+
 export function getTotalVisibleProducts() {
   const $products = window.document.querySelectorAll(
     `.portfolio-row > article, article.single-blog`
@@ -3791,6 +3801,10 @@ export const cleanDescription = desc => {
     description = description.replaceAll("src=", "data-src=")
     description = description.replaceAll("srcset=", "data-srcset=")
   }
+  description = replaceAllCharactersWith(description, {
+    "&#8216;": `'`,
+    "&#8217;": `'`,
+  })
 
   return parse(description)
 }

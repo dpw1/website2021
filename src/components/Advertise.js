@@ -4,7 +4,7 @@ import "./Advertise.scss"
 import { siteRoutes } from "../utils/siteRoutes"
 
 export default function Advertise(props) {
-  const { title, image, link, list } = props.advertisement
+  const { title, image, link, list, subtitle } = props.advertisement
   return (
     <div
       data-v-cad483e2
@@ -47,7 +47,7 @@ export default function Advertise(props) {
               className="trial-popup__title advertise-title body body--desktop  strong advertise-custom-link"
               data-v-cad483e2
               target="_blank"
-              href={siteRoutes.shopBlogSidebar}
+              href={siteRoutes.contactSection}
             ></a>
             <p
               data-v-570454cb
@@ -63,7 +63,13 @@ export default function Advertise(props) {
               className="trial-popup__subtitle body body--desktop  standard"
               data-v-cad483e2
             >
-              Enhance your theme with <b>copy &amp; paste</b> code snippets.
+              {subtitle && subtitle.length >= 1 ? (
+                subtitle
+              ) : (
+                <span>
+                  Enhance your theme with <b>copy &amp; paste</b> code snippets.
+                </span>
+              )}
             </p>
             <div>{/* <img src={image} alt="" /> */}</div>
             <div
@@ -117,7 +123,7 @@ export default function Advertise(props) {
               data-v-cad483e2
               href={link}
             >
-              VIEW PLUGINS
+              FREE QUOTE
             </a>
             <p
               data-v-570454cb
@@ -126,7 +132,7 @@ export default function Advertise(props) {
               data-v-cad483e2
             >
               <span data-v-66b79341 data-v-570454cb>
-                No coding knowledge required.
+                Available from Monday to Saturday.
               </span>
             </p>
           </div>

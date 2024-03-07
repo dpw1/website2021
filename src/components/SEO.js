@@ -3,11 +3,15 @@ import { Helmet } from "react-helmet"
 import config from "../../data/config"
 
 export const SEO = ({ title, image, description, url, article }) => {
-  const seo = {
+  let seo = {
     title: title ? title : config.siteTitle,
     description: description || config.siteDescription,
     image: image ? image : config.siteImage,
     url: url ? url : "",
+  }
+
+  if (seo.title.hasOwnProperty("props")) {
+    seo.title = seo.title.props.children
   }
 
   return (
