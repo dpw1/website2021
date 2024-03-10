@@ -14,6 +14,10 @@
 
 `npm run deploy`
 
+## Adding new libraries via NPM
+
+Always use --force to add new libraries. npm add test --force
+
 ## Ecwid Products
 
 Always rebuild and deploy after updating Ecwid products.

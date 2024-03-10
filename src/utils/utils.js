@@ -3809,6 +3809,25 @@ export const cleanDescription = desc => {
   return parse(description)
 }
 
+export function updateQueryString(key, value) {
+  const queryParams = new URLSearchParams(window.location.search)
+
+  // Update the parameter if it exists, otherwise add it
+  if (queryParams.has(key)) {
+    queryParams.set(key, value)
+  } else {
+    queryParams.append(key, value)
+  }
+
+  // Reconstruct the URL with the updated query string
+  const newUrl = `${window.location.origin}${
+    window.location.pathname
+  }?${queryParams.toString()}${window.location.hash}`
+
+  // Replace the current URL with the updated one
+  window.history.replaceState({}, "", newUrl)
+}
+
 export async function resetImagesOnSearch() {
   const $input = document.querySelector(`.SearchBox-total + input `)
 

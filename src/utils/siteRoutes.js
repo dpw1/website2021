@@ -1,6 +1,6 @@
 export const siteRoutes = {
   home: "/",
-  blog: "/blog?page=1",
+  blog: "/blog",
   portfolio: "/portfolio",
   shop: "/shop",
   about: "/about",

@@ -1,0 +1,52 @@
+@import "../css/variables";
+
+$font-size: 16px;
+
+[id] .BlogPaginated {
+  .BlogPaginated-posts {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .BlogPaginated-pagination {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+
+    @media (min-width: $md) {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    li {
+      min-width: 30px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+
+      @media (max-width: $xxs) {
+        min-width: 17px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background: transparent;
+      }
+
+      &.selected:before {
+        background: #7c4fe0;
+      }
+      a {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}

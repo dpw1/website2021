@@ -8,6 +8,7 @@ import Footer from "./../components/Footer"
 import BlogBreadcrumb from "./../components/BlogBreadcrumb"
 import { Helmet } from "react-helmet"
 import BlogShowcase from "../components/BlogShowcase"
+import TestBlog from "../components/BlogPaginated"
 
 const BlogLayout = props => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const BlogLayout = props => {
         <ScrollToTop></ScrollToTop>
         <Header page={"blog"}></Header>
         <BlogBreadcrumb></BlogBreadcrumb>
+
         <BlogShowcase page="blog" postsPerPage={9}></BlogShowcase>
         <Contact></Contact>
         <Footer page={"blog"}></Footer>

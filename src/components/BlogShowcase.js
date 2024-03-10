@@ -13,6 +13,7 @@ import {
   isThereCurrentActiveTag,
   shuffle,
 } from "../utils/utils"
+import BlogPaginated from "./BlogPaginated"
 
 const readingTime = require("reading-time")
 
@@ -198,7 +199,7 @@ const BlogShowcase = props => {
           </React.Fragment>
         )}
         <div className="row row--first">
-          {posts
+          {/* {posts
             ? [...posts].map((data, i) => (
                 <BlogItem
                   isSearching={isSearching}
@@ -207,7 +208,13 @@ const BlogShowcase = props => {
                   currentPage={currentPage}
                 ></BlogItem>
               ))
-            : "Retrieving blog posts, please wait..."}
+            : "Retrieving blog posts, please wait..."} */}
+        </div>
+
+        <div className="row paginated-blog">
+          {posts && posts.length >= 1 && (
+            <BlogPaginated posts={posts}></BlogPaginated>
+          )}
         </div>
         <div className="row">
           <div className="col-12">
@@ -229,7 +236,7 @@ const BlogShowcase = props => {
   )
 }
 
-const BlogItem = props => {
+export const BlogItem = props => {
   let {
     // date: _date,
     slug,
@@ -240,6 +247,7 @@ const BlogItem = props => {
     content,
     isSearching,
     isTagActive,
+    resetImage,
   } = props.data
 
   let description = excerpt
@@ -255,17 +263,22 @@ const BlogItem = props => {
       <article className="single-blog res-margin">
         <Link className="linked" to={url}>
           <figure className="aspect-ratio blog-thumb">
-            <img
-              className="xx lazyload"
-              src={
-                (isSearching && props.currentPage !== "blogpost") ||
-                isThereCurrentActiveTag()
-                  ? image
-                  : ""
-              }
-              data-src={image}
-              alt={imagealt && imagealt.length >= 1 ? imagealt : title}
-            />
+            {resetImage ? (
+              <>
+                <img
+                  className=""
+                  src={image}
+                  alt={imagealt && imagealt.length >= 1 ? imagealt : title}
+                />
+              </>
+            ) : (
+              <img
+                className="xx "
+                src={image}
+                data-src={image}
+                alt={imagealt && imagealt.length >= 1 ? imagealt : title}
+              />
+            )}
           </figure>
         </Link>
 
