@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react"
 import ReactPaginate from "react-paginate"
 import { BlogItem } from "./BlogShowcase"
 import "./BlogPaginated.scss"
-import { updateQueryString } from "../utils/utils"
+import { scrollTo, updateQueryString } from "../utils/utils"
+import { siteRoutes } from "../utils/siteRoutes"
 
 export default function BlogPaginated(props) {
   const [initialPage, setinitialPage] = useState(null)
@@ -33,7 +34,16 @@ export default function BlogPaginated(props) {
     }
 
     setItemOffset(newOffset)
+
+    if (
+      window.location.href.includes("/blog") &&
+      window.location.href.includes("page=")
+    ) {
+      scrollTo(document.querySelector(`.row--first`), -160)
+    }
   }
+
+  function ScrollToTop() {}
 
   useEffect(() => {
     try {
