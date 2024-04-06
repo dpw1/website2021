@@ -29,7 +29,19 @@ function ProductItem(props) {
     ? attributes.find(e => e.name.toLowerCase() === "development")
     : false
 
+  let youtube
+  try {
+    youtube = props?.attributes.find(e => e.name === "youtube")
+      ? props.attributes
+          .find(e => e.name === "youtube")
+          .value.replace("/watch?v=", "/embed/")
+      : null
+  } catch (err) {
+    youtube = null
+  }
+
   console.log("all xx", props)
+
   return (
     !isHidden && (
       <article
@@ -50,6 +62,14 @@ function ProductItem(props) {
           >
             <figure className="aspect-ratio custom-overlay ">
               <img className="lazyload" src={thumbnail} alt={title} />
+              {youtube && (
+                <iframe
+                  src={`${youtube}/&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
+                  className="ProductItem-iframe"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  frameborder="0"
+                ></iframe>
+              )}
             </figure>
           </Link>
           {/* Portfolio Content */}
