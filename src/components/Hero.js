@@ -5,6 +5,7 @@ import "./Hero.scss"
 import Stars from "./atom/Stars"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
+import { TypeAnimation } from "react-type-animation"
 
 function Hero(props) {
   const { scrollTo, buttonText } = props
@@ -15,76 +16,56 @@ function Hero(props) {
     >
       <div className="container">
         <div className="row align-items-center hero-column">
-          <div className="col-12 col-md-4 order-2 order-md-1 image-column">
-            {/* Welcome Thumb */}
-            <div className="welcome-thumb mx-auto">
-              <picture>
-                <source
-                  media="(max-width: 767px)"
-                  sizes="1px"
-                  srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"
-                />
-                <img
-                  className="desktop-only animation--float proof-image"
-                  src={desktopImage}
-                  alt="Top 1 rated Shopify Partner in the official Shopify forums."
-                />
-              </picture>
-            </div>
-          </div>
           {/* Welcome Intro Start */}
           <div
             data-welcome=""
-            className="col-12 col-md-8 order-1 order-md-2 text-column"
+            className="col-12 col-md-12 order-1 order-md-2 text-column"
           >
             <div className="welcome-intro px-0 px-lg-4">
-              <h1 className="text-white font-italic mb-2 mb-md-3">
-                <span className="animation--gradient-text">Top #4</span> Most
-                Liked Shopify Expert{" "}
-                <span className="hero-text-emphasis">(of all time)</span>
-              </h1>
-              <picture>
-                <source
-                  media="(min-width: 767px)"
-                  sizes="1px"
-                  srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"
-                />
-                <img
-                  className="mobile-only animation--float proof-image"
-                  src={mobileImage}
-                  alt="Top 4 rated Shopify Partner in the official Shopify forums."
-                />
-              </picture>
-              <h3 className="hero-subtitle text-white">
+              <h1 className="text-white font-italic mb-2 mb-md-3 hero-text-1">
+                Customize Shopify themes with code snippets.
+                <br />
                 <span
                   style={{
                     display: "block",
-                    marginBottom: "-12px",
-                    marginTop: 9,
+                    marginTop: "10px",
+                    marginBottom: "15px",
                   }}
                 >
-                  <a
-                    style={{
-                      color: "white",
-                      textDecoration: "underline",
-                    }}
-                    href="https://community.shopify.com/c/kudos/leaderboardpage/board-id/technical-qa/timerange/all/tab/authors"
-                  >
-                    at the official Shopify Forums.
-                  </a>
+                  No{" "}
+                  <TypeAnimation
+                    sequence={[
+                      // Same substring at the start will only be typed out once, initially
+                      "apps",
+                      500,
+                      "monthly fees",
+                      1000,
+                      "developers",
+                      1000,
+                      "page builders",
+                      1000,
+                    ]}
+                    wrapper="span"
+                    className="animation--gradient-text"
+                    speed={60}
+                    repeat={Infinity}
+                  />
                 </span>
-                <br />
+              </h1>
+
+              <h3 className="hero-subtitle text-white hero-text-2">
                 <span>
-                  Build pages faster with code snippets
-                  <br />
-                  coded by one of the most active Shopify Experts.
+                  Build pages faster with DIY copy & paste code snippets
                 </span>
               </h3>
-              <p className="hero-info text-white mt-3 mb-4">
+
+              <p class="hero-info text-white mt-3 mb-4 hero-text-3">
                 <span>
-                  More than 10000+ active Shopify stores with our products.
+                  Coded by certified Shopify Expert, top #4 at the official
+                  Shopify forum.
                 </span>
               </p>
+
               {/* Store Buttons */}
               <div className="button-group store-buttons d-flex">
                 {!scrollTo ? (
@@ -97,10 +78,10 @@ function Hero(props) {
                 ) : (
                   <a
                     className="btn custom-btn text-uppercase scroll"
-                    href={scrollTo}
+                    href={`#CodeSnippets`}
                     data-scroll-offset={-80}
                   >
-                    {buttonText ? buttonText : "Get started"}
+                    {buttonText ? buttonText : "View Code Snippets"}
                   </a>
                 )}
               </div>

@@ -161,6 +161,7 @@ const BlogShowcase = props => {
     <section
       id="blogShowcase"
       className={`section blog-area blog-showcase ptb_50
+      ${props.isHomePage ? "blog-area--homepage" : ""}
       ${props.backgroundColor === "white" ? "" : "bg-gray"}
       `}
     >

@@ -8,7 +8,6 @@
     opacity: 1;
   }
 }
-
 .fade-in {
   -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -31,30 +30,24 @@
   0% {
     top: 0px;
   }
-
   50% {
     top: 25px;
   }
-
   100% {
     top: 0px;
   }
 }
-
 @keyframes bounceHero {
   0% {
     top: 0px;
   }
-
   50% {
     top: 25px;
   }
-
   100% {
     top: 0px;
   }
 }
-
 .animation--float {
   position: relative;
   animation: bounceHero 3s infinite;
@@ -81,7 +74,7 @@
   border-radius: 3px;
   position: relative;
   top: -2px;
-  background-color: #00a3ff21;
+  background-color: rgba(0, 163, 255, 0.1294117647);
 }
 
 @keyframes discount {
@@ -89,18 +82,15 @@
     color: #00a3ff;
     border-color: #00a3ff;
   }
-
   50% {
     color: #ce00ff;
     border-color: #ce00ff;
   }
-
   100% {
     color: #00a3ff;
     border-color: #00a3ff;
   }
 }
-
 @keyframes hue {
   from {
     filter: hue-rotate(0deg);
@@ -109,7 +99,6 @@
     filter: hue-rotate(-360deg);
   }
 }
-
 @keyframes confetti {
   0% {
     top: 100%;
@@ -118,42 +107,29 @@
     top: -130vh;
   }
 }
-
 @keyframes floating {
   from {
     bottom: -50px;
   }
 }
-
 @keyframes unfloating {
   to {
     bottom: -85px;
   }
 }
-
-$color1: #00a3ff;
-$color2: #ce00ff;
-
 .animated-gradient {
   max-width: 100%;
   margin: 0 auto;
   display: block;
   height: 4px;
-  background: repeating-linear-gradient(
-    to right,
-    $color1 0%,
-    $color2 50%,
-    $color1 100%
-  );
+  background: repeating-linear-gradient(to right, #00a3ff 0%, #ce00ff 50%, #00a3ff 100%);
   width: 100%;
   background-size: 200% auto;
   background-position: 0 100%;
-
   animation: gradient 4s infinite;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
   transition: all 0.32s;
-
   border-radius: 20px;
 }
 
@@ -165,7 +141,6 @@ $color2: #ce00ff;
     background-position: -200% 0;
   }
 }
-
 @keyframes fade-out-right {
   0% {
     opacity: 0;
@@ -173,14 +148,11 @@ $color2: #ce00ff;
   10% {
     opacity: 1;
   }
-
-  50%,
-  100% {
+  50%, 100% {
     transform: translateX(15px);
     opacity: 0;
   }
 }
-
 @keyframes spin {
   from {
     transform: rotate(0);
@@ -189,7 +161,6 @@ $color2: #ce00ff;
     transform: rotate(359deg);
   }
 }
-
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
@@ -198,7 +169,6 @@ $color2: #ce00ff;
     transform: rotate(360deg);
   }
 }
-
 @keyframes fadeInScrollUp {
   0% {
     opacity: 0;
@@ -209,6 +179,5 @@ $color2: #ce00ff;
     transform: translateY(0); /* Final position: up 0px */
   }
 }
-
 /* ANIMATIONS end
 =============================================== */

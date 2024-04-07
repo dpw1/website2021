@@ -112,7 +112,7 @@ export default function ProductShowcase(props) {
         <div className="row">
           <div className="col-12 ProductShowcase-col">
             <Link className="btn" to={siteRoutes.shop}>
-              See all products
+              Find Something You'll Like
             </Link>
           </div>
         </div>
