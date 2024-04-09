@@ -54,27 +54,7 @@
 }
 @media (max-height: 720px) {
   #hero {
-    height: 115vh !important;
-  }
-}
-@media (max-height: 598px) {
-  #hero {
-    height: 140vh !important;
-  }
-}
-@media (max-height: 665px) {
-  #hero {
-    height: 125vh !important;
-  }
-}
-@media (max-height: 605px) {
-  #hero {
-    height: 135vh !important;
-  }
-}
-@media (max-height: 565px) {
-  #hero {
-    height: 145vh !important;
+    height: 100vh !important;
   }
 }
 #hero .proof-image {
@@ -121,6 +101,9 @@
   #hero .animation--float {
     animation: unset;
   }
+}
+#hero .hero-column {
+  margin-top: -10px;
 }
 @media (max-width: 767px) {
   #hero .hero-column {

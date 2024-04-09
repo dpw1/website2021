@@ -8,10 +8,11 @@ const faqId = `apolo-accordion`
 
 const questions = [
   {
-    question: `I need some custom code done. What is your hourly price?`,
+    question: `I need some custom code done. What is your hourly price? How long does it take?`,
     answer: () => (
       <p>
-        Sure! We charge $40 USD/hour. Please{" "}
+        Sure! We charge $40 USD/hour, some type of work may take even less than
+        an hour. Please{" "}
         <a className="custom-link scroll" href="#contact">
           send us an email
         </a>{" "}
@@ -31,24 +32,42 @@ const questions = [
   },
   {
     question: `Can you make my website faster?`,
-    answer: () => <p>We can surely help you with optimization.</p>,
+    answer: () => (
+      <p>
+        We can surely help you with optimization! Every website requires a
+        different a tailored approach. Our optimization process typically
+        involves a thorough analysis of your site's performance metrics (via
+        PageSpeed Insights), including page load times, server response times,
+        and overall site speed. Based on this analysis, we'll come up with the
+        most appropriate solution for your case.
+      </p>
+    ),
   },
 
   {
-    question: `Can you prove that you are a certified Shopify Partner?`,
+    question: `What does being a 'top #4' Shopify Partner mean?`,
     answer: () => (
       <p>
-        Yes! Please access{" "}
+        At the official Shopify Forum, whenever your answer is helpful you
+        receive a like. In my case, these answers are technical, Shopify
+        code-related questions. I am currently the top #4 all time most liked
+        Shopify Partner. <br />
+        <br />
         <a
-          href="https://community.shopify.com/c/user/viewprofilepage/user-id/577094"
           target="_blank"
           className="custom-link"
+          href="https://community.shopify.com/c/kudos/leaderboardpage/board-id/technical-qa/timerange/all/tab/authors"
         >
-          my profile
-        </a>{" "}
-        in the Shopify Forum and you'll see "Shopify Partner" written below my
-        username, "diego_ezfy". Only developers who had undergone Shopify's
-        certification process receive that title.
+          Here you can see the rank
+        </a>
+        , and here you can see{" "}
+        <a
+          target="_blank"
+          className="custom-link"
+          href="https://community.shopify.com/c/user/viewprofilepage/user-id/577094"
+        >
+          my profile.
+        </a>
       </p>
     ),
   },

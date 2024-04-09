@@ -68,22 +68,7 @@ $animation-delay: 0.45;
   }
 
   @media (max-height: 720px) {
-    height: 115vh !important;
-  }
-
-  @media (max-height: 598px) {
-    height: 140vh !important;
-  }
-  @media (max-height: 665px) {
-    height: 125vh !important;
-  }
-
-  @media (max-height: 605px) {
-    height: 135vh !important;
-  }
-
-  @media (max-height: 565px) {
-    height: 145vh !important;
+    height: 100vh !important;
   }
 
   .proof-image {
@@ -131,6 +116,7 @@ $animation-delay: 0.45;
     }
   }
   .hero-column {
+    margin-top: -10px;
     @media (max-width: $xs) {
       flex-direction: column-reverse;
     }

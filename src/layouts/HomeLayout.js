@@ -21,6 +21,7 @@ import axios from "axios"
 import TabsSlider from "../components/TabsSlider"
 import { siteRoutes } from "../utils/siteRoutes"
 import ImageWithText from "../components/ImageWithText.js"
+import Brands from "../components/Brands.js"
 
 const HomeLayout = props => {
   useEffect(() => {
@@ -171,12 +172,13 @@ const HomeLayout = props => {
         </p>
       </ImageWithText> */}
 
+      <Brands></Brands>
+
       <TabsSlider
         title={"High Quality Customizations one Click Away"}
         subtitle={`The easiest and most accessible way to enhance your theme with top notch quality code.`}
         link={`${siteRoutes.shop}?source=homepage-tabs`}
         tabs={codeSnippetsTabs}
-        additionalClass={"bg-gray"}
         alignment={"left"}
       ></TabsSlider>
       <TabsSlider

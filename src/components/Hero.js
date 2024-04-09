@@ -23,7 +23,7 @@ function Hero(props) {
           >
             <div className="welcome-intro px-0 px-lg-4">
               <h1 className="text-white font-italic mb-2 mb-md-3 hero-text-1">
-                Customize Shopify themes with code snippets.
+                Customize your theme like a Shopify expert. Just copy & paste.
                 <br />
                 <span
                   style={{
@@ -55,14 +55,14 @@ function Hero(props) {
 
               <h3 className="hero-subtitle text-white hero-text-2">
                 <span>
-                  Build pages faster with DIY copy & paste code snippets
+                  Build pages faster with DIY copy & paste code snippets.
                 </span>
               </h3>
 
               <p class="hero-info text-white mt-3 mb-4 hero-text-3">
                 <span>
-                  Coded by certified Shopify Expert, top #4 at the official
-                  Shopify forum.
+                  made by the top #4 most liked <u>certified</u> Shopify Partner
+                  in the Shopify forum.
                 </span>
               </p>
 
