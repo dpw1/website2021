@@ -121,6 +121,12 @@ export const defaultNavbarLinks = [
         offset: -40,
         scroll: false,
       },
+      {
+        name: "Portfolio",
+        url: "/portfolio",
+        offset: -40,
+        scroll: false,
+      },
     ],
   },
   {

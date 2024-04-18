@@ -66,9 +66,17 @@ export default function Advertise(props) {
               {subtitle && subtitle.length >= 1 ? (
                 subtitle
               ) : (
-                <span>
-                  Enhance your theme with <b>copy &amp; paste</b> code snippets.
-                </span>
+                <>
+                  <span>
+                    Apps load slowly and come with monthly fees - you never
+                    really own it.
+                  </span>
+                  <br />
+                  <br />
+                  <span>
+                    Most apps can be replaced with copy & paste code snippets.
+                  </span>
+                </>
               )}
             </p>
             <div>{/* <img src={image} alt="" /> */}</div>
@@ -123,18 +131,18 @@ export default function Advertise(props) {
               data-v-cad483e2
               href={link}
             >
-              FREE QUOTE
+              VIEW SNIPPETS
             </a>
-            <p
+            {/* <p
               data-v-570454cb
               data-v-66b79341
               className="trial-popup__disclaimer body body--desktop  standard"
               data-v-cad483e2
             >
               <span data-v-66b79341 data-v-570454cb>
-                Available from Monday to Saturday.
+                Sale ends soon.
               </span>
-            </p>
+            </p> */}
           </div>
         </div>
         <div

@@ -174,6 +174,8 @@ const HomeLayout = props => {
 
       <Brands></Brands>
 
+      <About></About>
+
       <TabsSlider
         title={"High Quality Customizations one Click Away"}
         subtitle={`The easiest and most accessible way to enhance your theme with top notch quality code.`}

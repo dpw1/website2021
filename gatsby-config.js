@@ -97,6 +97,7 @@ module.exports = {
           "CartEcwid.scss",
           "TabsSlider.scss",
           "Feedback.scss",
+          "Brands.scss",
         ],
       },
     },
