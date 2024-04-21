@@ -77,6 +77,7 @@ function Hero(props) {
                   </Link>
                 ) : (
                   <a
+                    data-testss=""
                     className="btn custom-btn text-uppercase scroll"
                     href={`#CodeSnippets`}
                     data-scroll-offset={-80}
