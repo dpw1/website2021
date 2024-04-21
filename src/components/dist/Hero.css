@@ -1,26 +1,7 @@
 #hero {
-  height: 95vh;
+  height: 90vh;
   z-index: 1;
-  max-height: 750px;
-}
-#hero .button-group {
-  opacity: 0;
-}
-#hero .hero-text-1,
-#hero .hero-text-2,
-#hero .hero-text-3 {
-  opacity: 0; /* Start with opacity 0 */
-  animation: fadeInScrollUp 0.5s ease-in-out forwards; /* Animation duration and timing */
-}
-#hero .hero-text-2 {
-  animation-delay: 0.45s;
-}
-#hero .hero-text-3 {
-  animation-delay: 0.9s;
-}
-#hero .button-group {
-  animation: fade-in 0.5s ease-in-out forwards; /* Animation duration and timing */
-  animation-delay: 1.35s;
+  max-height: 690px;
 }
 @media (max-width: 991px) {
   #hero .hero-info {
@@ -36,10 +17,15 @@
 #hero .hero-subtitle * {
   line-height: normal;
 }
+@media (min-width: 991px) {
+  #hero {
+    padding-top: 40px;
+  }
+}
 @media (max-width: 767px) {
   #hero {
     max-height: unset;
-    height: 83vh !important;
+    height: 113vh !important;
     padding-bottom: 12vh;
     align-items: flex-start !important;
     padding-top: 83px;
@@ -47,9 +33,33 @@
 }
 @media (max-width: 575px) {
   #hero {
-    height: auto !important;
+    height: 113vh !important;
     padding-bottom: 9vh;
-    padding-top: 140px;
+  }
+}
+@media (max-height: 720px) {
+  #hero {
+    height: 115vh !important;
+  }
+}
+@media (max-height: 598px) {
+  #hero {
+    height: 140vh !important;
+  }
+}
+@media (max-height: 665px) {
+  #hero {
+    height: 125vh !important;
+  }
+}
+@media (max-height: 605px) {
+  #hero {
+    height: 135vh !important;
+  }
+}
+@media (max-height: 565px) {
+  #hero {
+    height: 145vh !important;
   }
 }
 #hero .proof-image {
@@ -96,9 +106,6 @@
   #hero .animation--float {
     animation: unset;
   }
-}
-#hero .hero-column {
-  margin-top: -10px;
 }
 @media (max-width: 767px) {
   #hero .hero-column {
