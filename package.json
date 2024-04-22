@@ -115,6 +115,7 @@
     "swiper": "^6.6.2",
     "timeago.js": "^4.0.2",
     "truncate": "^2.1.0",
+    "use-exit-intent": "^1.0.7",
     "use-query-params": "^1.1.9",
     "use-state-persist": "^0.2.3",
     "validator": "^13.7.0"

@@ -21,6 +21,7 @@ import { sleep } from "../../global-utils"
 import BlogPromoBar from "./BlogPromoBar"
 import Feedback from "./Feedback"
 import Advertise from "./Advertise"
+import ExitIntent from "./ExitIntent"
 
 const readingTime = require("reading-time")
 
@@ -278,6 +279,7 @@ const BlogContent = props => {
           </div>
         </div>
       </section>
+      {/* <ExitIntent></ExitIntent> */}
     </React.Fragment>
   )
 }

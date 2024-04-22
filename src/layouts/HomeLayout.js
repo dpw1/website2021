@@ -22,6 +22,8 @@ import TabsSlider from "../components/TabsSlider"
 import { siteRoutes } from "../utils/siteRoutes"
 import ImageWithText from "../components/ImageWithText.js"
 import Brands from "../components/Brands.js"
+import ExitIntent from "../components/ExitIntent.js"
+import Popup from "../components/Popup.js"
 
 const HomeLayout = props => {
   useEffect(() => {
@@ -219,6 +221,7 @@ const HomeLayout = props => {
 
       <Contact></Contact>
       <Footer page={"home"}></Footer>
+      <Popup></Popup>
     </React.Fragment>
   )
 }

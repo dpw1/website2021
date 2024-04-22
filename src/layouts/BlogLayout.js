@@ -9,6 +9,7 @@ import BlogBreadcrumb from "./../components/BlogBreadcrumb"
 import { Helmet } from "react-helmet"
 import BlogShowcase from "../components/BlogShowcase"
 import TestBlog from "../components/BlogPaginated"
+import ExitIntent from "../components/ExitIntent"
 
 const BlogLayout = props => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const BlogLayout = props => {
         <BlogShowcase page="blog" postsPerPage={9}></BlogShowcase>
         <Contact></Contact>
         <Footer page={"blog"}></Footer>
+        {/* <ExitIntent></ExitIntent> */}
       </React.Fragment>
     </React.Fragment>
   )

@@ -5,9 +5,15 @@ import { getCookie, setCookie, removeCookie } from "./../utils/utils"
 import { siteRoutes } from "./../utils/siteRoutes"
 
 export default function Popup() {
-  const COOKIE_NAME = `ezfy-modal-popup`
-  const COOKIE_EXPIRATION = 5
+  const COOKIE_NAME = `MODAL_POPUP_MUST_SHOW`
+  const COOKIE_EXPIRATION = 1
   const [open, setOpen] = useState(false)
+  const delay = 3000
+
+  function hidePopup() {
+    setOpen(false)
+    setCookie(COOKIE_NAME, "false", COOKIE_EXPIRATION)
+  }
 
   useEffect(() => {
     /**
@@ -15,7 +21,7 @@ export default function Popup() {
      * Persistent countdown using local storage. Counts from interval to 0, returning a promise once it's over.
      * @returns
      */
-    function countdown(interval = 20000) {
+    function countdown(interval = delay) {
       return new Promise(async (resolve, reject) => {
         let intervalLoop = null
 
@@ -53,10 +59,9 @@ export default function Popup() {
 
     ;(async _ => {
       removePopup()
-      /* Popup has already been shown, return. */
-      if (getCookie(COOKIE_NAME) === "true") {
+      /* Popup has already been shown, */
+      if (getCookie(COOKIE_NAME) === "false") {
         return
-      } else {
       }
 
       console.log("waiting handle timer...")
@@ -99,6 +104,9 @@ export default function Popup() {
       className={`modal-backdrop trial-popup ${
         open ? "modal-backdrop--visible" : "modal-backdrop--invisible"
       }`}
+      onClick={() => {
+        hidePopup()
+      }}
     >
       <div
         data-v-cad483e2
@@ -135,7 +143,7 @@ export default function Popup() {
               className="trial-popup__title body body--desktop  strong"
               data-v-cad483e2
             >
-              No more monthly fees for Shopify apps.
+              Get FREE coding assistance.
             </p>
             <p
               data-v-570454cb
@@ -143,7 +151,8 @@ export default function Popup() {
               className="trial-popup__subtitle body body--desktop  standard"
               data-v-cad483e2
             >
-              Enhance your theme with <b>copy &amp; paste</b> code snippets.
+              1 hour of free coding support for your Shopify store,{" "}
+              <b>no strings attached</b>. Rate at only $35 USD/hour afterwards.
             </p>
             <div
               data-v-66b79341
@@ -178,7 +187,7 @@ export default function Popup() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Same day response customer support
+                  Same day response support Monday to Saturday
                 </p>
               </div>
               <div
@@ -209,7 +218,7 @@ export default function Popup() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Over <b>5000</b> active users
+                  Hundreds of satisfied customers
                 </p>
               </div>
               <div
@@ -240,7 +249,7 @@ export default function Popup() {
                   className="trial-popup__checklist-item-text body body--desktop  standard"
                   data-v-cad483e2
                 >
-                  Coded exclusively by certified Shopify Partners
+                  Certified Shopiy Experts, no freelancers
                 </p>
               </div>
             </div>{" "}
@@ -250,9 +259,12 @@ export default function Popup() {
               className="button button--medium button--medium-mobile btn"
               data-qa="trialpopup-button-startfreetrial"
               data-v-cad483e2
-              href={siteRoutes.shop}
+              href={siteRoutes.contactSection}
+              onClick={() => {
+                hidePopup()
+              }}
             >
-              VIEW CODE SNIPPETS
+              CONTACT NOW
             </a>
             <p
               data-v-570454cb
@@ -261,7 +273,7 @@ export default function Popup() {
               data-v-cad483e2
             >
               <span data-v-66b79341 data-v-570454cb>
-                No coding knowledge required.
+                This offer ends soon.
               </span>
             </p>
           </div>
@@ -299,6 +311,9 @@ export default function Popup() {
           data-v-3d0c5569
           data-v-cad483e2
           aria-label="Close"
+          onClick={() => {
+            hidePopup()
+          }}
           className="PopupModalClose button-close close-button"
         >
           <svg
