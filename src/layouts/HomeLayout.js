@@ -221,7 +221,7 @@ const HomeLayout = props => {
 
       <Contact></Contact>
       <Footer page={"home"}></Footer>
-      <Popup></Popup>
+      {/* <Popup></Popup> */}
     </React.Fragment>
   )
 }
