@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useForm } from "react-hook-form"
 
@@ -8,30 +8,114 @@ function Contact(props) {
   const { backgroundColor } = props
 
   const [isSendingMessage, setIsSendingMessage] = useState(false)
-  const [error, setError] = useState("")
+
+  const [captchaError, setCaptchaError] = useState("")
+  const [errors, setErrors] = useState({})
   const [isFormValid, setIsFormValid] = useState(false)
-  const { register, handleSubmit, watch, errors } = useForm()
+
+  // State for form data and errors
+  const [formData, setFormData] = useState({
+    email: "",
+    reason: "",
+    store: "",
+    message: "",
+  })
 
   function onCaptchaValidated(value) {
     console.log("Captcha value:", value)
     setIsFormValid(true)
   }
 
+  const form = useRef()
+
+  const sendEmail = e => {
+    e.preventDefault()
+
+    if (!isFormValid) {
+      setCaptchaError(
+        "Please do the ReCaptcha above before sending your email."
+      )
+      return
+    } else {
+      setCaptchaError("")
+    }
+
+    const newErrors = {}
+    Object.keys(formData).forEach(key => {
+      validateField(key, formData[key])
+      if (errors[key]) {
+        newErrors[key] = errors[key]
+      }
+    })
+
+    if (newErrors.length > 0) {
+      return
+    }
+
+    setIsSendingMessage(true)
+
+    emailjs
+      .sendForm("service_ptzixz6", "template_93ge117", form.current, {
+        publicKey: "aa8g_QZtxNhaZJOYH",
+      })
+      .then(
+        () => {
+          setIsSendingMessage(false)
+          alert("Email sent successfully!")
+        },
+        error => {
+          console.log("FAILED...", error.text)
+        }
+      )
+  }
+
+  const handleChange = e => {
+    const { name, value } = e.target
+
+    // Update form data
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+
+    console.log("validating", name)
+    // Validate input
+    validateField(name, value)
+  }
+
+  // Validation function
+  const validateField = (name, value) => {
+    let isValid = true
+
+    if (name === "reason") {
+      isValid = false
+      if (!value || value === "") {
+        setErrors({
+          [name]: "Please select an inquiry type",
+        })
+      }
+    }
+
+    if (isValid) {
+      setErrors({})
+    }
+  }
+
   const onSubmit = data => {
     console.log(data)
 
-    if (!isFormValid) {
-      setError(
-        "Please do the ReCaptcha above before sending your email. Thank you!"
-      )
-      return
-    }
+    // if (!isFormValid) {
+    //   setError(
+    //     "Please do the ReCaptcha above before sending your email. Thank you!"
+    //   )
+    //   return
+    // }
 
     if (data._replyto.includes(".dk")) {
       return
     }
 
-    setError("")
+    // setError("")
     setIsSendingMessage(true)
 
     window.document.querySelector(`#contact-form`).submit()
@@ -115,15 +199,12 @@ function Contact(props) {
             {/* Contact Box */}
             <div className="contact-box text-center">
               {/* Contact Form */}
+
               <form
+                ref={form}
                 id="contact-form"
                 method="POST"
-                onSubmit={handleSubmit(onSubmit)}
-                action={
-                  isFormValid
-                    ? "https://api.formcake.com/api/form/e60cc492-18b4-4e39-8f4f-09a2ef75ae3a/submission"
-                    : ""
-                }
+                onSubmit={sendEmail}
               >
                 <div className="row ">
                   <div className="col-12">
@@ -131,21 +212,39 @@ function Contact(props) {
                       <input
                         type="email"
                         className="form-control"
-                        name="_replyto"
+                        name="reply_to"
                         placeholder="Your email *"
                         required="required"
-                        ref={register}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
+                  <select
+                    onChange={handleChange}
+                    name="reason"
+                    class="form-control"
+                  >
+                    <option value="" disabled selected>
+                      Select an inquiry type
+                    </option>
+                    <option value="Quote for custom coding">
+                      Quote for custom coding
+                    </option>
+                    <option value="I purchased a code snippet and need assistance">
+                      I purchased a product and need assistance
+                    </option>
+                    <option value="Question about code snippet">
+                      Question about product
+                    </option>
+                  </select>
                   <div className="col-12">
                     <div className="form-group">
                       <input
                         type="text"
                         className="form-control"
                         name="_store"
-                        ref={register}
                         placeholder="Your Shopify store URL (optional)"
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -156,8 +255,8 @@ function Contact(props) {
                         name="message"
                         placeholder="Message *"
                         required="required"
-                        ref={register}
                         defaultValue={""}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -170,7 +269,18 @@ function Contact(props) {
                       ></ReCAPTCHA>
                     </div>
 
-                    <p className="form-error">{error ? error : ""}</p>
+                    <p className="form-error">
+                      {Object.keys(errors).length >= 1
+                        ? Object.values(errors).map((error, index) => (
+                            <span key={index} className="error">
+                              {error}
+                            </span>
+                          ))
+                        : ""}
+                      {captchaError && (
+                        <span className="error">{captchaError}</span>
+                      )}
+                    </p>
                   </div>
 
                   <div className="col-12">

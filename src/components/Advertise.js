@@ -47,7 +47,7 @@ export default function Advertise(props) {
               className="trial-popup__title advertise-title body body--desktop  strong advertise-custom-link"
               data-v-cad483e2
               target="_blank"
-              href={siteRoutes.contactSection}
+              href={link}
             ></a>
             <p
               data-v-570454cb

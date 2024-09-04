@@ -1,0 +1,29 @@
+#contact .media {
+  display: inline-flex;
+}
+#contact .contact-social-icons svg {
+  vertical-align: 0.075em;
+}
+#contact .contact-social-icons i {
+  position: relative;
+  top: -4px;
+}
+#contact .form-error {
+  color: salmon;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: left;
+}
+#contact .form-group--recaptcha {
+  margin-bottom: 0;
+}
+#contact select {
+  max-width: 95%;
+  margin: 0 auto;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  border-radius: 0;
+}
+#contact select:disabled {
+  opacity: 0.6;
+}
