@@ -3895,12 +3895,24 @@ export const discounts = [
   },
 ]
 
-export function addDiscountCouponBasedOnQuantity(cart) {
-  console.log("adding discount coupon", cart)
-
+/*************  ✨ Codeium Command ⭐  *************/
+/**
+ * Given a cart object, this function will automatically apply a discount coupon if
+ * the cart has 2 or more items. The coupon codes are defined in the `discounts`
+ * array at the top of this file.
+ *
+ * @param {object} cart - The cart object from the ecwid store.
+ *
+ * @returns {Promise} Resolves when the coupon has been applied, or if no coupon
+ *                    should be applied.
+ */
+/******  bba07e3a-e7fe-4f95-98aa-99e760cc9a1e  *******/ export function addDiscountCouponBasedOnQuantity(
+  cart
+) {
   return new Promise(async (resolve, reject) => {
+    console.log("calculating discount coupon")
     async function calculate() {
-      var quantity = cart.productsQuantity
+      var quantity = cart.items.length
       let _discount = null
 
       // debugger
@@ -3952,22 +3964,19 @@ export function doesCartNeedDiscountToBeApplied(cart) {
     }
 
     let mustUpdate = "NOTHING"
-    if (
-      !cart ||
-      (cart.hasOwnProperty("productsQuantity") && cart.productsQuantity <= 1)
-    ) {
+    if (!cart || (cart.hasOwnProperty("items") && cart.items.length <= 1)) {
       mustUpdate = "REMOVE"
     }
 
-    if (cart.couponName === "30% OFF" && cart.productsQuantity === 2) {
+    if (cart.couponName === "30% OFF" && cart.items.length === 2) {
       mustUpdate = "REMOVE"
     }
 
-    if (cart.couponName === "20% OFF" && cart.productsQuantity === 3) {
+    if (cart.couponName === "20% OFF" && cart.items.length === 3) {
       mustUpdate = "REMOVE"
     }
 
-    if (!cart.hasOwnProperty("couponName") && cart.productsQuantity >= 2) {
+    if (!cart.hasOwnProperty("couponName") && cart.items.length >= 2) {
       mustUpdate = "APPLY"
     }
 
@@ -4006,11 +4015,11 @@ export function getProductsInCart() {
   return new Promise((resolve, reject) => {
     let products = []
 
-    window.Ecwid.Cart.get(function (cart) {
-      cart.items.map(e => e.product).map(_product => products.push(_product.id))
+    window.Ecwid.Cart.get(cart => {
+      cart.items.forEach(item => products.push(item.product.id))
+      console.log("products", products)
+      resolve(products)
     })
-
-    resolve(products)
   })
 }
 
@@ -4099,8 +4108,6 @@ export async function addDiscountCoupon(discount) {
     $input.value = discount
     $input.dispatchEvent(event)
 
-    // debugger
-
     await sleep(500)
 
     const $button = each.querySelector(`.ec-cart-coupon__button--apply button`)
@@ -4108,8 +4115,6 @@ export async function addDiscountCoupon(discount) {
     if (!$button) {
       return
     }
-
-    // debugger
 
     $button.click()
   }
@@ -4132,9 +4137,13 @@ export function addEcwidProductsToCart(products) {
         Ecwid.Cart.addProduct({
           id: each.id,
           quantity: 1,
-          callback: function (success, product, cart) {},
+          callback: async function (success, product, cart) {
+            await sleep(100)
+          },
         })
       }
+
+      console.log("adding ", index, products.length)
 
       if (index >= products.length - 1) {
         Ecwid.Cart.gotoCheckout()

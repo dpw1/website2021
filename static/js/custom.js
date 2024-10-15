@@ -628,7 +628,7 @@ ezfy = (function () {
 
   async function loadEcwidScript() {
     try {
-      const url = `https://app.ecwid.com/script.js?61271341`
+      const url = `https://app.ecwid.com/script.js?61271341&data_platform=code&data_date=2024-10-15`
       const $script = document.querySelector(`script[src*='app.ecwid']`)
 
       if ($script) {
@@ -640,7 +640,9 @@ ezfy = (function () {
       await _loadScript(url)
 
       window.Ecwid.init()
-    } catch (err) {}
+    } catch (err) {
+      console.log(`Unable to load Ecwid. - loadEcwidScript()`)
+    }
   }
 
   function preventDefaultActiveCode() {

@@ -1,7 +1,7 @@
 import React from "react"
 import "./About.scss"
 
-import imageFounder from "../copy/img/avatar/man.jpg"
+import imageFounder from "../copy/img/avatar/pic_1.jpg"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
 import { scrollTo } from "../utils/utils"

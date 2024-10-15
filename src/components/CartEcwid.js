@@ -5,7 +5,6 @@ import {
   awaitEcwid,
   discounts,
   doesCartNeedDiscountToBeApplied,
-  handleEmptCartButtonClick,
   removeDiscountCoupon,
   _waitForElement,
 } from "../utils/utils"
@@ -70,7 +69,7 @@ export default function CartEcwid(props) {
 
           $cart.click()
 
-          Ecwid.ShoppingCartController.openCart()
+          Ecwid.Cart.gotoCheckout()
         })
       }
     }
@@ -79,8 +78,6 @@ export default function CartEcwid(props) {
       await awaitEcwid()
 
       Ecwid.OnCartChanged.add(async function (cart) {
-        console.log("cart changes", cart)
-
         if (
           window.hasOwnProperty("previousCartData") &&
           window.previousCartData === JSON.stringify(cart)
@@ -89,47 +86,55 @@ export default function CartEcwid(props) {
           return
         }
 
-        if (cart.productsQuantity <= 1) {
+        console.log("HD cart changes", cart, cart.items.length)
+
+        if (cart.items.length <= 1) {
           await removeDiscountCoupon()
-        } else if (cart.productsQuantity >= 2) {
+        } else if (cart.items.length >= 2) {
           await addDiscountCouponBasedOnQuantity(cart)
         }
 
-        window.previousCartData = JSON.stringify(cart)
         return
 
-        // if (
-        //   window.previousCartQuantity &&
-        //   cart.productsQuantity !== window.previousCartQuantity
-        // ) {
-        //   const applyDiscount = doesCartNeedDiscountToBeApplied(cart)
+        window.previousCartData = JSON.stringify(cart)
 
-        //   console.log("apply discount? ", applyDiscount, cart)
+        if (cart.items.length <= 1) {
+          console.log("hd remove!", cart, cart.items, cart.items.length)
+          await removeDiscountCoupon()
+        }
 
-        //   if (applyDiscount === "NOTHING") {
-        //     return
-        //   }
+        if (
+          window.previousCartQuantity &&
+          cart.items.length !== window.previousCartQuantity
+        ) {
+          const applyDiscount = doesCartNeedDiscountToBeApplied(cart)
 
-        //   if (applyDiscount === "APPLY") {
-        //     console.log("apply - applying discount...")
-        //     await removeDiscountCoupon()
-        //     await sleep(1000)
-        //     await addDiscountCouponBasedOnQuantity()
-        //   } else if (applyDiscount === "REMOVE") {
-        //     console.log("apply - REMOVING discount...")
+          console.log("HD apply discount? ", applyDiscount, cart)
 
-        //     await removeDiscountCoupon()
-        //   }
-        // }
+          if (applyDiscount === "NOTHING" || cart.items.length <= 1) {
+            console.log("hd remove!")
+            await removeDiscountCoupon()
+          }
 
-        // window.previousCartQuantity = cart.productsQuantity
+          if (applyDiscount === "APPLY") {
+            console.log("HD apply - applying discount...")
+            await removeDiscountCoupon()
+            await sleep(1000)
+            await addDiscountCouponBasedOnQuantity()
+          } else if (applyDiscount === "REMOVE" || cart.items.length <= 1) {
+            console.log("HD apply - REMOVING discount...")
+
+            await removeDiscountCoupon()
+          }
+        }
+
+        window.previousCartQuantity = cart.items.length
       })
     }
 
     handleCartChanges()
     handleBackToShoppingButtonClick()
     handleDelayedEcwidCartOpen()
-    handleEmptCartButtonClick()
   }, [])
 
   return (
@@ -138,14 +143,14 @@ export default function CartEcwid(props) {
         isMobile ? "CartEcwid--mobile" : "CartEcwid--desktop"
       }`}
     >
-      <a href="#">
+      {/* <a href="#">
         <div
           data-responsive="FALSE"
           data-icon="CART"
           className="CartEcwid-cart ec-cart-widget"
           onClick={async () => {
             await addDiscountCouponBasedOnQuantity()
-            handleEmptCartButtonClick()
+            
           }}
         ></div>
         <div className="CartEcwid-skeleton">
@@ -187,7 +192,18 @@ export default function CartEcwid(props) {
             <div></div>
           </div>
         </div>
-      </a>
+      </a> */}
+
+      <div class="ec-cart-widget OriginalEcwidCart"></div>
+      <div>
+        <script
+          data-cfasync="false"
+          type="text/javascript"
+          src="https://app.ecwid.com/script.js?61271341&data_platform=code&data_date=2024-10-15"
+          charset="utf-8"
+        ></script>
+        <script type="text/javascript">Ecwid.init();</script>
+      </div>
     </div>
   )
 }
