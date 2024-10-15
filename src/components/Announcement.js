@@ -59,7 +59,7 @@ export default function Announcement() {
         >
           <span>
             <u data-winter>
-              Winter sale - code snippets starting at <b>only $20</b>
+              Code snippets starting at <b>only $20</b>
             </u>
           </span>
           <svg

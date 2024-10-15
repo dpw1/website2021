@@ -1,5 +1,19 @@
 @import "../css/variables";
 
 .ImageWithText {
-  background: red;
+  &--reverse {
+    .about-image-with-text {
+      flex-direction: row-reverse;
+    }
+  }
+  .about-text * {
+    font-size: 16px !important;
+  }
+
+  ol,
+  ol > li {
+    list-style: decimal !important;
+    padding-left: 0;
+    list-style-position: inside !important;
+  }
 }

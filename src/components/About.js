@@ -1,7 +1,7 @@
 import React from "react"
 import "./About.scss"
-import image from "../copy/img/avatar/diego.jpg"
-import imageFounder from "../copy/img/avatar/man.jpg"
+
+import imageFounder from "../copy/img/avatar/pic_1.jpg"
 import { Link } from "gatsby"
 import { siteRoutes } from "./../utils/siteRoutes"
 import { scrollTo } from "../utils/utils"
@@ -10,7 +10,7 @@ function About(props) {
   return (
     <section
       id="about"
-      className={`about section features-area overflow-hidden bg-gray ptb_25 ${
+      className={`about section features-area overflow-hidden  ptb_25 ${
         props.page === "about" && "about-page"
       }`}
     >
@@ -19,7 +19,7 @@ function About(props) {
           <div className="col-12 col-md-10 col-lg-6">
             {/* Section Heading */}
             <div className="section-heading text-center">
-              <h2>About EZFY</h2>
+              <h2>DIY coded by actual Shopify Experts</h2>
               <p className=" d-sm-block mt-4">
                 A little bit about the story behind EZFY.
               </p>
@@ -53,27 +53,32 @@ function About(props) {
                   <div className="about-text icon-text media-body align-self-center align-self-md-start">
                     <p className="d-sm-block">
                       Greetings! My name is Diego. I am a Computer Science
-                      graduate and I have been working as an e-commerce dev
-                      since 2012. Shortly after graduation I dabbled into
-                      Shopfiy and fell in love.
+                      graduate and <u>certified</u> Shopify Expert working as a
+                      programmer since 2012.
+                    </p>
+
+                    <p className="d-sm-block  mt-4">
+                      After working with a few Shopify merchants in the
+                      beginning of my career, I noticed a lot of DIY happening.
+                      Although it was helpful, the main issue was that most of
+                      that DIY code laying around was not properly coded,
+                      causing bugs, unmet expectations and making their store's
+                      slower.
                     </p>
 
                     <p className="d-block mt-4">
-                      The passion I have for technology is the same for helping
-                      people grow their business and making their tech lives
-                      easier. From that intent, EZFY was born. I gathered a few{" "}
+                      Bearing that in mind, EZFY was born. I gathered a few{" "}
                       <b>like-minded talented professionals</b> and created{" "}
                       <span className="custom-link">EZFY</span> to help
                       merchants with their Shopify stores.
                     </p>
                     <p className="d-block mt-4">
-                      We'll help you with customizations, bug fixes, creating
-                      custom sections and everything else related to customizing
-                      your theme. Feel free to check our{" "}
+                      Although we focus on
                       <Link to={siteRoutes.shop} className="custom-link">
                         copy/paste code snippets
                       </Link>{" "}
-                      out for some ideas as well.
+                      , we also offer top notch custom coding for whatever
+                      technical needs you have.
                     </p>
                     <p className="d-block mt-4">
                       We also invite you to take a look at what our previous

@@ -1,130 +1,56 @@
-import React from "react"
+import React, { useState } from "react"
+import ModalVideo from "react-modal-video"
 
 import "./Portfolio.scss"
 
 const items = [
   {
-    tags: ["HTML5", "CSS3", "jQuery", "UX"],
-    video: require("../copy/videos/video-arval.mp4"),
-    image: require("../copy/img/thumbnail/thumbnail-arval.jpg"),
-    sourceCode: "",
-    liveWebsite: "https://arval.business/",
-    title: "Arval",
-    subtitle: `Arval is a printing machine company. They needed their old
-  website updated so we developed a brand new design +
-  website for them.`,
-    alt: "Arval's Printing Machinery Website",
-  },
-  // {
-  //   tags: [
-  //     "HTML5",
-  //     "CSS3",
-  //     "Shopify",
-  //     "Liquid",
-  //     "ES7",
-  //     "SCSS / SASS",
-  //     "jQuery",
-  //   ],
-  //   video: require("../copy/videos/video-bubs.mp4"),
-  //   image: require("../copy/img/thumbnail/thumbnail-bubs.jpg"),
-  //   sourceCode: "",
-  //   liveWebsite: "https://www.bubswarehouse.com/",
-  //   title: "Bubswarehouse",
-  //   subtitle: `Bubswarehouse is one of the biggest online stores in
-  //   Australia selling baby clothes and toys. We've worked
-  //   closely together to maximize the store's converion rates.`,
-  //   alt: "Portfolio - Bubswarehouse's Shopify website",
-  // },
-  {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
-    video: require("../copy/videos/video-light-bricks.mp4"),
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
+    video: require("../copy/videos/lightmybricks-video-2024.webm"),
     image: require("../copy/img/thumbnail/thumbnail-light-bricks.jpg"),
     sourceCode: "",
     liveWebsite: "http://lightmybricks.com.au/",
     title: "Light My Bricks",
-    subtitle: `A worldwide famous company selling leds for Legos®. Our
-    work consisted of the implementation of new Shopify
-    sections on their websites.`,
+    subtitle: `Australian worldwide famous company selling leds for Legos®. Our
+    work consisted of coding a custom Shopify theme.`,
     alt: "Portfolio - Light my Bricks Shopify store",
   },
   {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
     video: require("../copy/videos/video-zudo.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-zudo.jpg"),
     sourceCode: "",
     liveWebsite: "http://zudo.co/",
     title: "Zudo",
-    subtitle: `Shopify website fully customized for client.`,
+    subtitle: `Shopify website fully customized for client. We worked on a complete overhaul on top of the Impulse theme.`,
     alt: "Portfolio - Zudo Shopify Store",
   },
+
   {
-    tags: ["HTML5", "CSS3", "Handlebars.js", "SCSS / SASS", "jQuery", "UX"],
-    video: require("../copy/videos/video-studiotagus.mp4"),
-    image: require("../copy/img/thumbnail/thumbnail-studiotagus.jpg"),
-    sourceCode: "https://github.com/dpw1/tagus-v3",
-    liveWebsite: "",
-    title: "Studio Tagus",
-    subtitle: `Digital agency coded by EZFY from the ground up for a startup.`,
-    alt: "Portfolio - Studio Tagus digital agency",
-  },
-  {
-    tags: ["HTML5", "CSS3", "Stylus", "jQuery", "UX"],
-    video: require("../copy/videos/video-megalancers.mp4"),
-    image: require("../copy/img/thumbnail/thumbnail-megalancers.jpg"),
-    sourceCode: "",
-    liveWebsite: "https://www.facebook.com/megalancers/",
-    title: "Megalancers",
-    subtitle: `Popularly known as the <i>“Brazilian Fiverr”</i> , EZFY
-    assisted the company to bring their website idea to life in. Everything was coded
-    from scratch based on a .PSD file.`,
-    alt: "Portfolio - Megalancers Website",
-  },
-  {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
     video: require("../copy/videos/video-yokd.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-yokd.jpg"),
     sourceCode: "",
     liveWebsite: "https://www.getyokd.com/",
     title: "GET YOK'D",
-    subtitle: `The project owner requested website optimizations (namely lazy loading and image compressing), implementation of custom sections and
+    subtitle: `The project owner requested website optimizations, implementation of custom sections and
     multiple styling modifications.`,
     alt: "Portfolio - GET YOKED's Website",
   },
-
   {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
+    video: require("../copy/videos/video-bubs.mp4"),
+    image: require("../copy/img/thumbnail/thumbnail-bubs.jpg"),
+    sourceCode: "",
+    liveWebsite: "https://www.bubswarehouse.com/",
+    title: "Bubswarehouse",
+    subtitle: `Bubswarehouse was one of the biggest online stores in
+    Australia selling baby clothes and toys. We've worked
+    closely together to maximize the store's conversion rates.`,
+    alt: "Portfolio - Bubswarehouse's Shopify website",
+  },
+  {
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
     video: require("../copy/videos/video-dog.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-dog.jpg"),
     sourceCode: "",
@@ -136,15 +62,7 @@ const items = [
     alt: "Portfolio - Dog's Best Friend Australia Shopify Website",
   },
   {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
     video: require("../copy/videos/video-birthcanva.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-birthcanva.jpg"),
     sourceCode: "",
@@ -155,15 +73,7 @@ const items = [
     alt: "Portfolio - Birthcanva Shopify Website",
   },
   {
-    tags: [
-      "HTML5",
-      "CSS3",
-      "Shopify",
-      "Liquid",
-      "ES7",
-      "SCSS / SASS",
-      "jQuery",
-    ],
+    tags: ["HTML5", "CSS3", "Shopify", "Liquid", "ES6", "SCSS / SASS"],
     video: require("../copy/videos/video-jim.mp4"),
     image: require("../copy/img/thumbnail/thumbnail-jim.jpg"),
     sourceCode: "",
@@ -171,6 +81,28 @@ const items = [
     title: "Cosy Cribs",
     subtitle: `Australian e-commerce based on Shopify selling furnitures.`,
     alt: "Portfolio - Cosy Cribs' Website",
+  },
+  {
+    tags: ["HTML5", "CSS3", "Handlebars.js", "SCSS / SASS", "UX"],
+    video: require("../copy/videos/video-studiotagus.mp4"),
+    image: require("../copy/img/thumbnail/thumbnail-studiotagus.jpg"),
+    sourceCode: "https://github.com/dpw1/tagus-v3",
+    liveWebsite: "",
+    title: "Studio Tagus",
+    subtitle: `Digital agency coded by EZFY from the ground up for a startup.`,
+    alt: "Portfolio - Studio Tagus digital agency",
+  },
+  {
+    tags: ["HTML5", "CSS3", "Stylus", "UX", "Shopify"],
+    video: require("../copy/videos/video-megalancers.mp4"),
+    image: require("../copy/img/thumbnail/thumbnail-megalancers.jpg"),
+    sourceCode: "",
+    liveWebsite: "https://megalancers.com/",
+    title: "Megalancers",
+    subtitle: `Popularly known as the “Brazilian Fiverr” , EZFY
+    assisted the company to bring their website idea to life in. Everything was coded
+    from scratch based on a .PSD file, wired up with Shopify's API.`,
+    alt: "Portfolio - Megalancers Website",
   },
 ]
 
@@ -185,18 +117,16 @@ const PortfolioItem = item => {
     subtitle,
     alt,
   } = item
+
+  const [play, setPlay] = useState(false)
   return (
     <div
-      className="col-12 col-md-6 portfolio-item"
+      className="col-12 col-md-4 portfolio-item"
       data-portfolio-item-tags={tags.join(", ")}
     >
       <div className="single-portfolio res-margin">
         {/* Portfolio Thumb */}
-        <div
-          className="portfolio-thumb blog-thumb"
-          data-fancybox="gallery"
-          href={video}
-        >
+        <div className="portfolio-thumb blog-thumb">
           <a className="play-btn">
             <div className="btn-circle play-animation" />
             <div className="btn-circle play-animation animation-short" />
@@ -221,44 +151,46 @@ const PortfolioItem = item => {
               {/* <i class="fas fa-play"></i> */}
             </div>
           </a>
-          <figure className="aspect-ratio custom-overlay">
+          <figure
+            onClick={() => {
+              setPlay(true)
+            }}
+            className="Portfolio-figure aspect-ratio custom-overlay"
+          >
             <img
               className="lazyload"
               data-src={image}
               alt={alt ? alt : title}
             />
+            <video
+              className={`Portfolio-video ${
+                play ? "Portfolio-video--visible" : ""
+              }`}
+              controls
+              autoPlay={play}
+              loop
+              playsInline
+              src={play && video}
+            ></video>
           </figure>
         </div>
         {/* Portfolio Content */}
         <div className="portfolio-content blog-content p-4">
           {/* Meta Info */}
-          <ul className="meta-info d-flex">
-            <li>
-              <a
-                className={sourceCode.length <= 0 && "portfolio-blocked"}
-                href={sourceCode}
-                target="_blank"
-              >
-                Source Code
-              </a>
-            </li>
-            <li>
-              <a
-                className={
-                  liveWebsite.length <= 0
-                    ? "portfolio-blocked"
-                    : "custom-emphasis"
-                }
-                href={liveWebsite}
-                target="_blank"
-              >
-                Live Website
-              </a>
-            </li>
-          </ul>
+
           {/* Portfolio Title */}
           <h3 className="blog-title my-3">
-            <span>{title}</span>
+            <a
+              className={
+                liveWebsite.length <= 0
+                  ? "portfolio-blocked"
+                  : "custom-emphasis"
+              }
+              href={liveWebsite}
+              target="_blank"
+            >
+              <span>{title}</span>{" "}
+            </a>
           </h3>
           <p>{subtitle}</p>
         </div>
@@ -278,23 +210,24 @@ function Portfolio() {
             <div className="section-heading text-center">
               <h2 className="text-capitalize">Portfolio</h2>
               <p className="d-sm-block mt-4">
-                Below you can find a succinct list of some of the websites coded
-                for our customers.
+                All sites below were hosted on Shopify. Some were themes custom
+                coded from scratch, others already existing themes with
+                additional fixes and implementations.
                 <br />
                 <span className="custom-emphasis">
                   Click on the play button
                 </span>{" "}
-                to watch a video showcasing the respective project.
+                to watch a brief video showcasing the respective project.
               </p>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-lg-3">
+          {/* <div className="col-12 col-lg-3">
             <aside className="sidebar">
-              {/* Single Widget */}
+      
               <div className="single-widget">
-                {/* Tags Widget */}
+      
                 <div
                   className="accordions widget tags-widget"
                   id="tags-accordion"
@@ -310,13 +243,13 @@ function Portfolio() {
                         Filter
                       </a>
                     </h5>
-                    {/* Tags Widget Content */}
+           
                     <div
                       id="accordion3"
                       className="accordion-content widget-content collapse show"
                       data-parent="#tags-accordion"
                     >
-                      {/* Tags Widget Items */}
+     
                       <div
                         id="tagsWidget"
                         className="widget-content tags-widget-items pt-2"
@@ -334,8 +267,8 @@ function Portfolio() {
                 </div>
               </div>
             </aside>
-          </div>
-          <div className="col-12 col-lg-9">
+          </div> */}
+          <div className="col-12 col-lg-12">
             <div className="portfolio-row row">
               {items.map(e => PortfolioItem(e))}
             </div>

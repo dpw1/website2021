@@ -6,9 +6,15 @@
 
    ```
    git add .
-   git commit -m "[ADD]"
-   git push origin HEAD:dev
+   git commit -m "FIX email form"
+   git push origin HEAD:dev --force
    ```
+
+````
+git add . && "ADD ..." && git push origin HEAD:dev --force
+```dd
+
+npm
 
 3. Push to Github Pages:
 
@@ -100,3 +106,4 @@ Under the Popup.js file you can configure a popup modal.
 
 1. From the Ecwid admin, go to the product page that you are currently making
 2. Go to "attributes" and, on the "development" textbox, add "true". You can use any value.
+````

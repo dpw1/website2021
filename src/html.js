@@ -48,6 +48,8 @@ export default function HTML(props) {
           src={withPrefix("js/custom.js")}
         ></script>
 
+        <script type="text/javascript" src={withPrefix("js/email.js")}></script>
+
         {
           <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"

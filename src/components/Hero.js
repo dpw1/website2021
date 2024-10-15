@@ -68,6 +68,7 @@ function Hero(props) {
                       color: "white",
                       textDecoration: "underline",
                     }}
+                    target="_blank"
                     href="https://community.shopify.com/c/kudos/leaderboardpage/board-id/technical-qa/timerange/all/tab/authors"
                   >
                     at the official Shopify Forums.

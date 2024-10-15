@@ -1,5 +1,4 @@
 #faq {
-
   .card {
     margin-bottom: 1px;
   }
@@ -19,10 +18,17 @@
     line-height: 20px;
   }
 
-  .FAQ-question{
+  .FAQ-question {
     max-width: calc(100% - 12px);
     display: block;
     width: 100%;
+    pointer-events: none;
+  }
+
+  .faq-content {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 

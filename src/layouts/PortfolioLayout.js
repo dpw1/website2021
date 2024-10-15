@@ -16,8 +16,8 @@ const PortfolioLayout = () => {
   return (
     <React.Fragment>
       <ScrollToTop></ScrollToTop>
-      <Header page="portfolio"></Header>
-      <Hero scrollTo="#portfolio" buttonText={"View Portfolio"}></Hero>
+      <Header page="portfolio" darkMode={true}></Header>
+
       <Portfolio></Portfolio>
       <Faq></Faq>
       <Contact></Contact>

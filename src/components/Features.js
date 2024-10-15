@@ -79,31 +79,7 @@ function Features(props) {
           </div>
           <div className="col-12 col-lg-6 order-1 order-lg-2 d-md-block">
             {/* Service Thumb */}
-            <div className="service-thumb mx-auto">
-              <Swiper {...swiperConfig}>
-                <div>
-                  <img
-                    className="lazyload"
-                    data-src="https://s3.amazonaws.com/static.e-junkie.com/products/images/1689291-1.jpg"
-                    alt
-                  />
-                </div>
-                <div>
-                  <img
-                    className="lazyload"
-                    data-src="https://s3.amazonaws.com/static.e-junkie.com/products/images/1689291-1.jpg"
-                    alt
-                  />
-                </div>
-                <div>
-                  <img
-                    className="lazyload"
-                    data-src="https://s3.amazonaws.com/static.e-junkie.com/products/images/1689291-1.jpg"
-                    alt
-                  />
-                </div>
-              </Swiper>
-            </div>
+            <div className="service-thumb mx-auto">image</div>
           </div>
         </div>
       </div>

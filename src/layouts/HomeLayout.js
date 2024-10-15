@@ -20,6 +20,10 @@ import ProductShowcase from "./../components/ProductShowcase"
 import axios from "axios"
 import TabsSlider from "../components/TabsSlider"
 import { siteRoutes } from "../utils/siteRoutes"
+import ImageWithText from "../components/ImageWithText.js"
+import Brands from "../components/Brands.js"
+import ExitIntent from "../components/ExitIntent.js"
+import Popup from "../components/Popup.js"
 
 const HomeLayout = props => {
   useEffect(() => {
@@ -133,7 +137,47 @@ const HomeLayout = props => {
       <ScrollToTop></ScrollToTop>
       <Header page={"home"}></Header>
       <Hero scrollTo="#about"></Hero>
+      {/* <ImageWithText
+        title={"What are code snippets?"}
+        subtitle={`Customize your theme like a Shopify Expert.`}
+      >
+        <p className="d-sm-block">
+          Code snippets are text files with code developed & tested by certified
+          Shopify Experts. Simply:
+        </p>
+        <br />
+        <ol>
+          <li>Copy the code;</li>
+          <li>Paste in your theme.</li>
+        </ol>
+        <br />
+        <p className="d-sm-block">
+          We ship all of them with detailed instructions.
+        </p>
+      </ImageWithText>
+      <ImageWithText
+        title={"For all types of stores"}
+        subtitle={`Built with CRO and UX optimization in mind.`}
+      >
+        <p className="d-sm-block">
+          Code snippets are text files with code developed & tested by certified
+          Shopify Experts. Simply:
+        </p>
+        <br />
+        <ol>
+          <li>Copy the code;</li>
+          <li>Paste in your theme.</li>
+        </ol>
+        <br />
+        <p className="d-sm-block">
+          We ship all of them with detailed instructions.
+        </p>
+      </ImageWithText> */}
+
+      <Brands></Brands>
+
       <About></About>
+
       <TabsSlider
         title={"High Quality Customizations one Click Away"}
         subtitle={`The easiest and most accessible way to enhance your theme with top notch quality code.`}
@@ -151,6 +195,7 @@ const HomeLayout = props => {
         additionalClass={"bg-gray"}
         buttonText={"Request a Quote"}
       ></TabsSlider>
+
       <ReviewsText></ReviewsText>
 
       {/* <Features> </Features> */}
@@ -166,14 +211,17 @@ const HomeLayout = props => {
         ]}
         page="home"
       ></ProductShowcase>
-      <Parallax
+      {/* <Parallax
         title="Not finding what you need?"
         subtitle={`Let us know how we can help you out! We'll get back to you within 24 hours.`}
         buttonText={"Request a free quote"}
-      ></Parallax>
+      ></Parallax> */}
+
+      <Faq></Faq>
 
       <Contact></Contact>
       <Footer page={"home"}></Footer>
+      {/* <Popup></Popup> */}
     </React.Fragment>
   )
 }
